@@ -18,7 +18,7 @@ MonoBehaviour:
   lifespan: 3
   onCollison: 0
   endlifeEffect: 0
-  BulletCount: 0
+  BulletCount: 1
   cooldown: 0.1
   aimAtPlayer: 1
   isRandom: 0

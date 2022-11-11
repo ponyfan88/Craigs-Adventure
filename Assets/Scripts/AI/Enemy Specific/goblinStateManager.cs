@@ -2,16 +2,18 @@ using UnityEngine;
 public class goblinStateManager : MonoBehaviour
 {
     ProjectileSpawner projectileSpawner;
-    getCloseToPlayer distance;
+    GameObject player;
+    Vector2 distance;
     private void Awake()
     {
         projectileSpawner = GetComponent<ProjectileSpawner>();
-        distance = GetComponent<Animator>().GetBehaviour<getCloseToPlayer>();
+        player = GameObject.Find("player");
     }
     public void TrySpit()
     {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, distance.distance);
-        Debug.DrawRay(transform.position, distance.distance, Color.red, 100f);
+        distance = player.transform.position - transform.position;
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, distance);
+        Debug.DrawRay(transform.position, distance, Color.red, 1f);
 
         if (ray.collider.name != "player" && ray.collider.transform != transform && ray.collider.gameObject.layer != LayerMask.NameToLayer("IgnoreCollision"))
         {
@@ -24,6 +26,7 @@ public class goblinStateManager : MonoBehaviour
     }
     public void Spit()
     {
+        Debug.Log("Spit");
         projectileSpawner.SpawnBullets();
     }
 }
