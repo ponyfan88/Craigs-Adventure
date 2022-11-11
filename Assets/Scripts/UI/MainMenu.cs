@@ -27,6 +27,8 @@ public class MainMenu : MonoBehaviour
     
     void Awake()
     {
+        floorManager = FindObjectOfType<FloorManager>();
+
         floorManager.floor = 1; // we are on floor 1
 
         Pause.paused = true; // consider the game paused on main menu
