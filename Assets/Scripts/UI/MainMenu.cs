@@ -17,13 +17,18 @@ public class MainMenu : MonoBehaviour
 
     // import saves manager
     SavesManager savesManager;
-    
+
+    // import the floor manager
+    FloorManager floorManager;
+
     #endregion
 
     #region  Default Methods
     
     void Awake()
     {
+        floorManager.floor = 1; // we are on floor 1
+
         Pause.paused = true; // consider the game paused on main menu
         soundManager = FindObjectOfType<SoundManager>(); // make it a variable so we can use it
         soundManager.Play("Main Menu"); // play the main menu theme
