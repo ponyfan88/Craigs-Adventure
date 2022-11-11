@@ -12,7 +12,6 @@ public class ProjectileSpawner : MonoBehaviour
     #region Variables
 
     GameObject player; // initialize a variable to represent player
-    Transform t; // initialize a variable to represent transform
     Vector3 pos, velocity; // initialize pos and velocity
     public ProjectileSpawnData[] spawnDatas; // gather all the attack patterns attached to this script
     public int index = 0; // how to order of go through
@@ -35,17 +34,15 @@ public class ProjectileSpawner : MonoBehaviour
         timer = GetSpawnData().cooldown; // sets timer to count down
         // find the player
         player = GameObject.Find("player");
-        // our transform
-        t = transform;
         // get our current position
-        pos = t.transform.position;
+        pos = transform.position;
     }
 
     void Update()
     {
         if (timer <= 0) {
             // calculate the angle to the player from the enemy
-            angle = Mathf.Rad2Deg * System.Math.Atan2(player.transform.position.y - t.transform.position.y, player.transform.position.x - t.transform.position.x);
+            angle = Mathf.Rad2Deg * System.Math.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
 
             velocity = (transform.position - pos); // calculate our velocity (as a vector3)
             
