@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70fe8a617233254cb031082ed5c33a5, type: 3}
+  m_Name: p1 1
+  m_EditorClassIdentifier: 
+  bulletResource: {fileID: 209948382019125338, guid: 2e6c73d0931a38d4ab2fc13f4b52e156, type: 3}
+  minRotation: 45
+  maxRotation: 45
+  AmtBullet: 1
+  isRandom: 0
+  isNotParent: 0
+  cooldown: 0.1
+  bulletspeed: 6
+  bulletVelocity: {x: 0, y: 0}
+  lifespan: 3
+  aimAtPlayer: 0

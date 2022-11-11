@@ -1,0 +1,62 @@
+// TODO: WRITE INFO
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+public class floorDetect : MonoBehaviour
+{
+    public Tilemap tileMap;
+    public int surface = 0;
+
+    [SerializeField] private controller player; //player controller
+    [SerializeField] private Grid grid; //room grid
+
+    [SerializeField] private Sprite[] woods;
+    [SerializeField] private Sprite[] stones;
+
+    private Vector3 playerPos; //player's position
+    private Vector3Int tileCoord; //the whole number position the player is standing on
+    private Sprite surfaceSprite;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerPos = player.transform.position; //get and store player position
+        tileCoord = grid.WorldToCell(playerPos); //convert it to a whole (int) value
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        playerPos = player.transform.position; //get and store player position
+        tileCoord = grid.WorldToCell(playerPos); //convert it to a whole value
+
+        Debug.Log(tileMap.GetSprite(tileCoord)); //Wooden_Floor_5 and Wooden_Floor_17 are stone, everything else is wood.
+        surfaceSprite = tileMap.GetSprite(tileCoord); //store the sprite
+
+        bool found = false;
+
+        for (int i = 0; i < stones.Length; ++i)
+        {
+            if (surfaceSprite == stones[i])
+            {
+                found = true;
+                surface = 2;
+            }
+        }
+        
+        if (!found)
+        {
+            for (int i = 0; i < woods.Length; ++i)
+            {
+                if (surfaceSprite == woods[i])
+                {
+                    found = true;
+                    surface = 1;
+                }
+            }
+        }
+    }
+}
