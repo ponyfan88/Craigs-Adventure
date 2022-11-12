@@ -23,6 +23,7 @@ public class Room : MonoBehaviour
     DoorManager[] doorManager;
 
     [SerializeField] private SpawnEnemy[] enemySpawns;
+    bool enemiesSpawned = false;
 
     #endregion
 
@@ -60,6 +61,8 @@ public class Room : MonoBehaviour
                 door.GetComponent<BoxCollider2D>().enabled = true;
                 door.gameObject.layer = LayerMask.NameToLayer("Default");
             }
+
+            enemiesSpawned = true;
         }
     }
 
@@ -75,6 +78,27 @@ public class Room : MonoBehaviour
             }
 
             roomHider.SetActive(false); // hide our room hider
+        }
+    }
+
+    private void Update()
+    {
+        if (enemiesSpawned)
+        {
+            foreach (SpawnEnemy spawn in enemySpawns)
+            {
+                if (spawn.enemy != null)
+                {
+                    return;
+                }
+            }
+
+            foreach (DoorManager door in doorManager)
+            {
+                door.OpenDoors();
+                door.GetComponent<BoxCollider2D>().enabled = false;
+                door.gameObject.layer = LayerMask.NameToLayer("IgnoreCollision");
+            }
         }
     }
 

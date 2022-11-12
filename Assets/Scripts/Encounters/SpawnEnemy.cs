@@ -1,7 +1,7 @@
 /*Programmer: Christopher Kowalewski
  * Purpose: Spawn enemies when a room is entered
  * Inputs: Room.cs Calls for enemies to spawn
- * Outputs: Instantiates enemies
+ * Outputs: Instantiates from enemiesTemplate
  */
 
 using System.Collections;
@@ -12,7 +12,9 @@ public class SpawnEnemy : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] private GameObject[] enemies;
+    public GameObject enemy;
+
+    [SerializeField] private GameObject[] enemiesTemplate;
     private int e;
 
     #endregion
@@ -25,8 +27,8 @@ public class SpawnEnemy : MonoBehaviour
         //possibly play spawning animation
 
         //instantiate enemy at this position
-        e = Random.Range(0, enemies.Length);
-        Instantiate<GameObject>(enemies[e], transform.position, enemies[e].transform.rotation);
+        e = Random.Range(0, enemiesTemplate.Length);
+        enemy = Instantiate<GameObject>(enemiesTemplate[e], transform.position, enemiesTemplate[e].transform.rotation);
     }
 
     //overload - Parent transform provided
@@ -35,8 +37,8 @@ public class SpawnEnemy : MonoBehaviour
         //possibly play spawning animation
 
         //instantiate enemy at this position
-        e = Random.Range(0, enemies.Length);
-        Instantiate<GameObject>(enemies[e], transform.position, enemies[e].transform.rotation, parent);
+        e = Random.Range(0, enemiesTemplate.Length);
+        enemy = Instantiate<GameObject>(enemiesTemplate[e], transform.position, enemiesTemplate[e].transform.rotation, parent);
     }
 
     #endregion
