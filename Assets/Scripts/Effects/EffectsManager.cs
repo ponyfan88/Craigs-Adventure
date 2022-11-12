@@ -16,7 +16,7 @@ public class EffectsManager : MonoBehaviour
     // these are the objects we'll run effects on
     public List<effectItemProperties> effectsObjects = new List<effectItemProperties>();
     // these are the objects we'll get rid of from effectsObjects every frame; it's cleared every frame
-    List<int> deletedObjects = new List<int>();
+    public List<int> deletedObjects = new List<int>();
 
     #endregion
 
@@ -62,7 +62,7 @@ public class EffectsManager : MonoBehaviour
 
                 LogToFile.Log("removed effect object " + i.ToString());
             }
-            else
+                else
             {
                 // used with every particle so might as well calculate now
                 // im using jmath.mod for like no reason idk
@@ -103,7 +103,7 @@ public class EffectsManager : MonoBehaviour
         }
 
         // delete every object no longer in use from our list
-        for (int i = 0; i < deletedObjects.Count; i++)
+        for (int i = 0; i < deletedObjects.Count - 1; i++)
         {
             effectsObjects.Remove(effectsObjects[deletedObjects[i]]);
         }

@@ -204,7 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageAmount: 1
-  playerOwned: 0
+  playerOwned: 1
+  destroyOnHitWall: 1
 --- !u!1 &5361726777761842100
 GameObject:
   m_ObjectHideFlags: 0

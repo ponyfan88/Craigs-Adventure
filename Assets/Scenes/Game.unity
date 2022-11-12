@@ -2456,11 +2456,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121956405}
   m_CullTransparentMesh: 1
---- !u!1 &155158979 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 579965022195231294, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
-  m_PrefabInstance: {fileID: 579965021121237316}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &173347476
 GameObject:
   m_ObjectHideFlags: 0
@@ -8952,7 +8947,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5781893, y: 1}
+    m_SensorSize: {x: 1.7776457, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15822,47 +15817,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 579965022195231295, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
   m_PrefabInstance: {fileID: 579965021121237316}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1074559872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155158979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b68a6e51dcf05bb4494c5695bce2d82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnDatas:
-  - {fileID: 11400000, guid: e9e8c21b441360049af2872baf5739fb, type: 2}
-  index: 0
-  spawningAuto: 0
-  isSequenceRandom: 0
---- !u!114 &1074559878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155158979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb577d14e06ad2e47ac29af03eb076da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1074559883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155158979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec27edc48a7c9e84ab4fb48545dc4beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1086943751
 GameObject:
   m_ObjectHideFlags: 0
@@ -18972,6 +18926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176873b6c56c00c41b56a30b8f5ec0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deletedObjects: 
 --- !u!4 &1607383719
 Transform:
   m_ObjectHideFlags: 0
@@ -22013,17 +21968,9 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 644931893}
     m_Modifications:
-    - target: {fileID: 579965022195231289, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 579965022195231294, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
       propertyPath: m_Name
       value: Goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: 579965022195231294, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 579965022195231295, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
       propertyPath: m_RootOrder

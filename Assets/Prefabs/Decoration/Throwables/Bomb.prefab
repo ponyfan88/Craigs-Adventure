@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3757501959174599329}
   - component: {fileID: 3757501959174599358}
   - component: {fileID: 2723875673391860775}
+  - component: {fileID: -3010251731629236418}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -135,4 +136,19 @@ MonoBehaviour:
   maxHealth: 1
   health: 1
   invulnerabilityTime: 0
-  takePlayerDamage: 1
+  takePlayerDamage: 0
+--- !u!114 &-3010251731629236418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757501959174599330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590f190945adc06478328147086d09c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmount: 3
+  playerOwned: 1
+  destroyOnHitWall: 0

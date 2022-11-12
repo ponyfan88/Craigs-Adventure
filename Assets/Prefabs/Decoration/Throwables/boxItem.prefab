@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28164026d471ca40a38cf3409225aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
+  maxHealth: 2
+  health: 2
   invulnerabilityTime: 0
   takePlayerDamage: 0
 --- !u!61 &4911870632044226263
@@ -164,5 +164,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageAmount: 3
-  playerOwned: 0
+  playerOwned: 1
   destroyOnHitWall: 0
