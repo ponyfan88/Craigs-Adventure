@@ -81,14 +81,19 @@ public class healthManager : MonoBehaviour
                     LogToFile.Log("player has died");
                     Pause.EndGame(); // display the death screen
                 }
-                else
+                // if the object is a projectile, we only disable the object so that the projectile scripts can reuse it without crashing
+                else if (TryGetComponent(out Projectile proj))
                 {
-                    // anything here is an enemy / not the player
-                    // For now we just kill the object.
-                    Destroy(this.gameObject);
-
-                    LogToFile.Log("killed " + this.gameObject.ToString());
+                    gameObject.SetActive(false);
                 }
+                    else
+                    {
+                        // anything here is an enemy / not the player
+                        // For now we just kill the object.
+                        Destroy(this.gameObject);
+
+                        LogToFile.Log("killed " + this.gameObject.ToString());
+                    }
             }
             return true; // tell the function the object took damage
         }

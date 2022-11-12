@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 209948382019125339}
   - component: {fileID: -1090057356632798949}
   - component: {fileID: 4743807426124054554}
+  - component: {fileID: 6373692080663856557}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Hostile
@@ -138,3 +139,19 @@ MonoBehaviour:
   DamageAmount: 1
   playerOwned: 0
   destroyOnHitWall: 1
+--- !u!114 &6373692080663856557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209948382019125338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28164026d471ca40a38cf3409225aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  health: 1
+  invulnerabilityTime: 0
+  takePlayerDamage: 1
