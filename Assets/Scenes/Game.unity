@@ -8952,7 +8952,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7775203, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18972,6 +18972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176873b6c56c00c41b56a30b8f5ec0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deletedObjects: 
 --- !u!4 &1607383719
 Transform:
   m_ObjectHideFlags: 0
