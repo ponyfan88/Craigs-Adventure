@@ -14,13 +14,11 @@ public class DoorManager : MonoBehaviour
     }
     public void OpenDoors()
     {
-        Debug.Log("Door Open triggered");
         animator.SetBool("isOpen", true);
     }
     
     public void CloseDoors()
     {
-        Debug.Log("Door Close triggered");
         animator.SetBool("isOpen", false);
     }
 }
