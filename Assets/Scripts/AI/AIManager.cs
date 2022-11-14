@@ -55,5 +55,13 @@ public class AIManager : MonoBehaviour
         knockbackDir = new Vector2(Math.Sign(transform.position.x - position.position.x), Math.Sign(transform.position.y - position.position.y));
         knockbackTimer = Time.time + knockbackTime;
     }
+    public void ApplyKnockback(float bulletRotation)
+    {
+        // turns rotation of the object into a radian       
+        float radian = Mathf.Deg2Rad * bulletRotation;
+        // uses cosine and sine to turn the radian of the bullet into a direction to push the player
+        knockbackDir = new Vector2(Math.Sign(Mathf.Cos(radian)), Math.Sign(Mathf.Sin(radian)));
+        knockbackTimer = Time.time + knockbackTime;
+    }
     #endregion
 }
