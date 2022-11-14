@@ -59,6 +59,12 @@ public class ExceptionManager : MonoBehaviour
 
     #region Custom Methods
 
+    public void UserDump()
+    {
+        LogToFile.Log("dump at " + Time.realtimeSinceStartup.ToString());
+        LogToFile.DumpLogs();
+    }
+
     void HandleException(string logString, string stackTrace, LogType type)
     {   
         // if we got an error and we are currently handling exceptions

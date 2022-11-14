@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionScript: {fileID: 0}
   holdingOffset: {x: 0, y: 0.15}
-  throwVelocity: 0.25
+  throwVelocity: 0.4
   canBeGrabbed: 1
   hasCollision: 0
 --- !u!114 &728062955662682979

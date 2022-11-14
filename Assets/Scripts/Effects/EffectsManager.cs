@@ -58,11 +58,13 @@ public class EffectsManager : MonoBehaviour
                     LogToFile.Log("object " + i.ToString() + " was likely destroyed, so we skip resetting the color of it.");
                 }
 
+                // no matter what, EVEN IF THE OBJECT WAS DELETED we need to remove it from our list.
+
                 deletedObjects.Add(i); // add the index of the object to delete
 
-                LogToFile.Log("removed effect object " + i.ToString());
+                LogToFile.Log("effect object " + i.ToString() + "has expired");
             }
-                else
+            else
             {
                 // used with every particle so might as well calculate now
                 // im using jmath.mod for like no reason idk
@@ -97,15 +99,22 @@ public class EffectsManager : MonoBehaviour
                 }
                 catch // this means our object was probably an enemy, and that enemy was probably destroyed
                 {
-                    LogToFile.Log("object " + i.ToString() + " is likely deleted");
+                    LogToFile.Log("object " + i.ToString() + " is destroyed or bugged, adding to deleted objects.");
+
+                    deletedObjects.Add(i); // add the index of the object to delete
                 }
             }
         }
 
+        int offset = 0;
+
         // delete every object no longer in use from our list
-        for (int i = 0; i < deletedObjects.Count - 1; i++)
+        foreach (int num in deletedObjects) // deletedObjects is a list of item numbers
         {
-            effectsObjects.Remove(effectsObjects[deletedObjects[i]]);
+            effectsObjects.RemoveAt(num - offset); // we use removeat for each item in deletedobjects
+            ++offset; // this should always work, as the first item in num should always be smaller than any above it.
+
+            LogToFile.Log("effect object " + num.ToString() + "has been deleted"); // log the number we just deleted
         }
     }
 

@@ -6535,6 +6535,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 4596219323474803176}
     m_Modifications:
+    - target: {fileID: 3757501959174599328, guid: 27c3d064b94df3e4a9b0ff5485463fa0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3757501959174599330, guid: 27c3d064b94df3e4a9b0ff5485463fa0, type: 3}
       propertyPath: m_Name
       value: Bomb (1)
