@@ -5,7 +5,6 @@
  * Outputs: save files
  */
 
-using System.Collections.Generic; // will be used later
 using UnityEngine;
 using System.IO;
 using save;
