@@ -46,8 +46,17 @@ public class SavesManager : MonoBehaviour
         pause = FindObjectOfType<Pause>();
 
         DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "//saves//"); // get the saves folder and scan it for .jsave files
-        FileInfo[] saves = savesFolder.GetFiles("*.sqlite");
-        savesCount = saves.Length; // get the number of saves
+        
+        try // we are going to try this, since the directory might not exist
+        {
+            FileInfo[] saves = savesFolder.GetFiles("*.sqlite");
+            savesCount = saves.Length; // get the number of saves
+        }
+        catch // in this case, the directory doesnt exist. we'll make the directory for future saves
+        {
+            savesFolder.Create(); // make the "saves" directory.
+            savesCount = 0; // since we just made the directory, it's empty.
+        }
     }
 
     #endregion
