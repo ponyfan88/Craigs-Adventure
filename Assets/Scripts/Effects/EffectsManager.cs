@@ -62,7 +62,7 @@ public class EffectsManager : MonoBehaviour
 
                 LogToFile.Log("removed effect object " + i.ToString());
             }
-                else
+            else
             {
                 // used with every particle so might as well calculate now
                 // im using jmath.mod for like no reason idk
