@@ -59,12 +59,22 @@ public class ExceptionManager : MonoBehaviour
 
     #region Custom Methods
 
+    /*
+     * purpose: dumps the log to log.txt
+     * inputs: none
+     * outputs: tells LogToFile to dump to log.txt
+     */
     public void UserDump()
     {
         LogToFile.Log("dump at " + Time.realtimeSinceStartup.ToString());
         LogToFile.DumpLogs();
     }
 
+    /*
+     * purpose: handles exceptions and dumps logs when needed
+     * inputs: info about every single log
+     * outputs: tells pause to show the email menu, tells LogToFile to dump the log
+     */
     void HandleException(string logString, string stackTrace, LogType type)
     {   
         // if we got an error and we are currently handling exceptions
@@ -94,6 +104,11 @@ public class ExceptionManager : MonoBehaviour
         }
     }
 
+    /*
+     * purpose: sends bug reports
+     * inputs: none
+     * outputs: tells Email to send an email, tells pause to unpause the game.
+     */
     public void SendBugReport()
     {
         // the string we use for the actual email body
