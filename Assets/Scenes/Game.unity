@@ -16105,7 +16105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you died lol YOU SUX
+  m_text: You Died
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96b74df89c76f504aa863f129afaa0c9, type: 2}
   m_sharedMaterial: {fileID: 8182461121231267032, guid: 96b74df89c76f504aa863f129afaa0c9, type: 2}
