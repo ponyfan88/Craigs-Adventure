@@ -86,7 +86,7 @@ public class SqliteManager : MonoBehaviour
 
     public IDbConnection CreateAndOpenDatabase(string saveName)
     {
-        string dataBase = "URI=file:Assets/Saves/" + saveName + ".sqlite"; // we call it saves.sqlite
+        string dataBase = "URI=file:" + Application.dataPath + "/Saves/" + saveName + ".sqlite"; // we call it saves.sqlite
         IDbConnection dbConnection = new SqliteConnection(dataBase); // connection to our database
         dbConnection.Open(); // open our database
 
