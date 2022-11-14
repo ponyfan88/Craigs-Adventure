@@ -198,6 +198,8 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1f; // set our timescale to 1, resuming the game
         
         savesManager.loadingSave = false; // we dont want to load a save after we reload the game
+
+        ended = false; // we just restarted the game, so it's no longer ended
         
         // since loadingsave is kept after we reload we can actually save this
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reload the current active scene
