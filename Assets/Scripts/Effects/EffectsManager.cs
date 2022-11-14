@@ -103,9 +103,9 @@ public class EffectsManager : MonoBehaviour
         }
 
         // delete every object no longer in use from our list
-        for (int i = 0; i < deletedObjects.Count - 1; i++)
+        foreach (int num in deletedObjects) // deletedObjects is a list of item numbers
         {
-            effectsObjects.Remove(effectsObjects[deletedObjects[i]]);
+            effectsObjects.RemoveAt(num); // we use removeat for each item in deletedobjects
         }
     }
 
