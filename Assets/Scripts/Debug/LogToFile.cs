@@ -28,7 +28,7 @@ public static class LogToFile
     {
         if (!Directory.Exists(Application.dataPath + "/Debug/"))
         {
-            Debug.Log("debug dir did not exist");
+            LogToFile.Log("debug dir did not exist");
             Directory.CreateDirectory(Application.dataPath + "/Debug/");
         }
 
