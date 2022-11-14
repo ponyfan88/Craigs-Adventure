@@ -48,6 +48,7 @@ public class AIManager : MonoBehaviour
     {
         knockbackDir = new Vector2(Math.Sign(AttackDir.x), Math.Sign(AttackDir.y));
         knockbackTimer = Time.time + knockbackTime;
+
     }
     public void ApplyKnockback(Transform position)
     {
