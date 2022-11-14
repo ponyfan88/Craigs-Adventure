@@ -4,8 +4,8 @@ public class goblinStateManager : MonoBehaviour
     ProjectileSpawner projectileSpawner;
     GameObject player;
     Animator animator;
-    Vector2 distance;
-    LayerMask raycastMask;
+    Vector2 distance; // will be used later
+    LayerMask raycastMask; // will be used later
     byte timesSpit;
     float spitCooldown = 0f;
     private void Awake()
@@ -54,10 +54,13 @@ public class goblinStateManager : MonoBehaviour
     }
     public void Spit()
     {
+        // increment consecutive times spit
         ++timesSpit;
 
+        // spawn projectile
         projectileSpawner.SpawnBullets();
-
+        
+        // if we've spit 3 times consecutively, add a cooldown and force the man to walk
         if (timesSpit == 3)
         {
             animator.SetBool("reachedLocation", false);

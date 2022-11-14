@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9020628545209309581}
   - component: {fileID: 5092568881368531971}
   - component: {fileID: -6546943896872222237}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
