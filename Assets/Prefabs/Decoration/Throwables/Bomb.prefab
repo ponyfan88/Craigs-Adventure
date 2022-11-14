@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3757501959174599359}
   - component: {fileID: 3757501959174599328}
-  - component: {fileID: 3757501959174599329}
-  - component: {fileID: 3757501959174599358}
   - component: {fileID: 2723875673391860775}
+  - component: {fileID: 3757501959174599358}
+  - component: {fileID: 3757501959174599329}
   - component: {fileID: -3010251731629236418}
+  - component: {fileID: 8571093734446994318}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 0675d8587e2c3214e9096aa89841a767, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -88,6 +89,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2723875673391860775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757501959174599330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28164026d471ca40a38cf3409225aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  health: 1
+  invulnerabilityTime: 0
+  takePlayerDamage: 0
+--- !u!58 &3757501959174599358
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757501959174599330}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.009884596, y: -0.019716442}
+  serializedVersion: 2
+  m_Radius: 0.20005494
 --- !u!114 &3757501959174599329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,38 +138,6 @@ MonoBehaviour:
   throwVelocity: 0.8
   canBeGrabbed: 1
   hasCollision: 1
---- !u!58 &3757501959174599358
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3757501959174599330}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.009884596, y: -0.019716442}
-  serializedVersion: 2
-  m_Radius: 0.20005494
---- !u!114 &2723875673391860775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3757501959174599330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a28164026d471ca40a38cf3409225aaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
-  health: 1
-  invulnerabilityTime: 0
-  takePlayerDamage: 0
 --- !u!114 &-3010251731629236418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +153,24 @@ MonoBehaviour:
   DamageAmount: 3
   playerOwned: 1
   destroyOnHitWall: 0
+--- !u!50 &8571093734446994318
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757501959174599330}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
