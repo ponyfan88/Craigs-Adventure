@@ -58,6 +58,8 @@ public class EffectsManager : MonoBehaviour
                     LogToFile.Log("object " + i.ToString() + " was likely destroyed, so we skip resetting the color of it.");
                 }
 
+                // no matter what, EVEN IF THE OBJECT WAS DELETED we need to remove it from our list.
+
                 deletedObjects.Add(i); // add the index of the object to delete
 
                 LogToFile.Log("removed effect object " + i.ToString());
