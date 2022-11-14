@@ -62,7 +62,7 @@ public class EffectsManager : MonoBehaviour
 
                 deletedObjects.Add(i); // add the index of the object to delete
 
-                LogToFile.Log("removed effect object " + i.ToString());
+                LogToFile.Log("effect object " + i.ToString() + "has expired");
             }
             else
             {
@@ -99,7 +99,7 @@ public class EffectsManager : MonoBehaviour
                 }
                 catch // this means our object was probably an enemy, and that enemy was probably destroyed
                 {
-                    LogToFile.Log("object " + i.ToString() + " is likely deleted");
+                    LogToFile.Log("object " + i.ToString() + " is destroyed or bugged, adding to deleted objects.");
 
                     deletedObjects.Add(i); // add the index of the object to delete
                 }
@@ -113,6 +113,8 @@ public class EffectsManager : MonoBehaviour
         {
             effectsObjects.RemoveAt(num - offset); // we use removeat for each item in deletedobjects
             ++offset; // this should always work, as the first item in num should always be smaller than any above it.
+
+            LogToFile.Log("effect object " + num.ToString() + "has been deleted"); // log the number we just deleted
         }
     }
 
