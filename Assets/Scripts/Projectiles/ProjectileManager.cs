@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileManger : MonoBehaviour
+public class ProjectileManager : MonoBehaviour
 {
     #region Variables
 

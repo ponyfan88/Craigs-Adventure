@@ -106,6 +106,38 @@ public class EffectsManager : MonoBehaviour
             }
         }
 
+        /*
+         * in the unlikely event where we delete multiple objects on the same frame, without this varible we would run into an array exception.
+         * heres why:
+         * - deletedObjects is a list of 0 and 1 (we need to delete items 0 and 1)
+         * - DELETE OBJECT 0
+         * - we go from effects objects looking like this:
+         * +-+-+    +-+
+         * |0|1| to |0|
+         * +-+-+    +-+
+         * - DELETE OBJECT 1
+         * +-+
+         * |0| where is object 1????
+         * +-+
+         * see, we've just deleted object 0. we NOW need to object 1, however since the effectsObjects now has 1 less item,
+         * we would be deleting either the wrong object OR we'd be causing an out of bounds array exception.
+         * 
+         * okay, now lets run over the same situation with the offset variable:
+         * - deletedObjects is a list of 0 and 1 (we need to delete items 0 and 1)
+         * - DELETE OBJECT 0 - 0 (offset is 0 so minus 0)
+         * - we go from effects objects looking like this:
+         * +-+-+    +-+
+         * |0|1| to |0|
+         * +-+-+    +-+
+         * - INCRESE OFFSET BY 1
+         * - DELETE OBJECT 1 - 1 (offset is 1 so minus 1)
+         * - we go from effects objects looking like this:
+         * +-+    +
+         * |0| to | (an empty list)
+         * +-+    +
+         * see, now we are deleting the correct object AND we avoid any array induced crashes.
+         */
+
         int offset = 0;
 
         // delete every object no longer in use from our list
