@@ -32,7 +32,7 @@ public class Email : MonoBehaviour
         mail.Subject = "Jauntlet Crash";
         mail.Body = body;
 
-        mail.Attachments.Add(new System.Net.Mail.Attachment(Application.dataPath + " / Debug / log.txt"));
+        mail.Attachments.Add(new System.Net.Mail.Attachment(Application.dataPath + "/Debug/log.txt"));
 
         // use gmails smtp
         SmtpClient smtp = new SmtpClient("smtp.gmail.com");
