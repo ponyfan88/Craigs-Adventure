@@ -106,10 +106,13 @@ public class EffectsManager : MonoBehaviour
             }
         }
 
+        int offset = 0;
+
         // delete every object no longer in use from our list
         foreach (int num in deletedObjects) // deletedObjects is a list of item numbers
         {
-            effectsObjects.RemoveAt(num); // we use removeat for each item in deletedobjects
+            effectsObjects.RemoveAt(num - offset); // we use removeat for each item in deletedobjects
+            ++offset; // this should always work, as the first item in num should always be smaller than any above it.
         }
     }
 
