@@ -49,7 +49,9 @@ public class SavesManager : MonoBehaviour
         sqliteManager = GetComponent<SqliteManager>();
         pause = FindObjectOfType<Pause>();
 
-        DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "//saves//"); // get the saves folder and scan it for .jsave files
+        Debug.Log(Application.dataPath + "/Saves/");
+
+        DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .jsave files
         
         try // we are going to try this, since the directory might not exist
         {
@@ -84,7 +86,7 @@ public class SavesManager : MonoBehaviour
 
         // to explain these next few lines: if a save exists with the same name as one we are deleting, delete that save.
 
-        DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "//saves//"); // get the saves folder and scan it for .jsave files
+        DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .jsave files
         FileInfo[] saves = savesFolder.GetFiles(saveName + ".sqlite");
 
         if (saves.Length > 0) // this means that we found a file with the same name
