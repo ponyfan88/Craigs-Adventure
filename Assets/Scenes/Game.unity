@@ -8908,7 +8908,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7603912, y: 1}
+    m_SensorSize: {x: 2.1333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14385,7 +14385,6 @@ MonoBehaviour:
   deathUI: {fileID: 2050705615}
   loadingUI: {fileID: 1252889513}
   emailUI: {fileID: 1522005635}
-  enemies: {fileID: 0}
   saveAsUI: {fileID: 1222178030}
   loadAsUI: {fileID: 318908623}
   saveNameInput: {fileID: 846046302}
