@@ -200,7 +200,7 @@ public class Pause : MonoBehaviour
         ended = false; // we just restarted the game, so it's no longer ended
         
         // since loadingsave is kept after we reload we can actually save this
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reload the current active scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reload the current active scene
     }
 
     /*
@@ -263,6 +263,16 @@ public class Pause : MonoBehaviour
         emailUI.SetActive(false); // hide our email menu
 
         Time.timeScale = 1f; // set our timescale to 1, resuming the game
+    }
+
+    /*
+     * purpose: crashes the game
+     * inputs: none
+     * outputs: causes a stackoverflow exception
+     */
+    public void Crash()
+    {
+        Crash();
     }
 
     #endregion
