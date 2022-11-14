@@ -100,6 +100,8 @@ public class EffectsManager : MonoBehaviour
                 catch // this means our object was probably an enemy, and that enemy was probably destroyed
                 {
                     LogToFile.Log("object " + i.ToString() + " is likely deleted");
+
+                    deletedObjects.Add(i); // add the index of the object to delete
                 }
             }
         }
