@@ -49,7 +49,7 @@ public class SavesManager : MonoBehaviour
         sqliteManager = GetComponent<SqliteManager>();
         pause = FindObjectOfType<Pause>();
 
-        Debug.Log(Application.dataPath + "/Saves/");
+        LogToFile.Log(Application.dataPath + "/Saves/");
 
         DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .jsave files
         
