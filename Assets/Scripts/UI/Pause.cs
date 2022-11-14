@@ -21,8 +21,6 @@ public class Pause : MonoBehaviour
     public GameObject loadingUI; // the screen to show while loading
     public GameObject emailUI; // the email menu
 
-    public GameObject enemies; // our enemies
-
     public GameObject saveAsUI; // our save as menu
     public GameObject loadAsUI; // our load as menu
 
@@ -218,13 +216,11 @@ public class Pause : MonoBehaviour
     /*
      * purpose: show other scripts and the user that we are loading
      * inputs: none
-     * outputs: pause the game, disable the enemies, show the loading menu
+     * outputs: pause the game, show the loading menu
      */
     public void StartLoading() // called at the start of the program
     {
         loadingUI.SetActive(true); // show our loading menu
-        
-        enemies.SetActive(false); // make sure our enemies arent active
 
         paused = true; // consider us paused
     }
@@ -232,13 +228,11 @@ public class Pause : MonoBehaviour
     /*
      * purpose: show other scripts and the user that we are done loading
      * inputs: none
-     * outputs: unpause the game, enable the enemies, hide the loading menu
+     * outputs: unpause the game, hide the loading menu
      */
     public void EndLoading() // called during nav mesh generation
     {
         loadingUI.SetActive(false); // hide our loading menu
-
-        enemies.SetActive(true); // make our enemies active
 
         ResumeGame(); // we are resumed! this does many things, including unpausing the game
     }
