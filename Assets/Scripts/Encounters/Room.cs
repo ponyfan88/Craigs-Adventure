@@ -58,8 +58,6 @@ public class Room : MonoBehaviour
             foreach (DoorManager door in doorManager)
             {
                 door.CloseDoors();
-                door.GetComponent<BoxCollider2D>().enabled = true;
-                door.gameObject.layer = LayerMask.NameToLayer("Default");
             }
 
             enemiesSpawned = true;
@@ -70,13 +68,6 @@ public class Room : MonoBehaviour
     {
         if (collision == playerHitbox) // the player has left the room
         {
-            foreach (DoorManager door in doorManager)
-            {
-                door.OpenDoors();
-                door.GetComponent<BoxCollider2D>().enabled = false;
-                door.gameObject.layer = LayerMask.NameToLayer("IgnoreCollision");            
-            }
-
             roomHider.SetActive(false); // hide our room hider
         }
     }
@@ -96,8 +87,6 @@ public class Room : MonoBehaviour
             foreach (DoorManager door in doorManager)
             {
                 door.OpenDoors();
-                door.GetComponent<BoxCollider2D>().enabled = false;
-                door.gameObject.layer = LayerMask.NameToLayer("IgnoreCollision");
             }
         }
     }
