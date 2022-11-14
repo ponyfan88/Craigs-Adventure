@@ -6,12 +6,14 @@ public class getCloseToPlayer : StateMachineBehaviour
 {
     GameObject player;
     NavMeshAgent ai;
+    AIManager aiManager;
     public Vector2 distance;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.Find("player");
         ai = animator.gameObject.GetComponent<NavMeshAgent>();
+        aiManager = animator.gameObject.GetComponent<AIManager>();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,9 +24,10 @@ public class getCloseToPlayer : StateMachineBehaviour
         {
             ai.destination = ai.transform.position;
             animator.SetBool("reachedLocation", true);
+            
         }
         else
-            ai.destination = player.transform.position;
+            ai.destination = (aiManager.canMove == true ? player.transform.position : animator.gameObject.transform.position);
     }
 
 }

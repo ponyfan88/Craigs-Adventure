@@ -95,7 +95,8 @@ public class Attack : MonoBehaviour
 
             if (hasHealth) if (enemyHealth.takePlayerDamage) // if object has health and is marked to be damaged by the player
             {
-                bool tookDamage = enemyHealth.TakeDamage(attackDamage); // deals damage that doesn't ignore invulnerability
+                bool tookDamage = enemyHealth.TakeDamage(attackDamage); // deals damage
+
                 bool isEnemy = collision.gameObject.TryGetComponent<AIManager>(out EnemyAImanager);
                 
                 if (tookDamage && isEnemy) 
