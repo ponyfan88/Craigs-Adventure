@@ -61,7 +61,7 @@ public class goblinStateManager : MonoBehaviour
         if (timesSpit == 3)
         {
             animator.SetBool("reachedLocation", false);
-            spitCooldown = Time.time + 1f;
+            spitCooldown = Time.time + 2f;
             timesSpit = 0;
         }
     }
