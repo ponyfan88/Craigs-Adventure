@@ -245,7 +245,9 @@ public class Pause : MonoBehaviour
     public void PauseCrashed() // called when we pause the game on an exception
     {
         paused = true; // we are paused
-
+        
+        Debug.Log("attempting to show emailUI"); 
+        
         emailUI.SetActive(true); // show our email menu
 
         Time.timeScale = 0f; // slow down our game to 0% speed

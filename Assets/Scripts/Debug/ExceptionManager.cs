@@ -77,9 +77,15 @@ public class ExceptionManager : MonoBehaviour
      */
     void HandleException(string logString, string stackTrace, LogType type)
     {   
+        Debug.Log("handleing an exception");
+
+        Debug.Log("handlingexceptions: " + handleExceptions.ToString());
+
         // if we got an error and we are currently handling exceptions
         if (type == LogType.Exception && handleExceptions)
         {
+            Debug.Log("we are handling exceptions and it was an exception");
+
             LogToFile.Log("crash at " + Time.realtimeSinceStartup.ToString());
             LogToFile.DumpLogs(); // dump logs
 
@@ -87,6 +93,12 @@ public class ExceptionManager : MonoBehaviour
             mostRecentLog.stackTrace = stackTrace;
 
             Pause.PauseCrashed(); // pause the game with our crash specific pause
+
+            Debug.Log("ran pausecrashed");
+
+            Pause.emailUI.SetActive(true);
+
+            Debug.Log("REALLY TRYING HERE");
 
             // the string we use for crashinfo
             string bug = "an exception has occured!\nlocation:\n" + mostRecentLog.stackTrace + "\nissue:\n" + mostRecentLog.logString;
