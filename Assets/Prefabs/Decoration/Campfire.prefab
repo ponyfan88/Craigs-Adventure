@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7140134296670490168}
   - component: {fileID: 7140134296670490151}
   - component: {fileID: 2753404427912689894}
+  - component: {fileID: -514291247972935490}
   m_Layer: 0
   m_Name: Campfire
   m_TagString: Untagged
@@ -101,3 +102,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0378806, y: -0.5471677}
   m_Size: {x: 2.8232298, y: 1.9057143}
   m_Direction: 1
+--- !u!114 &-514291247972935490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7140134296670490147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de852b7e4ae9d444290ece5e223cf6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
