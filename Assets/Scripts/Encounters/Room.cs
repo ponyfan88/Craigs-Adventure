@@ -21,7 +21,7 @@ public class Room : MonoBehaviour
     Map map; // our minimap
 
     DoorManager[] doorManager;
-
+    [SerializeField] private AnimationManager[] Decorations;
     [SerializeField] private SpawnEnemy[] enemySpawns;
     bool enemiesSpawned = false;
 
@@ -55,6 +55,10 @@ public class Room : MonoBehaviour
                     spawn.Spawn(transform.parent);
                 }
             }
+            foreach (AnimationManager decoration in Decorations)// if there are any animated decoration this allows them to be enabled and disable if the player not in the room
+            {
+                decoration.beginAnimation();
+            }
             foreach (DoorManager door in doorManager)
             {
                 door.CloseDoors();
@@ -69,6 +73,10 @@ public class Room : MonoBehaviour
         if (collision == playerHitbox) // the player has left the room
         {
             roomHider.SetActive(false); // hide our room hider
+            foreach (AnimationManager decoration in Decorations)
+            {
+                decoration.endAnimation();
+            }
         }
     }
 
