@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 6487588326732802062}
   m_Layer: 8
   m_Name: Room Child
-  m_TagString: Untagged
+  m_TagString: killSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -515,7 +515,7 @@ Transform:
   - {fileID: 2413753446537936492}
   - {fileID: 4495071488945387281}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &-8859563931773820485
 Rigidbody2D:
