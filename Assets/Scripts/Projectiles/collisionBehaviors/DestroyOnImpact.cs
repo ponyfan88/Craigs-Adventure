@@ -23,10 +23,10 @@ public class DestroyOnImpact : MonoBehaviour
                     if (TryGetComponent(out Projectile objProjectile))
                     {
                         collision.gameObject.GetComponent<controller>().ApplyKnockback(objProjectile.rotation);
-                   }
+                    }
                     else
                     {
-                        collision.gameObject.GetComponent<controller>().ApplyKnockback(this.transform.position);
+                        collision.gameObject.GetComponent<controller>().ApplyKnockback(transform.position);
                     }
                     gameObject.SetActive(false); // only destroy the object if damage was applied
                 }
@@ -34,6 +34,10 @@ public class DestroyOnImpact : MonoBehaviour
             // the collider is owned by the player, and collision has health so we need to damage it
             else if (playerOwned && hasHealth && collision.gameObject.name != "player" && collision.gameObject.layer != LayerMask.NameToLayer("IgnoreCollision"))
             {
+                if (collision.TryGetComponent(out AIManager aiManager))
+                {
+                    aiManager.ApplyKnockback(transform.position);
+                }
                 bool tookDamage = colHealth.TakeDamage(DamageAmount, false);
                 gameObject.SetActive(false);
             }
