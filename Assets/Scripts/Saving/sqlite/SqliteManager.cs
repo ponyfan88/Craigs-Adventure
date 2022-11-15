@@ -89,7 +89,6 @@ public class SqliteManager : MonoBehaviour
     {
         if (!Directory.Exists(Application.dataPath + "/Saves/"))
         {
-            Debug.Log("Directory somehow did not exist");
             Directory.CreateDirectory(Application.dataPath + "/Saves/");
         }
 

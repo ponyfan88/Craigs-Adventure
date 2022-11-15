@@ -26,13 +26,18 @@ public static class LogToFile
 
     public static void DumpLogs(bool clear = true)
     {
+        if (!Directory.Exists(Application.dataPath + "/Debug/"))
+        {
+            LogToFile.Log("debug dir did not exist");
+            Directory.CreateDirectory(Application.dataPath + "/Debug/");
+        }
 
         if (clear)
         {    
-            File.WriteAllText("Assets/Debug/log.txt", string.Empty);
+            File.WriteAllText(Application.dataPath + "/Debug/log.txt", string.Empty);
         }
 
-        StreamWriter writer = new StreamWriter("Assets/Debug/log.txt", true);
+        StreamWriter writer = new StreamWriter(Application.dataPath + "/Debug/log.txt", true);
 
         foreach (string logString in logFile)
         {

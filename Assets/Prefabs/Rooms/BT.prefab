@@ -2110,7 +2110,6 @@ Transform:
   - {fileID: 7972794178968264831}
   - {fileID: 3958837602681996110}
   - {fileID: 7972794178696807805}
-  - {fileID: 5669803749463429068}
   - {fileID: 2762391389164211750}
   - {fileID: 3514621072490424365}
   - {fileID: 4239842533202268980}
@@ -7097,6 +7096,10 @@ PrefabInstance:
     - target: {fileID: 7685691705485177645, guid: a1af6bd4806509a4393563241dea719d, type: 3}
       propertyPath: m_Name
       value: Room Child
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685691705485177645, guid: a1af6bd4806509a4393563241dea719d, type: 3}
+      propertyPath: m_TagString
+      value: killSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
