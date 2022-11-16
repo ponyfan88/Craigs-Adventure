@@ -67,7 +67,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: inRoom
+    m_ConditionEvent: on
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1943751445941400090}
@@ -92,7 +92,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: inRoom
+    m_ConditionEvent: on
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8868101754749063063}
@@ -117,7 +117,7 @@ AnimatorController:
   m_Name: Campfire
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: inRoom
+  - m_Name: on
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -145,7 +145,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: inRoom
+    m_ConditionEvent: on
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1295807919128888098}
@@ -251,7 +251,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: inRoom
+    m_ConditionEvent: on
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1449525705761188377}
