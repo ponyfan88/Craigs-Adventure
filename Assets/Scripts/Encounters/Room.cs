@@ -22,7 +22,7 @@ public class Room : MonoBehaviour
 
     DoorManager[] doorManager;
 
-    [SerializeField] private SpawnEnemy[] enemySpawns;
+    private SpawnEnemy[] enemySpawns;
     bool enemiesSpawned = false;
 
     #endregion
@@ -37,6 +37,7 @@ public class Room : MonoBehaviour
         map = FindObjectOfType<Map>(); //find map
 
         doorManager = transform.GetComponentsInChildren<DoorManager>();
+        enemySpawns = transform.GetComponentsInChildren<SpawnEnemy>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
