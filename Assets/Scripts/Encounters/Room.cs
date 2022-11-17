@@ -23,7 +23,7 @@ public class Room : MonoBehaviour
     DoorManager[] doorManager;
 
     private SpawnEnemy[] enemySpawns;
-    bool enemiesSpawned = false;
+    [SerializeField]bool enemiesSpawned = false;
 
     #endregion
 
@@ -36,6 +36,7 @@ public class Room : MonoBehaviour
 
         map = FindObjectOfType<Map>(); //find map
 
+        // this will make 2 seperate array's with any object with either the script "DoorManager" or "SpawnEnemy" as to access them later.
         doorManager = transform.GetComponentsInChildren<DoorManager>();
         enemySpawns = transform.GetComponentsInChildren<SpawnEnemy>();
     }
