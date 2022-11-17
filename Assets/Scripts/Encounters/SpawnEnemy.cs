@@ -15,7 +15,7 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject enemy;
 
     [SerializeField] private GameObject[] enemiesTemplate;
-    private int e;
+    private int index;
 
     #endregion
 
@@ -27,8 +27,8 @@ public class SpawnEnemy : MonoBehaviour
         //possibly play spawning animation
 
         //instantiate enemy at this position
-        e = Random.Range(0, enemiesTemplate.Length);
-        enemy = Instantiate<GameObject>(enemiesTemplate[e], transform.position, enemiesTemplate[e].transform.rotation);
+        index = Random.Range(0, enemiesTemplate.Length);
+        enemy = Instantiate<GameObject>(enemiesTemplate[index], transform.position, enemiesTemplate[index].transform.rotation);
     }
 
     //overload - Parent transform provided
@@ -37,8 +37,8 @@ public class SpawnEnemy : MonoBehaviour
         //possibly play spawning animation
 
         //instantiate enemy at this position
-        e = Random.Range(0, enemiesTemplate.Length);
-        enemy = Instantiate<GameObject>(enemiesTemplate[e], transform.position, enemiesTemplate[e].transform.rotation, parent);
+        index = Random.Range(0, enemiesTemplate.Length);
+        enemy = Instantiate<GameObject>(enemiesTemplate[index], transform.position, enemiesTemplate[index].transform.rotation, parent);
     }
 
     #endregion
