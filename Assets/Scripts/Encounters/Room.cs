@@ -22,6 +22,9 @@ public class Room : MonoBehaviour
 
     DoorManager[] doorManager;
     [SerializeField] private AnimationManager[] Decorations;
+    private SpawnEnemy[] enemySpawns;
+    bool enemiesSpawned = false;
+    [SerializeField] private AnimationManager[] Decorations;
     [SerializeField] private SpawnEnemy[] enemySpawns;
     bool enemiesSpawned = false;
 
@@ -36,7 +39,9 @@ public class Room : MonoBehaviour
 
         map = FindObjectOfType<Map>(); //find map
 
+        // this will make 2 seperate array's with any object with either the script "DoorManager" or "SpawnEnemy" as to access them later.
         doorManager = transform.GetComponentsInChildren<DoorManager>();
+        enemySpawns = transform.GetComponentsInChildren<SpawnEnemy>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
