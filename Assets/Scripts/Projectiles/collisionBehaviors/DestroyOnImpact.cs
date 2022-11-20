@@ -10,7 +10,7 @@ public class DestroyOnImpact : MonoBehaviour
     public bool playerOwned = false, destroyOnHitWall = true;
 
     // enum to decide what should happen if an object were to explode.
-    public enum DestroyType { destroy, explode };
+    public enum DestroyType { destroy, summonProjectile };
     public DestroyType destroyType = DestroyType.destroy;
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -32,7 +32,7 @@ public class DestroyOnImpact : MonoBehaviour
                     {
                         collision.gameObject.GetComponent<controller>().ApplyKnockback(transform.position);
                     }
-                    gameObject.SetActive(false); // only destroy the object if damage was applied
+                    DestroyObject(); // only destroy the object if damage was applied
                 }
             }
             // the collider is owned by the player, and collision has health so we need to damage it
@@ -43,13 +43,14 @@ public class DestroyOnImpact : MonoBehaviour
                     aiManager.ApplyKnockback(transform.position);
                 }
                 bool tookDamage = colHealth.TakeDamage(DamageAmount, false);
-                gameObject.SetActive(false);
+                DestroyObject();
             }
             // Collider does not have health, so its probably a wall and you should destroy it
             else if (collision.gameObject.layer != LayerMask.NameToLayer("IgnoreCollision") && collision.gameObject.name != "player")
             {
                 // if we want the object to destory on hitting the wall, we disable the object, otherwise we do not (so we set it to true)
-                gameObject.SetActive(destroyOnHitWall == true ? false : true);
+                if (destroyOnHitWall)
+                    DestroyObject();
             }
 
         }
@@ -58,9 +59,13 @@ public class DestroyOnImpact : MonoBehaviour
     {
         switch (destroyType)
         {
-            case DestroyType.destroy:
-                gameObject.SetActive(false);
+            case DestroyType.summonProjectile:
+                if (TryGetComponent(out ProjectileSpawner projectileSpawner))
+                {
+                    projectileSpawner.SpawnBullets();
+                }
                 break;
+            case DestroyType.destroy:
             default:
                 gameObject.SetActive(false);
                 break;
