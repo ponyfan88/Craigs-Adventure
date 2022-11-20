@@ -8,6 +8,10 @@ public class DestroyOnImpact : MonoBehaviour
 {
     [Min(0)]public int DamageAmount = 1; // amount of damage it deals to non-player objects
     public bool playerOwned = false, destroyOnHitWall = true;
+
+    // enum to decide what should happen if an object were to explode.
+    public enum DestroyType { destroy, explode };
+    public DestroyType destroyType = DestroyType.destroy;
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (enabled)
@@ -48,6 +52,18 @@ public class DestroyOnImpact : MonoBehaviour
                 gameObject.SetActive(destroyOnHitWall == true ? false : true);
             }
 
+        }
+    }
+    public void DestroyObject()
+    {
+        switch (destroyType)
+        {
+            case DestroyType.destroy:
+                gameObject.SetActive(false);
+                break;
+            default:
+                gameObject.SetActive(false);
+                break;
         }
     }
 }
