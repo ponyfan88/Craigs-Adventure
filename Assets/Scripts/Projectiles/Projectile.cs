@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
     public float rotation; // bullets rotations
     public float lifetime; // how long the bullet will be active
     public Bulletpaths bulletPath; // how the bullet will move
-    public collisonEffect onCollison;// decides what happens when a projectile collides with wall
     public endlifeEffect endlifeEffect; // when the projectiles lifespan ends it will perform this action
     public float SpecialEffect; // the ammount that we move it back and forth
     float timer; // countdown till death

@@ -24,6 +24,7 @@ public class Room : MonoBehaviour
     [SerializeField] private AnimationManager[] Decorations;
     private SpawnEnemy[] enemySpawns;
     bool enemiesSpawned = false;
+
     #endregion
 
     #region Default Methods

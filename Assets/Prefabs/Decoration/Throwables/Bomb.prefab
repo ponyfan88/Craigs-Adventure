@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 3757501959174599329}
   - component: {fileID: -3010251731629236418}
   - component: {fileID: 8571093734446994318}
+  - component: {fileID: -1231384853794255553}
+  - component: {fileID: -5255305848121462861}
   m_Layer: 8
   m_Name: Bomb
   m_TagString: Untagged
@@ -150,9 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590f190945adc06478328147086d09c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageAmount: 3
+  DamageAmount: 0
   playerOwned: 1
-  destroyOnHitWall: 0
+  destroyOnHitWall: 1
+  destroyType: 1
 --- !u!50 &8571093734446994318
 Rigidbody2D:
   serializedVersion: 4
@@ -174,3 +177,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-1231384853794255553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757501959174599330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68a6e51dcf05bb4494c5695bce2d82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDatas:
+  - {fileID: 11400000, guid: 91847afbe148ea04e8679acc4946d721, type: 2}
+  index: 0
+  spawningAuto: 0
+  isSequenceRandom: 0
+--- !u!114 &-5255305848121462861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757501959174599330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec27edc48a7c9e84ab4fb48545dc4beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
