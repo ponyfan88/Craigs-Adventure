@@ -25,7 +25,7 @@ public class DialogManager : MonoBehaviour
     // On start
     private void Start()
     {
-        lines = new Queue<string> ();
+        lines = new Queue<string>();
     }
 
     #endregion
@@ -34,21 +34,23 @@ public class DialogManager : MonoBehaviour
 
     /*
      * purpose: starts dialog
-     * inputs: none
+     * inputs: dialog to say
      * outputs: loads the main menu and does practically what ResumeGame() does
      */
-    public void DialogStart (Dialog dialog)
+    public void DialogStart(Dialog dialog)
     {
         animator.SetBool("Opened", true); //open box
 
         //Clear out any old unnecessary lines of dialogue
         lines.Clear();
 
+        // for every line, queue the line up for writing
         foreach (string line in dialog.lines)
         {
             lines.Enqueue(line);
         }
 
+        // call writedialog
         WriteDialog();
     }
 
@@ -59,6 +61,7 @@ public class DialogManager : MonoBehaviour
      */
     public void WriteDialog()
     {
+        // test for if we arent writing anything
         if (lines.Count == 0)
         {
             StopDialog();
@@ -77,7 +80,10 @@ public class DialogManager : MonoBehaviour
      */
     IEnumerator TypeLine(string words)
     {
+        // clear the text we are typing
         textMesh.text = "";
+
+        // for every character we need to add it to our text on screen
         foreach (char let in words.ToCharArray())
         {
             textMesh.text += let;
