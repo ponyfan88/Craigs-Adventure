@@ -21,11 +21,23 @@ public class Status : MonoBehaviour
     public Sprite emptyHeart; // sprite for empty heart
     public Sprite missingHeart; // sprite we use when we dont set the heart (default/missing)
 
+    public Sprite bottomFloor; // sprite for bottom floor (floor == 1)
+    public Sprite middleFloor; // sprite for middle floor (floor == 2)
+    public Sprite topFloor; // sprite for top floor (floor == 3)
+    public Sprite roofFloor; // sprite for roof floor (floor == 4)
+
+    Sprite floorSprite; // our current floor sprite to flash
+
+    public GameObject floor; // the floor gameobject we flash
+
     int prevmaxhealth = 0; // our max health last frame
     int prevhealth = 0; // our health last frame
 
     int health = 0; // our health
     int maxhealth = 0; // our max health
+
+    float floorTimer = 0f; // we'll increment this value several times
+    const float floorFlashTime = 1f; // after this ammount of seconds we'll flash the sprite renderer
 
     healthManager healthManager; // health manager variable, we need to be able to actually get our health
     FloorManager floorManager; // so we can get what floor we're on
@@ -48,6 +60,29 @@ public class Status : MonoBehaviour
         prevhealth = health - 1;
         prevmaxhealth = maxhealth - 1;
         // they will eventually be set correctly, but until then they should just be not equal to their normal values
+
+        // we dont need to do this every frame since every new floor we restart the scene
+        switch (floorManager.floor)
+        {
+            case 1: // if we're on the first floor use the bottom sprite, etc.
+                floorSprite = bottomFloor;
+                break;
+            case 2:
+                floorSprite = middleFloor;
+                break;
+            case 3:
+                floorSprite = topFloor;
+                break;
+            case 4:
+                floorSprite = roofFloor;
+                break;
+            default: // as a default create a new sprite of a black texture with all values being 0. practically a dummy sprite.
+                floorSprite = Sprite.Create(Texture2D.blackTexture, Rect.zero, Vector2.zero);
+                break;
+        }
+
+        // update our floor sprite accordingly
+        floor.GetComponent<SpriteRenderer>().sprite = floorSprite;
     }
 
     // Update is called once per frame
@@ -80,10 +115,27 @@ public class Status : MonoBehaviour
         }
     }
 
+    // floor flashing is framerate independant
+    private void FixedUpdate()
+    {
+        // incrememnt our timer by the time thats passed since last frame
+        floorTimer += Time.fixedDeltaTime;
+
+        // if we've exceeded that flash time
+        if (floorTimer >= floorFlashTime)
+        {
+            // reset our timer
+            floorTimer = 0f;
+
+            // swap the floor so that it flashes
+            floor.SetActive(!floor.active);
+        }
+    }
+
     #endregion
 
     #region Custom Methods
-    
+
     // function to display our hearts
     public void displayHearts()
     {
