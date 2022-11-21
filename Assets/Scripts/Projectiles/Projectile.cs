@@ -91,7 +91,11 @@ public class Projectile : MonoBehaviour
 
     public void ResetTimer()
     {
-        timer = lifetime; // reset our bullet so that it once again lives and breathes
+/* Purpose: reset our bullet so that it once again lives and breathes
+ * Inputs: timer, lifetime
+ * Outputs: projectile manager  
+ */
+        timer = lifetime;
     }
 
     #endregion
