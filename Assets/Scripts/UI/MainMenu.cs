@@ -18,9 +18,6 @@ public class MainMenu : MonoBehaviour
     // import saves manager
     SavesManager savesManager;
 
-    // import the floor manager
-    FloorManager floorManager;
-
     #endregion
 
     #region  Default Methods
