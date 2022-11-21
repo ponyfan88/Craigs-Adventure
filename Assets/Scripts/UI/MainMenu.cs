@@ -27,11 +27,14 @@ public class MainMenu : MonoBehaviour
     
     void Awake()
     {
-        floorManager = FindObjectOfType<FloorManager>();
+        floorManager = FindObjectOfType<FloorManager>(); // get our floor manager
 
+        // we need to set this since we dont destroy this on load
         floorManager.floor = 1; // we are on floor 1
 
-        Pause.paused = true; // consider the game paused on main menu
+        // we will set ourselves to be paused
+        Pause.paused = true;
+
         soundManager = FindObjectOfType<SoundManager>(); // make it a variable so we can use it
         soundManager.Play("Main Menu"); // play the main menu theme
 
@@ -46,7 +49,6 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         LogToFile.Log("started a new game at " + Time.time.ToString());
-        Pause.paused = false; // unpause the game once we click start
         SceneManager.LoadScene("Scenes/Game"); // load the game
     }
 

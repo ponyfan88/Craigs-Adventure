@@ -13,6 +13,8 @@ public class Pause : MonoBehaviour
 {
     #region Variables
 
+    // this is static just so we can use it with ease using Pause.pause
+    // i think static also makes this persist through scenes? not sure.
     public static bool paused = true; // if we are paused // initialize as true since loading the game pauses the game
     public static bool ended = false; // if we have ended the game
 
