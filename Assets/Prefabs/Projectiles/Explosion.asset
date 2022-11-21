@@ -15,7 +15,7 @@ MonoBehaviour:
   bulletResource: {fileID: 2257942936043435111, guid: bfd4c6b37cfd99346a9d49c017a42096, type: 3}
   minRotation: 0
   maxRotation: 360
-  lifespan: 1
+  lifespan: 0.6
   endlifeEffect: 0
   BulletCount: 1
   cooldown: 0

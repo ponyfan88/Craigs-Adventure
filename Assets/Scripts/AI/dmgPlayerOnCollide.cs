@@ -35,7 +35,7 @@ public class dmgPlayerOnCollide : MonoBehaviour
             if (tookDamage) // tookDamage is true if the .TakeDamage function was able to apply damage
             {
                 // apply knockback and freeze the AI
-                playerController.ApplyKnockback(this.transform.position);
+                playerController.ApplyKnockback(transform.position);
                 aiManager.canMove = false;
                 Invoke("ToggleAI", 0.3f);
             }
