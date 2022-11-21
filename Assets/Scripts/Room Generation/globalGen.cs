@@ -41,7 +41,7 @@ public class globalGen : MonoBehaviour
 
         floorManager = FindObjectOfType<FloorManager>();
 
-        if (savesManager.loadingSave && !floorManager.loadSaveOverride) // if we are loading a save
+        if (savesManager.loadingSave && !FloorManager.loadSaveOverride) // if we are loading a save
         {
             LogToFile.Log("we are using an existing seed: " + savesManager.currentSave.seed); // lets say so in a log!
             Random.InitState(savesManager.currentSave.seed); // set our random seed
@@ -55,7 +55,7 @@ public class globalGen : MonoBehaviour
             // make sure we actually use this number
             Random.InitState((int)savesManager.currentSave.seed);
 
-            floorManager.loadSaveOverride = false;
+            FloorManager.loadSaveOverride = false;
         }
     }
 

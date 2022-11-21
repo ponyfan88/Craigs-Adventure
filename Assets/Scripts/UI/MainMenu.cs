@@ -27,10 +27,8 @@ public class MainMenu : MonoBehaviour
     
     void Awake()
     {
-        floorManager = FindObjectOfType<FloorManager>(); // get our floor manager
-
         // we need to set this since we dont destroy this on load
-        floorManager.floor = 1; // we are on floor 1
+        FloorManager.floor = 1; // we are on floor 1
 
         // we will set ourselves to be paused
         Pause.paused = true;

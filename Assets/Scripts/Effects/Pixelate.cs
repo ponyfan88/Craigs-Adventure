@@ -24,8 +24,6 @@ public class Pixelate : MonoBehaviour
     // let us set the resolution of the rendertexture in the inspector
     public int res;
 
-    FloorManager floorManager;
-
     #endregion
 
     #region Default Methods
@@ -33,8 +31,6 @@ public class Pixelate : MonoBehaviour
     // on start
     private void Start()
     {
-        floorManager = FindObjectOfType<FloorManager>();
-
         // get our resolution on awake
         resolution = new Vector2(Screen.width, Screen.height);
 
@@ -50,7 +46,7 @@ public class Pixelate : MonoBehaviour
         int finalRes = res;
 
         // if we are on the final floor
-        if (floorManager.floor >= 4)
+        if (FloorManager.floor >= 4)
         {
             // multiply our resolution by 2
             finalRes *= 2;
@@ -84,7 +80,7 @@ public class Pixelate : MonoBehaviour
             int finalRes = res;
 
             // if we are on the final floor
-            if (floorManager.floor >= 4)
+            if (FloorManager.floor >= 4)
             {
                 // multiply our resolution by 2
                 finalRes *= 2;

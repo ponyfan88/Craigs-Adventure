@@ -40,7 +40,6 @@ public class Status : MonoBehaviour
     const float floorFlashTime = 1f; // after this ammount of seconds we'll flash the sprite renderer
 
     healthManager healthManager; // health manager variable, we need to be able to actually get our health
-    FloorManager floorManager; // so we can get what floor we're on
     
     #endregion
     
@@ -51,8 +50,6 @@ public class Status : MonoBehaviour
         // find the health manager by first finding the player and then getting the healthManager component
         healthManager = GameObject.Find("player").GetComponent<healthManager>();
 
-        floorManager = FindObjectOfType<FloorManager>();
-
         health = healthManager.health; // grab the proper health values
         maxhealth = healthManager.maxHealth;
 
@@ -62,7 +59,7 @@ public class Status : MonoBehaviour
         // they will eventually be set correctly, but until then they should just be not equal to their normal values
 
         // we dont need to do this every frame since every new floor we restart the scene
-        switch (floorManager.floor)
+        switch (FloorManager.floor)
         {
             case 1: // if we're on the first floor use the bottom sprite, etc.
                 floorSprite = bottomFloor;
@@ -177,7 +174,7 @@ public class Status : MonoBehaviour
         // default for rooms 1-3
         float heartDelta = 1.4f;
 
-        if (floorManager.floor >= 4) // if we're on the boss level
+        if (FloorManager.floor >= 4) // if we're on the boss level
         {
             heartDelta *= 2; // multiply by 2
         }

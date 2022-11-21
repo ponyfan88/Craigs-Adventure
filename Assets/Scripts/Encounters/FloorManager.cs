@@ -15,7 +15,7 @@ public class FloorManager : MonoBehaviour
     // make static because scripts shouldnt have to grab the floor manager
     public static byte floor = 1; // floor
 
-    public bool loadSaveOverride = false;
+    public static bool loadSaveOverride = false;
 
     #endregion
 
@@ -23,6 +23,8 @@ public class FloorManager : MonoBehaviour
 
     public void Start()
     {
+        loadSaveOverride = false;
+
         // get every saving object
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Floor Management");
 

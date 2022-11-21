@@ -33,8 +33,6 @@ public class Stairs : MonoBehaviour
 
         savesManager = FindObjectOfType<SavesManager>();
 
-        floorManager = FindObjectOfType<FloorManager>();
-
         pause = FindObjectOfType<Pause>();
     }
 
@@ -42,9 +40,9 @@ public class Stairs : MonoBehaviour
     {
         if (collision == playerHitbox) // the player has entered the room
         {
-            floorManager.floor++; // we are now one floor up
-            floorManager.loadSaveOverride = true; // override our save
-            if (floorManager.floor >= 4)
+            FloorManager.floor++; // we are now one floor up
+            FloorManager.loadSaveOverride = true; // override our save
+            if (FloorManager.floor >= 4)
             {
                 SceneManager.LoadScene("Scenes/BossLevel");
             }
