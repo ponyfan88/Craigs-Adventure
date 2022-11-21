@@ -88,7 +88,7 @@ public class ProjectileSpawner : MonoBehaviour
         GameObject[] spawnedBullets = new GameObject[GetSpawnData().BulletCount];
         for (int i = 0; i < GetSpawnData().BulletCount; ++i)
         {
-            spawnedBullets[i] = ProjectileManager.GetBulletFromPool(); // checks if there are enough extra disabled game objects to use
+            spawnedBullets[i] = ProjectileManager.GetBulletFromPool(GetSpawnData().bulletResource.name); // checks if there are enough extra disabled game objects to use
 
             if (spawnedBullets[i] == null)
             {

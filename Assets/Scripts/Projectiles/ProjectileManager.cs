@@ -27,7 +27,7 @@ public class ProjectileManager : MonoBehaviour
 
     #region Custom Methods
 
-    public static GameObject GetBulletFromPool()
+    public static GameObject GetBulletFromPool(string name)
     { 
         for (int i = 0; i < bullets.Count; ++i)
         {
