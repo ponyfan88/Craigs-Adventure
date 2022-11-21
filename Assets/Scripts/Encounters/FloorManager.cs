@@ -12,7 +12,8 @@ public class FloorManager : MonoBehaviour
 
     #region Variables
 
-    public byte floor = 1; // floor
+    // make static because scripts shouldnt have to grab the floor manager
+    public static byte floor = 1; // floor
 
     public bool loadSaveOverride = false;
 

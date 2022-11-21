@@ -49,6 +49,10 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         LogToFile.Log("started a new game at " + Time.time.ToString());
+
+        // the game has no longer ended
+        Pause.ended = false;
+
         SceneManager.LoadScene("Scenes/Game"); // load the game
     }
 
