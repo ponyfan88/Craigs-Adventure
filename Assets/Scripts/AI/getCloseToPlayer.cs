@@ -4,17 +4,34 @@ using UnityEngine.AI;
 
 public class getCloseToPlayer : StateMachineBehaviour
 {
+    #region Variables
+
     GameObject player;
     NavMeshAgent ai;
     AIManager aiManager;
     public Vector2 distance;
 
+    #endregion
+
+    #region Custom Methods
+
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.Find("player");
         ai = animator.gameObject.GetComponent<NavMeshAgent>();
         aiManager = animator.gameObject.GetComponent<AIManager>();
     }
+
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Find the distance from the player
@@ -30,5 +47,7 @@ public class getCloseToPlayer : StateMachineBehaviour
         else // check if we can move, and if so move to the player, otherwise freeze in place
             ai.destination = (aiManager.canMove == true ? player.transform.position : animator.gameObject.transform.position);
     }
+
+    #endregion
 
 }

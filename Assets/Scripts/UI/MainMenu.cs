@@ -41,6 +41,11 @@ public class MainMenu : MonoBehaviour
 
     #region Custom Methods
 
+    /*
+     * purpose: load the game
+     * inputs: none
+     * outputs: loads the game scene and fixes variables for such
+     */
     public void StartGame()
     {
         LogToFile.Log("started a new game at " + Time.time.ToString());
@@ -51,7 +56,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Scenes/Game"); // load the game
     }
 
-    // pretty self explanitory
+    /*
+     * purpose: closes craigs adventure
+     * inputs: none
+     * outputs: none
+     */
     public void QuitGame()
     {
         Application.Quit();

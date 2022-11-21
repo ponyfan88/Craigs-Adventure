@@ -19,6 +19,7 @@ public class goToPlayer : StateMachineBehaviour
     #endregion
 
     #region Custom Methods
+    
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // This script requires these components to be found on the AI, otherwise it won't function properly

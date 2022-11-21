@@ -133,7 +133,11 @@ public class Status : MonoBehaviour
 
     #region Custom Methods
 
-    // function to display our hearts
+    /*
+     * purpose: Function to display our hearts
+     * inputs: our health
+     * outputs: hearts on screen
+     */
     public void displayHearts()
     {
         List<Sprite> hearts = new List<Sprite>();

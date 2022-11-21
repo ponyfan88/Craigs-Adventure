@@ -32,7 +32,11 @@ public class DialogManager : MonoBehaviour
 
     #region Custom Methods
 
-    //Starts the dialog cutscene
+    /*
+     * purpose: starts dialog
+     * inputs: none
+     * outputs: loads the main menu and does practically what ResumeGame() does
+     */
     public void DialogStart (Dialog dialog)
     {
         animator.SetBool("Opened", true); //open box
@@ -48,7 +52,11 @@ public class DialogManager : MonoBehaviour
         WriteDialog();
     }
 
-    //Writes the dialogueueueue
+    /*
+     * purpose: writes text to the dialog display
+     * inputs: our current dialog
+     * outputs: sends typeline the text we want to say
+     */
     public void WriteDialog()
     {
         if (lines.Count == 0)
@@ -62,6 +70,11 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(TypeLine(line)); //output line (animated)
     }
 
+    /*
+     * purpose: types an entire line on screen
+     * inputs: text to say
+     * outputs: on-screen dialog text
+     */
     IEnumerator TypeLine(string words)
     {
         textMesh.text = "";
@@ -72,11 +85,14 @@ public class DialogManager : MonoBehaviour
         }
     }
 
+    /*
+     * purpose: stops all dialog
+     * inputs: none
+     * outputs: makes the dialog on screen go away
+     */
     public void StopDialog()
     {
         animator.SetBool("Opened", false); //close box
-        //UNPAUSE THE GODDAMN GAME
-        Debug.Log("End");
     }
 
     #endregion

@@ -89,6 +89,11 @@ public class GenericNPC : MonoBehaviour
 
     #region Custom Methods
 
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void EnterRoom()
     {
         timer = 0f; // reset our timer
@@ -99,6 +104,11 @@ public class GenericNPC : MonoBehaviour
         dialogManager.DialogStart((Dialog)thisNpc.RoomEnterDialog);
     }
 
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void ExitRoom()
     {
         dialogManager.StopDialog();

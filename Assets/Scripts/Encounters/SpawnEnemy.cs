@@ -22,6 +22,11 @@ public class SpawnEnemy : MonoBehaviour
     #region Custom Methods
 
     //Spawning an enemy when called - no parameters
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void Spawn()
     {
         //possibly play spawning animation
@@ -32,6 +37,11 @@ public class SpawnEnemy : MonoBehaviour
     }
 
     //overload - Parent transform provided
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void Spawn(Transform parent)
     {
         //possibly play spawning animation

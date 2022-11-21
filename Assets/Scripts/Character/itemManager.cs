@@ -135,6 +135,11 @@ public class itemManager : MonoBehaviour
     #region Custom Methods
 
     // This class is called by all items that are in range of the player, and sees if it is the closest object
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void SelectedPickup(GameObject item, Vector2 Dist)
     {
         if (!holdingItem) // only do this if we arent currently holding an item
@@ -155,6 +160,11 @@ public class itemManager : MonoBehaviour
         }
     }
 
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void CollideItem(GameObject item)
     {
         for (int i = 0; i < thrownItems.Count; i++)
@@ -170,6 +180,12 @@ public class itemManager : MonoBehaviour
             }
         }
     }
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void FlipObject(bool facingRight)
     {
         if (facingRight)

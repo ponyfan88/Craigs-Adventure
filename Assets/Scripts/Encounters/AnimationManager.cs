@@ -20,10 +20,21 @@ public class AnimationManager : MonoBehaviour
     #endregion
 
     #region Custiom Methods
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void beginAnimation()
     {
         animator.SetBool("on", true);
     }
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void endAnimation() 
     {
         animator.SetBool("on",false);

@@ -22,6 +22,11 @@ public class Email : MonoBehaviour
 
     #region Custom methods
 
+    /*
+     * purpose: sends an email
+     * inputs: body text of the email, as well as the log file
+     * outputs: an actual email to jauntlet95@gmail.com
+     */
     public void SendEmail(string body)
     { 
         MailMessage mail = new MailMessage();

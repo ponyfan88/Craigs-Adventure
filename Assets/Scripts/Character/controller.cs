@@ -41,6 +41,7 @@ public class controller : MonoBehaviour
             rb.position = new Vector2(savesManager.currentSave.playerx, savesManager.currentSave.playery);
         }
     }
+    
     private void Update()
     {
         // we test for input dashing here, as doing it in FixedUpdate leads to dropping inputs
@@ -49,6 +50,7 @@ public class controller : MonoBehaviour
             isDashing = true;
         }
     }
+    
     void FixedUpdate()
     {
         // if we cant move we skip most of the script
@@ -106,12 +108,23 @@ public class controller : MonoBehaviour
 
     #region Custom Methods
 
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void ApplyKnockback(Vector2 collisionPos) // this method is used for knocking back the player based on the objects position; mainly for colliding with enemies
     {
         // uses the distance from the player to the object colliding to find the vector to push the player back from
         knockbackVelocity = new Vector2(Mathf.Round(transform.position.x - collisionPos.x) * 20, Mathf.Round(transform.position.y - collisionPos.y) * 20);
         knockbackTime = Time.time + 0.15f; // sets the knockbackTime to last for .15 of a second
     }
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void ApplyKnockback(float bulletRotation) // this method is for knocking back the player based on the objects rotation; used for bullets
     {
         // turns rotation of the object into a radian       

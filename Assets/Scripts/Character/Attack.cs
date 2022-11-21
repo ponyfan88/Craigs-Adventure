@@ -39,6 +39,7 @@ public class Attack : MonoBehaviour
         animationControl = animator.GetBehaviour<playerWalkanim>(); // Gets the behaviour that controls the player walking anim
         soundManager = FindObjectOfType<SoundManager>(); // gets the soundManager
     }
+
     void Update()
     {
         if (Input.GetButtonDown("Attack") && attackCooldownTimer < Time.time && !player.isDashing) // if attacking, not on attack cooldown, and not dashing
@@ -86,6 +87,7 @@ public class Attack : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (hitBox.IsTouching(collision)) // makes sure the collision occurs from the attack hitbox, and not the players normal collision hitbox
@@ -112,6 +114,11 @@ public class Attack : MonoBehaviour
 
     #region Custom Methods
 
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     void DisableAttack() // used to disable the attack hitbox after specified time
     {
         player.speed *= 2;
