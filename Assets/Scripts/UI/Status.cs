@@ -128,7 +128,7 @@ public class Status : MonoBehaviour
             floorTimer = 0f;
 
             // swap the floor so that it flashes
-            floor.SetActive(!floor.active);
+            floor.SetActive(!floor.activeInHierarchy);
         }
     }
 
