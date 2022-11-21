@@ -40,6 +40,9 @@ public class GenericNPC : MonoBehaviour
 
     DialogManager dialogManager;
 
+    GameObject player;
+
+    private bool currentlyTalking = false;
 
     #endregion
 
@@ -51,6 +54,8 @@ public class GenericNPC : MonoBehaviour
         startTimer = false;
 
         dialogManager = FindObjectOfType<DialogManager>(); // grab our dialog manager
+        
+        playerPos = GameObject.Find("player").transform; // grab the players transform
 
         thisNpc = new NPC(); // we are class npc
 
@@ -68,7 +73,25 @@ public class GenericNPC : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+        // distance to player
+        float distance = Mathf.Sqrt(Mathf.Abs(playerPos.position.x - transform.position.x) + Mathf.Abs(playerPos.position.y - transform.position.y));
+
+        // if the distance from the player is within the interact range and we arent currently talking
+        if (distance <= interactRange && !currentlyTalking)
+        {
+            if (Input.GetButtonDown("ItemAction")) // if we are pressing f
+            {
+                dialogManager.DialogStart((Dialog)thisNpc.InteractDialog); // start our interact dialog
+                
+                currentlyTalking = true; // we are now currently talking
+            }
+        }
+        else if (currentlyTalking) // we are out of range and we are currently talking
+        {
+            dialogManager.StopDialog(); // stop all dialog
+            
+            currentlyTalking = false; // we are not currently talking
+        }
     }
 
     private void FixedUpdate()
@@ -82,6 +105,8 @@ public class GenericNPC : MonoBehaviour
         if (timer >= hangTime) // once we pass that hangtime threshold, we'll clear the dialog
         {
             dialogManager.StopDialog();
+            
+            dialogManager.DialogStart((Dialog)thisNpc.RoomEnterDialog);
         }
     }
 
@@ -90,9 +115,9 @@ public class GenericNPC : MonoBehaviour
     #region Custom Methods
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: code to run on room enter
+     * inputs: none
+     * outputs: says our room enter dialog
      */
     public void EnterRoom()
     {
@@ -105,9 +130,9 @@ public class GenericNPC : MonoBehaviour
     }
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: code to run on room exit
+     * inputs: none
+     * outputs: stops dialog
      */
     public void ExitRoom()
     {
