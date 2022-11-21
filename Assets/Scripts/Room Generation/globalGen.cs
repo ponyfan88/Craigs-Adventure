@@ -26,7 +26,6 @@ public class globalGen : MonoBehaviour
     private bool built = false;
 
     SavesManager savesManager; // our saves manager
-    FloorManager floorManager; // our floor manager
 
     #endregion
 
@@ -38,8 +37,6 @@ public class globalGen : MonoBehaviour
 
         Pause = GameObject.Find("UI").GetComponent<Pause>(); // find our pause script
         Pause.StartLoading(); // we've started loading our game
-
-        floorManager = FindObjectOfType<FloorManager>();
 
         if (savesManager.loadingSave && !FloorManager.loadSaveOverride) // if we are loading a save
         {

@@ -18,8 +18,6 @@ public class Stairs : MonoBehaviour
 
     SavesManager savesManager;
 
-    FloorManager floorManager;
-
     Pause pause;
 
     #endregion
