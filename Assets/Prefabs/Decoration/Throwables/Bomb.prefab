@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageAmount: 3
   playerOwned: 1
-  destroyOnHitWall: 0
+  destroyOnHitWall: 1
   destroyType: 1
 --- !u!50 &8571093734446994318
 Rigidbody2D:
