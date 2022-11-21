@@ -200,9 +200,12 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 1f; // set our timescale to 1, resuming the game
         
-        ended = false; // we just restarted the game, so it's no longer ended
-        
-        FloorManager.floor = 1; // reset our floor to 1
+        if (ended) // if we died
+        {
+            FloorManager.floor = 1; // reset the floor back to floor 1
+
+            ended = false; // we just restarted the game, so it's no longer ended
+        }
         
         // since loadingsave is kept after we reload we can actually save this
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reload the current active scene
