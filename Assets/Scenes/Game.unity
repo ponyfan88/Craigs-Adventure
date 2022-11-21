@@ -92863,6 +92863,7 @@ MonoBehaviour:
   - {fileID: 3663848777091365538, guid: a2c3764fec5dda84c85bb777770b6711, type: 3}
   - {fileID: 2067025534364196248, guid: 85b5fb43996645a43998767b06f9b44a, type: 3}
   - {fileID: 2273645761551209125, guid: 75f0d3ab4f8385f4cbbda07d651d6596, type: 3}
+  - {fileID: 3663848777091365538, guid: d5a0b17db720f9a41b6958f2675e0e4b, type: 3}
   rRooms:
   - {fileID: 4596219323474803177, guid: 7dc53df0620efa5429632b6bc46ef434, type: 3}
   - {fileID: 1912636570980179720, guid: 8c7ab2d06a94ceb45b9832b41371315e, type: 3}
@@ -102596,8 +102597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a05c0c7c7da244e980ebd76b7c5b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: 1
-  loadSaveOverride: 0
 --- !u!4 &1337103284
 Transform:
   m_ObjectHideFlags: 0
@@ -107062,7 +107061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2054475945
 RectTransform:
   m_ObjectHideFlags: 0

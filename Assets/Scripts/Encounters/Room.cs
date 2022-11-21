@@ -5,7 +5,6 @@
  * Outputs: various variables to other script files such as map.cs
  */
 
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -23,6 +22,7 @@ public class Room : MonoBehaviour
     DoorManager[] doorManager;
     [SerializeField] private AnimationManager[] Decorations;
     private SpawnEnemy[] enemySpawns;
+    private GenericNPC[] npcs;
     bool enemiesSpawned = false;
 
     #endregion
@@ -39,6 +39,7 @@ public class Room : MonoBehaviour
         // this will make 2 seperate array's with any object with either the script "DoorManager" or "SpawnEnemy" as to access them later.
         doorManager = transform.GetComponentsInChildren<DoorManager>();
         enemySpawns = transform.GetComponentsInChildren<SpawnEnemy>();
+        npcs = transform.GetComponentsInChildren<GenericNPC>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,9 +53,15 @@ public class Room : MonoBehaviour
             {
                 map.discovered.Add(transform.parent.gameObject); // add it to our list of entered rooms
 
+                // for every enemy that is a child of room child, spawn them in
                 foreach (SpawnEnemy spawn in enemySpawns)
                 {
                     spawn.Spawn(transform.parent);
+                }
+
+                foreach (GenericNPC npc in npcs)
+                {
+                    npc.EnterRoom();
                 }
             }
             foreach (AnimationManager decoration in Decorations)// if there are any animated decoration this allows them to be enabled and disable if the player not in the room
@@ -78,6 +85,11 @@ public class Room : MonoBehaviour
             foreach (AnimationManager decoration in Decorations)
             {
                 decoration.endAnimation();
+            }
+
+            foreach (GenericNPC npc in npcs)
+            {
+                npc.ExitRoom();
             }
         }
     }

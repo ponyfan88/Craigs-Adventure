@@ -11,28 +11,34 @@ public class GenericNPC : MonoBehaviour
 {
     #region Variables
 
-    NPC thisNpc;
+    public NPC thisNpc;
 
     // name for our npc (eg: "jack")
-    public string npcName;
+    public string npcName = "Grug";
 
     // interact range for our npc
-    public float interactRange;
-
-    // dialog that plays when we enter the room
-    [TextArea(1, 5)]
-    public string[] roomEnterDialog;
+    public float interactRange = 10f;
 
     // time that our room enter dialog stays for
     public float hangTime;
 
+    // dialog that plays when we enter the room
+    [TextArea(1, 5)]
+    public string[] roomEnterDialog = { "CHANGEME" };
+
     // dialog that plays when we interact with this npc
     [TextArea(1, 5)]
-    public string[] interactDialog;
+    public string[] interactDialog = { "CHANGEME" };
 
     // dialog that plays when we hurt this npc
     [TextArea(1, 5)]
-    public string[] attackDialog;
+    public string[] attackDialog = { "CHANGEME" };
+
+    private float timer = 0f;
+
+    private bool startTimer;
+
+    DialogManager dialogManager;
 
 
     #endregion
@@ -40,14 +46,19 @@ public class GenericNPC : MonoBehaviour
     #region Default Methods
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        thisNpc = new NPC();
+        startTimer = false;
 
-        thisNpc.Name = name;
+        dialogManager = FindObjectOfType<DialogManager>(); // grab our dialog manager
 
-        thisNpc.InteractRange = interactRange;
+        thisNpc = new NPC(); // we are class npc
 
+        thisNpc.Name = name; // we have a name
+
+        thisNpc.InteractRange = interactRange; // a range we can be touched
+
+        // and a bunch of dialog to say
         thisNpc.InteractDialog = interactDialog;
         thisNpc.RoomEnterDialog = roomEnterDialog;
         thisNpc.AttackDialog = attackDialog;
@@ -55,9 +66,42 @@ public class GenericNPC : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (startTimer) // start our timer
+        {
+            // we need to increase our timer every frame by the time that has passed since the last one
+            timer += Time.fixedDeltaTime;
+        }
+
+        if (timer >= hangTime) // once we pass that hangtime threshold, we'll clear the dialog
+        {
+            dialogManager.StopDialog();
+        }
+    }
+
+    #endregion
+
+    #region Custom Methods
+
+    public void EnterRoom()
+    {
+        timer = 0f; // reset our timer
+
+        startTimer = true; // start our timer
+
+        // we need to cast since its of type object in the npc class
+        dialogManager.DialogStart((Dialog)thisNpc.RoomEnterDialog);
+    }
+
+    public void ExitRoom()
+    {
+        dialogManager.StopDialog();
     }
 
     #endregion

@@ -1,3 +1,10 @@
+/* 
+ * Programmers: Christopher Kowalewski 
+ * Purpose: TODO
+ * Inputs: TODO
+ * Outputs: TODO
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -65,7 +72,7 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    private void StopDialog()
+    public void StopDialog()
     {
         animator.SetBool("Opened", false); //close box
         //UNPAUSE THE GODDAMN GAME

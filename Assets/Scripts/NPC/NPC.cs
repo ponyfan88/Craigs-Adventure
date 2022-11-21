@@ -8,22 +8,22 @@
 public class NPC
 {
     // name for our npc (eg: "jack")
-    private string name;
+    private string name = "grug";
 
     // interact range for our npc
     private float interactRange;
 
     // dialog that plays when we enter the room
-    private Dialog roomEnterDialog;
+    private Dialog roomEnterDialog = new Dialog();
 
     // time that our room enter dialog stays for
-    private float hangTime;
+    private float hangTime = 4f;
 
     // dialog that plays when we interact with this npc
-    private Dialog interactDialog;
+    private Dialog interactDialog = new Dialog();
 
     // dialog that plays when we hurt this npc
-    private Dialog attackDialog;
+    private Dialog attackDialog = new Dialog();
 
     // public name we can get and set
     public string Name
