@@ -52,7 +52,6 @@ public class DestroyOnImpact : MonoBehaviour
                 if (destroyOnHitWall)
                     DestroyObject();
             }
-
         }
     }
     public void DestroyObject()
@@ -64,6 +63,7 @@ public class DestroyOnImpact : MonoBehaviour
                 {
                     projectileSpawner.SpawnBullets();
                 }
+                gameObject.SetActive(false);
                 break;
             case DestroyType.destroy:
             default:
