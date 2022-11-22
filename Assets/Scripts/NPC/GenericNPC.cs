@@ -44,6 +44,8 @@ public class GenericNPC : MonoBehaviour
 
     private bool currentlyTalking = false;
 
+    private float distance = 69420f;
+
     #endregion
 
     #region Default Methods
