@@ -8,13 +8,9 @@ public class DestroyOnImpact : MonoBehaviour
 {
     [Min(0)]public int DamageAmount = 1; // amount of damage it deals to non-player objects
     public bool playerOwned = false, destroyOnHitWall = true;
-
-    // enum to decide what should happen if an object were to explode.
-    public enum DestroyType { destroy, summonProjectile };
-    public DestroyType destroyType = DestroyType.destroy;
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (enabled)
+        if (enabled) // run nothing if disabled
         {
             bool hasHealth = collision.gameObject.TryGetComponent(out healthManager colHealth);
             // if the collider is the player and it is specifically collider with the capsule collider, which is detected to avoid colliding with the attack hitbox

@@ -20,6 +20,13 @@ public class healthManager : MonoBehaviour
     EffectsManager effectsManager;
     SavesManager savesManager;
 
+    // enum to decide what should happen if an object were to die.
+    public enum DestroyEvent { destroy, summonProjectile };
+    public DestroyEvent destroyEvent = DestroyEvent.destroy;
+    // enum to decide what should happen if an object were damaged.
+    public enum DamagedEvent { nothing, displayParticle };
+    public DamagedEvent damagedEvent = DamagedEvent.nothing;
+
     #endregion
 
     #region Default Methods
@@ -45,12 +52,10 @@ public class healthManager : MonoBehaviour
 
     #region Custom Methods
 
-    // inputs damage taken, and whether or not to ignore invulnerabilityTimer
-    // also allows you to output a bool when calling this function, which will tell you if the object took damage, or ignored it due to invulnerability.
     /*
      * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * inputs: damage taken, and whether or not to ignore invulnerabilityTimer
+     * outputs: a bool to say if the enemy was damaged, and the damage itself
      */
     public bool TakeDamage(int damage, bool ignoreInvulnerable = false)
     {
@@ -106,9 +111,9 @@ public class healthManager : MonoBehaviour
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Allow for other scripts to heal an object by a set amount
+     * inputs: value
+     * outputs: health with added value
      */
     public void Heal(int healAmount) // inputs amount to heal
     {
@@ -122,9 +127,9 @@ public class healthManager : MonoBehaviour
     }
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Allow for other scripts to set the health of an object to a set value
+     * inputs: value
+     * outputs: health as value
      */
     public void SetHealth(int setAmount) 
     {
