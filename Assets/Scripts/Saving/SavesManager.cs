@@ -49,19 +49,17 @@ public class SavesManager : MonoBehaviour
         sqliteManager = GetComponent<SqliteManager>();
         pause = FindObjectOfType<Pause>();
 
-        LogToFile.Log(Application.dataPath + "/Saves/");
+        if (!Directory.Exists(Application.dataPath + "/Saves/"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/Saves/");
 
-        DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .jsave files
-        
-        try // we are going to try this, since the directory might not exist
-        {
-            FileInfo[] saves = savesFolder.GetFiles("*.sqlite");
-            savesCount = saves.Length; // get the number of saves
+            savesCount = 0;
         }
-        catch // in this case, the directory doesnt exist. we'll make the directory for future saves
+        else
         {
-            savesFolder.Create(); // make the "saves" directory.
-            savesCount = 0; // since we just made the directory, it's empty.
+            DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .sqlite files
+            FileInfo[] saves = savesFolder.GetFiles("*.sqlite");
+            savesCount = saves.Length;
         }
     }
 
