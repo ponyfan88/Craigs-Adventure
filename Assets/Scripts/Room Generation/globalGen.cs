@@ -46,6 +46,8 @@ public class globalGen : MonoBehaviour
         else
         {
             // this is our random seed. this generates practically random numbers.
+            Debug.Log((System.DateTime.Now.Ticks).ToString());
+            Debug.Log(((int)System.DateTime.Now.Ticks).ToString());
             savesManager.currentSave.seed = Mathf.Sqrt((int)System.DateTime.Now.Ticks).LargerTillInt();
             Debug.Log(savesManager.currentSave.seed.ToString());
             // this logs our random seed to our log file

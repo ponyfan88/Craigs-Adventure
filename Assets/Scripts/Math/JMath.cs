@@ -6,7 +6,7 @@
  */
 
 using System;
-using UnityEngine;
+using UnityEngine; // unused
 
 public static class JMath
 {
@@ -17,6 +17,9 @@ public static class JMath
 
     public const byte MAXINTLENGTH = 10;
     public const byte MAXLONGLENGTH = 19;
+
+    private const byte MAXINTMULTIPLY = 9;
+    private const byte MAXLONGMULTIPLY = 18; // unused
 
     #endregion
 
@@ -67,14 +70,7 @@ public static class JMath
      */
     public static int LargerTillInt(this float a)
     {
-        float b = a;
-        byte c = 0;
-        while (!HasDecimals(b) && c <= JMath.MAXINTLENGTH) // while b does not have a decimal
-        {
-            b *= 10; // multiply it by 10
-            ++c;
-        }
-        return (int)b; // return it as an int
+        return (int)(a * Math.Pow(10, a - (int)a));
     }
 
     /*
@@ -86,9 +82,9 @@ public static class JMath
     {
         long b = a;
         byte c = 0;
-        while (b >= JMath.MAXINT && c <= JMath.MAXINTLENGTH) // while b does not have a decimal
+        while (b >= JMath.MAXINT && c < JMath.MAXINTMULTIPLY) // while b does not have a decimal
         {
-            b /= 10; // multiply it by 10
+            b /= 10; // devide it by 10
             ++c;
         }
         return (int)b; // return it as an int
