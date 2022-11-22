@@ -132,7 +132,6 @@ public class GenericNPC : MonoBehaviour
         startTimer = true; // start our timer
 
         // we need to cast since its of type object in the npc class
-        Debug.Log("ENTERED ROOM");
         dialogManager.DialogStart((Dialog)thisNpc.RoomEnterDialog);
     }
 
