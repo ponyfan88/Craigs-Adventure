@@ -58,19 +58,21 @@ public class Room : MonoBehaviour
                 {
                     spawn.Spawn(transform.parent);
                 }
-
-                foreach (GenericNPC npc in npcs)
-                {
-                    npc.EnterRoom();
-                }
             }
+
             foreach (AnimationManager decoration in Decorations)// if there are any animated decoration this allows them to be enabled and disable if the player not in the room
             {
                 decoration.beginAnimation();
             }
+
             foreach (DoorManager door in doorManager)
             {
                 door.CloseDoors();
+            }
+
+            foreach (GenericNPC npc in npcs)
+            {
+                npc.EnterRoom();
             }
 
             enemiesSpawned = true;
