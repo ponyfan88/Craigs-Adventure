@@ -76,7 +76,7 @@ public class GenericNPC : MonoBehaviour
     private void Update()
     {
         // distance to player
-        float distance = Mathf.Sqrt(Mathf.Abs(playerPos.position.x - transform.position.x) + Mathf.Abs(playerPos.position.y - transform.position.y));
+        distance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(playerPos.position.x - transform.position.x), 2) + Mathf.Pow(Mathf.Abs(playerPos.position.y - transform.position.y), 2));
 
         // if the distance from the player is within the interact range and we arent currently talking
         if (distance <= interactRange && !currentlyTalking)
