@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: Roeth the destroyer
-  interactRange: 0
+  interactRange: 15
   hangTime: 4
   roomEnterDialog:
   - hello weary traveler. hows it hangin?
