@@ -55,7 +55,7 @@ public class itemManager : MonoBehaviour
         ItemDistance = new Vector2(0,0);
 
         // Sets the intital pos offset
-        itemPosOffset = new Vector2(.45f, 0.79f / 2);
+        itemPosOffset = new Vector2(.45f, 0.395f);
     }
 
     private void Update()
