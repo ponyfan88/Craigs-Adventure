@@ -63,16 +63,57 @@ public static class JMath
      * inputs: a long to operate on ("a")
      * outputs: top half of a long to be an int
      */
-    public static int IntFromTopOfLong(this long a)
+    public static int Top(this long a)
     {
+        // store a as b to devide it later
         long b = a;
-        byte c = 0;
-        while (b >= JMath.MAXINT && c < JMath.MAXINTMULTIPLY) // while b does not have a decimal
+        while (Math.Abs(b) > int.MaxValue) // while b does not exceed the positive or negative 32 bit integer limit
         {
             b /= 10; // devide it by 10
-            ++c;
         }
         return (int)b; // return it as an int
+    }
+
+    /*
+     * purpose: gets the bottom half of a long so that it is a valid integer
+     * inputs: a long to operate on ("a")
+     * outputs: top half of a long to be an int
+     */
+    public static int Bottom(this long a)
+    {
+        // convert a to a string
+        string b = a.ToString();
+        // this is our 3rd variable, c. we'll use this for our final number
+        long c = 0;
+        
+        // for every digit in our long
+        for (int i = 0; i < b.Length; ++i)
+        {
+            // parse it as an integer
+            // we use b.Length - 1 - i as to get the FIRST digit at 0 rather than getting the LAST digit at 0
+            long d = byte.Parse(b[b.Length - 1 - i].ToString()) * (long)Math.Pow(10, i);
+            /*
+             * breaking this down:
+             * "byte.Parse(b[b.Length - 1 - i].ToString())" gives us a byte representing the digit
+             * "* (long)Math.Pow(10, i)" multiplies our number by a power of ten.
+             * we do this because the first digit is in the ones place, the second the tens, etc.
+             */
+
+            // if the value of our total parsed integers added together exceeds the max value an int should be
+            if (Math.Abs(c + d) > int.MaxValue)
+            {
+                // then we'll return our int
+                return (int)c;
+            }
+            else
+            {
+                // otherwise, add our parsed number to our counter.
+                c += d;
+            }
+        }
+
+        // if all that checks out, our number was within an int. we can then return it.
+        return (int)c;
     }
 
     /*
