@@ -102,7 +102,9 @@ public class GenericNPC : MonoBehaviour
         else if (distance > interactRange && currentlyTalking && startTimer)
         {
             dialogManager.StopDialog(); // stop all dialog
-            
+
+            startTimer = false; // stop our timer; this check REQUIRES the timer to be active
+
             currentlyTalking = false; // we are not currently talking
         }
     }
