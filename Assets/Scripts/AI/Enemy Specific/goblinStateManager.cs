@@ -6,7 +6,7 @@ public class goblinStateManager : MonoBehaviour
     ProjectileSpawner projectileSpawner;
     GameObject player;
     Animator animator;
-    Vector2 distance; // will be used later
+    float distance; // will be used later
     LayerMask raycastMask; // will be used later
     byte timesSpit;
     float spitCooldown = 0f;
@@ -38,7 +38,7 @@ public class goblinStateManager : MonoBehaviour
      */
     public void TrySpit()
     {
-         distance = player.transform.position - transform.position;
+         distance = JMath.Distance(player.transform.position, transform.position);
         /* Physics2D.IgnoreLayerCollision(raycastMask, raycastMask);
 
         RaycastHit2D ray = Physics2D.Raycast(transform.position, distance);
