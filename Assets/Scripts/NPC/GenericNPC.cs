@@ -83,7 +83,10 @@ public class GenericNPC : MonoBehaviour
         {
             if (Input.GetButtonDown("ItemAction")) // if we are pressing f
             {
-                Debug.Log("ACTION");
+                // hangTime also applies to our interaction messages.
+                timer = 0f; // reset our timer
+                startTimer = true; // we can now start counting down
+                
                 dialogManager.DialogStart((Dialog)thisNpc.InteractDialog); // start our interact dialog
                 
                 currentlyTalking = true; // we are now currently talking
@@ -143,7 +146,6 @@ public class GenericNPC : MonoBehaviour
         startTimer = false; // start our timer
 
         dialogManager.StopDialog();
-        Debug.Log("EXITED ROOM");
     }
 
     #endregion
