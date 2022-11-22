@@ -92,7 +92,6 @@ public class GenericNPC : MonoBehaviour
                 currentlyTalking = true; // we are now currently talking
             }
         }
-        else if (currentlyTalking && !startTimer) // we are out of range and we are currently talking
         /*
          * we are out of range, we are currently talking, and our timer is ongoing.
          * we check for these three because:
@@ -100,6 +99,7 @@ public class GenericNPC : MonoBehaviour
          * 2. "currentlytalking" - if we arent talking we dont need to run any of this code in the first place
          * 3. "distance > interactrange" - and distance on its own isnt enough to make us stop talking, considering we could be out of range and have entered the room
          */
+        else if (distance > interactRange && currentlyTalking && startTimer)
         {
             dialogManager.StopDialog(); // stop all dialog
             
