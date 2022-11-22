@@ -93,6 +93,13 @@ public class GenericNPC : MonoBehaviour
             }
         }
         else if (currentlyTalking && !startTimer) // we are out of range and we are currently talking
+        /*
+         * we are out of range, we are currently talking, and our timer is ongoing.
+         * we check for these three because:
+         * 1. "startimer" - our timer expires inside fixedupdate, better to stop in there rather than here
+         * 2. "currentlytalking" - if we arent talking we dont need to run any of this code in the first place
+         * 3. "distance > interactrange" - and distance on its own isnt enough to make us stop talking, considering we could be out of range and have entered the room
+         */
         {
             dialogManager.StopDialog(); // stop all dialog
             
@@ -109,9 +116,9 @@ public class GenericNPC : MonoBehaviour
 
             if (timer >= hangTime) // once we pass that hangtime threshold, we'll clear the dialog
             {
-                dialogManager.StopDialog();
+                dialogManager.StopDialog(); // we can stop the dialog now
 
-                startTimer = false;
+                startTimer = false; // our timer is no longer active
             }
         }
     }
@@ -144,7 +151,7 @@ public class GenericNPC : MonoBehaviour
     {
         startTimer = false; // start our timer
 
-        dialogManager.StopDialog();
+        dialogManager.StopDialog(); // stop dialog
     }
 
     #endregion
