@@ -169,7 +169,7 @@ public static class JMath
      */
     public static float Distance(Vector2 a, Vector2 b)
     {
-        // a^2 + b^2 = c^2, so we find the hypotenuse and then the square root for c, which is the distance
-        return (float)Math.Sqrt(Math.Pow(a.x - b.y, 2) + Math.Pow(a.y - b.y, 2));
+        // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
+        return (float)Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
     }
 }
