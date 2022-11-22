@@ -17,7 +17,7 @@ public class GenericNPC : MonoBehaviour
     public string npcName = "Grug";
 
     // interact range for our npc
-    public float interactRange = 10f;
+    private const float interactRange = 2.5f;
 
     // time that our room enter dialog stays for
     public float hangTime;
