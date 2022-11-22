@@ -161,4 +161,15 @@ public static class JMath
         // this is because Math.Log10 does not take decimals, nor does unity's Mathf.Log10
         return Math.Abs(a).ToString().Replace(".", string.Empty).Length;
     }
+    
+    /*
+     * purpose: returns the distance from two vector2's
+     * inputs: two specified vector2's
+     * outputs: a float to specify the distance
+     */
+    public static float Distance(Vector2 a, Vector2 b)
+    {
+        // a^2 + b^2 = c^2, so we find the hypotenuse and then the square root for c, which is the distance
+        return (float)Math.Sqrt(Math.Pow(a.x - b.y, 2) + Math.Pow(a.y - b.y, 2));
+    }
 }
