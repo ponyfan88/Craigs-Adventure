@@ -40,13 +40,13 @@ public static class JMath
         return a % 1 == 0;
     }
 
-    // see above; overload
+    // see above; overload for doubles
     public static bool HasDecimals(this double a)
     {
         return a % 1 == 0;
     }
 
-    // see above; overload
+    // see above; overload for decimals
     public static bool HasDecimals(this decimal a)
     {
         return a % 1 == 0;
@@ -63,17 +63,17 @@ public static class JMath
     }
 
     /*
-     * purpose: devides a long by 10 until it can be an int
+     * purpose: divides a long by 10 until it can be an int
      * inputs: a long to operate on ("a")
      * outputs: top half of a long to be an int
      */
     public static int Top(this long a)
     {
-        // store a as b to devide it later
+        // store a as b to divide it later
         long b = a;
         while (Math.Abs(b) > int.MaxValue) // while b does not exceed the positive or negative 32 bit integer limit
         {
-            b /= 10; // devide it by 10
+            b /= 10; // divide it by 10
         }
         return (int)b; // return it as an int
     }
@@ -121,7 +121,7 @@ public static class JMath
     }
 
     /*
-     * purpose: returns the lenght of a number
+     * purpose: returns the length of a number
      * inputs: an int to operate on ("a")
      * outputs: the number of numbers in a number
      */
@@ -130,31 +130,31 @@ public static class JMath
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload
+    // see above; overload for longs
     public static int Length(this long a)
     {
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload
+    // see above; overload for floats
     public static int Length(this float a)
     {
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload
+    // see above; overload for doubles
     public static int Length(this double a)
     {
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload
+    // see above; overload for bytes
     public static int Length(this byte a)
     {
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload
+    // see above; overload for decimals
     public static int Length(this decimal a)
     {
         // convert to a non-negative, then to a string, get rid of decimal marks, and get the length
