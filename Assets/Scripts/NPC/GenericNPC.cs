@@ -40,7 +40,7 @@ public class GenericNPC : MonoBehaviour
 
     DialogManager dialogManager;
 
-    GameObject player;
+    Transform playerPos;
 
     private bool currentlyTalking = false;
 
@@ -81,12 +81,13 @@ public class GenericNPC : MonoBehaviour
         {
             if (Input.GetButtonDown("ItemAction")) // if we are pressing f
             {
+                Debug.Log("ACTION");
                 dialogManager.DialogStart((Dialog)thisNpc.InteractDialog); // start our interact dialog
                 
                 currentlyTalking = true; // we are now currently talking
             }
         }
-        else if (currentlyTalking) // we are out of range and we are currently talking
+        else if (currentlyTalking && !startTimer) // we are out of range and we are currently talking
         {
             dialogManager.StopDialog(); // stop all dialog
             
@@ -100,13 +101,13 @@ public class GenericNPC : MonoBehaviour
         {
             // we need to increase our timer every frame by the time that has passed since the last one
             timer += Time.fixedDeltaTime;
-        }
 
-        if (timer >= hangTime) // once we pass that hangtime threshold, we'll clear the dialog
-        {
-            dialogManager.StopDialog();
-            
-            dialogManager.DialogStart((Dialog)thisNpc.RoomEnterDialog);
+            if (timer >= hangTime) // once we pass that hangtime threshold, we'll clear the dialog
+            {
+                dialogManager.StopDialog();
+
+                startTimer = false;
+            }
         }
     }
 
@@ -126,6 +127,7 @@ public class GenericNPC : MonoBehaviour
         startTimer = true; // start our timer
 
         // we need to cast since its of type object in the npc class
+        Debug.Log("ENTERED ROOM");
         dialogManager.DialogStart((Dialog)thisNpc.RoomEnterDialog);
     }
 
@@ -136,7 +138,10 @@ public class GenericNPC : MonoBehaviour
      */
     public void ExitRoom()
     {
+        startTimer = false; // start our timer
+
         dialogManager.StopDialog();
+        Debug.Log("EXITED ROOM");
     }
 
     #endregion
