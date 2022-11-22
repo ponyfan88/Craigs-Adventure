@@ -10,21 +10,6 @@ using UnityEngine; // unused
 
 public static class JMath
 {
-    #region Variables
-
-    public const int MAXINT = 2147483647;
-    public const long MAXLONG = 9223372036854775807;
-
-    public const byte MAXINTLENGTH = 10;
-    public const byte MAXLONGLENGTH = 19;
-
-    private const byte MAXINTMULTIPLY = 9;
-    private const byte MAXLONGMULTIPLY = 18; // unused
-
-    #endregion
-
-    #region Custom Methods
-
     /*
      * purpose: mod function, supporting negatives
      * inputs: a and b, getting a within b (it wraps around, so if a is 361 and b is 360 we return 1)
@@ -131,7 +116,4 @@ public static class JMath
         // this is because Math.Log10 does not take decimals, nor does unity's Mathf.Log10
         return Math.Abs(a).ToString().Replace(".", string.Empty).Length;
     }
-
-
-    #endregion
 }
