@@ -18,20 +18,18 @@ public class MainMenu : MonoBehaviour
     // import saves manager
     SavesManager savesManager;
 
-    // import the floor manager
-    FloorManager floorManager;
-
     #endregion
 
     #region  Default Methods
     
     void Awake()
     {
-        floorManager = FindObjectOfType<FloorManager>();
+        // we need to set this since we dont destroy this on load
+        FloorManager.floor = 1; // we are on floor 1
 
-        floorManager.floor = 1; // we are on floor 1
+        // we will set ourselves to be paused
+        Pause.paused = true;
 
-        Pause.paused = true; // consider the game paused on main menu
         soundManager = FindObjectOfType<SoundManager>(); // make it a variable so we can use it
         soundManager.Play("Main Menu"); // play the main menu theme
 
@@ -43,14 +41,26 @@ public class MainMenu : MonoBehaviour
 
     #region Custom Methods
 
+    /*
+     * purpose: load the game
+     * inputs: none
+     * outputs: loads the game scene and fixes variables for such
+     */
     public void StartGame()
     {
         LogToFile.Log("started a new game at " + Time.time.ToString());
-        Pause.paused = false; // unpause the game once we click start
+
+        // the game has no longer ended
+        Pause.ended = false;
+
         SceneManager.LoadScene("Scenes/Game"); // load the game
     }
 
-    // pretty self explanitory
+    /*
+     * purpose: closes craigs adventure
+     * inputs: none
+     * outputs: none
+     */
     public void QuitGame()
     {
         Application.Quit();

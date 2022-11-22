@@ -13,6 +13,8 @@ public class Pause : MonoBehaviour
 {
     #region Variables
 
+    // this is static just so we can use it with ease using Pause.pause
+    // i think static also makes this persist through scenes? not sure.
     public static bool paused = true; // if we are paused // initialize as true since loading the game pauses the game
     public static bool ended = false; // if we have ended the game
 
@@ -26,7 +28,6 @@ public class Pause : MonoBehaviour
 
     SoundManager soundManager; // our sound manager
     SavesManager savesManager; // our saves manager
-    FloorManager floorManager; // our floor manager
 
     public TextMeshProUGUI saveNameInput; // the input field for our save name in the saving menu
     public TextMeshProUGUI loadNameInput; // the input field for our save name in the loading menu
@@ -45,9 +46,8 @@ public class Pause : MonoBehaviour
     {
         soundManager = FindObjectOfType<SoundManager>(); // need so that we can play sounds
         savesManager = FindObjectOfType<SavesManager>(); // need so that we can do saving commands
-        floorManager = FindObjectOfType<FloorManager>(); // need so that we can do things proper
-
-        if (floorManager.floor >= 4)
+        
+        if (FloorManager.floor >= 4)
         {
             ResumeGame();
         }
@@ -200,7 +200,12 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 1f; // set our timescale to 1, resuming the game
         
-        ended = false; // we just restarted the game, so it's no longer ended
+        if (ended) // if we died
+        {
+            FloorManager.floor = 1; // reset the floor back to floor 1
+
+            ended = false; // we just restarted the game, so it's no longer ended
+        }
         
         // since loadingsave is kept after we reload we can actually save this
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reload the current active scene

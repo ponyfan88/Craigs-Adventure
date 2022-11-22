@@ -24,6 +24,11 @@ public static class LogToFile
         logFile.Add(logString);
     }
 
+    /*
+     * purpose: dumps logs to log.txt
+     * inputs: if we should clear the current log
+     * outputs: log file log.txt
+     */
     public static void DumpLogs(bool clear = true)
     {
         if (!Directory.Exists(Application.dataPath + "/Debug/"))

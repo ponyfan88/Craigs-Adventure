@@ -1,3 +1,10 @@
+/* 
+ * Programmers: Christopher Kowalewski 
+ * Purpose: TODO
+ * Inputs: TODO
+ * Outputs: TODO
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,32 +25,43 @@ public class DialogManager : MonoBehaviour
     // On start
     private void Start()
     {
-        lines = new Queue<string> ();
+        lines = new Queue<string>();
     }
 
     #endregion
 
     #region Custom Methods
 
-    //Starts the dialog cutscene
-    public void DialogStart (Dialog dialog)
+    /*
+     * purpose: starts dialog
+     * inputs: dialog to say
+     * outputs: loads the main menu and does practically what ResumeGame() does
+     */
+    public void DialogStart(Dialog dialog)
     {
         animator.SetBool("Opened", true); //open box
 
         //Clear out any old unnecessary lines of dialogue
         lines.Clear();
 
+        // for every line, queue the line up for writing
         foreach (string line in dialog.lines)
         {
             lines.Enqueue(line);
         }
 
+        // call writedialog
         WriteDialog();
     }
 
-    //Writes the dialogueueueue
+    /*
+     * purpose: writes text to the dialog display
+     * inputs: our current dialog
+     * outputs: sends typeline the text we want to say
+     */
     public void WriteDialog()
     {
+        // test for if we arent writing anything
         if (lines.Count == 0)
         {
             StopDialog();
@@ -55,9 +73,17 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(TypeLine(line)); //output line (animated)
     }
 
+    /*
+     * purpose: types an entire line on screen
+     * inputs: text to say
+     * outputs: on-screen dialog text
+     */
     IEnumerator TypeLine(string words)
     {
+        // clear the text we are typing
         textMesh.text = "";
+
+        // for every character we need to add it to our text on screen
         foreach (char let in words.ToCharArray())
         {
             textMesh.text += let;
@@ -65,11 +91,14 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    private void StopDialog()
+    /*
+     * purpose: stops all dialog
+     * inputs: none
+     * outputs: makes the dialog on screen go away
+     */
+    public void StopDialog()
     {
         animator.SetBool("Opened", false); //close box
-        //UNPAUSE THE GODDAMN GAME
-        Debug.Log("End");
     }
 
     #endregion

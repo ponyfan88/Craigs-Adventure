@@ -1,6 +1,8 @@
 using UnityEngine;
 public class goblinStateManager : MonoBehaviour
 {
+    #region Variables
+    
     ProjectileSpawner projectileSpawner;
     GameObject player;
     Animator animator;
@@ -8,6 +10,11 @@ public class goblinStateManager : MonoBehaviour
     LayerMask raycastMask; // will be used later
     byte timesSpit;
     float spitCooldown = 0f;
+    
+    #endregion
+
+    #region Default Methods
+    
     private void Awake()
     {
         projectileSpawner = GetComponent<ProjectileSpawner>();
@@ -19,6 +26,16 @@ public class goblinStateManager : MonoBehaviour
         // using a bitwise operator to invert the layermask, meaning that the layer "IgnoreCollision" should be completely ignored.
         // raycastMask = ~raycastMask;
     }
+
+    #endregion
+
+    #region Custom Methods
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void TrySpit()
     {
          distance = player.transform.position - transform.position;
@@ -52,6 +69,12 @@ public class goblinStateManager : MonoBehaviour
             animator.SetBool("reachedLocation", false);
         }
     }
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void Spit()
     {
         // increment consecutive times spit
@@ -68,4 +91,6 @@ public class goblinStateManager : MonoBehaviour
             timesSpit = 0;
         }
     }
+
+    #endregion
 }

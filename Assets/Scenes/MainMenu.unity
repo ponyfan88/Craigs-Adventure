@@ -422,15 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6b91687c7857e4c8e2b6129529b3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: Main Menu
-    clip: {fileID: 8300000, guid: 392c4d2229615a2479f8c8a274f3280d, type: 3}
-    volume: 0.75
-    randomizePitch: 0
-    randomizePitchRange: 0
-    playWhilePaused: 1
-    loop: 1
-    source: {fileID: 0}
+  sounds: []
 --- !u!4 &241907264
 Transform:
   m_ObjectHideFlags: 0
@@ -1963,8 +1955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a05c0c7c7da244e980ebd76b7c5b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: 1
-  loadSaveOverride: 0
 --- !u!4 &1752965837
 Transform:
   m_ObjectHideFlags: 0

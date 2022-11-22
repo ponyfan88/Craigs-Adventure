@@ -69,8 +69,11 @@ public class ProjectileSpawner : MonoBehaviour
 
     #region Custom Methods
 
-    public float[] DistributeRotations()  // evenly splits projectiles between the min and max rotation by the differnce between them
-    {
+    public float[] DistributeRotations()      {
+/* Purpose: evenly splits projectiles between the min and max rotation by the differnce between them
+ * Inputs: bullet count, min and max rotation,
+ * Outputs: SpawnBullets()  
+ */
         for (int i = 0; i < GetSpawnData().BulletCount; ++i) // for each bullet
         {
             float fraction = (float)i / (float)GetSpawnData().BulletCount; // fractional offset between our bullets (bullet 2/3, bullet 5/12, etc.)
@@ -80,7 +83,11 @@ public class ProjectileSpawner : MonoBehaviour
         }
         return rotations; // give back our rotations
     }
-    public GameObject[] SpawnBullets() // spawn bullets
+    public GameObject[] SpawnBullets() 
+/* Spawn bullets
+ * Inputs: DistributeRotations(), isRandom,
+ * Outputs: Projectile.cs  
+ */
     {
         rotations = new float[GetSpawnData().BulletCount]; //set rotation to a list with the length of the BulletCount
         if (GetSpawnData().isRandom) RandomRotations();
@@ -88,7 +95,7 @@ public class ProjectileSpawner : MonoBehaviour
         GameObject[] spawnedBullets = new GameObject[GetSpawnData().BulletCount];
         for (int i = 0; i < GetSpawnData().BulletCount; ++i)
         {
-            spawnedBullets[i] = ProjectileManager.GetBulletFromPool(); // checks if there are enough extra disabled game objects to use
+            spawnedBullets[i] = ProjectileManager.GetBulletFromPool(GetSpawnData().bulletResource.name); // checks if there are enough extra disabled game objects to use
 
             if (spawnedBullets[i] == null)
             {
@@ -121,8 +128,12 @@ public class ProjectileSpawner : MonoBehaviour
         }
         return spawnedBullets;
     }
-    public float[] RandomRotations() // changes rotation to a random values between Min rotation and Max rotation and sets rotations to that
-    {
+    public float[] RandomRotations()
+/* Purpose: randomize where bullets will show up
+ * Inputs: bullet count, min max rotations
+ * Outputs: spawn bullet
+ */
+ {
         for (int i = 0; i < GetSpawnData().BulletCount; ++i) // for every bullet
         {
             rotations[i] = Random.Range(GetSpawnData().minRotation, GetSpawnData().maxRotation); // get a random rotation within our min and max rotation

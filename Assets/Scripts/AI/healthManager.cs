@@ -47,6 +47,11 @@ public class healthManager : MonoBehaviour
 
     // inputs damage taken, and whether or not to ignore invulnerabilityTimer
     // also allows you to output a bool when calling this function, which will tell you if the object took damage, or ignored it due to invulnerability.
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public bool TakeDamage(int damage, bool ignoreInvulnerable = false)
     {
         if (invulnerabilityTimer < Time.time || ignoreInvulnerable) // take damage if Timer is over OR if ignoring it
@@ -100,6 +105,11 @@ public class healthManager : MonoBehaviour
         else return false; // tell the function the object did not take damage
     }
     
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void Heal(int healAmount) // inputs amount to heal
     {
         health += healAmount;
@@ -111,6 +121,11 @@ public class healthManager : MonoBehaviour
         }
     }
 
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void SetHealth(int setAmount) 
     {
         health = setAmount;

@@ -45,17 +45,35 @@ public class AIManager : MonoBehaviour
     #endregion
 
     #region Custom Methods
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void ApplyKnockback(Vector2 AttackDir)
     {
         knockbackDir = new Vector2(Math.Sign(AttackDir.x), Math.Sign(AttackDir.y));
         knockbackTimer = Time.time + knockbackTime;
     }
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void ApplyKnockback(Transform position)
     {
         knockbackDir = new Vector2(Math.Sign(position.position.x - transform.position.x), Math.Sign(position.position.y - transform.position.y));
         knockbackTimer = Time.time + knockbackTime;
 
     }
+    
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     public void ApplyKnockback(float bulletRotation)
     {
         // turns rotation of the object into a radian       
@@ -64,5 +82,6 @@ public class AIManager : MonoBehaviour
         knockbackDir = new Vector2(Math.Sign(Mathf.Cos(radian)), Math.Sign(Mathf.Sin(radian)));
         knockbackTimer = Time.time + knockbackTime;
     }
+    
     #endregion
 }
