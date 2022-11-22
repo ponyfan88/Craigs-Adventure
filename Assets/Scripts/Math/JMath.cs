@@ -17,12 +17,16 @@ public static class JMath
      */
     public static float Mod(float a, float b = 360)
     {
+        // we get the normal mod (as a float)
         float c = a % b;
         // if one number is negative and the other is not
         if ((c < 0 && b > 0) || (c > 0 && b < 0))
         {
-            c += b; // add b to c
+            // we add our divisor to our first number.
+            c += b;
         }
+
+        // float should be good now.
         return c;
     }
 
