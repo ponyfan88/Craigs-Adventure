@@ -16,9 +16,8 @@ MonoBehaviour:
   minRotation: 0
   maxRotation: 360
   lifespan: 4
-  onCollison: 0
   endlifeEffect: 0
-  BulletCount: 0
+  BulletCount: 4
   cooldown: 0
   aimAtPlayer: 0
   isRandom: 1
