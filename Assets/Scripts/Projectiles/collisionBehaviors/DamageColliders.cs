@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class DamageColliders : MonoBehaviour
 {
-    [Min(0)]public int DamageAmount = 1; // amount of damage it deals to non-player objects
+    [Min(0)] public int DamageAmount = 1; // amount of damage it deals to non-player objects
     public bool DamagePlayer = true, DamageEnemies = true;
     Collider2D[] allOverlappingColliders;
 
@@ -30,14 +30,20 @@ public class DamageColliders : MonoBehaviour
 
         foreach (Collider2D collider in allOverlappingColliders)
         {
-            OnTriggerEnter2D(collider);
-        } 
+            ApplyDamage(collider);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ApplyDamage(collision);
+    }
+
+    private void ApplyDamage(Collider2D collision)
     {
         Debug.Log(collision.name + " Attempted Take Damage!");
         if (collision.TryGetComponent(out healthManager Enemyhealth))
         {
+            Debug.Log(collision.name + " Took damage!");
             if (DamageEnemies && collision.name != "player")
             {
                 Enemyhealth.TakeDamage(DamageAmount);
@@ -46,7 +52,6 @@ public class DamageColliders : MonoBehaviour
             {
                 Enemyhealth.TakeDamage(1);
             }
-            
         }
     }
 }
