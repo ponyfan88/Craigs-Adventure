@@ -12,11 +12,13 @@ public class controller : MonoBehaviour
 {
     #region Variables
 
-    public float xMov, yMov, dashMoveCooldown, speed = 6f;
+    public float dashMoveCooldown, speed = 6f;
+    [NonSerialized] public float xMov, yMov;
     [SerializeField] float dashDuration, dashVelocity, dashCooldown;
     float dashCooldownTimer, dashDurationTimer, knockbackTime;
-    public Vector2 finalVelocity, moveDirection = new Vector2(1, 0), knockbackVelocity;
-    public bool canMove = true, isDashing = false;
+    [NonSerialized]public Vector2 finalVelocity, moveDirection = new Vector2(1, 0);
+    Vector2 knockbackVelocity;
+    [NonSerialized] public bool canMove = true, isDashing = false;
     Rigidbody2D rb;
     SoundManager soundManager;
     TrailRenderer dashParticle;
