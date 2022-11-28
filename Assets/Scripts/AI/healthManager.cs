@@ -53,7 +53,7 @@ public class healthManager : MonoBehaviour
     #region Custom Methods
 
     /*
-     * purpose: TODO
+     * purpose: Allow for other scripts to damage an object by a set amount
      * inputs: damage taken, and whether or not to ignore invulnerabilityTimer
      * outputs: a bool to say if the enemy was damaged, and the damage itself
      */
