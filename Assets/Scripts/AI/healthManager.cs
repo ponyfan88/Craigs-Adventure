@@ -68,7 +68,7 @@ public class healthManager : MonoBehaviour
 
             if (gameObject.name == "player") // if its the player
             {
-                LogToFile.Log("Player took damage " + damage.ToString());
+                LogToFile.Log("Player took damage " + damage);
 
                 //flash
                 effectsManager.addEffect(gameObject, GlobalFX.effect.flashTransparent, 1, new Color(1f, 1f, 1f, 1f), 1, 3);
@@ -100,9 +100,9 @@ public class healthManager : MonoBehaviour
                     {
                         // anything here is an enemy / not the player
                         // For now we just kill the object.
-                        Destroy(this.gameObject);
+                        Destroy(gameObject);
 
-                        LogToFile.Log("killed " + this.gameObject.ToString());
+                        LogToFile.Log("killed " + gameObject);
                     }
             }
             return true; // tell the function the object took damage
@@ -118,11 +118,11 @@ public class healthManager : MonoBehaviour
     public void Heal(int healAmount) // inputs amount to heal
     {
         health += healAmount;
-        LogToFile.Log("healed player by " + healAmount.ToString());
+        LogToFile.Log("healed " + gameObject + " by " + healAmount.ToString());
         if (health > maxHealth) // to prevent an "overheal" situation, if our health is over the maxhealth we set it back to maxhealth.
         {
             health = maxHealth;
-            LogToFile.Log("player was overhealed, set health to " + health.ToString());
+            LogToFile.Log(gameObject + " was overhealed, set health to " + health.ToString());
         }
     }
 
