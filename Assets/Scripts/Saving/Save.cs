@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/* 
+ * Programmers: Jack Kennedy
+ * Purpose: Saves data in a save class
+ * Inputs: the map seed, the player health, the players max health, the player y, the player x
+ * Outputs: (mirrors inputs)
+ */
 
-namespace save
+public class Save
 {
-    public class Save
-    {
-        public int seed;
-        public int playerMaxHealth;
-        public int playerHealth;
-        public float playerx;
-        public float playery;
-    }
+    public int seed;
+    public int playerMaxHealth;
+    public int playerHealth;
+    public float playerx;
+    public float playery;
 }
