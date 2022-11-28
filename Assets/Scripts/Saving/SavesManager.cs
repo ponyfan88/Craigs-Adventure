@@ -48,16 +48,22 @@ public class SavesManager : MonoBehaviour
         sqliteManager = GetComponent<SqliteManager>();
         pause = FindObjectOfType<Pause>();
 
-        if (!Directory.Exists(Application.dataPath + "/Saves/"))
+        // if our saves directory DOESNT exist
+        if (!Directory.Exists(Application.persistentDataPath + "/Saves/"))
         {
-            Directory.CreateDirectory(Application.dataPath + "/Saves/");
+            // make the directory
+            Directory.CreateDirectory(Application.persistentDataPath + "/Saves/");
 
+            // since it didnt exist, there are no saves
             savesCount = 0;
         }
-        else
+        else // assuming it does
         {
-            DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .sqlite files
-            FileInfo[] saves = savesFolder.GetFiles("*.sqlite");
+            // get the info from that folder
+            DirectoryInfo savesFolder = new DirectoryInfo(Application.persistentDataPath + "/Saves/"); // get the saves folder and scan it for .sqlite files
+            // a list of our saves
+            FileInfo[] saves = savesFolder.GetFiles("*.json");
+            // our count is the number of files we found inside our saves folder
             savesCount = saves.Length;
         }
     }
@@ -83,17 +89,12 @@ public class SavesManager : MonoBehaviour
 
         // to explain these next few lines: if a save exists with the same name as one we are deleting, delete that save.
 
-        if (!Directory.Exists(Application.dataPath + "/Saves/"))
-        {
-            Directory.CreateDirectory(Application.dataPath + "/Saves/");
-        }
-
-        DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .jsave files
+        DirectoryInfo savesFolder = new DirectoryInfo(Application.persistentDataPath + "/Saves/"); // get the saves folder and scan it for .jsave files
         FileInfo[] saves = savesFolder.GetFiles(saveName + ".sqlite");
 
         if (saves.Length > 0) // this means that we found a file with the same name
         {
-            LogToFile.Log("save \"" + saveName + ".sqlite\" existed. deleting save.");
+            LogToFile.Log("saves \"" + saveName + ".json\" existed. deleting save.");
             
             try // try to delete the file. this only works if we havent saved the file this session
             {

@@ -36,14 +36,14 @@ public class SqliteManager : MonoBehaviour
     public void Read(string saveName)
     {
         // get the save file
-        string saveFile = Application.persistentDataPath + "/" + saveName + ".json";
+        string saveFile = Application.persistentDataPath + "/Saves/" + saveName + ".json";
 
         savesManager.currentSave = JsonUtility.FromJson<Save>(File.ReadAllText(saveFile));
     }
 
     public void Write(string saveName)
     {
-        string saveFile = Application.persistentDataPath + "/" + saveName + ".json";
+        string saveFile = Application.persistentDataPath + "/Saves/" + saveName + ".json";
 
         savesManager.currentSave.playerx = player.transform.position.x;
         savesManager.currentSave.playery = player.transform.position.y;
