@@ -9,7 +9,7 @@ public class getCloseToPlayer : StateMachineBehaviour
     GameObject player;
     NavMeshAgent ai;
     AIManager aiManager;
-    public Vector2 distance;
+    public float distance;
 
     #endregion
 
@@ -35,10 +35,10 @@ public class getCloseToPlayer : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Find the distance from the player
-        distance = animator.gameObject.transform.position - player.transform.position;
+        distance = JMath.Distance(animator.gameObject.transform.position, player.transform.position);
 
         // if within range, set the navMesh to not move and start attacking
-        if (distance.x < 4 && distance.y < 4)
+        if (distance < 4)
         {
             ai.destination = ai.transform.position;
             animator.SetBool("reachedLocation", true);

@@ -67,9 +67,7 @@ public class EffectsManager : MonoBehaviour
             else
             {
                 // used with every particle so might as well calculate now
-                // im using jmath.mod for like no reason idk
-                // TODO: USE NORMAL MOD
-                float timeProgress = JMath.mod(((Time.time - effectsObjects[i].timeStarted) / (effectsObjects[i].time * effectsObjects[i].repeat)) * Mathf.Pow(effectsObjects[i].repeat, 2), 1f);
+                float timeProgress = ((Time.time - effectsObjects[i].timeStarted) / (effectsObjects[i].time * effectsObjects[i].repeat)) * Mathf.Pow(effectsObjects[i].repeat, 2) % 1f;
 
                 try
                 {
