@@ -13,38 +13,38 @@ public class Status : MonoBehaviour
 {
     #region Variables
 
-    public GameObject statusUI; // our status
-    public GameObject heartsUI; // our hearts object
-    public GameObject heartPrefab; // the default heart prefab
-    public Sprite fullHeart; // sprite for full heart
-    public Sprite halfHeart; // sprite for half heart
-    public Sprite emptyHeart; // sprite for empty heart
-    public Sprite missingHeart; // sprite we use when we dont set the heart (default/missing)
+    [SerializeField] private GameObject statusUI; // our status
+    [SerializeField] private GameObject heartsUI; // our hearts object
+    [SerializeField] private GameObject heartPrefab; // the default heart prefab
+    [SerializeField] private Sprite fullHeart; // sprite for full heart
+    [SerializeField] private Sprite halfHeart; // sprite for half heart
+    [SerializeField] private Sprite emptyHeart; // sprite for empty heart
+    [SerializeField] private Sprite missingHeart; // sprite we use when we dont set the heart (default/missing)
 
-    public Sprite bottomFloor; // sprite for bottom floor (floor == 1)
-    public Sprite middleFloor; // sprite for middle floor (floor == 2)
-    public Sprite topFloor; // sprite for top floor (floor == 3)
-    public Sprite roofFloor; // sprite for roof floor (floor == 4)
+    [SerializeField] private Sprite bottomFloor; // sprite for bottom floor (floor == 1)
+    [SerializeField] private Sprite middleFloor; // sprite for middle floor (floor == 2)
+    [SerializeField] private Sprite topFloor; // sprite for top floor (floor == 3)
+    [SerializeField] private Sprite roofFloor; // sprite for roof floor (floor == 4)
 
-    Sprite floorSprite; // our current floor sprite to flash
+    private Sprite floorSprite; // our current floor sprite to flash
 
-    public GameObject floor; // the floor gameobject we flash
+    [SerializeField] private GameObject floor; // the floor gameobject we flash
 
-    int prevmaxhealth = 0; // our max health last frame
-    int prevhealth = 0; // our health last frame
+    private int prevmaxhealth = 0; // our max health last frame
+    private int prevhealth = 0; // our health last frame
 
-    int health = 0; // our health
-    int maxhealth = 0; // our max health
+    private int health = 0; // our health
+    private int maxhealth = 0; // our max health
 
-    float floorTimer = 0f; // we'll increment this value several times
-    const float floorFlashTime = 1f; // after this ammount of seconds we'll flash the sprite renderer
+    private float floorTimer = 0f; // we'll increment this value several times
+    private const float floorFlashTime = 1f; // after this ammount of seconds we'll flash the sprite renderer
 
-    healthManager healthManager; // health manager variable, we need to be able to actually get our health
-    
+    private healthManager healthManager; // health manager variable, we need to be able to actually get our health
+
     #endregion
-    
+
     #region Default Methods
-    
+
     void Start()
     {
         // find the health manager by first finding the player and then getting the healthManager component
