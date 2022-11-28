@@ -11,7 +11,7 @@ public class DamageColliders : MonoBehaviour
     public bool DamagePlayer = true, DamageEnemies = true;
     Collider2D[] allOverlappingColliders;
 
-    public void Awake()
+    public void Start()
     {
         if (TryGetComponent(out BoxCollider2D boxCollider))
         {
