@@ -98,12 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54ef323a215c184f8bda8d4c90b6454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: Roeth the destroyer
+  npcName: Grug the Demolitionist
   hangTime: 4
   roomEnterDialog:
-  - hello weary traveler. hows it hangin?
+  - 'hello weary traveler. hows it hangin?
+
+    Please, have some of my bombs, free
+    of charge.'
   interactDialog:
-  - CHANGEME
+  - you may take as many of my bombs as needed
   attackDialog:
   - CHANGEME
 --- !u!61 &1941187099590167523
