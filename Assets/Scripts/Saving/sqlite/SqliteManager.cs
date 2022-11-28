@@ -87,12 +87,12 @@ public class SqliteManager : MonoBehaviour
 
     public IDbConnection CreateAndOpenDatabase(string saveName)
     {
-        if (!Directory.Exists(Application.dataPath + "/Saves/"))
+        if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
         {
-            Directory.CreateDirectory(Application.dataPath + "/Saves/");
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
         }
 
-        string dataBase = "URI=file:" + Application.dataPath + "/Saves/" + saveName + ".sqlite"; // we call it saves.sqlite
+        string dataBase = "URI=file:" + Application.streamingAssetsPath + "/Saves/" + saveName + ".sqlite"; // we call it saves.sqlite
         IDbConnection dbConnection = new SqliteConnection(dataBase); // connection to our database
         dbConnection.Open(); // open our database
 
