@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Grass_50
+  m_Name: WaterTransition_4
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1306137694696396013, guid: ec159ed04c38cb746946d6faa59df92c, type: 3}
+  m_Sprite: {fileID: -400885283, guid: 267568770a3418249bcab43e7080593f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
