@@ -27,6 +27,12 @@ public class SqliteManager : MonoBehaviour
         savesManager = FindObjectOfType<SavesManager>(); //assign the saves manager
         player = GameObject.Find("player"); // grab out player
         healthManager = player.GetComponent<healthManager>(); // get our health manager
+
+        // deal with the saves directory existing or not
+        if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
+        {
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
+        }
     }
     
     #endregion
@@ -87,11 +93,6 @@ public class SqliteManager : MonoBehaviour
 
     public IDbConnection CreateAndOpenDatabase(string saveName)
     {
-        if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
-        {
-            Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
-        }
-
         string dataBase = "URI=file:" + Application.streamingAssetsPath + "/Saves/" + saveName + ".sqlite"; // we call it saves.sqlite
         IDbConnection dbConnection = new SqliteConnection(dataBase); // connection to our database
         dbConnection.Open(); // open our database
