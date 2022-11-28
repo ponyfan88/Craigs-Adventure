@@ -1,8 +1,8 @@
 /*
  * Programmers: Jack Kennedy
- * Purpose: saves data to JSON files
- * Inputs: player stats, existing JSON files
- * Outputs: saves to JSON files
+ * Purpose: to interact with sqlite
+ * Inputs: calls to methods here
+ * Outputs: saves to our database
  */
 
 using Mono.Data.Sqlite;
@@ -41,30 +41,9 @@ public class SqliteManager : MonoBehaviour
         // JSON data from our file we get by reading the entire file
         string json = File.ReadAllText(saveFile);
 
-        // by default we'll assume we can load this save
-        bool canLoad = true;
-
-        try // we'll try to load this save as a new save, if the objects dont match it will throw an exception
-        {
-            // this is just a dummy so i use _
-            Save _ = JsonUtility.FromJson<Save>(json);
-        }
-        catch // if we get to this block, it means there was an unrecoverable version mismatch.
-        {
-            // record that we CANNOT load this save
-            canLoad = false;
-        }
-
-        if (canLoad) // this means we've passed our checks
-        {
-            savesManager.currentSave = JsonUtility.FromJson<Save>(json);
-        }
-        else
-        {
-            // this will later be changed to proper code where we tell the user this
-            
-            Debug.Log("Save version mismatch, the save is considered unloadable.");
-        }
+        // its as easy as this, we just have FromJson<Save> do all the heavy listing,
+        // taking our JSON data and converting it to type Save
+        savesManager.currentSave = JsonUtility.FromJson<Save>(json);
     }
 
     public void Write(string saveName)
