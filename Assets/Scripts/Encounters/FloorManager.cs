@@ -17,12 +17,19 @@ public class FloorManager : MonoBehaviour
 
     public static bool loadSaveOverride = false;
 
+    public bool testBoss = false;
+
     #endregion
 
     #region Default Methods
 
     public void Start()
     {
+        if (testBoss)
+        {
+            floor = 4;
+        }
+
         loadSaveOverride = false;
 
         // get every saving object
