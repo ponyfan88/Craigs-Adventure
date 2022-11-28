@@ -98,10 +98,6 @@ public class SavesManager : MonoBehaviour
             
             try // try to delete the file. this only works if we havent saved the file this session
             {
-                // unity editor has a habit of not letting go of files, this fixes that
-                #if UNITY_EDITOR
-                UnityEditor.AssetDatabase.Refresh();
-                #endif
                 saves[0].Delete();
                 LogToFile.Log("deleted file.");
             }
