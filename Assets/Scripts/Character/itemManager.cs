@@ -134,11 +134,10 @@ public class itemManager : MonoBehaviour
 
     #region Custom Methods
 
-    // This class is called by all items that are in range of the player, and sees if it is the closest object
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: called by all items that are in range of the player, and sees if it is the closest object
+     * inputs: all items within range of pickup
+     * outputs: which item is closest
      */
     public void SelectedPickup(GameObject item, Vector2 Dist)
     {

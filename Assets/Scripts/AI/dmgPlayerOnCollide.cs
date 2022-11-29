@@ -47,9 +47,9 @@ public class dmgPlayerOnCollide : MonoBehaviour
     #region Custom Methods
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Toggle if the ai can move
+     * inputs: none
+     * outputs: if the ai can move
      */
     private void ToggleAI() // toggle ai's ability to move
     {

@@ -115,9 +115,9 @@ public class Attack : MonoBehaviour
     #region Custom Methods
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Stop the attack after specified time
+     * inputs: when to stop attacking
+     * outputs: stops the attack
      */
     void DisableAttack() // used to disable the attack hitbox after specified time
     {
