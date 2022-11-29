@@ -15,8 +15,8 @@ public class PointToEnd : MonoBehaviour
 
     private float direction = 0f;
 
-    private gameObject player;
-    private gameObject endRoom;
+    private GameObject player;
+    private GameObject endRoom;
 
     #endregion
 
