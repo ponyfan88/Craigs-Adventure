@@ -61,7 +61,7 @@ public class GenericNPC : MonoBehaviour
 
         thisNpc = new NPC(); // we are class npc
 
-        thisNpc.Name = name; // we have a name
+        thisNpc.Name = npcName; // we have a name
 
         thisNpc.InteractRange = interactRange; // a range we can be touched
 
