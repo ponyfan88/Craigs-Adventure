@@ -4,7 +4,9 @@
  * Inputs: 
  * Outputs: animation starting or stoping
  */
+
 using UnityEngine;
+
 //IMPORTANT MAKE SURE ALL Animators that have this script use the name "on" the name of the boolean
 public class AnimationManager : MonoBehaviour
 {

@@ -7,7 +7,6 @@
 
 using UnityEngine;
 using System.IO;
-using save;
 
 public class SavesManager : MonoBehaviour
 {
@@ -48,16 +47,16 @@ public class SavesManager : MonoBehaviour
         // grab variable things
         sqliteManager = GetComponent<SqliteManager>();
         pause = FindObjectOfType<Pause>();
-
-        if (!Directory.Exists(Application.dataPath + "/Saves/"))
+        
+        if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
         {
-            Directory.CreateDirectory(Application.dataPath + "/Saves/");
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
 
             savesCount = 0;
         }
         else
         {
-            DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .sqlite files
+            DirectoryInfo savesFolder = new DirectoryInfo(Application.streamingAssetsPath + "/Saves/"); // get the saves folder and scan it for .sqlite files
             FileInfo[] saves = savesFolder.GetFiles("*.sqlite");
             savesCount = saves.Length;
         }
@@ -84,12 +83,12 @@ public class SavesManager : MonoBehaviour
 
         // to explain these next few lines: if a save exists with the same name as one we are deleting, delete that save.
 
-        if (!Directory.Exists(Application.dataPath + "/Saves/"))
+        if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
         {
-            Directory.CreateDirectory(Application.dataPath + "/Saves/");
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
         }
 
-        DirectoryInfo savesFolder = new DirectoryInfo(Application.dataPath + "/Saves/"); // get the saves folder and scan it for .jsave files
+        DirectoryInfo savesFolder = new DirectoryInfo(Application.streamingAssetsPath + "/Saves/"); // get the saves folder and scan it for .jsave files
         FileInfo[] saves = savesFolder.GetFiles(saveName + ".sqlite");
 
         if (saves.Length > 0) // this means that we found a file with the same name

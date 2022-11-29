@@ -27,11 +27,12 @@ public class ProjectileManager : MonoBehaviour
 
     #region Custom Methods
 
+    /*
+     * Purpose: reuse projectile to prevent a memory leak
+     * Inputs: name of projectile to look for
+     * Outputs: projectile spawner
+     */
     public static GameObject GetBulletFromPool(string name)
-/* Purpose: reuse projectile to prevent a memory leak
- * Inputs: name of projectile to look for
- * Outputs: projectile spawner
- */
     { 
         for (int i = 0; i < bullets.Count; ++i)
         {
