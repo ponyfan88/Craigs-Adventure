@@ -26,9 +26,8 @@ public class ProjectileManager : MonoBehaviour
     #endregion
 
     #region Custom Methods
-
-    /*
-     * Purpose: reuse projectile to prevent a memory leak
+    
+    /* Purpose: reuse projectile to prevent a memory leak
      * Inputs: name of projectile to look for
      * Outputs: projectile spawner
      */
