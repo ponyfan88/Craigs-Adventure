@@ -5,8 +5,6 @@
  * Outputs: a large health bar on screen
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PointToEnd : MonoBehaviour
