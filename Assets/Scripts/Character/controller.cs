@@ -12,11 +12,13 @@ public class controller : MonoBehaviour
 {
     #region Variables
 
-    public float xMov, yMov, dashMoveCooldown, speed = 6f;
+    public float dashMoveCooldown, speed = 6f;
+    [NonSerialized] public float xMov, yMov;
     [SerializeField] float dashDuration, dashVelocity, dashCooldown;
     float dashCooldownTimer, dashDurationTimer, knockbackTime;
-    public Vector2 finalVelocity, moveDirection = new Vector2(1, 0), knockbackVelocity;
-    public bool canMove = true, isDashing = false;
+    [NonSerialized]public Vector2 finalVelocity, moveDirection = new Vector2(1, 0);
+    Vector2 knockbackVelocity;
+    [NonSerialized] public bool canMove = true, isDashing = false;
     Rigidbody2D rb;
     SoundManager soundManager;
     TrailRenderer dashParticle;
@@ -109,9 +111,9 @@ public class controller : MonoBehaviour
     #region Custom Methods
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Apply Knockback to the player via the the effectors position
+     * inputs: position
+     * outputs: knockback direction
      */
     public void ApplyKnockback(Vector2 collisionPos) // this method is used for knocking back the player based on the objects position; mainly for colliding with enemies
     {
@@ -119,11 +121,11 @@ public class controller : MonoBehaviour
         knockbackVelocity = new Vector2(Mathf.Round(transform.position.x - collisionPos.x) * 20, Mathf.Round(transform.position.y - collisionPos.y) * 20);
         knockbackTime = Time.time + 0.15f; // sets the knockbackTime to last for .15 of a second
     }
-    
+
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Apply Knockback to the player via the the effectors rotation
+     * inputs: rotation
+     * outputs: knockback direction
      */
     public void ApplyKnockback(float bulletRotation) // this method is for knocking back the player based on the objects rotation; used for bullets
     {

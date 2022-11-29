@@ -20,6 +20,13 @@ public class healthManager : MonoBehaviour
     EffectsManager effectsManager;
     SavesManager savesManager;
 
+    // enum to decide what should happen if an object were to die.
+    public enum DestroyEvent { destroy, summonProjectile };
+    public DestroyEvent destroyEvent = DestroyEvent.destroy;
+    // enum to decide what should happen if an object were damaged.
+    public enum DamagedEvent { nothing, displayParticle };
+    public DamagedEvent damagedEvent = DamagedEvent.nothing;
+
     #endregion
 
     #region Default Methods
@@ -45,12 +52,10 @@ public class healthManager : MonoBehaviour
 
     #region Custom Methods
 
-    // inputs damage taken, and whether or not to ignore invulnerabilityTimer
-    // also allows you to output a bool when calling this function, which will tell you if the object took damage, or ignored it due to invulnerability.
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Allow for other scripts to damage an object by a set amount
+     * inputs: damage taken, and whether or not to ignore invulnerabilityTimer
+     * outputs: a bool to say if the enemy was damaged, and the damage itself
      */
     public bool TakeDamage(int damage, bool ignoreInvulnerable = false)
     {
@@ -63,7 +68,7 @@ public class healthManager : MonoBehaviour
 
             if (gameObject.name == "player") // if its the player
             {
-                LogToFile.Log("Player took damage " + damage.ToString());
+                LogToFile.Log("Player took damage " + damage);
 
                 //flash
                 effectsManager.addEffect(gameObject, GlobalFX.effect.flashTransparent, 1, new Color(1f, 1f, 1f, 1f), 1, 3);
@@ -95,9 +100,9 @@ public class healthManager : MonoBehaviour
                     {
                         // anything here is an enemy / not the player
                         // For now we just kill the object.
-                        Destroy(this.gameObject);
+                        Destroy(gameObject);
 
-                        LogToFile.Log("killed " + this.gameObject.ToString());
+                        LogToFile.Log("killed " + gameObject);
                     }
             }
             return true; // tell the function the object took damage
@@ -106,25 +111,25 @@ public class healthManager : MonoBehaviour
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Allow for other scripts to heal an object by a set amount
+     * inputs: value
+     * outputs: health with added value
      */
     public void Heal(int healAmount) // inputs amount to heal
     {
         health += healAmount;
-        LogToFile.Log("healed player by " + healAmount.ToString());
+        LogToFile.Log("healed " + gameObject + " by " + healAmount.ToString());
         if (health > maxHealth) // to prevent an "overheal" situation, if our health is over the maxhealth we set it back to maxhealth.
         {
             health = maxHealth;
-            LogToFile.Log("player was overhealed, set health to " + health.ToString());
+            LogToFile.Log(gameObject + " was overhealed, set health to " + health.ToString());
         }
     }
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Allow for other scripts to set the health of an object to a set value
+     * inputs: value
+     * outputs: health as value
      */
     public void SetHealth(int setAmount) 
     {
