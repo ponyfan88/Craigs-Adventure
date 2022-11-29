@@ -93,13 +93,13 @@ public class Attack : MonoBehaviour
         if (hitBox.IsTouching(collision)) // makes sure the collision occurs from the attack hitbox, and not the players normal collision hitbox
         {
             // tries to get the collisions health component
-            bool hasHealth = collision.gameObject.TryGetComponent<healthManager>(out healthManager enemyHealth);
+            bool hasHealth = collision.gameObject.TryGetComponent(out healthManager enemyHealth);
 
             if (hasHealth) if (enemyHealth.takePlayerDamage) // if object has health and is marked to be damaged by the player
             {
                 bool tookDamage = enemyHealth.TakeDamage(attackDamage); // deals damage
 
-                bool isEnemy = collision.gameObject.TryGetComponent<AIManager>(out EnemyAImanager);
+                bool isEnemy = collision.gameObject.TryGetComponent(out AIManager EnemyAImanager);
                 
                 if (tookDamage && isEnemy) 
                 {

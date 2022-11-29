@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class SavesManager : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class SavesManager : MonoBehaviour
     public Save currentSave = new Save(); // our save. see save.cs for this classes info. it's in the same directory.
     
     SqliteManager sqliteManager;
-    Pause pause;
 
     #endregion
 
@@ -46,7 +46,6 @@ public class SavesManager : MonoBehaviour
 
         // grab variable things
         sqliteManager = GetComponent<SqliteManager>();
-        pause = FindObjectOfType<Pause>();
         
         if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
         {
@@ -129,7 +128,10 @@ public class SavesManager : MonoBehaviour
         loadingSave = true; // we are now loading the save
 
         // loading save is saved between restarts, so its okay to restart our game
-        pause.RestartGame(); // restart our game
+        Time.timeScale = 1f; // set our timescale to 1, resuming the game
+
+        // since loadingsave is kept after we reload we can actually save this
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reload the current active scene
     }
 
     #endregion

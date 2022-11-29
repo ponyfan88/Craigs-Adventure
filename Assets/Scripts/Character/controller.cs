@@ -4,7 +4,6 @@
  * Inputs: controller / keyboard inputs
  * Outputs: Velocity and moves object
  */
-
 using System;
 using UnityEngine;
 
@@ -15,8 +14,8 @@ public class controller : MonoBehaviour
     public float dashMoveCooldown, speed = 6f;
     [NonSerialized] public float xMov, yMov;
     [SerializeField] float dashDuration, dashVelocity, dashCooldown;
-    float dashCooldownTimer, dashDurationTimer, knockbackTime;
-    [NonSerialized]public Vector2 finalVelocity, moveDirection = new Vector2(1, 0);
+    float dashCooldownTimer, dashDurationTimer, knockbackTime = 0;
+    [NonSerialized]public Vector2 moveDirection = new Vector2(1, 0);
     Vector2 knockbackVelocity;
     [NonSerialized] public bool canMove = true, isDashing = false;
     Rigidbody2D rb;
@@ -33,10 +32,7 @@ public class controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // gets rigidbody
         dashParticle = GameObject.Find("Dash").GetComponent<TrailRenderer>(); // gets the trail renderer for dashing
         soundManager = FindObjectOfType<SoundManager>(); // gets the soundManager
-
-        knockbackTime = 0; // setting to a default value to avoid nulls and errors
-        
-        savesManager = FindObjectOfType<SavesManager>();
+        savesManager = FindObjectOfType<SavesManager>(); // gets the savesManager for loading data to the character
 
         if (savesManager.loadingSave)
         {
@@ -58,7 +54,6 @@ public class controller : MonoBehaviour
         // if we cant move we skip most of the script
         if (canMove && dashMoveCooldown < Time.time && !Pause.paused)
         {
-            finalVelocity = new Vector2(0, 0); // resets velocities
             // calculates inputs via unity input manager
             xMov = Input.GetAxis("Horizontal");
             yMov = Input.GetAxis("Vertical");
@@ -84,8 +79,7 @@ public class controller : MonoBehaviour
             {
                 moveDirection = new Vector2(Math.Sign(xMov), Math.Sign(yMov)); // calculate movement direction
                 // calculate the velocity of our movement
-                finalVelocity = new Vector2(transform.position.x + xMov * speed * Time.fixedDeltaTime, transform.position.y + yMov * speed * Time.fixedDeltaTime);
-                rb.MovePosition(finalVelocity); // apply the movement velocity
+                rb.MovePosition(new Vector2(transform.position.x + xMov * speed * Time.fixedDeltaTime, transform.position.y + yMov * speed * Time.fixedDeltaTime)); // apply the movement velocity
             }
         }
         else if (Time.time < dashDurationTimer)

@@ -11,10 +11,10 @@ public class GenericNPC : MonoBehaviour
 {
     #region Variables
 
-    public NPC thisNpc;
+    private NPC thisNpc;
 
     // name for our npc (eg: "jack")
-    public string npcName = "Grug";
+    [SerializeField] private string npcName = "Grug";
 
     // interact range for our npc
     private const float interactRange = 2.5f;
@@ -24,23 +24,23 @@ public class GenericNPC : MonoBehaviour
 
     // dialog that plays when we enter the room
     [TextArea(1, 5)]
-    public string[] roomEnterDialog = { "CHANGEME" };
+    [SerializeField] private string[] roomEnterDialog = { "CHANGEME" };
 
     // dialog that plays when we interact with this npc
     [TextArea(1, 5)]
-    public string[] interactDialog = { "CHANGEME" };
+    [SerializeField] private string[] interactDialog = { "CHANGEME" };
 
     // dialog that plays when we hurt this npc
     [TextArea(1, 5)]
-    public string[] attackDialog = { "CHANGEME" };
+    [SerializeField] private string[] attackDialog = { "CHANGEME" };
 
     private float timer = 0f;
 
-    private bool startTimer;
+    private bool startTimer; // if we've started our timer
 
-    DialogManager dialogManager;
+    private DialogManager dialogManager;
 
-    Transform playerPos;
+    private Transform playerPos;
 
     private bool currentlyTalking = false;
 
@@ -61,7 +61,7 @@ public class GenericNPC : MonoBehaviour
 
         thisNpc = new NPC(); // we are class npc
 
-        thisNpc.Name = name; // we have a name
+        thisNpc.Name = npcName; // we have a name
 
         thisNpc.InteractRange = interactRange; // a range we can be touched
 
@@ -76,7 +76,7 @@ public class GenericNPC : MonoBehaviour
     private void Update()
     {
         // distance to player
-        distance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(playerPos.position.x - transform.position.x), 2) + Mathf.Pow(Mathf.Abs(playerPos.position.y - transform.position.y), 2));
+        distance = JMath.Distance(playerPos.position, transform.position);
 
         // if the distance from the player is within the interact range and we arent currently talking
         if (distance <= interactRange && !currentlyTalking)

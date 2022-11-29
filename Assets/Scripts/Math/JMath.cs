@@ -172,4 +172,11 @@ public static class JMath
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
     }
+    
+    // see above; overload for transforms
+    public static float Distance(Transform a, Transform b)
+    {
+        // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
+        return (float)Math.Sqrt(Math.Pow(a.position.x - b.position.x, 2) + Math.Pow(a.position.y - b.position.y, 2));
+    }
 }
