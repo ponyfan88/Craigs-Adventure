@@ -6,7 +6,7 @@
  */
 
 using System;
-using UnityEngine; // unused
+using UnityEngine;
 
 public static class JMath
 {
