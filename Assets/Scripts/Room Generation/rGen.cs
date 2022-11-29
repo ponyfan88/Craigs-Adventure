@@ -193,23 +193,27 @@ public class rGen : MonoBehaviour
                 {
                     case 1:
                         //Spawn a BOTTOM door room
-                        rand = (byte)Random.Range(0, templates.bRooms.Length);
+                        rand = (byte)Random.Range(0, templates.bRooms.Count);
                         clone = Instantiate<GameObject>(templates.bRooms[rand], transform.position, templates.bRooms[rand].transform.rotation, grid.transform);
+                        templates.bRooms.RemoveAt(rand);
                         break;
                     case 2:
                         //Spawn a TOP door room
-                        rand = (byte)Random.Range(0, templates.tRooms.Length);
+                        rand = (byte)Random.Range(0, templates.tRooms.Count);
                         clone = Instantiate<GameObject>(templates.tRooms[rand], transform.position, templates.tRooms[rand].transform.rotation, grid.transform);
+                        templates.tRooms.RemoveAt(rand);
                         break;
                     case 3:
                         //Spawn a LEFT door room
-                        rand = (byte)Random.Range(0, templates.lRooms.Length);
+                        rand = (byte)Random.Range(0, templates.lRooms.Count);
                         clone = Instantiate<GameObject>(templates.lRooms[rand], transform.position, templates.lRooms[rand].transform.rotation, grid.transform);
+                        templates.lRooms.RemoveAt(rand);
                         break;
                     case 4:
                         //Spawn a RIGHT door room
-                        rand = (byte)Random.Range(0, templates.rRooms.Length);
+                        rand = (byte)Random.Range(0, templates.rRooms.Count);
                         clone = Instantiate<GameObject>(templates.rRooms[rand], transform.position, templates.rRooms[rand].transform.rotation, grid.transform);
+                        templates.rRooms.RemoveAt(rand);
                         break;
                     default:
                         clone = gameObject; //never happens, but code complains if clone is never set
