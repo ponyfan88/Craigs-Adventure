@@ -12,6 +12,11 @@ public class DestroyOnImpact : MonoBehaviour
     // enum to decide what should happen if an object were to explode.
     public enum DestroyType { destroy, summonProjectile };
     public DestroyType destroyType = DestroyType.destroy;
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        OnTriggerStay2D(collision.collider);
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (enabled) // run nothing if disabled

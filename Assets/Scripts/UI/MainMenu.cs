@@ -52,6 +52,9 @@ public class MainMenu : MonoBehaviour
 
         // the game has no longer ended
         Pause.ended = false;
+        
+        savesManager = FindObjectOfType<SavesManager>(); // assign the saves manager
+        savesManager.loadingSave = false; // we are no longer loading a save.
 
         SceneManager.LoadScene("Scenes/Game"); // load the game
     }
