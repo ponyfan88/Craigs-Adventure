@@ -5451,7 +5451,7 @@ GameObject:
   - component: {fileID: 5017116569731416978}
   m_Layer: 0
   m_Name: bBossRoom
-  m_TagString: Untagged
+  m_TagString: End Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
