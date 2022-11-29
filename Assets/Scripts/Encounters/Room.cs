@@ -26,7 +26,7 @@ public class Room : MonoBehaviour
     bool enemiesSpawned = false;
 
     //% chance for an enemy not to spawn --- 1/x chance to fail, so 10 is 10%, 20 is 5%, etc.
-    private const int FAILSPAWN_CHANCE = 10;
+    private const int FAILSPAWN_CHANCE = 8;
 
     #endregion
 
