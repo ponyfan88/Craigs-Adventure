@@ -167,7 +167,7 @@ public static class JMath
      * inputs: two specified vector2's
      * outputs: a float to specify the distance
      */
-    public static float Distance(Vector2 a, Vector2 b)
+    public static float Distance(Vector3 a, Vector3 b)
     {
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
@@ -178,5 +178,12 @@ public static class JMath
     {
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.position.x - b.position.x, 2) + Math.Pow(a.position.y - b.position.y, 2));
+    }
+
+    // see above; overload for gameObjects
+    public static float Distance(GameObject a, GameObject b)
+    {
+        // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
+        return (float)Math.Sqrt(Math.Pow(a.transform.position.x - b.transform.position.x, 2) + Math.Pow(a.transform.position.y - b.transform.position.y, 2));
     }
 }
