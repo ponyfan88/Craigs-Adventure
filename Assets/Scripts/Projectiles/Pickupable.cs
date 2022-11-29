@@ -43,7 +43,7 @@ public class Pickupable : MonoBehaviour
     {
         if (canBeGrabbed) // canBeGrabbed can be manually changed or changed by other scripts
         {
-            Distance = new Vector2(Mathf.Abs(playerPos.position.x - transform.position.x),Mathf.Abs(playerPos.position.y - transform.position.y)); // finds the distance from the player
+            Distance = Jmath.Distance(playerPos.position.x, transform.position.x); // finds the distance from the player
             if (Distance.x <= 1 && Distance.y <= 1) // if the distance from the player is within the pickup radius (1)
             {
                 // feed the objects information and position into the players item manager to determine if it is the closest object to the player
