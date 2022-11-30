@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-public class Pickupable : MonoBehaviour
+public class Item : MonoBehaviour
 {
     #region Variables
 
@@ -19,6 +19,8 @@ public class Pickupable : MonoBehaviour
     GameObject player;
     public float throwVelocity = 0.1f;
     public bool canBeGrabbed = true, hasCollision = false;
+
+    
 
     #endregion
 

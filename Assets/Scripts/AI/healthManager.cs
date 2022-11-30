@@ -76,7 +76,7 @@ public class healthManager : MonoBehaviour
 
                 soundManager.Play("Hurt"); // play the hurt sound
             }
-            else if (!gameObject.TryGetComponent(out Pickupable pickup)) // not the player or a throwable item
+            else if (!gameObject.TryGetComponent(out Item item)) // not the player or a throwable item
             {
                 //flash
                 effectsManager.addEffect(gameObject, GlobalFX.effect.flash, 1, new Color(1f, 0f, 0f, 1f), 1, 3);
