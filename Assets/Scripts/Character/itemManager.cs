@@ -16,7 +16,8 @@ public class itemManager : MonoBehaviour
     public GameObject selectedItem;
     controller controller;
     Attack attack;
-    float ItemDistance;
+    Item itemScript;
+    float ItemDistance; // no initial value needed: b/c selectedItem is null the script will run as intended
     public Vector2 itemPosOffset, currentPosOffset; 
     public bool holdingItem = false;
     bool doingItemAction = false;
@@ -52,7 +53,6 @@ public class itemManager : MonoBehaviour
         controller = GetComponent<controller>();
         attack = GetComponent<Attack>();
         spritelibrary = GetComponent<SpriteLibrary>();
-        ItemDistance = 0;
         selectedItem = null;
 
         // Sets the intital pos offset
@@ -82,7 +82,7 @@ public class itemManager : MonoBehaviour
             if (!holdingItem && selectedItem != null) // we are not holding the object, and need to grab it
             {
                 selectedItem.transform.SetParent(transform);
-                currentPosOffset = itemPosOffset + selectedItem.GetComponent<Pickupable>().holdingOffset;
+                currentPosOffset = itemPosOffset + itemScript.holdingOffset;
                 selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
 
                 holdingItem = true;
@@ -91,15 +91,15 @@ public class itemManager : MonoBehaviour
             }
             else if (holdingItem)  // we are holding the object, and need to throw it
             {
-                if (selectedItem.GetComponent<Pickupable>().hasCollision)
-                    selectedItem.GetComponent<Pickupable>().collisionScript.enabled = true;
+                if (itemScript.hasCollision)
+                    itemScript.collisionScript.enabled = true;
 
                 selectedItem.transform.position = transform.position;
                 selectedItem.transform.SetParent(null);
                 thrownItemProperties thrownItem;
                 thrownItem.item = selectedItem;
                 thrownItem.start = (Vector2)selectedItem.transform.position;
-                thrownItem.destination = (Vector2)selectedItem.transform.position + (controller.moveDirection * selectedItem.GetComponent<Pickupable>().throwVelocity);
+                thrownItem.destination = (Vector2)selectedItem.transform.position + (controller.moveDirection * itemScript.throwVelocity);
                 thrownItem.timeStarted = Time.fixedTime;
                 thrownItems.Add(thrownItem);
 
@@ -153,6 +153,7 @@ public class itemManager : MonoBehaviour
                 selectedItem = item;
                 ItemDistance = Dist;
                 selectedItem.GetComponent<SpriteRenderer>().material = matSelected;
+                itemScript = selectedItem.GetComponent<Item>();
             }
             else if (selectedItem == item) ItemDistance = Dist; // makes sure the currently selected objects information is up to date
            
@@ -161,9 +162,9 @@ public class itemManager : MonoBehaviour
     }
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Stop item throwing velocity
+     * inputs: if the item detects collision, it calls this
+     * outputs: removes item from array
      */
     public void CollideItem(GameObject item)
     {
@@ -175,16 +176,18 @@ public class itemManager : MonoBehaviour
                 // dont move it any more; remove it from our list
                 thrownItems.Remove(thrownItems[i]);
 
-                if (selectedItem != null && selectedItem.GetComponent<Pickupable>().hasCollision)
-                    selectedItem.GetComponent<Pickupable>().collisionScript.enabled = false;
+                if (selectedItem != null && itemScript.hasCollision)
+                {
+                    itemScript.collisionScript.enabled = false;
+                }
             }
         }
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: flip the position of the item if the character flips their rotation
+     * inputs: player rotation
+     * outputs: item position
      */
     public void FlipObject(bool facingRight)
     {
