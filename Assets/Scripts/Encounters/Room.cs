@@ -25,6 +25,9 @@ public class Room : MonoBehaviour
     private GenericNPC[] npcs;
     bool enemiesSpawned = false;
 
+    //% chance for an enemy not to spawn --- 1/x chance to fail, so 10 is 10%, 20 is 5%, etc.
+    private const int FAILSPAWN_CHANCE = 8;
+
     #endregion
 
     #region Default Methods
@@ -56,7 +59,20 @@ public class Room : MonoBehaviour
                 // for every enemy that is a child of room child, spawn them in
                 foreach (SpawnEnemy spawn in enemySpawns)
                 {
-                    spawn.Spawn(transform.parent);
+                    // a number between 0 and 9
+                    int a = (int)Random.Range(0, FAILSPAWN_CHANCE);
+
+                    // if the number is 0 dont spawn the enemy (10% chance not to spawn)
+                    if (a != 0)
+                    {
+                        // spawn 90% of the time
+                        spawn.Spawn(transform.parent);
+                    }
+                    else
+                    {
+                        // log that we didnt spawn an enemy
+                        LogToFile.Log("enemy did not spawn due to random chance");
+                    }
                 }
             }
 

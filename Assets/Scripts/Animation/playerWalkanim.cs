@@ -79,7 +79,11 @@ public class playerWalkanim : StateMachineBehaviour
 
     #region Custom Methods
 
-    void FlipDir() // flips the characters sprite along the X axis
+    /* Purpose: Flip the direction the player is facing
+     * Inputs: direction the player is facing
+     * Outputs: opposite direction
+    */
+    void FlipDir()
     {
         // as long as we arent attacking
         if (!attack.isAttacking)

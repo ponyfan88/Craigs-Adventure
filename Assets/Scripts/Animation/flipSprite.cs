@@ -47,9 +47,9 @@ public class flipSprite : StateMachineBehaviour
     #region Custom Methods
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: flip the direction the sprite is facing
+     * inputs: sprites current rotation
+     * outputs: opposite rotation
      */
     private void Flip()
     {

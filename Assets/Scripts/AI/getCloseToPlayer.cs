@@ -1,4 +1,8 @@
-
+/* Programmer: Xander Mooney
+ * Purpose: Get the AI as close to the player as specified
+ * Inputs: ai and player position
+ * Outputs: when to stop moving 
+*/
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,13 +17,8 @@ public class getCloseToPlayer : StateMachineBehaviour
 
     #endregion
 
-    #region Custom Methods
+    #region Default Methods
 
-    /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
-     */
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.Find("player");
@@ -27,11 +26,6 @@ public class getCloseToPlayer : StateMachineBehaviour
         aiManager = animator.gameObject.GetComponent<AIManager>();
     }
 
-    /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
-     */
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Find the distance from the player

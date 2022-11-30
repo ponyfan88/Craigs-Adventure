@@ -17,7 +17,7 @@ public class itemManager : MonoBehaviour
     controller controller;
     Attack attack;
     Item itemScript;
-    Vector2 ItemDistance;
+    Vector2 ItemDistance; // no initial value needed: b/c selectedItem is null the script will run as intended
     public Vector2 itemPosOffset, currentPosOffset; 
     public bool holdingItem = false;
     bool doingItemAction = false;
@@ -53,7 +53,7 @@ public class itemManager : MonoBehaviour
         controller = GetComponent<controller>();
         attack = GetComponent<Attack>();
         spritelibrary = GetComponent<SpriteLibrary>();
-        ItemDistance = new Vector2(0,0);
+        selectedItem = null;
 
         // Sets the intital pos offset
         itemPosOffset = new Vector2(.45f, 0.395f);
@@ -140,11 +140,11 @@ public class itemManager : MonoBehaviour
      * inputs: all items within range of pickup
      * outputs: which item is closest
      */
-    public void SelectedPickup(GameObject item, Vector2 Dist)
+    public void SelectedPickup(GameObject item, float Dist)
     {
         if (!holdingItem) // only do this if we arent currently holding an item
         {
-            if (Dist.x + Dist.y < ItemDistance.x + ItemDistance.y || selectedItem == null) // If object is closer to player than previous
+            if (Dist < ItemDistance || selectedItem == null) // If object is closer to player than previous
             {
                 // deselect previous object shader
                 if (selectedItem != null)

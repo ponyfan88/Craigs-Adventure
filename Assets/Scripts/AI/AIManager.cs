@@ -47,9 +47,9 @@ public class AIManager : MonoBehaviour
     #region Custom Methods
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Apply knockback to the ai when called
+     * inputs: Direction attacked from (max 1, min -1)
+     * outputs: knockback direction
      */
     public void ApplyKnockback(Vector2 AttackDir)
     {
@@ -58,9 +58,9 @@ public class AIManager : MonoBehaviour
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Apply knockback to the ai when called
+     * inputs: transform of object dealing damage
+     * outputs: knockback direction
      */
     public void ApplyKnockback(Transform position)
     {
@@ -70,9 +70,9 @@ public class AIManager : MonoBehaviour
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Apply knockback to the ai when called
+     * inputs: rotation of object dealing damage
+     * outputs: knockback direction
      */
     public void ApplyKnockback(float bulletRotation)
     {

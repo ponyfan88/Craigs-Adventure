@@ -18,7 +18,7 @@ public class goToPlayer : StateMachineBehaviour
 
     #endregion
 
-    #region Custom Methods
+    #region Default Methods
     
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

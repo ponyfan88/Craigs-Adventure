@@ -68,12 +68,11 @@ public class ProjectileSpawner : MonoBehaviour
     #endregion
 
     #region Custom Methods
-
-    public float[] DistributeRotations()      {
 /* Purpose: evenly splits projectiles between the min and max rotation by the differnce between them
  * Inputs: bullet count, min and max rotation,
  * Outputs: SpawnBullets()  
  */
+    public float[] DistributeRotations()      {
         for (int i = 0; i < GetSpawnData().BulletCount; ++i) // for each bullet
         {
             float fraction = (float)i / (float)GetSpawnData().BulletCount; // fractional offset between our bullets (bullet 2/3, bullet 5/12, etc.)
@@ -83,11 +82,12 @@ public class ProjectileSpawner : MonoBehaviour
         }
         return rotations; // give back our rotations
     }
-    public GameObject[] SpawnBullets() 
 /* Spawn bullets
  * Inputs: DistributeRotations(), isRandom,
  * Outputs: Projectile.cs  
  */
+
+    public GameObject[] SpawnBullets() 
     {
         rotations = new float[GetSpawnData().BulletCount]; //set rotation to a list with the length of the BulletCount
         if (GetSpawnData().isRandom) RandomRotations();
@@ -128,11 +128,11 @@ public class ProjectileSpawner : MonoBehaviour
         }
         return spawnedBullets;
     }
-    public float[] RandomRotations()
 /* Purpose: randomize where bullets will show up
  * Inputs: bullet count, min max rotations
  * Outputs: spawn bullet
  */
+    public float[] RandomRotations()
  {
         for (int i = 0; i < GetSpawnData().BulletCount; ++i) // for every bullet
         {

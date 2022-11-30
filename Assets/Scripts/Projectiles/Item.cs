@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     Transform playerPos;
     itemManager itemMan;
     public DestroyOnImpact collisionScript;
-    Vector2 Distance;
+    float Distance;
     public Vector2 holdingOffset;
     GameObject player;
     public float throwVelocity = 0.1f;
@@ -45,8 +45,8 @@ public class Item : MonoBehaviour
     {
         if (canBeGrabbed) // canBeGrabbed can be manually changed or changed by other scripts
         {
-            Distance = new Vector2(Mathf.Abs(playerPos.position.x - transform.position.x),Mathf.Abs(playerPos.position.y - transform.position.y)); // finds the distance from the player
-            if (Distance.x <= 1 && Distance.y <= 1) // if the distance from the player is within the pickup radius (1)
+            Distance = JMath.Distance(playerPos.position, transform.position); // finds the distance from the player
+            if (Distance <= 1) // if the distance from the player is within the pickup radius (1)
             {
                 // feed the objects information and position into the players item manager to determine if it is the closest object to the player
                 itemMan.SelectedPickup(transform.gameObject, Distance);

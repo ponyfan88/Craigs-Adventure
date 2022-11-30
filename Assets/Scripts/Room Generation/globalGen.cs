@@ -85,7 +85,8 @@ public class globalGen : MonoBehaviour
         }
         rand = (byte)Random.Range(0, spawnList.Count); //decide a random room spawn point
         spawnList[rand].spawned = true; //set the specific spawnpoint to be "spawned" so it doesn't request a wall
-        Instantiate<GameObject>(template.Boss[spawnList[rand].openingDirection - 1], spawnList[rand].transform.position, template.Boss[spawnList[rand].openingDirection - 1].transform.rotation, gameObject.transform);
+        GameObject endRoom = Instantiate(template.Boss[spawnList[rand].openingDirection - 1], spawnList[rand].transform.position, template.Boss[spawnList[rand].openingDirection - 1].transform.rotation, gameObject.transform);
+        endRoom.tag = "End Room";
     }
     private void genWalls() //adds walls to places walls should be
     {

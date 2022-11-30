@@ -88,13 +88,12 @@ public class Projectile : MonoBehaviour
     #endregion
 
     #region Custom Methods
-
-    public void ResetTimer()
-    {
 /* Purpose: reset our bullet so that it once again lives and breathes
  * Inputs: timer, lifetime
  * Outputs: projectile manager  
- */
+ */ 
+ public void ResetTimer()
+    {
         timer = lifetime;
     }
 
