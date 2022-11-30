@@ -13,7 +13,7 @@ public class itemManager : MonoBehaviour
 {
     #region Variables
 
-    public GameObject selectedItem;
+    public GameObject selectedItem = null;
     controller controller;
     Attack attack;
     Item itemScript;
@@ -53,7 +53,6 @@ public class itemManager : MonoBehaviour
         controller = GetComponent<controller>();
         attack = GetComponent<Attack>();
         spritelibrary = GetComponent<SpriteLibrary>();
-        selectedItem = null;
 
         // Sets the intital pos offset
         itemPosOffset = new Vector2(.45f, 0.395f);
