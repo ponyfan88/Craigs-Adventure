@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1dc76c18c1c71bf4683bad705a4e581e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,7 +105,6 @@ MonoBehaviour:
   rotation: 1
   lifetime: 2
   bulletPath: 0
-  onCollison: 0
   endlifeEffect: 0
   SpecialEffect: 0
 --- !u!58 &-1090057356632798949
@@ -139,6 +138,7 @@ MonoBehaviour:
   DamageAmount: 1
   playerOwned: 0
   destroyOnHitWall: 1
+  destroyType: 0
 --- !u!114 &6373692080663856557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +155,5 @@ MonoBehaviour:
   health: 1
   invulnerabilityTime: 0
   takePlayerDamage: 1
+  destroyEvent: 0
+  damagedEvent: 0
