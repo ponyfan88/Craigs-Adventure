@@ -82,7 +82,7 @@ public class itemManager : MonoBehaviour
             if (!holdingItem && selectedItem != null) // we are not holding the object, and need to grab it
             {
                 selectedItem.transform.SetParent(transform);
-                currentPosOffset = itemPosOffset + selectedItem.GetComponent<Item>().holdingOffset;
+                currentPosOffset = itemPosOffset + itemScript.holdingOffset;
                 selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
 
                 holdingItem = true;
@@ -91,15 +91,15 @@ public class itemManager : MonoBehaviour
             }
             else if (holdingItem)  // we are holding the object, and need to throw it
             {
-                if (selectedItem.GetComponent<Item>().hasCollision)
-                    selectedItem.GetComponent<Item>().collisionScript.enabled = true;
+                if (itemScript.hasCollision)
+                    itemScript.collisionScript.enabled = true;
 
                 selectedItem.transform.position = transform.position;
                 selectedItem.transform.SetParent(null);
                 thrownItemProperties thrownItem;
                 thrownItem.item = selectedItem;
                 thrownItem.start = (Vector2)selectedItem.transform.position;
-                thrownItem.destination = (Vector2)selectedItem.transform.position + (controller.moveDirection * selectedItem.GetComponent<Item>().throwVelocity);
+                thrownItem.destination = (Vector2)selectedItem.transform.position + (controller.moveDirection * itemScript.throwVelocity);
                 thrownItem.timeStarted = Time.fixedTime;
                 thrownItems.Add(thrownItem);
 
@@ -153,6 +153,7 @@ public class itemManager : MonoBehaviour
                 selectedItem = item;
                 ItemDistance = Dist;
                 selectedItem.GetComponent<SpriteRenderer>().material = matSelected;
+                itemScript = selectedItem.GetComponent<Item>();
             }
             else if (selectedItem == item) ItemDistance = Dist; // makes sure the currently selected objects information is up to date
            
@@ -174,8 +175,6 @@ public class itemManager : MonoBehaviour
             {
                 // dont move it any more; remove it from our list
                 thrownItems.Remove(thrownItems[i]);
-
-                itemScript = selectedItem.GetComponent<Item>();
 
                 if (selectedItem != null && itemScript.hasCollision)
                 {
