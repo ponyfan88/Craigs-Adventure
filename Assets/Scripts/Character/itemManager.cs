@@ -17,7 +17,7 @@ public class itemManager : MonoBehaviour
     controller controller;
     Attack attack;
     Item itemScript;
-    Vector2 ItemDistance; // no initial value needed: b/c selectedItem is null the script will run as intended
+    float ItemDistance; // no initial value needed: b/c selectedItem is null the script will run as intended
     public Vector2 itemPosOffset, currentPosOffset; 
     public bool holdingItem = false;
     bool doingItemAction = false;
