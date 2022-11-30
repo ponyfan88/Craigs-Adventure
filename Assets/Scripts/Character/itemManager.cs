@@ -16,7 +16,7 @@ public class itemManager : MonoBehaviour
     public GameObject selectedItem;
     controller controller;
     Attack attack;
-    Vector2 ItemDistance;
+    float ItemDistance;
     public Vector2 itemPosOffset, currentPosOffset; 
     public bool holdingItem = false;
     bool doingItemAction = false;
@@ -139,11 +139,11 @@ public class itemManager : MonoBehaviour
      * inputs: all items within range of pickup
      * outputs: which item is closest
      */
-    public void SelectedPickup(GameObject item, Vector2 Dist)
+    public void SelectedPickup(GameObject item, float Dist)
     {
         if (!holdingItem) // only do this if we arent currently holding an item
         {
-            if (Dist.x + Dist.y < ItemDistance.x + ItemDistance.y || selectedItem == null) // If object is closer to player than previous
+            if (Dist < ItemDistance || selectedItem == null) // If object is closer to player than previous
             {
                 // deselect previous object shader
                 if (selectedItem != null)
