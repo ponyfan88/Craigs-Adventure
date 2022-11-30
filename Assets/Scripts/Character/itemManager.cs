@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.U2D.Animation;
+using ItemEvents;
 
 public class itemManager : MonoBehaviour
 {
@@ -80,6 +81,11 @@ public class itemManager : MonoBehaviour
         {
             if (!holdingItem && selectedItem != null) // we are not holding the object, and need to grab it
             {
+             /*   switch (selectedItem.pickupEvent) 
+                {
+                    default:
+                        break;
+                } */
                 selectedItem.transform.SetParent(transform);
                 currentPosOffset = itemPosOffset + itemScript.holdingOffset;
                 selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
