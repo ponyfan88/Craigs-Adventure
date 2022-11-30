@@ -16,7 +16,7 @@ public class itemManager : MonoBehaviour
     public GameObject selectedItem;
     controller controller;
     Attack attack;
-    float ItemDistance;
+    float ItemDistance = 69420; // arbitrarily large number
     public Vector2 itemPosOffset, currentPosOffset; 
     public bool holdingItem = false;
     bool doingItemAction = false;
