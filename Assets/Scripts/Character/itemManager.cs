@@ -52,7 +52,8 @@ public class itemManager : MonoBehaviour
         controller = GetComponent<controller>();
         attack = GetComponent<Attack>();
         spritelibrary = GetComponent<SpriteLibrary>();
-        ItemDistance = new Vector2(0,0);
+        ItemDistance = 0;
+        selectedItem = null;
 
         // Sets the intital pos offset
         itemPosOffset = new Vector2(.45f, 0.395f);
