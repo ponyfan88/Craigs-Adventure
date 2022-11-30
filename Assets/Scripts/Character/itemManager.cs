@@ -8,12 +8,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.U2D.Animation;
+using ItemEvents;
 
 public class itemManager : MonoBehaviour
 {
     #region Variables
 
-    public GameObject selectedItem;
+    public GameObject selectedItem = null;
     controller controller;
     Attack attack;
     Item itemScript;
@@ -53,7 +54,6 @@ public class itemManager : MonoBehaviour
         controller = GetComponent<controller>();
         attack = GetComponent<Attack>();
         spritelibrary = GetComponent<SpriteLibrary>();
-        selectedItem = null;
 
         // Sets the intital pos offset
         itemPosOffset = new Vector2(.45f, 0.395f);
@@ -81,6 +81,11 @@ public class itemManager : MonoBehaviour
         {
             if (!holdingItem && selectedItem != null) // we are not holding the object, and need to grab it
             {
+             /*   switch (selectedItem.pickupEvent) 
+                {
+                    default:
+                        break;
+                } */
                 selectedItem.transform.SetParent(transform);
                 currentPosOffset = itemPosOffset + itemScript.holdingOffset;
                 selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
