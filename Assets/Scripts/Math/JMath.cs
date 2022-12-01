@@ -190,6 +190,13 @@ public static class JMath
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
     }
+
+    public static float Distance(Vector3 a, Vector3 b)
+    {
+        // c^2 + z^2 = s^2, meaning we need to do a^2 + b^2 to find c^2, and then include the z axis to find the hypotenuse in 3D space
+        float c = (float)(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
+        return (float)Math.Sqrt(c + Math.Pow(a.z - b.z, 2));
+    }    
     public static float Distance(Transform a, Transform b)
     {
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
