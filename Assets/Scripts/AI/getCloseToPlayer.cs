@@ -35,7 +35,7 @@ public class getCloseToPlayer : StateMachineBehaviour
         distance = JMath.Distance(animator.gameObject.transform.position, player.transform.position);
 
         // if within range, set the navMesh to not move and start attacking
-        if (distance < desiredDistance)
+        if (distance <= desiredDistance)
         {
             ai.destination = ai.transform.position;
             animator.SetBool("reachedLocation", true);
