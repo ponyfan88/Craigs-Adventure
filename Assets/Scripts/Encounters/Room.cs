@@ -76,16 +76,19 @@ public class Room : MonoBehaviour
                 }
             }
 
-            foreach (AnimationManager decoration in Decorations)// if there are any animated decoration this allows them to be enabled and disable if the player not in the room
+            // if there are any animated decoration this allows them to be enabled and disable if the player not in the room
+            foreach (AnimationManager decoration in Decorations)
             {
                 decoration.beginAnimation();
             }
 
+            // close every door in this room
             foreach (DoorManager door in doorManager)
             {
                 door.CloseDoors();
             }
 
+            // if theres an npc in this room, make them start talking
             foreach (GenericNPC npc in npcs)
             {
                 npc.EnterRoom();
@@ -97,14 +100,18 @@ public class Room : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision == playerHitbox) // the player has left the room
+        // if its the player that has left the room
+        if (collision == playerHitbox)
         {
             roomHider.SetActive(false); // hide our room hider
+            
+            // for every decoration, stop their animation, since the player wont be seeing them anyways
             foreach (AnimationManager decoration in Decorations)
             {
                 decoration.endAnimation();
             }
 
+            // for every npc run the exitroom method, stopping all dialogue
             foreach (GenericNPC npc in npcs)
             {
                 npc.ExitRoom();
@@ -114,16 +121,23 @@ public class Room : MonoBehaviour
 
     private void Update()
     {
+        // if our enemies have already spawned
         if (enemiesSpawned)
         {
+            // for every enemy
             foreach (SpawnEnemy spawn in enemySpawns)
             {
+                // check if the enemy is dead
                 if (spawn.enemy != null)
                 {
+                    // if it ISNT dead, stop this method
                     return;
                 }
             }
 
+            // otherwise, every enemy in this room is dead, so we can open the doors
+            
+            // for every door, open
             foreach (DoorManager door in doorManager)
             {
                 door.OpenDoors();
