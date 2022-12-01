@@ -81,18 +81,25 @@ public class itemManager : MonoBehaviour
         {
             if (!holdingItem && selectedItem != null) // we are not holding the object, and need to grab it
             {
-             /*   switch (selectedItem.pickupEvent) 
+                switch (itemScript.pickupEvent) 
                 {
+                    case PickupEvent.grab:
+                        // parent item to the player and set its specified position
+                        selectedItem.transform.SetParent(transform);
+                        currentPosOffset = itemPosOffset + itemScript.holdingOffset;
+                        selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
+                        
+                        holdingItem = true; // we are now holding an item
+                        spritelibrary.spriteLibraryAsset = holding; // make the player display as holding the item
+                        selectedItem.GetComponent<SpriteRenderer>().material = matUnSelected; // remove the highlight from the item
+                        break;
+                    case PickupEvent.heal:
+                        GetComponent<healthManager>().Heal(1);
+                        Destroy(selectedItem);
+                        break;
                     default:
                         break;
-                } */
-                selectedItem.transform.SetParent(transform);
-                currentPosOffset = itemPosOffset + itemScript.holdingOffset;
-                selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
-
-                holdingItem = true;
-                spritelibrary.spriteLibraryAsset = holding;
-                selectedItem.GetComponent<SpriteRenderer>().material = matUnSelected;
+                }
             }
             else if (holdingItem)  // we are holding the object, and need to throw it
             {
