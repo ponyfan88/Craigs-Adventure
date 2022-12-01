@@ -15,10 +15,13 @@ public class AIManager : MonoBehaviour
     
     // variable(s) to be accessed across all ai scripts
     public bool canMove = true;
+    [NonSerialized] public bool needDistance = false;
+    [NonSerialized] public float distance;
     [Range(0,6)] public float knockbackResistence = 0f;
     float knockbackTime = 0.0525f, knockbackTimer = 0f;
     Vector2 knockbackDir;
     NavMeshAgent ai;
+    GameObject player;
 
     #endregion
 
@@ -29,6 +32,8 @@ public class AIManager : MonoBehaviour
         // we get the navmesh controller (agent), and then make it so it doesn't rotate or change its axis.
         // this is important, as otherwise it would rotate in a way where its "invisible" to the player
         ai = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("player");
+
         ai.updateRotation = false;
         ai.updateUpAxis = false;
     }
@@ -39,6 +44,11 @@ public class AIManager : MonoBehaviour
         {
             ai.ResetPath();
             ai.velocity = new Vector2(knockbackDir.x * (6 - knockbackResistence), knockbackDir.y * (6 - knockbackResistence));
+        }
+
+        if (needDistance)
+        {
+            distance = JMath.Distance(transform.position, player.transform.position);
         }
     }
 
