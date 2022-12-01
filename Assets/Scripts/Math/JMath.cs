@@ -186,4 +186,46 @@ public static class JMath
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.transform.position.x - b.transform.position.x, 2) + Math.Pow(a.transform.position.y - b.transform.position.y, 2));
     }
+
+    // see above; overload for ints
+    public static int Distance(int a, int b)
+    {
+        // very simple distance calculation by subtraction
+        return a - b;
+    }
+
+    // see above; overload for longs
+    public static long Distance(long a, long b)
+    {
+        // very simple distance calculation by subtraction
+        return a - b;
+    }
+
+    // see above; overload for floats
+    public static float Distance(float a, float b)
+    {
+        // very simple distance calculation by subtraction
+        return a - b;
+    }
+
+    // see above; overload for doubles
+    public static double Distance(double a, double b)
+    {
+        // very simple distance calculation by subtraction
+        return a - b;
+    }
+
+    // see above; overload for bytes
+    public static byte Distance(byte a, byte b)
+    {
+        // very simple distance calculation by subtraction
+        return (byte)(a - b);
+    }
+
+    // see above; overload for decimals
+    public static decimal Distance(decimal a, decimal b)
+    {
+        // very simple distance calculation by subtraction
+        return a - b;
+    }
 }
