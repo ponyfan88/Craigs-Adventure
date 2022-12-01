@@ -228,4 +228,19 @@ public static class JMath
         // very simple distance calculation by subtraction
         return a - b;
     }
+
+    /*
+     * purpose: returns the sign of a Vector2
+     * inputs: Vector2
+     * outputs: the sign version of it
+     */
+    public static Vector2 Sign(Vector2 a)
+    {
+        return new Vector2(Math.Sign(a.x), Math.Sign(a.y));
+    }
+
+    public static Vector3 Sign(Vector3 a)
+    {
+        return new Vector3(Math.Sign(a.x), Math.Sign(a.y), Math.Sign(a.z));
+    }
 }
