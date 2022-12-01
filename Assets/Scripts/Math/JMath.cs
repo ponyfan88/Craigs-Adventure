@@ -10,11 +10,13 @@ using UnityEngine;
 
 public static class JMath
 {
+    #region Mod
     /*
      * purpose: mod function, supporting negatives
      * inputs: a and b, getting a within b (it wraps around, so if a is 361 and b is 360 we return 1)
      * outputs: a mod b (negatives supported)
      */
+
     public static float Mod(float a, float b = 360)
     {
         // we get the normal mod (as a float)
@@ -30,6 +32,10 @@ public static class JMath
         return c;
     }
 
+    #endregion
+
+    #region HasDecimals
+
     /*
      * purpose: tells you if a number has a decimal
      * inputs: a float to test with ("a")
@@ -40,18 +46,19 @@ public static class JMath
         return a % 1 == 0;
     }
 
-    // see above; overload for doubles
     public static bool HasDecimals(this double a)
     {
         return a % 1 == 0;
     }
 
-    // see above; overload for decimals
     public static bool HasDecimals(this decimal a)
     {
         return a % 1 == 0;
     }
 
+    #endregion
+
+    #region LargerTillInt
     /*
      * purpose: multiplies a number by 10 until it no longer has decimals
      * inputs: a float to test with ("a")
@@ -61,6 +68,10 @@ public static class JMath
     {
         return (int)(a * Math.Pow(10, a - (int)a));
     }
+
+    #endregion
+
+    #region Top
 
     /*
      * purpose: divides a long by 10 until it can be an int
@@ -77,6 +88,10 @@ public static class JMath
         }
         return (int)b; // return it as an int
     }
+
+    #endregion
+
+    #region Bottom
 
     /*
      * purpose: gets the bottom half of a long so that it is a valid integer
@@ -120,6 +135,9 @@ public static class JMath
         return (int)c;
     }
 
+    #endregion
+
+    #region Length
     /*
      * purpose: returns the length of a number
      * inputs: an int to operate on ("a")
@@ -130,19 +148,16 @@ public static class JMath
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload for longs
     public static int Length(this long a)
     {
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload for floats
     public static int Length(this float a)
     {
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload for doubles
     public static int Length(this double a)
     {
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
@@ -154,80 +169,78 @@ public static class JMath
         return (int)Math.Floor(Math.Log10(Math.Abs(a)) + 1);
     }
 
-    // see above; overload for decimals
     public static int Length(this decimal a)
     {
         // convert to a non-negative, then to a string, get rid of decimal marks, and get the length
         // this is because Math.Log10 does not take decimals, nor does unity's Mathf.Log10
         return Math.Abs(a).ToString().Replace(".", string.Empty).Length;
     }
-    
+
+    #endregion
+
+    #region Distance
+
     /*
      * purpose: returns the distance from two vector2's
      * inputs: two specified vector2's
      * outputs: a float to specify the distance
      */
-    public static float Distance(Vector3 a, Vector3 b)
+    public static float Distance(Vector2 a, Vector2 b)
     {
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
     }
-    
-    // see above; overload for transforms
     public static float Distance(Transform a, Transform b)
     {
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.position.x - b.position.x, 2) + Math.Pow(a.position.y - b.position.y, 2));
     }
 
-    // see above; overload for gameObjects
     public static float Distance(GameObject a, GameObject b)
     {
         // a^2 + b^2 = c^2, so we find the hypotenuse by finding the x and y distances and putting them to the power of 2, and then the square root for c, which is the distance
         return (float)Math.Sqrt(Math.Pow(a.transform.position.x - b.transform.position.x, 2) + Math.Pow(a.transform.position.y - b.transform.position.y, 2));
     }
 
-    // see above; overload for ints
     public static int Distance(int a, int b)
     {
         // very simple distance calculation by subtraction
         return a - b;
     }
 
-    // see above; overload for longs
     public static long Distance(long a, long b)
     {
         // very simple distance calculation by subtraction
         return a - b;
     }
 
-    // see above; overload for floats
     public static float Distance(float a, float b)
     {
         // very simple distance calculation by subtraction
         return a - b;
     }
 
-    // see above; overload for doubles
     public static double Distance(double a, double b)
     {
         // very simple distance calculation by subtraction
         return a - b;
     }
 
-    // see above; overload for bytes
     public static byte Distance(byte a, byte b)
     {
         // very simple distance calculation by subtraction
         return (byte)(a - b);
     }
 
-    // see above; overload for decimals
     public static decimal Distance(decimal a, decimal b)
     {
         // very simple distance calculation by subtraction
         return a - b;
     }
+
+    #endregion
+
+    #region Sign
 
     /*
      * purpose: returns the sign of a Vector2
@@ -243,4 +256,6 @@ public static class JMath
     {
         return new Vector3(Math.Sign(a.x), Math.Sign(a.y), Math.Sign(a.z));
     }
+
+    #endregion
 }
