@@ -11,12 +11,12 @@ using UnityEngine;
 public static class JMath
 {
     #region Mod
+    
     /*
      * purpose: mod function, supporting negatives
      * inputs: a and b, getting a within b (it wraps around, so if a is 361 and b is 360 we return 1)
      * outputs: a mod b (negatives supported)
      */
-
     public static float Mod(float a, float b = 360)
     {
         // we get the normal mod (as a float)
@@ -254,14 +254,107 @@ public static class JMath
      * inputs: Vector2
      * outputs: the sign version of it
      */
-    public static Vector2 Sign(Vector2 a)
+    public static Vector2 Sign(this Vector2 a)
     {
         return new Vector2(Math.Sign(a.x), Math.Sign(a.y));
     }
 
-    public static Vector3 Sign(Vector3 a)
+    public static Vector3 Sign(this Vector3 a)
     {
         return new Vector3(Math.Sign(a.x), Math.Sign(a.y), Math.Sign(a.z));
+    }
+
+    #endregion
+
+    #region MapCircleToSquare
+
+    /*
+     * purpose: maps a point on a circle to a point on a square
+     * inputs: Vector2
+     * outputs: transformed Vector2, see explination
+     */
+    public static Vector2 MapCircleToSquare(this Vector2 i)
+    {
+        // EXPLINATION: https://www.desmos.com/calculator/6g9pyl5ylf
+
+        // size of our vector
+        float d = Mathf.Sqrt(Mathf.Pow(i.x, 2) + Mathf.Pow(i.y, 2));
+
+        // angle of our vector
+        float a = Mathf.Atan2(i.y, i.x);
+
+        // if point is moreso horizontal
+        bool q = (Mathf.Abs(i.x) > Mathf.Abs(i.y));
+
+        float c = FlipIfTrue(q ? 1 : 0 , (Math.Sign(i.x) - Math.Sign(i.y) == 0));
+    
+        // if i.x and i.y are both positive or both negative
+        float c2 = (Math.Sign(i.x) - Math.Sign(i.y)) == 0 ? 0 : 1;
+
+        // init output
+        Vector2 o = new Vector2();
+
+        // o.x
+
+        if (q)
+        {
+            o.x = 1f;
+        }
+        else
+        {
+            o.x = 1f / Mathf.Tan(a);
+        }
+
+        if (c != c2)
+        {
+            o.x *= -1;
+        }
+
+        o.x *= Math.Sign(i.x);
+
+        // o.y
+
+        if (q)
+        {
+            o.y = Mathf.Tan(a);
+        }
+        else
+        {
+            o.y = 1f;
+        }
+
+        if (c != c2)
+        {
+            o.y *= -1;
+        }
+
+        o.y *= Math.Sign(i.y);
+
+        // correct using distance, otherwise it will be on the edge of the square
+        o *= d;
+
+        return o;
+    }
+
+    #endregion
+
+    #region FlipIfTrue
+
+    /*
+     * purpose: returns 1 minus a number if a boolean is true
+     * inputs: a float, a boolean
+     * outputs: a float
+     */
+    public static float FlipIfTrue(float a, bool b)
+    {
+        if (b)
+        {
+            return 1 - x;
+        }
+        else
+        {
+            return x;
+        }
     }
 
     #endregion
