@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 6487588326732802062}
   m_Layer: 8
   m_Name: Room Child
-  m_TagString: killSpawn
+  m_TagString: Room Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

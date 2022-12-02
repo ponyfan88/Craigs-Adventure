@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1672663221352385550}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +170,8 @@ MonoBehaviour:
   health: 0
   invulnerabilityTime: 0
   takePlayerDamage: 1
+  destroyEvent: 0
+  damagedEvent: 0
 --- !u!95 &1672663221352385550
 Animator:
   serializedVersion: 4
