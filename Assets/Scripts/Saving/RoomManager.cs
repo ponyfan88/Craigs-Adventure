@@ -48,6 +48,8 @@ public class RoomManager : MonoBehaviour
     public void NukeRoomChildren()
     {
         rooms = FindObjectsOfType<Room>();
+        // EVERY OBJECT CALLED ROOM CHILD 
+        // but also the room script component
 
         // create a list of the rooms themselves
         List<GameObject> roomGameObjects = new List<GameObject>();
@@ -55,22 +57,27 @@ public class RoomManager : MonoBehaviour
         // fill that list with each rooms parent
         foreach (Room room in rooms)
         {
-            // lowercase g
-            roomGameObjects.Add(room.gameObject);
+            // we take the transform of our room child, find the transform, get the parent of the transform, and get the gameobject of the parent
+            roomGameObjects.Add(room.transform.parent.gameObject);
         }
 
+        // for every room on grid
         foreach (GameObject room in roomGameObjects)
         {
-            foreach (Transform child in room.transform)
+            // for every child
+            foreach (Transform child in room.transform) // things like items, spawns, and enemies
             {
                 // our child's tag
                 string tag = child.gameObject.tag;
 
+                // what object type did we find?
                 Debug.Log(tag);
 
+                // if its an enemy or an item, thats what we're looking to save
                 if (tag == "Item" || tag == "Enemy")
                 {
-                    Destroy(child.gameObject); // ok, so this is actually the gameobject AFAIK
+
+                    Destroy(child.gameObject); // destroy the item/enemy gameobject (they'll be replaced later)
                 }
             }
         }
