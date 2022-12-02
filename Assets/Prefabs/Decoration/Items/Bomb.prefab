@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -5255305848121462861}
   m_Layer: 8
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,8 @@ MonoBehaviour:
   health: 1
   invulnerabilityTime: 0
   takePlayerDamage: 0
+  destroyEvent: 0
+  damagedEvent: 0
 --- !u!58 &3757501959174599358
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,11 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16389ffb8792a6e49a4512f992965dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionScript: {fileID: 0}
   holdingOffset: {x: 0, y: -0.001}
   throwVelocity: 0.8
-  canBeGrabbed: 1
-  hasCollision: 1
+  pickupEvent: 0
 --- !u!114 &-3010251731629236418
 MonoBehaviour:
   m_ObjectHideFlags: 0

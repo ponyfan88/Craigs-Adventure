@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -6546943896872222237}
   m_Layer: 8
   m_Name: Bone
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,11 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16389ffb8792a6e49a4512f992965dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionScript: {fileID: 0}
   holdingOffset: {x: 0.16, y: 0}
   throwVelocity: 0.8
-  canBeGrabbed: 1
-  hasCollision: 0
+  pickupEvent: 0
 --- !u!114 &-9215698978168306914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +119,7 @@ MonoBehaviour:
   DamageAmount: 2
   playerOwned: 1
   destroyOnHitWall: 0
+  destroyType: 0
 --- !u!114 &9020628545209309581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +136,8 @@ MonoBehaviour:
   health: 1
   invulnerabilityTime: 0
   takePlayerDamage: 0
+  destroyEvent: 0
+  damagedEvent: 0
 --- !u!61 &5092568881368531971
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -6395991209667126922}
   m_Layer: 8
   m_Name: Lantern
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,11 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16389ffb8792a6e49a4512f992965dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionScript: {fileID: 0}
   holdingOffset: {x: 0, y: 0.15}
   throwVelocity: 0.4
-  canBeGrabbed: 1
-  hasCollision: 0
+  pickupEvent: 0
 --- !u!114 &728062955662682979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +122,8 @@ MonoBehaviour:
   health: 3
   invulnerabilityTime: 0
   takePlayerDamage: 0
+  destroyEvent: 0
+  damagedEvent: 0
 --- !u!61 &5361726776974772965
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   DamageAmount: 1
   playerOwned: 1
   destroyOnHitWall: 1
+  destroyType: 0
 --- !u!1 &5361726777761842100
 GameObject:
   m_ObjectHideFlags: 0
