@@ -4,7 +4,7 @@
  * Inputs: collisions to the room
  * Outputs: various variables to other script files such as map.cs
  */
-
+using System;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -20,10 +20,12 @@ public class Room : MonoBehaviour
     Map map; // our minimap
 
     DoorManager[] doorManager;
-    [SerializeField] private AnimationManager[] Decorations;
-    private SpawnEnemy[] enemySpawns;
-    private GenericNPC[] npcs;
-    bool enemiesSpawned = false;
+    [SerializeField] AnimationManager[] Decorations;
+    SpawnEnemy[] enemySpawns;
+    GenericNPC[] npcs;
+    GlobalRoomManager roomManager;
+
+    bool enemiesSpawned = false; 
 
     //% chance for an enemy not to spawn --- 1/x chance to fail, so 10 is 10%, 20 is 5%, etc.
     private const int FAILSPAWN_CHANCE = 8;
@@ -40,15 +42,17 @@ public class Room : MonoBehaviour
         map = FindObjectOfType<Map>(); //find map
 
         // this will make 2 seperate array's with any object with either the script "DoorManager" or "SpawnEnemy" as to access them later.
-        doorManager = transform.GetComponentsInChildren<DoorManager>();
-        enemySpawns = transform.GetComponentsInChildren<SpawnEnemy>();
-        npcs = transform.GetComponentsInChildren<GenericNPC>();
+        doorManager = GetComponentsInChildren<DoorManager>();
+        enemySpawns = GetComponentsInChildren<SpawnEnemy>();
+        npcs = GetComponentsInChildren<GenericNPC>();
+        roomManager = GetComponentInParent<GlobalRoomManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision == playerHitbox) // the player has entered the room
         {
+            roomManager.EnterRoom(); // tell global room manager that we are in a room
 
             roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
 
@@ -56,11 +60,13 @@ public class Room : MonoBehaviour
             {
                 map.discovered.Add(transform.parent.gameObject); // add it to our list of entered rooms
 
+                roomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
+
                 // for every enemy that is a child of room child, spawn them in
                 foreach (SpawnEnemy spawn in enemySpawns)
                 {
                     // a number between 0 and 9
-                    int a = (int)Random.Range(0, FAILSPAWN_CHANCE);
+                    int a = (int)UnityEngine.Random.Range(0, FAILSPAWN_CHANCE);
 
                     // if the number is 0 dont spawn the enemy (10% chance not to spawn)
                     if (a != 0)
@@ -103,6 +109,8 @@ public class Room : MonoBehaviour
         // if its the player that has left the room
         if (collision == playerHitbox)
         {
+            roomManager.ExitRoom(); // tell the global room manager we left the room
+
             roomHider.SetActive(false); // hide our room hider
             
             // for every decoration, stop their animation, since the player wont be seeing them anyways
@@ -142,6 +150,8 @@ public class Room : MonoBehaviour
             {
                 door.OpenDoors();
             }
+
+            roomManager.ExitEncounter();
         }
     }
 
