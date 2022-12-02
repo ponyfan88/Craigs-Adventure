@@ -5403,7 +5403,7 @@ GameObject:
   - component: {fileID: 678452443612190003}
   m_Layer: 0
   m_Name: BTL
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5975,6 +5975,8 @@ MonoBehaviour:
   health: 2
   invulnerabilityTime: 0
   takePlayerDamage: 1
+  destroyEvent: 0
+  damagedEvent: 0
 --- !u!61 &6657416281801139397
 BoxCollider2D:
   m_ObjectHideFlags: 0

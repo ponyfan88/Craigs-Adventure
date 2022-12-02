@@ -4330,7 +4330,7 @@ GameObject:
   - component: {fileID: 3898840035932742636}
   m_Layer: 0
   m_Name: TL
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4352,10 +4352,6 @@ Transform:
   - {fileID: 3898840035655950521}
   - {fileID: 3898840037325253435}
   - {fileID: 947971632387481471}
-  - {fileID: 1696926325098528064}
-  - {fileID: 7342395125486572613}
-  - {fileID: 2306379814742791052}
-  - {fileID: 9129916173668689549}
   - {fileID: 2475829051070300731}
   m_Father: {fileID: 0}
   m_RootOrder: -1

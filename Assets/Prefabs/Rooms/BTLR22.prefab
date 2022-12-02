@@ -51,7 +51,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 6925467188050058138}
-  quad: 2
 --- !u!50 &6925467188050058138
 Rigidbody2D:
   serializedVersion: 4
@@ -150,7 +149,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 3643398511076141433}
-  quad: 4
 --- !u!50 &3643398511076141433
 Rigidbody2D:
   serializedVersion: 4
@@ -307,7 +305,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 1060353246568778166}
-  quad: 3
 --- !u!50 &1060353246568778166
 Rigidbody2D:
   serializedVersion: 4
@@ -464,7 +461,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 217179520450829748}
-  quad: 4
 --- !u!50 &217179520450829748
 Rigidbody2D:
   serializedVersion: 4
@@ -563,7 +559,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 2528683734741847744}
-  quad: 3
 --- !u!50 &2528683734741847744
 Rigidbody2D:
   serializedVersion: 4
@@ -662,7 +657,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 6866464849783678511}
-  quad: 1
 --- !u!50 &6866464849783678511
 Rigidbody2D:
   serializedVersion: 4
@@ -819,7 +813,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 6866464849890971584}
-  quad: 1
 --- !u!50 &6866464849890971584
 Rigidbody2D:
   serializedVersion: 4
@@ -19936,7 +19929,6 @@ MonoBehaviour:
   spawned: 0
   needWall: 0
   colCheck: {fileID: 6866464850720285407}
-  quad: 2
 --- !u!50 &6866464850720285407
 Rigidbody2D:
   serializedVersion: 4
