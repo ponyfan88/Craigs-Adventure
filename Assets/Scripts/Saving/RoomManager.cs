@@ -45,7 +45,7 @@ public class RoomManager : MonoBehaviour
     #region Custom Methods
 
     // nukes EVERY child in EVERY room
-    public void NukeRoomChildren(bool justDestroy = true)
+    public void NukeRoomChildren(bool save = false, bool destroy = true)
     {
         rooms = FindObjectsOfType<Room>();
         // EVERY OBJECT CALLED ROOM CHILD 
@@ -62,7 +62,7 @@ public class RoomManager : MonoBehaviour
         }
 
         // if we are not just destroying objects
-        if (!justDestroy)
+        if (save)
         {
             // we will be storing items and enemies as generic objects
             List<GenericObject> genericObjects = new List<GenericObject>();
@@ -84,7 +84,7 @@ public class RoomManager : MonoBehaviour
                 if (tag == "Item" || tag == "Enemy")
                 {
                     // if we are not just destroying objects
-                    if (!justDestroy)
+                    if (save)
                     {
                         // we make a new GenericObject
                         GenericObject genericObject = new GenericObject();
@@ -99,13 +99,16 @@ public class RoomManager : MonoBehaviour
                         genericObjects.Add(genericObject);
                     }
 
-                    Destroy(child.gameObject); // destroy the item/enemy gameobject (they'll be replaced later)
+                    if (destroy)
+                    {
+                        Destroy(child.gameObject); // destroy the item/enemy gameobject (they'll be replaced later)
+                    }
                 }
             }
         }
 
         // if we are not just destroying objects
-        if (!justDestroy)
+        if (save)
         {
             // store our generic objects in our save
             savesManager.currentSave.genericObjects = genericObjects;
@@ -129,7 +132,7 @@ public class RoomManager : MonoBehaviour
         }
         
         // we will NOT be saving over our current save
-        NukeRoomChildren(true);
+        NukeRoomChildren(false, true);
 
         foreach (GenericObject genericObject in savesManager.currentSave.genericObjects)
         {
