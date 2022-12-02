@@ -349,11 +349,11 @@ public static class JMath
     {
         if (b)
         {
-            return 1 - x;
+            return -1 * a;
         }
         else
         {
-            return x;
+            return a;
         }
     }
 
