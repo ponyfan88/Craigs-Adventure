@@ -25,6 +25,7 @@ public class facePlayer : StateMachineBehaviour
     {
         animatedObject = animator.gameObject;
         player = GameObject.Find("player").transform; //transform of the player
+
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
