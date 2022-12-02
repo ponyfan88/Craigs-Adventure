@@ -135,6 +135,9 @@ public class RoomManager : MonoBehaviour
         {
             // THE ROOM TO FIND: roomGameObjects[genericObject.gameObject]
             // THE CHILD TO PLACE: genericObject.potentialChild
+            
+            // put the item/enemy inside the room
+            Instantiate(genericObject.itemEnemyThing, gameObject.transform); // TODO: MIGHT NEED WORLD SPACE
         }
     }
 
