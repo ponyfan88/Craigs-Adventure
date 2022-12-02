@@ -61,12 +61,9 @@ public class RoomManager : MonoBehaviour
             roomGameObjects.Add(room.transform.parent.gameObject);
         }
 
-        // if we are not just destroying objects
-        if (save)
-        {
-            // we will be storing items and enemies as generic objects
-            List<GenericObject> genericObjects = new List<GenericObject>();
-        }
+        // we will be storing items and enemies as generic objects
+        List<GenericObject> genericObjects = new List<GenericObject>();
+        // we dont test for saving since Visual Studio will yell at you for not putting this here
 
         // for every room on grid
         foreach (GameObject room in roomGameObjects)
@@ -93,7 +90,7 @@ public class RoomManager : MonoBehaviour
                         genericObject.gameObject = room;
 
                         // the itemEnemyThing is the item/enemy we are looping throuhg
-                        genericObject.itemEnemyThing = child.itemEnemyThing;
+                        genericObject.itemEnemyThing = child.gameObject;
 
                         // add it to our list of game objects
                         genericObjects.Add(genericObject);
@@ -117,6 +114,12 @@ public class RoomManager : MonoBehaviour
 
     public void ReconstructGenericObjects()
     {
+        if (savesManager.currentSave.genericObjects == null)
+        {
+            NukeRoomChildren(true); // save our current progress if not true
+            // TODO: REMOVE THIS
+        }
+        
         rooms = FindObjectsOfType<Room>();
         // EVERY OBJECT CALLED ROOM CHILD 
         // but also the room script component
@@ -133,9 +136,15 @@ public class RoomManager : MonoBehaviour
         
         // we will NOT be saving over our current save
         NukeRoomChildren(false, true);
+        // destroy set to true since we want to sort of "clear the board" so to speak
+
+        Debug.Log("through the loop");
 
         foreach (GenericObject genericObject in savesManager.currentSave.genericObjects)
         {
+            Debug.Log(genericObject);
+            
+            
             // THE ROOM TO FIND: roomGameObjects[genericObject.gameObject]
             // THE CHILD TO PLACE: genericObject.potentialChild
             
