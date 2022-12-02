@@ -87,7 +87,7 @@ public class RoomManager : MonoBehaviour
                         GenericObject genericObject = new GenericObject();
 
                         // the parent is the room we're looping through
-                        genericObject.gameObject = room;
+                        //genericObject.gameObject = room; // not even sure we need to save this
 
                         // the itemEnemyThing is the item/enemy we are looping throuhg
                         genericObject.itemEnemyThing = child.gameObject;
@@ -140,16 +140,19 @@ public class RoomManager : MonoBehaviour
 
         Debug.Log("through the loop");
 
-        foreach (GenericObject genericObject in savesManager.currentSave.genericObjects)
+        for (int i = 0; i < savesManager.currentSave.genericObjects.Count; ++i)
         {
+            GenericObject genericObject = savesManager.currentSave.genericObjects[i];
+
             Debug.Log(genericObject);
-            
-            
+
+
             // THE ROOM TO FIND: roomGameObjects[genericObject.gameObject]
             // THE CHILD TO PLACE: genericObject.potentialChild
-            
+
             // put the item/enemy inside the room
-            Instantiate(genericObject.itemEnemyThing, gameObject.transform); // TODO: MIGHT NEED WORLD SPACE
+
+            Instantiate(genericObject.itemEnemyThing, null, true); // TODO: MIGHT NEED WORLD SPACE
         }
     }
 

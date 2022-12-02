@@ -11,6 +11,6 @@ using UnityEngine;
 public class GenericObject
 {
     // both equal null by default
-    public GameObject gameObject = null;
+    public GameObject thingParent = null;
     public GameObject itemEnemyThing = null;
 }
