@@ -93,7 +93,7 @@ public class RoomManager : MonoBehaviour
                         genericObject.gameObject = room;
 
                         // the itemEnemyThing is the item/enemy we are looping throuhg
-                        genericObject.itemEnemyThing = child.itemEnemyThing
+                        genericObject.itemEnemyThing = child.itemEnemyThing;
 
                         // add it to our list of game objects
                         genericObjects.Add(genericObject);
