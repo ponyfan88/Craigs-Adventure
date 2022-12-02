@@ -152,6 +152,12 @@ public class RoomManager : MonoBehaviour
 
             // put the item/enemy inside the room
 
+            // CURRENT ISSUES:
+
+            // 1: every component is disabled by default
+            // 2: item is rotated 90,0,0
+            // 3: not placed in correct room
+
             Instantiate(genericObject.itemEnemyThing, null, true); // TODO: MIGHT NEED WORLD SPACE
         }
     }
