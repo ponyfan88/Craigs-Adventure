@@ -5,6 +5,8 @@
  * Outputs: (mirrors inputs)
  */
 
+using System.Collections.Generic;
+
 public class Save
 {
     public int seed;
