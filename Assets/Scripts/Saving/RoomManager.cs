@@ -45,7 +45,7 @@ public class RoomManager : MonoBehaviour
     #region Custom Methods
 
     // nukes EVERY child in EVERY room
-    public void NukeRoomChildren()
+    public void NukeRoomChildren(bool justDestroy = true, bool reconstruct = false)
     {
         rooms = FindObjectsOfType<Room>();
         // EVERY OBJECT CALLED ROOM CHILD 
@@ -59,6 +59,13 @@ public class RoomManager : MonoBehaviour
         {
             // we take the transform of our room child, find the transform, get the parent of the transform, and get the gameobject of the parent
             roomGameObjects.Add(room.transform.parent.gameObject);
+        }
+
+        // if we are not just destroying objects
+        if (!justDestroy)
+        {
+            // we will be storing items and enemies as generic objects
+            List<GenericObject> genericObjects = new List<GenericObject>();
         }
 
         // for every room on grid
@@ -76,12 +83,59 @@ public class RoomManager : MonoBehaviour
                 // if its an enemy or an item, thats what we're looking to save
                 if (tag == "Item" || tag == "Enemy")
                 {
+                    // if we are not just destroying objects
+                    if (!justDestroy)
+                    {
+                        // we make a new GenericObject
+                        GenericObject genericObject = new GenericObject();
+
+                        // the parent is the room we're looping through
+                        genericObject.gameObject = room;
+
+                        // the itemEnemyThing is the item/enemy we are looping throuhg
+                        genericObject.itemEnemyThing = child.itemEnemyThing
+
+                        // add it to our list of game objects
+                        genericObjects.Add(genericObject);
+                    }
 
                     Destroy(child.gameObject); // destroy the item/enemy gameobject (they'll be replaced later)
                 }
             }
         }
 
+        // if we are not just destroying objects
+        if (!justDestroy)
+        {
+            // store our generic objects in our save
+            savesManager.currentSave.genericObjects = genericObjects;
+        }
+    }
+
+    public void ReconstructGenericObjects()
+    {
+        rooms = FindObjectsOfType<Room>();
+        // EVERY OBJECT CALLED ROOM CHILD 
+        // but also the room script component
+
+        // create a list of the rooms themselves
+        List<GameObject> roomGameObjects = new List<GameObject>();
+
+        // fill that list with each rooms parent
+        foreach (Room room in rooms)
+        {
+            // we take the transform of our room child, find the transform, get the parent of the transform, and get the gameobject of the parent
+            roomGameObjects.Add(room.transform.parent.gameObject);
+        }
+        
+        // we will NOT be saving over our current save
+        NukeRoomChildren(true);
+
+        foreach (GenericObject genericObject in savesManager.currentSave.genericObjects)
+        {
+            // THE ROOM TO FIND: roomGameObjects[genericObject.gameObject]
+            // THE CHILD TO PLACE: genericObject.potentialChild
+        }
     }
 
     #endregion

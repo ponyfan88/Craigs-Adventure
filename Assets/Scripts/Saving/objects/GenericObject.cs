@@ -12,5 +12,5 @@ public class GenericObject
 {
     // both equal null by default
     public GameObject gameObject = null;
-    public object potentialChild = null;
+    public GameObject itemEnemyThing = null;
 }

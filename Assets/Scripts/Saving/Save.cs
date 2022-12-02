@@ -12,4 +12,6 @@ public class Save
     public int playerHealth;
     public float playerx;
     public float playery;
+
+    public List<GenericObject> genericObjects;
 }
