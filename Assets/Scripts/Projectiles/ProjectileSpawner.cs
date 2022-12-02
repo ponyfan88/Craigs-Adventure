@@ -115,10 +115,11 @@ public class ProjectileSpawner : MonoBehaviour
             {
                 b.rotation = rotations[i] + (float)angle; // rotation and aim at player
             }
-            else // if we arent
+            else
             {
                 b.rotation = rotations[i]; // sets the rotation
             }
+            b.transform.position= new Vector3(GetSpawnData().positionOffset.x+transform.position.x, GetSpawnData().positionOffset.y + transform.position.y);//offsets the bullets position
             b.speed = GetSpawnData().bulletspeed; // sets its speed
             b.lifetime = GetSpawnData().lifespan; // sets its life span
             b.velocity = velocity; // set our bullet velocity

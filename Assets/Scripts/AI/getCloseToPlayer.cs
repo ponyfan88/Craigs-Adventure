@@ -3,6 +3,7 @@
  * Inputs: ai and player position
  * Outputs: when to stop moving 
 */
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,8 +14,8 @@ public class getCloseToPlayer : StateMachineBehaviour
     GameObject player;
     NavMeshAgent ai;
     AIManager aiManager;
-    public float distance;
-
+    [NonSerialized]public float distance;
+    public float desiredDistance = 4; 
     #endregion
 
     #region Default Methods
@@ -24,6 +25,8 @@ public class getCloseToPlayer : StateMachineBehaviour
         player = GameObject.Find("player");
         ai = animator.gameObject.GetComponent<NavMeshAgent>();
         aiManager = animator.gameObject.GetComponent<AIManager>();
+        
+        animator.SetBool("reachedLocation", false);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,7 +35,7 @@ public class getCloseToPlayer : StateMachineBehaviour
         distance = JMath.Distance(animator.gameObject.transform.position, player.transform.position);
 
         // if within range, set the navMesh to not move and start attacking
-        if (distance < 4)
+        if (distance <= desiredDistance)
         {
             ai.destination = ai.transform.position;
             animator.SetBool("reachedLocation", true);

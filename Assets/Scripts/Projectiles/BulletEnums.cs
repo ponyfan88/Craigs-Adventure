@@ -11,3 +11,8 @@ namespace BulletEffects
    public enum endlifeEffect{none,shatter,}
    // potental effects when the bullet reaches the end of it's life
 }
+
+namespace ItemEvents
+{
+    public enum PickupEvent { grab, heal };
+}

@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: -8859563931773820485}
   - component: {fileID: 5666792322295600421}
   - component: {fileID: 6487588326732802062}
+  - component: {fileID: 6886530300910537052}
   m_Layer: 8
   m_Name: Room Child
   m_TagString: killSpawn
@@ -578,7 +579,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomHider: {fileID: 7390750396379380501}
   roomType: 0
-  enemySpawns: []
+  Decorations: []
+--- !u!114 &6886530300910537052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685691705485177645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &8572176949739362913
 PrefabInstance:
   m_ObjectHideFlags: 0

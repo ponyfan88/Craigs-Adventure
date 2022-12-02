@@ -8,12 +8,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.U2D.Animation;
+using ItemEvents;
 
 public class itemManager : MonoBehaviour
 {
     #region Variables
 
-    public GameObject selectedItem;
+    public GameObject selectedItem = null;
     controller controller;
     Attack attack;
     Item itemScript;
@@ -53,7 +54,6 @@ public class itemManager : MonoBehaviour
         controller = GetComponent<controller>();
         attack = GetComponent<Attack>();
         spritelibrary = GetComponent<SpriteLibrary>();
-        selectedItem = null;
 
         // Sets the intital pos offset
         itemPosOffset = new Vector2(.45f, 0.395f);
@@ -81,13 +81,25 @@ public class itemManager : MonoBehaviour
         {
             if (!holdingItem && selectedItem != null) // we are not holding the object, and need to grab it
             {
-                selectedItem.transform.SetParent(transform);
-                currentPosOffset = itemPosOffset + itemScript.holdingOffset;
-                selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
-
-                holdingItem = true;
-                spritelibrary.spriteLibraryAsset = holding;
-                selectedItem.GetComponent<SpriteRenderer>().material = matUnSelected;
+                switch (itemScript.pickupEvent) 
+                {
+                    case PickupEvent.grab:
+                        // parent item to the player and set its specified position
+                        selectedItem.transform.SetParent(transform);
+                        currentPosOffset = itemPosOffset + itemScript.holdingOffset;
+                        selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
+                        
+                        holdingItem = true; // we are now holding an item
+                        spritelibrary.spriteLibraryAsset = holding; // make the player display as holding the item
+                        selectedItem.GetComponent<SpriteRenderer>().material = matUnSelected; // remove the highlight from the item
+                        break;
+                    case PickupEvent.heal:
+                        GetComponent<healthManager>().Heal(1);
+                        Destroy(selectedItem);
+                        break;
+                    default:
+                        break;
+                }
             }
             else if (holdingItem)  // we are holding the object, and need to throw it
             {
