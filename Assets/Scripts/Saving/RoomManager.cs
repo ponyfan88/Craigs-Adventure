@@ -45,7 +45,7 @@ public class RoomManager : MonoBehaviour
     #region Custom Methods
 
     // nukes EVERY child in EVERY room
-    public void NukeRoomChildren(bool justDestroy = true, bool reconstruct = false)
+    public void NukeRoomChildren(bool justDestroy = true)
     {
         rooms = FindObjectsOfType<Room>();
         // EVERY OBJECT CALLED ROOM CHILD 
