@@ -41,4 +41,35 @@ public class RoomManager : MonoBehaviour
     }
 
     #endregion
+
+    #region Custom Methods
+
+    // nukes EVERY child in EVERY room
+    public void NukeRoomChildren()
+    {
+        Time.timeScale = 0f; // set our timescale to 0, stopping the game.
+
+        rooms = FindObjectsOfType<Room>();
+
+        // create a list of the rooms themselves
+        List<GameObject> roomGameObjects = new List<GameObject>();
+
+        // fill that list with each rooms parent
+        foreach (Room room in rooms)
+        {
+            // lowercase g
+            roomGameObjects.Add(room.gameObject);
+        }
+
+        foreach (GameObject room in roomGameObjects)
+        {
+            foreach (Transform child in room.transform)
+            {
+                Destroy(child.parent); // ok, so this is actually the gameobject AFAIK
+            }
+        }
+
+    }
+
+    #endregion
 }
