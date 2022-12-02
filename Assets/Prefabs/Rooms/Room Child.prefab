@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8785612340001901365}
   - component: {fileID: 8284598077886410667}
   - component: {fileID: 2876839227537257769}
+  - component: {fileID: 1798731911753961989}
+  - component: {fileID: 2615872609043790575}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8a20be8fd4ad740408e44fbef814c4d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a95399aa8386a544faa932d26baf4b2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,6 +147,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 2}
   m_EdgeRadius: 0
+--- !u!50 &1798731911753961989
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271916165251638004}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!208 &2615872609043790575
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271916165251638004}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 1, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &411302147893202622
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +532,6 @@ GameObject:
   - component: {fileID: -8859563931773820485}
   - component: {fileID: 5666792322295600421}
   - component: {fileID: 6487588326732802062}
-  - component: {fileID: 6886530300910537052}
   m_Layer: 8
   m_Name: Room Child
   m_TagString: Room Child
@@ -580,22 +618,6 @@ MonoBehaviour:
   roomHider: {fileID: 7390750396379380501}
   roomType: 0
   Decorations: []
---- !u!114 &6886530300910537052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7685691705485177645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1001 &8572176949739362913
 PrefabInstance:
   m_ObjectHideFlags: 0
