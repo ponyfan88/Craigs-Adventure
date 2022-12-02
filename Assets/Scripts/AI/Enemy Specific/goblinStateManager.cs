@@ -58,7 +58,7 @@ public class goblinStateManager : MonoBehaviour
         } */
 
 
-        // The code above WILL BE USED; its just raycasting is causing me issues with ignoring specific layers, for now i'm just gon make goblin spit
+        // The code above will probably be used; its just raycasting is causing me issues with ignoring specific layers, for now i'm just gon make goblin spit
 
         if (spitCooldown < Time.time)
         {

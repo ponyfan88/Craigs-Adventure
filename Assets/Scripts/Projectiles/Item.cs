@@ -12,7 +12,6 @@ public class Item : MonoBehaviour
 {
     #region Variables
 
-    Transform playerPos;
     itemManager itemMan;
     [NonSerialized]public DestroyOnImpact collisionScript;
     float Distance;
@@ -39,7 +38,7 @@ public class Item : MonoBehaviour
         }
 
         player = GameObject.Find("player");
-        itemMan = playerPos.gameObject.GetComponent<itemManager>();
+        itemMan = player.gameObject.GetComponent<itemManager>();
     }
     void Update()
     {
