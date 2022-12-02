@@ -6,6 +6,7 @@
  */
 
 using UnityEngine;
+using System;
 
 public class Room : MonoBehaviour
 {
@@ -21,9 +22,10 @@ public class Room : MonoBehaviour
 
     DoorManager[] doorManager;
     [SerializeField] private AnimationManager[] Decorations;
-    private SpawnEnemy[] enemySpawns;
-    private GenericNPC[] npcs;
-    bool enemiesSpawned = false;
+    
+    [NonSerialized] public SpawnEnemy[] enemySpawns;
+    [NonSerialized] public GenericNPC[] npcs;
+    [NonSerialized] public bool enemiesSpawned = false;
 
     //% chance for an enemy not to spawn --- 1/x chance to fail, so 10 is 10%, 20 is 5%, etc.
     private const int FAILSPAWN_CHANCE = 8;
@@ -60,7 +62,7 @@ public class Room : MonoBehaviour
                 foreach (SpawnEnemy spawn in enemySpawns)
                 {
                     // a number between 0 and 9
-                    int a = (int)Random.Range(0, FAILSPAWN_CHANCE);
+                    int a = (int)UnityEngine.Random.Range(0, FAILSPAWN_CHANCE);
 
                     // if the number is 0 dont spawn the enemy (10% chance not to spawn)
                     if (a != 0)

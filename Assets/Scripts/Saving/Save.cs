@@ -5,6 +5,9 @@
  * Outputs: (mirrors inputs)
  */
 
+using System.Collections.Generic;
+using UnityEngine;
+
 public class Save
 {
     public int seed;
@@ -12,4 +15,7 @@ public class Save
     public int playerHealth;
     public float playerx;
     public float playery;
+
+    public List<GameObject> discoveredRooms;
+    public Room[] rooms;
 }

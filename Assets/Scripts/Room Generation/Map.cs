@@ -25,6 +25,8 @@ public class Map : MonoBehaviour
     private bool maximized = false; // boolean for if our map is maximized or not
     private RectTransform UITransform; //rectTransform of the mapUI object
 
+    private SavesManager savesManager;
+
     #endregion
 
     #region Default Methods
@@ -33,6 +35,14 @@ public class Map : MonoBehaviour
     {
         player = GameObject.Find("player"); // grab our player
         UITransform = mapUI.GetComponent<RectTransform>();
+        savesManager = FindObjectOfType<SavesManager>();
+
+        // if we are loading a save
+        if (savesManager.loadingSave)
+        {
+            // get our saves already discovered rooms
+            discovered = savesManager.currentSave.discoveredRooms;
+        }
     }
 
     private void FixedUpdate()

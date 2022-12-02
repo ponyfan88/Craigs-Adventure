@@ -78,7 +78,7 @@ public class SqliteManager : MonoBehaviour
         IDbConnection dbConnection = CreateAndOpenDatabase(saveName); 
         IDbCommand dbCommand = dbConnection.CreateCommand(); // just like above we create a command to do this
         
-        dbCommand.CommandText = "INSERT OR REPLACE INTO Save (seed) VALUES (" + savesManager.currentSave.seed + ")";
+        dbCommand.CommandText = "INSERT OR REPLACE INTO Save (seed, name) VALUES (" + savesManager.currentSave.seed + ", " + saveName + ")";
         dbCommand.ExecuteNonQuery(); // execute said command
 
         dbCommand = dbConnection.CreateCommand();
@@ -100,7 +100,7 @@ public class SqliteManager : MonoBehaviour
         IDbCommand dbCommand = dbConnection.CreateCommand();
         // create a table if it doesnt exist yet
         // it has an id for each save, as well as a seed
-        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Save (seed INTEGER )";
+        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Save (seed INTEGER , name STRING)";
         dbCommand.ExecuteReader();
 
         dbCommand = dbConnection.CreateCommand();
