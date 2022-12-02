@@ -32,7 +32,7 @@ public class ProjectileManager : MonoBehaviour
      * Outputs: projectile spawner
      */
     public static GameObject GetBulletFromPool(string name)
-    { 
+    {
         for (int i = 0; i < bullets.Count; ++i)
         {
             if (!bullets[i].activeSelf&& bullets[i].name==name) // resues old objects instead of insatiating more objects

@@ -27,5 +27,6 @@ public class ProjectileSpawnData : ScriptableObject
     // Ex if the bullet's speed is exponetal the increase in speed will be special effect
     public float bulletspeed; //how fast the projectiles are
     [Header("Parenting")]
+    public Vector2 positionOffset;
     public bool isNotParent; // are the projectiles parented to the original object or not
 }
