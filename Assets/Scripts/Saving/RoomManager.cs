@@ -14,8 +14,8 @@ public class RoomManager : MonoBehaviour
 
     #region Default Methods
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called after the first frame update
+    void Awake()
     {
         savesManager = FindObjectOfType<SavesManager>();
 
@@ -29,7 +29,7 @@ public class RoomManager : MonoBehaviour
             for (int i = 0; i < rooms.Length; ++i)
             {
                 // replace that rooms data with our saved data
-                rooms[i] = savesManager.currentSave.rooms[i];    
+                //rooms[i] = savesManager.currentSave.rooms[i];    
             }
         }
     }
@@ -47,8 +47,6 @@ public class RoomManager : MonoBehaviour
     // nukes EVERY child in EVERY room
     public void NukeRoomChildren()
     {
-        Time.timeScale = 0f; // set our timescale to 0, stopping the game.
-
         rooms = FindObjectsOfType<Room>();
 
         // create a list of the rooms themselves
@@ -65,7 +63,15 @@ public class RoomManager : MonoBehaviour
         {
             foreach (Transform child in room.transform)
             {
-                Destroy(child.parent); // ok, so this is actually the gameobject AFAIK
+                // our child's tag
+                string tag = child.gameObject.tag;
+
+                Debug.Log(tag);
+
+                if (tag == "Item" || tag == "Enemy")
+                {
+                    Destroy(child.gameObject); // ok, so this is actually the gameobject AFAIK
+                }
             }
         }
 
