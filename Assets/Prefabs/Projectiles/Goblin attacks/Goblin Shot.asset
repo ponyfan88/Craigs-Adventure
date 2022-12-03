@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b70fe8a617233254cb031082ed5c33a5, type: 3}
-  m_Name: Data
+  m_Name: Goblin Shot
   m_EditorClassIdentifier: 
-  bulletResource: {fileID: 0}
+  bulletResource: {fileID: 209948382019125338, guid: 2e6c73d0931a38d4ab2fc13f4b52e156, type: 3}
   minRotation: 0
   maxRotation: 0
-  lifespan: 0
+  lifespan: 6
   endlifeEffect: 0
-  BulletCount: 0
-  cooldown: 0
-  aimAtPlayer: 0
+  BulletCount: 1
+  cooldown: 0.15
+  aimAtPlayer: 1
   isRandom: 0
   bulletPath: 0
   SpecialEffect: 0
-  bulletspeed: 0
+  bulletspeed: 8
   positionOffset: {x: 0, y: 0}
-  isNotParent: 0
+  isNotParent: 1

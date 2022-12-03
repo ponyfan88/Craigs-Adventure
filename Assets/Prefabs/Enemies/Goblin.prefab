@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDatas:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 40685da146540da488239b8c415f964d, type: 2}
   index: 0
   spawningAuto: 0
   isSequenceRandom: 0
