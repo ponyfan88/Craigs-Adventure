@@ -71,9 +71,9 @@ public class goblinStateManager : MonoBehaviour
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: make the goblin spit at player
+     * inputs: trySpit()
+     * outputs: projectilespawner.cs
      */
     public void Spit()
     {
@@ -81,7 +81,7 @@ public class goblinStateManager : MonoBehaviour
         ++timesSpit;
 
         // spawn projectile
-        projectileSpawner.SpawnBullets();
+        projectileSpawner.spawnerController(0);
         
         // if we've spit 3 times consecutively, add a cooldown and force the man to walk
         if (timesSpit == 3)

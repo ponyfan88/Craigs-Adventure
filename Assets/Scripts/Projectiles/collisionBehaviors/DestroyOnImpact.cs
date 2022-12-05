@@ -66,7 +66,7 @@ public class DestroyOnImpact : MonoBehaviour
             case DestroyType.summonProjectile:
                 if (TryGetComponent(out ProjectileSpawner projectileSpawner))
                 {
-                    projectileSpawner.SpawnBullets();
+                    projectileSpawner.spawnerController(0);
                 }
                 gameObject.SetActive(false);
                 break;
