@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8e965f984865140a2d66fbc931bfd0, type: 3}
   m_Name: Bomb Explosio
   m_EditorClassIdentifier: 
-  pattern: []
+  pattern:
+  - {fileID: 11400000, guid: 91847afbe148ea04e8679acc4946d721, type: 2}

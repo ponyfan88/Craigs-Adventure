@@ -26,6 +26,8 @@ public class ProjectileSpawnData : ScriptableObject
     public float SpecialEffect;// the main value if the projectiles bullet path is not linear
     // Ex if the bullet's speed is exponetal the increase in speed will be special effect
     public float bulletspeed; //how fast the projectiles are
+    public bool projectileVelocityIndependent=false;
+    public Vector2 Velocity;// the velocity of the projectile 
     [Header("Parenting")]
     public Vector2 positionOffset;
     public bool isNotParent; // are the projectiles parented to the original object or not
