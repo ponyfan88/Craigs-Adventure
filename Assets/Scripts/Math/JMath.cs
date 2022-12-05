@@ -61,6 +61,8 @@ public static class JMath
         return false;
     }
 
+    #endregion
+
     #region HasDecimals
 
     /*
