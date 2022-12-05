@@ -19,6 +19,7 @@ public class SavesManager : MonoBehaviour
     public Save currentSave = new Save(); // our save. see save.cs for this classes info. it's in the same directory.
     
     SqliteManager sqliteManager;
+    ThingManager thingManager;
 
     #endregion
 
@@ -31,6 +32,8 @@ public class SavesManager : MonoBehaviour
      */
     private void Start()
     {
+        thingManager = GameObject.FindObjectOfType<ThingManager>();
+
         // get every saving object
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Saving");
 
@@ -106,6 +109,9 @@ public class SavesManager : MonoBehaviour
                 LogToFile.Log("we cannot delete the file, but thats okay since its the same save version.");
             }
         }
+
+        // save our active items and enemies
+        thingManager.NukeRoomChildren(true, false);
 
         sqliteManager.Write(saveName);
     }

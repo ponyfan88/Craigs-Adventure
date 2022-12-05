@@ -6,6 +6,7 @@
  */
 
 using Mono.Data.Sqlite;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using UnityEngine;
@@ -41,6 +42,12 @@ public class SqliteManager : MonoBehaviour
 
     public void Read(string saveName)
     {
+        // get the string from our file
+        string jsonString = File.ReadAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json");
+
+        // convert from json to a class and load over current generic objects
+        savesManager.currentSave.genericObjects = JsonUtility.FromJson<List<GenericObject>>(jsonString);
+
         IDbConnection dbConnection = CreateAndOpenDatabase(saveName);  // connect to our database
         IDbCommand dbCommand = dbConnection.CreateCommand(); // create a command
         dbCommand.CommandText = "SELECT * FROM Save"; // make that command to read all the data
@@ -74,6 +81,16 @@ public class SqliteManager : MonoBehaviour
 
     public void Write(string saveName)
     {
+        Debug.Log(savesManager.currentSave.genericObjects);
+
+        // get the string from our current save
+        string jsonString = JsonUtility.ToJson(savesManager.currentSave.genericObjects);
+
+        Debug.Log(jsonString);
+
+        // write the text to our json file
+        File.WriteAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json", jsonString);
+
         // if we dont have a table yet, insert a save id and seed
         IDbConnection dbConnection = CreateAndOpenDatabase(saveName); 
         IDbCommand dbCommand = dbConnection.CreateCommand(); // just like above we create a command to do this

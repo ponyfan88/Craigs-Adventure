@@ -22,15 +22,8 @@ public class ThingManager : MonoBehaviour
         // if we are loading a save
         if (savesManager.loadingSave)
         {
-            // get our active rooms
-            rooms = FindObjectsOfType<Room>();
-
-            // for every room
-            for (int i = 0; i < rooms.Length; ++i)
-            {
-                // replace that rooms data with our saved data
-                //rooms[i] = savesManager.currentSave.rooms[i];    
-            }
+            Debug.Log("reconstructing objects");
+            ReconstructGenericObjects();
         }
     }
 
@@ -106,6 +99,8 @@ public class ThingManager : MonoBehaviour
 
                             // add it to our list of game objects
                             genericObjects.Add(genericObject);
+
+                            Debug.Log(genericObject);
                         }
 
                         if (destroy)
@@ -121,6 +116,8 @@ public class ThingManager : MonoBehaviour
             // if we are not just destroying objects
             if (save)
             {
+                Debug.Log(genericObjects);
+
                 // store our generic objects in our save
                 savesManager.currentSave.genericObjects = genericObjects;
             }
@@ -139,12 +136,6 @@ public class ThingManager : MonoBehaviour
 
     public void ReconstructGenericObjects()
     {
-        if (savesManager.currentSave.genericObjects == null) // owned
-        {
-            NukeRoomChildren(true, false); // save our current progress if not true
-            // TODO: REMOVE THIS
-        }
-        
         rooms = FindObjectsOfType<Room>();
         // EVERY OBJECT CALLED ROOM CHILD 
         // but also the room script component
