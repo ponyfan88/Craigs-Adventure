@@ -136,6 +136,11 @@ public class ThingManager : MonoBehaviour
 
     public void ReconstructGenericObjects()
     {
+        if (savesManager.currentSave.genericObjects == null)
+        {
+            NukeRoomChildren(true, false);
+        }
+        
         rooms = FindObjectsOfType<Room>();
         // EVERY OBJECT CALLED ROOM CHILD 
         // but also the room script component
@@ -170,9 +175,18 @@ public class ThingManager : MonoBehaviour
             // 2: item is rotated 90,0,0 // IF WE PARENT TO ROOM THIS ISNT AN ISSUE
             // 3: not placed in correct room
 
-            GameObject thing = Instantiate(genericObject.itemEnemyThing, roomGameObjects[genericObject.parentUniqueID - 1].transform, true); // TODO: MIGHT NEED WORLD SPACE
-            thing.SetActive(true);
-            thing.transform.rotation = Quaternion.Euler(0, 0, 0);
+            try
+            {
+                GameObject thing = Instantiate(genericObject.itemEnemyThing, roomGameObjects[genericObject.parentUniqueID - 1].transform, true); // TODO: MIGHT NEED WORLD SPACE
+            }
+            catch
+            {
+                Debug.Log(genericObject.itemEnemyThing);
+                Debug.Log("has uniqueID " + (genericObject.parentUniqueID - 1));
+            }
+
+            //thing.SetActive(true);
+            //thing.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         NukeRoomChildren(false, true, true);
