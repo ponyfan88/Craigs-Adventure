@@ -35,7 +35,7 @@ public class playerWalkanim : StateMachineBehaviour
             {           
                 animator.SetBool("isMoving", true);
 
-                if (controller.moveDirection.x != 0) // if you are moving X, we want to prioritize it over Y
+                if (controller.xHasPriority) // if you are moving X, we want to prioritize it over Y
                 {
                     animator.SetBool("facingUp", false);
                     animator.SetBool("facingDown", false);

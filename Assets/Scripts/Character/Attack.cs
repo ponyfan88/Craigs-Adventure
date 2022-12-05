@@ -46,7 +46,7 @@ public class Attack : MonoBehaviour
         {
             player.speed /= 2;
 
-            if (player.moveDirection.x != 0) // if moving X, we want to prioritize it over the Y direction
+            if (player.xHasPriority) // if X "has priority" over y, we attack on the X
             {
                 hitBox.size = hitboxSize; // make the hitbox it appropriate size
                 if (animationControl.facingRight)
