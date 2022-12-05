@@ -44,7 +44,31 @@ public static class JMath
         }
         return false;
     }
+    public static bool IfOpposite(long a, long b)
+    {
+        if (a > 0 && b < 0 || a < 0 && b > 0)
+        {
+            return true;
+        }
+        return false;
+    }
     public static bool IfOpposite(float a, float b)
+    {
+        if (a > 0 && b < 0 || a < 0 && b > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static bool IfOpposite(double a, double b)
+    {
+        if (a > 0 && b < 0 || a < 0 && b > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static bool IfOpposite(decimal a, decimal b)
     {
         if (a > 0 && b < 0 || a < 0 && b > 0)
         {
@@ -425,5 +449,52 @@ public static class JMath
 
         return b;
     }
+
+    #endregion
+
+    #region SelectRandArray
+
+    public static string SelectRandArray(string[] array)
+    {
+        Random r = new Random();
+        return array[r.Next(0, array.Length)];
+    }
+
+    public static int SelectRandArray(int[] array)
+    {
+        Random r = new Random();
+        return array[r.Next(0, array.Length)];
+    }
+
+    public static long SelectRandArray(long[] array)
+    {
+        Random r = new Random();
+        return array[r.Next(0, array.Length)];
+    }
+
+    public static float SelectRandArray(float[] array)
+    {
+        Random r = new Random();
+        return array[r.Next(0, array.Length)];
+    }
+
+    public static double SelectRandArray(double[] array)
+    {
+        Random r = new Random();
+        return array[r.Next(0, array.Length)];
+    }
+
+    public static byte SelectRandArray(byte[] array)
+    {
+        Random r = new Random();
+        return array[r.Next(0, array.Length)];
+    }
+
+    public static decimal SelectRandArray(decimal[] array)
+    {
+        Random r = new Random();
+        return array[r.Next(0, array.Length)];
+    }
+
     #endregion
 }
