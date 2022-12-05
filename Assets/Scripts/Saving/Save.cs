@@ -5,6 +5,8 @@
  * Outputs: (mirrors inputs)
  */
 
+using System.Collections.Generic;
+
 public class Save
 {
     public int seed;
@@ -12,4 +14,6 @@ public class Save
     public int playerHealth;
     public float playerx;
     public float playery;
+
+    public List<GenericObject> genericObjects;
 }

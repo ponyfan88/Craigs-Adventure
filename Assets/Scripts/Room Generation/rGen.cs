@@ -228,6 +228,8 @@ public class rGen : MonoBehaviour
 
                 ++global.spawnCount; //adds to rooms spawned
                 spawned = true; //marks as spawned
+
+            clone.GetComponentInChildren<Room>().uniqueID = global.spawnCount;
             /*}*/
         }
     }
