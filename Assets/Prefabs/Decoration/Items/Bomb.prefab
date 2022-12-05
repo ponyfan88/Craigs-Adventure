@@ -189,11 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68a6e51dcf05bb4494c5695bce2d82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDatas:
-  - {fileID: 11400000, guid: 91847afbe148ea04e8679acc4946d721, type: 2}
+  attackPattern:
+  - {fileID: 11400000, guid: 725074ca298b73d4baa32ff52c8146a6, type: 2}
   index: 0
-  spawningAuto: 0
-  isSequenceRandom: 0
 --- !u!114 &-5255305848121462861
 MonoBehaviour:
   m_ObjectHideFlags: 0

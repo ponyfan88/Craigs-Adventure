@@ -13,10 +13,10 @@ public class ProjectileSpawner : MonoBehaviour
 
     GameObject player; // initialize a variable to represent player
     Vector3 pos, velocity; // initialize pos and velocity
-    public ProjectileSpawnData[] spawnDatas; // gather all the attack patterns attached to this script
-    public int index = 0; // how to order of go through
-    public bool spawningAuto; // if true spawns bullets automaticly rather than manually
-    public bool isSequenceRandom = false; // if set to true every attack will be randomly chosen instead of going in sequental order
+    public ProjectileAttackPatternData[] attackPattern;//list of all attack patterns
+    private ProjectileSpawnData[] spawnDatas; // list of the spawn data for current attack pattern
+    public int index = 0; //the current projectile data
+    bool spawning=false; // are the projectiles spawning
     double angle = 0; // angle to the player
     float timer; // countdown till next wave of projectiles
     float[] rotations; // the angle of the projectile
@@ -31,7 +31,6 @@ public class ProjectileSpawner : MonoBehaviour
 
     void Start()
     {
-        timer = GetSpawnData().cooldown; // sets timer to count down
         // find the player
         player = GameObject.Find("player");
         // get our current position
@@ -40,26 +39,18 @@ public class ProjectileSpawner : MonoBehaviour
 
     void Update()
     {
-        if (timer <= 0) {
+        if (timer <= 0&& spawning) {
             // calculate the angle to the player from the enemy
             angle = Mathf.Rad2Deg * System.Math.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
-
             velocity = (transform.position - pos); // calculate our velocity (as a vector3)
-            
             pos = transform.position; // update our position
-            if (spawningAuto) // if the enemy is set to automatically shoot
+            SpawnBullets();
+            timer = GetSpawnData().cooldown;
+            ++index;
+            if (index >= spawnDatas.Length) 
             {
-                SpawnBullets();
-                timer = GetSpawnData().cooldown;
-                if (isSequenceRandom)// attacks will go of randomly if set to true
-                {
-                    index = Random.Range(0, spawnDatas.Length);
-                }
-                else // when false adds one to index and resets when it's to large of a number
-                {
-                    index += 1;
-                    if (index >= spawnDatas.Length) index = 0;
-                }
+                index = 0;
+                spawning= false;
             }
         }
         timer -= Time.deltaTime; // count down till next wave of projectiles
@@ -68,6 +59,16 @@ public class ProjectileSpawner : MonoBehaviour
     #endregion
 
     #region Custom Methods
+    /* Purpose: enable this script
+ * Inputs:index of attack you wish to preform
+ * Outputs: Spawn bullets
+ */
+    public void spawnerController(int attackIndex) 
+    {
+        spawning= true;
+        spawnDatas = attackPattern[attackIndex].pattern;
+        timer = GetSpawnData().cooldown; // sets timer to count down
+    }
 /* Purpose: evenly splits projectiles between the min and max rotation by the differnce between them
  * Inputs: bullet count, min and max rotation,
  * Outputs: SpawnBullets()  
@@ -86,8 +87,7 @@ public class ProjectileSpawner : MonoBehaviour
  * Inputs: DistributeRotations(), isRandom,
  * Outputs: Projectile.cs  
  */
-
-    public GameObject[] SpawnBullets() 
+    private GameObject[] SpawnBullets() 
     {
         rotations = new float[GetSpawnData().BulletCount]; //set rotation to a list with the length of the BulletCount
         if (GetSpawnData().isRandom) RandomRotations();

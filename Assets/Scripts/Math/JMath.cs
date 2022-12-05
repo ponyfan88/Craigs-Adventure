@@ -358,4 +358,43 @@ public static class JMath
     }
 
     #endregion
+
+    #region Left
+
+    /*
+     * purpose: returns the first X digits of a string
+     * inputs: a string, and a number
+     * outputs: returns the first X digits of a string
+     */
+    public static string Left(this string a, int num)
+    {
+        string b = "";
+
+        for (int i = 0; i < num; ++i)
+        {
+            b += a[i];
+        }
+
+        return b;
+    }
+
+    #endregion
+
+    #region Right
+    /*
+     * purpose: returns the last X digits of a string
+     * inputs: a string, and a number
+     * outputs: returns the last X digits of a string
+     */
+    public static string Right(this string a, int num)
+    {
+        string b = "";
+        for (int i = num - 1; i >= 0; --i)
+        {
+            b += a[a.Length - 1 - i];
+        }
+
+        return b;
+    }
+    #endregion
 }

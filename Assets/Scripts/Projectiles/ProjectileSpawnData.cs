@@ -2,7 +2,7 @@
  * Programmers: Anmol Acharya
  * Purpose: create pre fabricated projectile spreads
  * Inputs: none
- * Outputs: "ProjectileSpawner"
+ * Outputs: "ProjectileSpawner" and projectile attack patternData
  */
 
 using UnityEngine;

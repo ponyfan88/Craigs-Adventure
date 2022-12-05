@@ -29,9 +29,9 @@ public class DoorManager : MonoBehaviour
     #region Custom Methods
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Open the door for the player to go through them
+     * inputs: the door to open
+     * outputs: opens door
      */
     public void OpenDoors()
     {
@@ -41,9 +41,9 @@ public class DoorManager : MonoBehaviour
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Clost the door to stop the player
+     * inputs: the door to close
+     * outputs: closes door
      */
     public void CloseDoors()
     {
