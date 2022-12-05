@@ -72,6 +72,14 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1672663221352385542, guid: bfa62b5c26b0dcf44b974901ad9e1d4e, type: 3}
+      propertyPath: m_Acceleration
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672663221352385542, guid: bfa62b5c26b0dcf44b974901ad9e1d4e, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1672663221352385785, guid: bfa62b5c26b0dcf44b974901ad9e1d4e, type: 3}
       propertyPath: m_Name
       value: Speed slime
