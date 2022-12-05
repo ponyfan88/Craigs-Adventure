@@ -12,12 +12,12 @@ public class controller : MonoBehaviour
     #region Variables
 
     public float dashMoveCooldown, speed = 6f;
-    [NonSerialized] public float xMov, yMov;
+    [NonSerialized] public float xMov, yMov, LastXMov, LastYMov;
     [SerializeField] float dashDuration, dashVelocity, dashCooldown;
     float dashCooldownTimer, dashDurationTimer, knockbackTime = 0;
     [NonSerialized]public Vector2 moveDirection = new Vector2(1, 0);
     Vector2 knockbackVelocity;
-    [NonSerialized] public bool canMove = true, isDashing = false;
+    [NonSerialized] public bool canMove = true, isDashing = false, xHasPriority = true;
     Rigidbody2D rb;
     SoundManager soundManager;
     TrailRenderer dashParticle;
@@ -77,6 +77,14 @@ public class controller : MonoBehaviour
 
             if (yMov != 0 || xMov != 0) // if we moved (wasd)
             {
+                if (xHasPriority && yMov != 0 && LastYMov == 0 || xMov == 0 && yMov != 0)
+                {
+                    xHasPriority = false;
+                }
+                else if (!xHasPriority && xMov != 0 && LastXMov == 0 || xMov == 0 && yMov != 0)
+                {
+                    xHasPriority = true;
+                }
                 moveDirection = new Vector2(Math.Sign(xMov), Math.Sign(yMov)); // calculate movement direction
                 // calculate the velocity of our movement
                 rb.MovePosition(new Vector2(transform.position.x + xMov * speed * Time.fixedDeltaTime, transform.position.y + yMov * speed * Time.fixedDeltaTime)); // apply the movement velocity
@@ -98,6 +106,9 @@ public class controller : MonoBehaviour
             //applies movement calculated in ApplyKnockback
             rb.MovePosition(new Vector2(transform.position.x + knockbackVelocity.x * Time.fixedDeltaTime, transform.position.y + knockbackVelocity.y * Time.fixedDeltaTime));
         }
+
+        LastXMov = xMov;
+        LastYMov = yMov;
     }
 
     #endregion
