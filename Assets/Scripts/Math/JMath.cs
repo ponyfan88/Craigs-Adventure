@@ -34,6 +34,33 @@ public static class JMath
 
     #endregion
 
+    #region IfOpposite
+
+    public static bool IfOpposite(int a, int b)
+    {
+        if (a > 0 && b < 0 || a < 0 && b > 0 )
+        {
+            return true;
+        }
+        return false;
+    }
+    public static bool IfOpposite(float a, float b)
+    {
+        if (a > 0 && b < 0 || a < 0 && b > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static bool IfOpposite(double a, double b)
+    {
+        if (a > 0 && b < 0 || a < 0 && b > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     #region HasDecimals
 
     /*
