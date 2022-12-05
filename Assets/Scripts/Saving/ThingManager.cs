@@ -56,6 +56,7 @@ public class ThingManager : MonoBehaviour
 
         // fill that list with each rooms parent
         foreach (Room room in rooms)
+        if (!loadFromSave)
         {
             // we take the transform of our room child, find the transform, get the parent of the transform, and get the gameobject of the parent
             roomGameObjects.Add(room.transform.parent.gameObject);
@@ -106,9 +107,15 @@ public class ThingManager : MonoBehaviour
 
         // if we are not just destroying objects
         if (save)
+        else
         {
-            // store our generic objects in our save
-            savesManager.currentSave.genericObjects = genericObjects;
+            if (destroy)
+            {
+                foreach (GenericObject genericObject in savesManager.currentSave.genericObjects)
+                {
+                    Destroy(genericObject.itemEnemyThing);
+                }
+            }
         }
     }
 
