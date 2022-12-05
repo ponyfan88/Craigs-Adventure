@@ -8,10 +8,11 @@ public class DestroyOnImpact : MonoBehaviour
 {
     [Min(0)]public int DamageAmount = 1; // amount of damage it deals to non-player objects
     public bool playerOwned = false, destroyOnHitWall = true;
-    
+
     // enum to decide what should happen if an object were to explode.
     public enum DestroyType { destroy, summonProjectile };
     public DestroyType destroyType = DestroyType.destroy;
+    public int projectileIndex= 0;//the projectile to spawn when destroyed
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -66,9 +67,9 @@ public class DestroyOnImpact : MonoBehaviour
             case DestroyType.summonProjectile:
                 if (TryGetComponent(out ProjectileSpawner projectileSpawner))
                 {
-                    projectileSpawner.spawnerController(0);
+                    projectileSpawner.spawnerController(projectileIndex);
+                    destroyType = DestroyType.destroy;
                 }
-                gameObject.SetActive(false);
                 break;
             case DestroyType.destroy:
             default:
