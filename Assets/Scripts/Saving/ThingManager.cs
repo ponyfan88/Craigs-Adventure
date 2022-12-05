@@ -139,9 +139,9 @@ public class ThingManager : MonoBehaviour
 
     public void ReconstructGenericObjects()
     {
-        if (savesManager.currentSave.genericObjects == null)
+        if (savesManager.currentSave.genericObjects == null) // owned
         {
-            NukeRoomChildren(true); // save our current progress if not true
+            NukeRoomChildren(true, false); // save our current progress if not true
             // TODO: REMOVE THIS
         }
         
@@ -154,14 +154,10 @@ public class ThingManager : MonoBehaviour
 
         // fill that list with each rooms parent
         foreach (Room room in rooms)
-        {
+        {   
             // we take the transform of our room child, find the transform, get the parent of the transform, and get the gameobject of the parent
             roomGameObjects.Add(room.transform.parent.gameObject);
         }
-        
-        // we will NOT be saving over our current save
-        NukeRoomChildren(false, true);
-        // destroy set to true since we want to sort of "clear the board" so to speak
 
         Debug.Log("through the loop");
 
@@ -179,12 +175,16 @@ public class ThingManager : MonoBehaviour
 
             // CURRENT ISSUES:
 
-            // 1: every component is disabled by default
-            // 2: item is rotated 90,0,0
+            // 1: every component is disabled by default // TODO:REMOVEME
+            // 2: item is rotated 90,0,0 // IF WE PARENT TO ROOM THIS ISNT AN ISSUE
             // 3: not placed in correct room
 
-            Instantiate(genericObject.itemEnemyThing, null, true); // TODO: MIGHT NEED WORLD SPACE
+            GameObject thing = Instantiate(genericObject.itemEnemyThing, roomGameObjects[genericObject.parentUniqueID - 1].transform, true); // TODO: MIGHT NEED WORLD SPACE
+            thing.SetActive(true);
+            thing.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+        NukeRoomChildren(false, true, true);
     }
 
     #endregion
