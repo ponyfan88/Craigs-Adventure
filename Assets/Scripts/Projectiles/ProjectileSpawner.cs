@@ -59,7 +59,10 @@ public class ProjectileSpawner : MonoBehaviour
     #endregion
 
     #region Custom Methods
-
+    /* Purpose: enable this script
+ * Inputs:index of attack you wish to preform
+ * Outputs: Spawn bullets
+ */
     public void spawnerController(int attackIndex) 
     {
         spawning= true;
