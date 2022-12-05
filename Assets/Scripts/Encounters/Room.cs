@@ -25,6 +25,8 @@ public class Room : MonoBehaviour
     GenericNPC[] npcs;
     GlobalRoomManager roomManager;
 
+    public int uniqueID = 0;
+
     bool enemiesSpawned = false; 
 
     //% chance for an enemy not to spawn --- 1/x chance to fail, so 10 is 10%, 20 is 5%, etc.
