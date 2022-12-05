@@ -23,5 +23,8 @@ MonoBehaviour:
   isRandom: 1
   bulletPath: 0
   SpecialEffect: 0
-  bulletspeed: 1
+  bulletspeed: 0
+  projectileVelocityIndependent: 0
+  Velocity: {x: 0.84, y: 0.56}
+  positionOffset: {x: 0, y: 0}
   isNotParent: 1
