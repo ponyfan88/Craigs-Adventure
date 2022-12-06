@@ -23,6 +23,7 @@ namespace thingEnums
         bomb,
         bone,
         book,
+        book2,
         box,
         heartJar,
         lantern,
