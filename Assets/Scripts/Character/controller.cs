@@ -77,11 +77,12 @@ public class controller : MonoBehaviour
 
             if (yMov != 0 || xMov != 0) // if we moved (wasd)
             {
-                if (xHasPriority && yMov != 0 && LastYMov == 0 || xMov == 0 && yMov != 0)
+                // IF: the character is facing the X direction
+                if (xHasPriority && (yMov != 0 && LastYMov == 0 || xMov == 0 || JMath.IfOpposite(yMov, LastYMov)))
                 {
                     xHasPriority = false;
                 }
-                else if (!xHasPriority && xMov != 0 && LastXMov == 0 || xMov == 0 && yMov != 0)
+                else if (!xHasPriority && (xMov != 0 && LastXMov == 0 || yMov == 0 || JMath.IfOpposite(xMov, LastXMov)))
                 {
                     xHasPriority = true;
                 }
