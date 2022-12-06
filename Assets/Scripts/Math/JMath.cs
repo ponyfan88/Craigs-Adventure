@@ -76,14 +76,6 @@ public static class JMath
         }
         return false;
     }
-    public static bool IfOpposite(double a, double b)
-    {
-        if (a > 0 && b < 0 || a < 0 && b > 0)
-        {
-            return true;
-        }
-        return false;
-    }
 
     #endregion
 
