@@ -27,7 +27,7 @@ public class Room : MonoBehaviour
 
     public int uniqueID = 0;
 
-    bool enemiesSpawned = false; 
+    bool enemiesSpawned = false, eventCancellatiion = false;
 
     //% chance for an enemy not to spawn --- 1/x chance to fail, so 10 is 10%, 20 is 5%, etc.
     private const int FAILSPAWN_CHANCE = 8;
@@ -50,36 +50,45 @@ public class Room : MonoBehaviour
         roomManager = GetComponentInParent<GlobalRoomManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision == playerHitbox) // the player has entered the room
+        eventCancellatiion = false;
+        if (collision == playerHitbox && roomManager.inRoom == false) // the player has entered the room
         {
-            roomManager.EnterRoom(); // tell global room manager that we are in a room
-
-            roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
-
-            if (!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before
+            foreach (DoorManager door in doorManager)
             {
-                map.discovered.Add(transform.parent.gameObject); // add it to our list of entered rooms
+                if (collision.IsTouching(door.GetComponent<Collider2D>()))
+                eventCancellatiion = true;
+            }
+            if (!eventCancellatiion) 
+            {
+                roomManager.EnterRoom(); // tell global room manager that we are in a room
 
-                roomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
+                roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
 
-                // for every enemy that is a child of room child, spawn them in
-                foreach (SpawnEnemy spawn in enemySpawns)
+                if (!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before
                 {
-                    // a number between 0 and 9
-                    int a = (int)UnityEngine.Random.Range(0, FAILSPAWN_CHANCE);
+                    map.discovered.Add(transform.parent.gameObject); // add it to our list of entered rooms
 
-                    // if the number is 0 dont spawn the enemy (10% chance not to spawn)
-                    if (a != 0)
+                    roomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
+
+                    // for every enemy that is a child of room child, spawn them in
+                    foreach (SpawnEnemy spawn in enemySpawns)
                     {
-                        // spawn 90% of the time
-                        spawn.Spawn(transform.parent);
-                    }
-                    else
-                    {
-                        // log that we didnt spawn an enemy
-                        LogToFile.Log("enemy did not spawn due to random chance");
+                        // a number between 0 and 9
+                        int a = (int)UnityEngine.Random.Range(0, FAILSPAWN_CHANCE);
+
+                        // if the number is 0 dont spawn the enemy (10% chance not to spawn)
+                        if (a != 0)
+                        {
+                            // spawn 90% of the time
+                            spawn.Spawn(transform.parent);
+                        }
+                        else
+                        {
+                            // log that we didnt spawn an enemy
+                            LogToFile.Log("enemy did not spawn due to random chance");
+                        }
                     }
                 }
             }

@@ -9,6 +9,8 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof (NavMeshAgent))]
+[DisallowMultipleComponent]
 public class AIManager : MonoBehaviour
 {
     #region Variables
@@ -18,7 +20,8 @@ public class AIManager : MonoBehaviour
     [NonSerialized] public bool needDistance = false;
     [NonSerialized] public float distance;
     [Range(0,6)] public float knockbackResistence = 0f;
-    float knockbackTime = 0.0525f, knockbackTimer = 0f;
+    const float KNOCKBACKTIME = 0.0525f;
+    float knockbackTimer = 0f;
     Vector2 knockbackDir;
     NavMeshAgent ai;
     GameObject player;
@@ -64,7 +67,7 @@ public class AIManager : MonoBehaviour
     public void ApplyKnockback(Vector2 AttackDir)
     {
         knockbackDir = new Vector2(Math.Sign(AttackDir.x), Math.Sign(AttackDir.y));
-        knockbackTimer = Time.time + knockbackTime;
+        knockbackTimer = Time.time + KNOCKBACKTIME;
     }
     
     /*
@@ -75,7 +78,7 @@ public class AIManager : MonoBehaviour
     public void ApplyKnockback(Transform position)
     {
         knockbackDir = new Vector2(Math.Sign(position.position.x - transform.position.x), Math.Sign(position.position.y - transform.position.y));
-        knockbackTimer = Time.time + knockbackTime;
+        knockbackTimer = Time.time + KNOCKBACKTIME;
 
     }
     
@@ -90,7 +93,7 @@ public class AIManager : MonoBehaviour
         float radian = Mathf.Deg2Rad * bulletRotation;
         // uses cosine and sine to turn the radian of the bullet into a direction to push the player
         knockbackDir = new Vector2(Math.Sign(Mathf.Cos(radian)), Math.Sign(Mathf.Sin(radian)));
-        knockbackTimer = Time.time + knockbackTime;
+        knockbackTimer = Time.time + KNOCKBACKTIME;
     }
     
     #endregion
