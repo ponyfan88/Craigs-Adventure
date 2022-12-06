@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8571093734446994318}
   - component: {fileID: -1231384853794255553}
   - component: {fileID: -5255305848121462861}
+  - component: {fileID: -7894686732656096491}
   m_Layer: 8
   m_Name: Bomb
   m_TagString: Item
@@ -156,6 +157,7 @@ MonoBehaviour:
   playerOwned: 1
   destroyOnHitWall: 1
   destroyType: 1
+  projectileIndex: 0
 --- !u!50 &8571093734446994318
 Rigidbody2D:
   serializedVersion: 4
@@ -204,3 +206,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec27edc48a7c9e84ab4fb48545dc4beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7894686732656096491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757501959174599330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5082789b610f258438b51f18e06aa5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingType: 0
+  thingPrefab: 3

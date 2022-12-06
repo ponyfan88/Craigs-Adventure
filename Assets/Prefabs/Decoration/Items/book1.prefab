@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 69962445277924440}
   - component: {fileID: 69962445277924443}
   - component: {fileID: 7834859753915878217}
+  - component: {fileID: 1972572881583895771}
   m_Layer: 0
   m_Name: book1
   m_TagString: Item
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &69962445277924446
 SpriteRenderer:
@@ -145,6 +146,7 @@ MonoBehaviour:
   playerOwned: 1
   destroyOnHitWall: 0
   destroyType: 0
+  projectileIndex: 0
 --- !u!50 &7834859753915878217
 Rigidbody2D:
   serializedVersion: 4
@@ -166,3 +168,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1972572881583895771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69962445277924442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5082789b610f258438b51f18e06aa5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingType: 0
+  thingPrefab: 5
