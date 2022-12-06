@@ -40,6 +40,7 @@ public class Stairs : MonoBehaviour
         {
             FloorManager.floor++; // we are now one floor up
             FloorManager.loadSaveOverride = true; // override our save
+            savesManager.loadingSave = false; // we are no longer loading a save
             if (FloorManager.floor >= 4)
             {
                 SceneManager.LoadScene("Scenes/BossLevel");
