@@ -448,43 +448,43 @@ public static class JMath
 
     public static string SelectRandArray(string[] array)
     {
-        Random r = new Random();
+        System.Random r = new System.Random();
         return array[r.Next(0, array.Length)];
     }
 
     public static int SelectRandArray(int[] array)
     {
-        Random r = new Random();
+        System.Random r = new System.Random();
         return array[r.Next(0, array.Length)];
     }
 
     public static long SelectRandArray(long[] array)
     {
-        Random r = new Random();
+        System.Random r = new System.Random();
         return array[r.Next(0, array.Length)];
     }
 
     public static float SelectRandArray(float[] array)
     {
-        Random r = new Random();
+        System.Random r = new System.Random();
         return array[r.Next(0, array.Length)];
     }
 
     public static double SelectRandArray(double[] array)
     {
-        Random r = new Random();
+        System.Random r = new System.Random();
         return array[r.Next(0, array.Length)];
     }
 
     public static byte SelectRandArray(byte[] array)
     {
-        Random r = new Random();
+        System.Random r = new System.Random();
         return array[r.Next(0, array.Length)];
     }
 
     public static decimal SelectRandArray(decimal[] array)
     {
-        Random r = new Random();
+        System.Random r = new System.Random();
         return array[r.Next(0, array.Length)];
     }
 
