@@ -35,7 +35,23 @@ public class SqliteManager : MonoBehaviour
             Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
         }
     }
-    
+
+    #endregion
+
+    #region Structs
+
+    private class GenericObjectJSON
+    {
+        // both equal null by default
+        public thingEnums.thingPrefab thingPrefab;
+        public int uniqueID = 0;
+        public int health;
+
+        public float x;
+        public float y;
+        public float z;
+    }
+
     #endregion
 
     #region Custom Methods
@@ -45,8 +61,28 @@ public class SqliteManager : MonoBehaviour
         // get the string from our file
         string jsonString = File.ReadAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json");
 
+        List<GenericObjectJSON> jsonList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<GenericObjectJSON>>(jsonString);
+        
+        List<GenericObject> jsonListSwap = new List<GenericObject>();
+        
+        //savesManager.currentSave.genericObjects
+        foreach (GenericObjectJSON genericObjectJSON in jsonList)
+        {
+            GenericObject genericObject = new GenericObject();
+
+            genericObject.health = genericObjectJSON.health;
+
+            genericObject.thingPrefab = genericObjectJSON.thingPrefab;
+            genericObject.uniqueID = genericObjectJSON.uniqueID;
+
+            genericObject.position = new Vector3(genericObjectJSON.x, genericObjectJSON.y, genericObjectJSON.z);
+
+            jsonListSwap.Add(genericObject);
+        }
+
+        savesManager.currentSave.genericObjects = jsonListSwap;
+
         // convert from json to a class and load over current generic objects
-        savesManager.currentSave.genericObjects = JsonUtility.FromJson<List<GenericObject>>(jsonString);
 
         IDbConnection dbConnection = CreateAndOpenDatabase(saveName);  // connect to our database
         IDbCommand dbCommand = dbConnection.CreateCommand(); // create a command
@@ -82,9 +118,29 @@ public class SqliteManager : MonoBehaviour
     public void Write(string saveName)
     {
         Debug.Log(savesManager.currentSave.genericObjects);
+        
+        // JSON cannot parse vector3s so we redo that functionality
 
-        // get the string from our current save
-        string jsonString = JsonUtility.ToJson(savesManager.currentSave.genericObjects);
+        List<GenericObjectJSON> jsonList = new List<GenericObjectJSON>();
+
+        foreach (GenericObject genericObject in savesManager.currentSave.genericObjects)
+        {
+            GenericObjectJSON genericObjectJSON = new GenericObjectJSON();
+
+            genericObjectJSON.health = genericObject.health;
+
+            genericObjectJSON.thingPrefab = genericObject.thingPrefab;
+            genericObjectJSON.uniqueID = genericObject.uniqueID;
+
+            genericObjectJSON.x = genericObject.position.x;
+            genericObjectJSON.y = genericObject.position.y;
+            genericObjectJSON.z = genericObject.position.z;
+
+            jsonList.Add(genericObjectJSON);
+        }
+
+        string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(jsonList);
+        //string jsonString = JsonUtility.ToJson(savesManager.currentSave.genericObjects);
 
         Debug.Log(jsonString);
 
