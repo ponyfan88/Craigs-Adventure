@@ -43,7 +43,7 @@ public class Item : MonoBehaviour
     void Update()
     {
             Distance = JMath.Distance(player.transform.position, transform.position); // finds the distance from the player
-            if (Distance <= 1) // if the distance from the player is within the pickup radius (1)
+            if (Distance <= 2) // if the distance from the player is within the pickup radius (1)
             {
                 // feed the objects information and position into the players item manager to determine if it is the closest object to the player
                 itemMan.SelectedPickup(transform.gameObject, Distance);
