@@ -18,7 +18,7 @@ public class SavesManager : MonoBehaviour
     public int seed = 1; // our seed (initialize as 1 since thats a good, noticeable seed. it generates a sort of upside-down stairs pattern.)
     public Save currentSave = new Save(); // our save. see save.cs for this classes info. it's in the same directory.
     
-    SqliteManager sqliteManager;
+    DataManager dataManager;
     ThingManager thingManager;
 
     #endregion
@@ -48,7 +48,7 @@ public class SavesManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         // grab variable things
-        sqliteManager = GetComponent<SqliteManager>();
+        dataManager = GetComponent<DataManager>();
         
         if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
         {
@@ -113,7 +113,7 @@ public class SavesManager : MonoBehaviour
         // save our active items and enemies
         thingManager.NukeRoomChildren(true, false);
 
-        sqliteManager.Write(saveName);
+        dataManager.Write(saveName);
     }
 
     /*
@@ -129,7 +129,7 @@ public class SavesManager : MonoBehaviour
         }
 
         // run the read function inside sqlite manager
-        sqliteManager.Read(saveName);
+        dataManager.Read(saveName);
 
         loadingSave = true; // we are now loading the save
 

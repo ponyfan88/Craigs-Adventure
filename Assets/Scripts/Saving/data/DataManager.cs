@@ -1,6 +1,6 @@
 /*
  * Programmers: Jack Kennedy
- * Purpose: to interact with sqlite
+ * Purpose: to interact with Sqlite and JSON, saving files both need to load
  * Inputs: calls to methods here
  * Outputs: saves to our database
  */
@@ -11,7 +11,7 @@ using System.Data;
 using System.IO;
 using UnityEngine;
 
-public class SqliteManager : MonoBehaviour
+public class DataManager : MonoBehaviour
 {
     #region Variables
 
@@ -58,31 +58,9 @@ public class SqliteManager : MonoBehaviour
 
     public void Read(string saveName)
     {
-        // get the string from our file
-        string jsonString = File.ReadAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json");
-
-        List<GenericObjectJSON> jsonList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<GenericObjectJSON>>(jsonString);
+        // Sqlite before JSON
         
-        List<GenericObject> jsonListSwap = new List<GenericObject>();
-        
-        //savesManager.currentSave.genericObjects
-        foreach (GenericObjectJSON genericObjectJSON in jsonList)
-        {
-            GenericObject genericObject = new GenericObject();
-
-            genericObject.health = genericObjectJSON.health;
-
-            genericObject.thingPrefab = genericObjectJSON.thingPrefab;
-            genericObject.uniqueID = genericObjectJSON.uniqueID;
-
-            genericObject.position = new Vector3(genericObjectJSON.x, genericObjectJSON.y, genericObjectJSON.z);
-
-            jsonListSwap.Add(genericObject);
-        }
-
-        savesManager.currentSave.genericObjects = jsonListSwap;
-
-        // convert from json to a class and load over current generic objects
+        #region Sqlite
 
         IDbConnection dbConnection = CreateAndOpenDatabase(saveName);  // connect to our database
         IDbCommand dbCommand = dbConnection.CreateCommand(); // create a command
@@ -94,6 +72,9 @@ public class SqliteManager : MonoBehaviour
         savesManager.currentSave.seed = dataReader.GetInt32(0); // our seed has the index 0
 
         FloorManager.floor = dataReader.GetByte(1); // our floor has the index 1
+
+        // JSON file savename
+        string jsonSaveName = dataReader.GetString(2); // our json file savename has index 2
 
         dbConnection.Close(); // just like logging we close
 
@@ -115,12 +96,46 @@ public class SqliteManager : MonoBehaviour
         savesManager.currentSave.playery = dataReader.GetFloat(3); // our playery has the index 3
 
         dbConnection.Close(); // just like logging we close
+
+        #endregion
+
+        #region JSON
+
+        // get the string from our file
+        string jsonString = File.ReadAllText(Application.streamingAssetsPath + "/Saves/" + jsonSaveName + ".json");
+
+        List<GenericObjectJSON> jsonList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<GenericObjectJSON>>(jsonString);
+
+        List<GenericObject> jsonListSwap = new List<GenericObject>();
+
+        //savesManager.currentSave.genericObjects
+        foreach (GenericObjectJSON genericObjectJSON in jsonList)
+        {
+            GenericObject genericObject = new GenericObject();
+
+            genericObject.health = genericObjectJSON.health;
+
+            genericObject.thingPrefab = genericObjectJSON.thingPrefab;
+            genericObject.uniqueID = genericObjectJSON.uniqueID;
+
+            genericObject.position = new Vector3(genericObjectJSON.x, genericObjectJSON.y, genericObjectJSON.z);
+
+            jsonListSwap.Add(genericObject);
+        }
+
+        savesManager.currentSave.genericObjects = jsonListSwap;
+
+        // convert from json to a class and load over current generic objects
+
+        #endregion
     }
 
     public void Write(string saveName)
     {
-        Debug.Log(savesManager.currentSave.genericObjects);
-        
+        // JSON before Sqlite
+
+        #region JSON
+
         // JSON cannot parse vector3s so we redo that functionality
 
         List<GenericObjectJSON> jsonList = new List<GenericObjectJSON>();
@@ -141,29 +156,33 @@ public class SqliteManager : MonoBehaviour
             jsonList.Add(genericObjectJSON);
         }
 
+        // convert it all to json
         string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(jsonList);
-        //string jsonString = JsonUtility.ToJson(savesManager.currentSave.genericObjects);
-
-        Debug.Log(jsonString);
 
         // write the text to our json file
         File.WriteAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json", jsonString);
+
+        #endregion
+
+        #region Sqlite
 
         // if we dont have a table yet, insert a save id and seed
         IDbConnection dbConnection = CreateAndOpenDatabase(saveName); 
         IDbCommand dbCommand = dbConnection.CreateCommand(); // just like above we create a command to do this
         
-        dbCommand.CommandText = "INSERT OR REPLACE INTO Save (seed, floor) VALUES (" + savesManager.currentSave.seed + ", " + FloorManager.floor + ")";
+        dbCommand.CommandText = "INSERT OR REPLACE INTO Save (seed, floor, json_name) VALUES (" + savesManager.currentSave.seed + ", " + FloorManager.floor + ", " + saveName + ")";
         dbCommand.ExecuteNonQuery(); // execute said command
 
         dbCommand = dbConnection.CreateCommand();
 
         player = GameObject.Find("player");
 
-        dbCommand.CommandText = "INSERT OR REPLACE INTO Player (health, maxhealth, playerx, playery) VALUES ("  + healthManager.health + ", " + healthManager.maxHealth + ", " + player.transform.position.x + ", " + player.transform.position.y + ")"; // 10
+        dbCommand.CommandText = "INSERT OR REPLACE INTO Player (health, max_health, player_x, player_y) VALUES ("  + healthManager.health + ", " + healthManager.maxHealth + ", " + player.transform.position.x + ", " + player.transform.position.y + ")"; // 10
         dbCommand.ExecuteNonQuery(); // execute said command
 
         dbConnection.Close(); // just like logging we close
+
+        #endregion
     }
 
     public IDbConnection CreateAndOpenDatabase(string saveName)
@@ -175,14 +194,14 @@ public class SqliteManager : MonoBehaviour
         IDbCommand dbCommand = dbConnection.CreateCommand();
         // create a table if it doesnt exist yet
         // it has an id for each save, as well as a seed
-        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Save (seed INTEGER, floor INTEGER )";
+        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Save (seed INTEGER, floor INTEGER, json_name TEXT )";
         dbCommand.ExecuteReader();
 
         dbCommand = dbConnection.CreateCommand();
 
         player = GameObject.Find("player");
 
-        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Player (health INTEGER, maxhealth INTEGER, playerx FLOAT, playery FLOAT )";
+        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Player (health INTEGER, max_health INTEGER, player_x FLOAT, player_y FLOAT )";
         dbCommand.ExecuteReader();
 
         return dbConnection;
