@@ -164,8 +164,6 @@ public class ThingManager : MonoBehaviour
 
     public void ReconstructGenericObjects()
     {
-        
-
         if (savesManager.currentSave.genericObjects == null)
         {
             NukeRoomChildren(true, true);
