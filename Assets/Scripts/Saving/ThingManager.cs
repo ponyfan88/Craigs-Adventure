@@ -243,7 +243,7 @@ public class ThingManager : MonoBehaviour
                 prefab.GetComponent<healthManager>().health = genericObject.health;
 
                 // instantilize
-                GameObject thing = Instantiate(prefab, roomGameObjects[genericObject.uniqueID - 1].transform, true); // TODO: MIGHT NEED WORLD SPACE
+                GameObject thing = Instantiate(prefab, roomGameObjects[genericObject.uniqueID].transform, true); // TODO: MIGHT NEED WORLD SPACE
             }
         }
 
