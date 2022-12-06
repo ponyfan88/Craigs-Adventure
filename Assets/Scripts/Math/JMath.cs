@@ -81,6 +81,15 @@ public static class JMath
         return false;
     }
 
+    public static bool IfOpposite(bool a, bool b)
+    {
+        if (a && !b || !a && b)
+        {
+            return true;
+        }
+        return false;
+    }
+
     #endregion
 
     #region HasDecimals
