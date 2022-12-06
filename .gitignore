@@ -78,3 +78,5 @@ crashlytics-build.properties
 # Save files
 /[Aa]ssets/[Ss]aves/*
 /[Aa]ssets/[Ss]aves.meta
+*.json
+*.sqlite
