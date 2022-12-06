@@ -1,4 +1,6 @@
 using UnityEngine;
+[DisallowMultipleComponent]
+[RequireComponent(typeof(ProjectileSpawner),typeof(Animator),typeof(AIManager))]
 public class goblinStateManager : MonoBehaviour
 {
     #region Variables

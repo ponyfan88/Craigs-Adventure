@@ -8,6 +8,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[DisallowMultipleComponent]
+[RequireComponent(typeof (BoxCollider2D), typeof (controller), typeof (itemManager))]
+[RequireComponent(typeof(Animator))]
 public class Attack : MonoBehaviour
 {
     #region Variables

@@ -6,7 +6,8 @@
  */
 
 using UnityEngine;
-
+[RequireComponent(typeof(AIManager))]
+[DisallowMultipleComponent]
 public class dmgPlayerOnCollide : MonoBehaviour
 {
     #region Variables

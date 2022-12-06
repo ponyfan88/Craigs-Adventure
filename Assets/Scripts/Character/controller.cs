@@ -7,6 +7,8 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[DisallowMultipleComponent]
 public class controller : MonoBehaviour
 {
     #region Variables
