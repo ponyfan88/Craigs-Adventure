@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using UnityEngine.U2D.Animation;
 using ItemEvents;
 
+[DisallowMultipleComponent]
+[RequireComponent(typeof (controller), typeof(Attack),typeof(SpriteLibrary))]
 public class itemManager : MonoBehaviour
 {
     #region Variables

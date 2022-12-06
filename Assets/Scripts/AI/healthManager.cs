@@ -6,7 +6,7 @@
  */
 
 using UnityEngine;
-
+[DisallowMultipleComponent]
 public class healthManager : MonoBehaviour
 {
     #region Variables
