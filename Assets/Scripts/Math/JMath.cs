@@ -35,7 +35,11 @@ public static class JMath
     #endregion
 
     #region IfOpposite
-
+    /*
+     * purpose: returns true if one var is positive and the other is negative
+     * inputs: a string, and a number
+     * outputs: returns the last X digits of a string
+     */
     public static bool IfOpposite(int a, int b)
     {
         if (a > 0 && b < 0 || a < 0 && b > 0 )
@@ -445,7 +449,11 @@ public static class JMath
     #endregion
 
     #region SelectRandArray
-
+    /*
+     * purpose: selects a random element in an array
+     * inputs: selected value type
+     * outputs: random element in an array
+     */
     public static string SelectRandArray(string[] array)
     {
         System.Random r = new System.Random();
