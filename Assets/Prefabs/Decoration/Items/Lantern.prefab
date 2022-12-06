@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5361726776974772964}
   - component: {fileID: 5361726776974772963}
   - component: {fileID: -6395991209667126922}
+  - component: {fileID: 4508681860544069623}
   m_Layer: 8
   m_Name: Lantern
   m_TagString: Item
@@ -207,6 +208,21 @@ MonoBehaviour:
   playerOwned: 1
   destroyOnHitWall: 1
   destroyType: 0
+  projectileIndex: 0
+--- !u!114 &4508681860544069623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361726776974772987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5082789b610f258438b51f18e06aa5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingType: 0
+  thingPrefab: 8
 --- !u!1 &5361726777761842100
 GameObject:
   m_ObjectHideFlags: 0

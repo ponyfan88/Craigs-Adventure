@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9020628545209309581}
   - component: {fileID: 5092568881368531971}
   - component: {fileID: -6546943896872222237}
+  - component: {fileID: 4235309762774077153}
   m_Layer: 8
   m_Name: Bone
   m_TagString: Item
@@ -120,6 +121,7 @@ MonoBehaviour:
   playerOwned: 1
   destroyOnHitWall: 0
   destroyType: 0
+  projectileIndex: 0
 --- !u!114 &9020628545209309581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +187,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4235309762774077153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5580315018719855596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5082789b610f258438b51f18e06aa5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingType: 0
+  thingPrefab: 4

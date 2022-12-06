@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4911870632044226262}
   - component: {fileID: 7168105992507727213}
   - component: {fileID: 4911870632044226264}
+  - component: {fileID: 8522003030922579363}
   m_Layer: 8
   m_Name: boxItem
   m_TagString: Item
@@ -35,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4911870632044226259
 SpriteRenderer:
@@ -185,3 +186,18 @@ MonoBehaviour:
   playerOwned: 1
   destroyOnHitWall: 0
   destroyType: 0
+  projectileIndex: 0
+--- !u!114 &8522003030922579363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911870632044226257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5082789b610f258438b51f18e06aa5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingType: 0
+  thingPrefab: 6
