@@ -10,6 +10,21 @@ public class ThingManager : MonoBehaviour
 
     private Room[] rooms;
 
+    private List<GameObject> destroyGameObjects = new List<GameObject>();
+
+
+    public GameObject bombPrefab;
+    public GameObject bonePrefab;
+    public GameObject bookPrefab;
+    public GameObject book2Prefab;
+    public GameObject boxPrefab;
+    public GameObject heartJarPrefab;
+    public GameObject lanternPrefab;
+
+    public GameObject goblinPrefab;
+    public GameObject skeletonPrefab;
+    public GameObject slimePrefab;
+
     #endregion
 
     #region Default Methods
@@ -68,6 +83,12 @@ public class ThingManager : MonoBehaviour
             // counter to loop through rooms
             int counter = 0;
 
+            // if we are saving clear our list of gameobjects to destroy
+            if (save)
+            {
+                destroyGameObjects = new List<GameObject>();
+            }
+
             // for every room on grid
             foreach (GameObject room in roomGameObjects)
             {
@@ -89,16 +110,19 @@ public class ThingManager : MonoBehaviour
                             // we make a new GenericObject
                             GenericObject genericObject = new GenericObject();
 
-                            // the parent is the room we're looping through
-                            //genericObject.gameObject = room; // not even sure we need to save this
-
                             // the itemEnemyThing is the item/enemy we are looping throuhg
-                            genericObject.itemEnemyThing = child.gameObject;
+                            genericObject.thingPrefab = child.gameObject.GetComponent<Thing>().thingPrefab;
 
-                            genericObject.parentUniqueID = uniqueIDs[counter];
+                            genericObject.uniqueID = uniqueIDs[counter];
+
+                            genericObject.position = child.gameObject.transform.position;
+
+                            genericObject.health = child.gameObject.transform.GetComponent<healthManager>().health;
 
                             // add it to our list of game objects
                             genericObjects.Add(genericObject);
+
+                            destroyGameObjects.Add(child.gameObject);
 
                             Debug.Log(genericObject);
                         }
@@ -126,10 +150,14 @@ public class ThingManager : MonoBehaviour
         {
             if (destroy)
             {
-                foreach (GenericObject genericObject in savesManager.currentSave.genericObjects)
+                foreach (GameObject destroyMe in destroyGameObjects)
                 {
-                    Destroy(genericObject.itemEnemyThing);
+                    Debug.Log(destroyMe);
+
+                    Destroy(destroyMe);
                 }
+
+                NukeRoomChildren(true, false);
             }
         }
     }
@@ -138,7 +166,7 @@ public class ThingManager : MonoBehaviour
     {
         if (savesManager.currentSave.genericObjects == null)
         {
-            NukeRoomChildren(true, false);
+            NukeRoomChildren(true, true);
         }
         
         rooms = FindObjectsOfType<Room>();
@@ -163,30 +191,60 @@ public class ThingManager : MonoBehaviour
 
             Debug.Log(genericObject);
 
-
-            // THE ROOM TO FIND: roomGameObjects[genericObject.gameObject]
-            // THE CHILD TO PLACE: genericObject.potentialChild
-
-            // put the item/enemy inside the room
-
-            // CURRENT ISSUES:
-
-            // 1: every component is disabled by default // TODO:REMOVEME
-            // 2: item is rotated 90,0,0 // IF WE PARENT TO ROOM THIS ISNT AN ISSUE
-            // 3: not placed in correct room
-
-            try
+            GameObject prefab;
+            
+            switch (genericObject.thingPrefab)
             {
-                GameObject thing = Instantiate(genericObject.itemEnemyThing, roomGameObjects[genericObject.parentUniqueID - 1].transform, true); // TODO: MIGHT NEED WORLD SPACE
-            }
-            catch
-            {
-                Debug.Log(genericObject.itemEnemyThing);
-                Debug.Log("has uniqueID " + (genericObject.parentUniqueID - 1));
+                // ITEMS
+                case (thingEnums.thingPrefab.bomb):
+                    prefab = bombPrefab;
+                    break;
+                case (thingEnums.thingPrefab.bone):
+                    prefab = bonePrefab;
+                    break;
+                case (thingEnums.thingPrefab.book):
+                    prefab = bookPrefab;
+                    break;
+                case (thingEnums.thingPrefab.book2):
+                    prefab = book2Prefab;
+                    break;
+                case (thingEnums.thingPrefab.box):
+                    prefab = boxPrefab;
+                    break;
+                case (thingEnums.thingPrefab.heartJar):
+                    prefab = heartJarPrefab;
+                    break;
+                case (thingEnums.thingPrefab.lantern):
+                    prefab = lanternPrefab;
+                    break;
+                // ENEMIES
+                case (thingEnums.thingPrefab.goblin):
+                    prefab = goblinPrefab;
+                    break;
+                case (thingEnums.thingPrefab.skeleton):
+                    prefab = skeletonPrefab;
+                    break;
+                case (thingEnums.thingPrefab.slime):
+                    prefab = slimePrefab;
+                    break;
+                // DEFAULT
+                default:
+                    prefab = null;
+                    break;
             }
 
-            //thing.SetActive(true);
-            //thing.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            if (prefab != null)
+            {
+                // instantilize with proper position
+                prefab.transform.position = genericObject.position;
+
+                // instantilize with proper health
+                prefab.GetComponent<healthManager>().health = genericObject.health;
+
+                // instantilize
+                GameObject thing = Instantiate(prefab, roomGameObjects[genericObject.uniqueID - 1].transform, true); // TODO: MIGHT NEED WORLD SPACE
+            }
         }
 
         NukeRoomChildren(false, true, true);

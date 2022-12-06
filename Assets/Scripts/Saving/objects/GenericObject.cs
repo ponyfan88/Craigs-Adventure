@@ -10,6 +10,8 @@ using UnityEngine;
 public class GenericObject
 {
     // both equal null by default
-    public GameObject itemEnemyThing = null;
-    public int parentUniqueID = 0;
+    public thingEnums.thingPrefab thingPrefab;
+    public int uniqueID = 0;
+    public Vector3 position;
+    public int health;
 }
