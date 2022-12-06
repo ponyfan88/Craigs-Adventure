@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8876102028033157362}
   - component: {fileID: 8876102028033157363}
   - component: {fileID: 281765197742263828}
+  - component: {fileID: 2242170162838092079}
   m_Layer: 0
   m_Name: heartInAjar
   m_TagString: Item
@@ -115,3 +116,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thingType: 0
   thingPrefab: 7
+--- !u!114 &2242170162838092079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876102028033157360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28164026d471ca40a38cf3409225aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  health: 5
+  invulnerabilityTime: 0
+  takePlayerDamage: 0
+  destroyEvent: 0
+  damagedEvent: 0
