@@ -5822,6 +5822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Child
       objectReference: {fileID: 0}
+    - target: {fileID: 7685691705485177645, guid: a1af6bd4806509a4393563241dea719d, type: 3}
+      propertyPath: m_TagString
+      value: killSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1054270190029967715, guid: a1af6bd4806509a4393563241dea719d, type: 3}
