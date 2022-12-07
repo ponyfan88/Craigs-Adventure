@@ -95,7 +95,7 @@ public class globalGen : MonoBehaviour
         {
             if (spawns[i].needWall || !spawns[i].spawned) //if the spawn needs a wall
             {
-                Instantiate<GameObject>(template.Walls[spawns[i].openingDirection - 1], spawns[i].gameObject.transform.position, template.Walls[spawns[i].openingDirection - 1].transform.rotation, gameObject.transform); //copy the prefab for the wall into the grid
+                Instantiate<GameObject>(template.Walls[spawns[i].openingDirection - 1], spawns[i].gameObject.transform.position, template.Walls[spawns[i].openingDirection - 1].transform.rotation, spawns[i].transform); //copy the prefab for the wall into the grid
             }
         }
     }
