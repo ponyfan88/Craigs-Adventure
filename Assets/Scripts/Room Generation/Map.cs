@@ -50,7 +50,7 @@ public class Map : MonoBehaviour
                 // get our current room's type (in this case we call it the room's "template"
                 GameObject roomTemplate = mapTemplate[room.GetComponentInChildren<Room>().roomType];
 
-                GameObject mapRoom = Instantiate<GameObject>(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
+                GameObject mapRoom = Instantiate(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
 
                 // add that room
                 map.Add(mapRoom);
