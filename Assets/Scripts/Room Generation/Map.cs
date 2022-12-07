@@ -25,6 +25,8 @@ public class Map : MonoBehaviour
     private bool maximized = false; // boolean for if our map is maximized or not
     private RectTransform UITransform; //rectTransform of the mapUI object
 
+    [SerializeField] private GameObject[] wallTemplate; // wall templates to spawn
+
     #endregion
 
     #region Default Methods
@@ -47,9 +49,26 @@ public class Map : MonoBehaviour
             {
                 // get our current room's type (in this case we call it the room's "template"
                 GameObject roomTemplate = mapTemplate[room.GetComponentInChildren<Room>().roomType];
-                
+
+                GameObject mapRoom = Instantiate<GameObject>(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
+
                 // add that room
-                map.Add(Instantiate<GameObject>(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform));
+                map.Add(mapRoom);
+
+                Wall[] walls = room.GetComponentsInChildren<Wall>();
+
+                foreach (Wall wall in walls)
+                {
+                    /*
+                     * PLEASE
+                     *   2
+                     * 1 + 3
+                     *   4
+                     */
+
+                    Instantiate(wallTemplate[wall.direction - 1], mapRoom.transform);
+                }
+
             }
         }
 
