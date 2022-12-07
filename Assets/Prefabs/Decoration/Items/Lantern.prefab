@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdingOffset: {x: 0, y: 0.15}
-  throwVelocity: 0.4
+  throwVelocity: 0.6
   pickupEvent: 0
 --- !u!114 &728062955662682979
 MonoBehaviour:
