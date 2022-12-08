@@ -42,9 +42,10 @@ public class ProjectileSpawner : MonoBehaviour
         if (timer <= 0&& spawning) {
             // calculate the angle to the player from the enemy
             angle = Mathf.Rad2Deg * System.Math.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
+            pos = transform.position; // update our position
             if (!GetSpawnData().projectileVelocityIndependent) velocity = (transform.position - pos); // calculate our velocity (as a vector3)
             else velocity = new Vector2(GetSpawnData().Velocity.x, GetSpawnData().Velocity.y);//take velocity from spawnData
-            pos = transform.position; // update our position
+           
             SpawnBullets();
             timer = GetSpawnData().cooldown;
             ++index;
