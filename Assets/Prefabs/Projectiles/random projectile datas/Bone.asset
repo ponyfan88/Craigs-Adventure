@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70fe8a617233254cb031082ed5c33a5, type: 3}
+  m_Name: Bone
+  m_EditorClassIdentifier: 
+  bulletResource: {fileID: 2477997867575011373, guid: 0b808838336366447bdd0d29fc1ffe44, type: 3}
+  minRotation: 0
+  maxRotation: 360
+  lifespan: 2
+  endlifeEffect: 0
+  BulletCount: 1
+  cooldown: 0
+  aimAtPlayer: 1
+  isRandom: 0
+  bulletPath: 0
+  SpecialEffect: 0
+  bulletspeed: 1
+  projectileVelocityIndependent: 1
+  Velocity: {x: 0.84, y: 0.56}
+  positionOffset: {x: 0, y: 0}
+  isNotParent: 1

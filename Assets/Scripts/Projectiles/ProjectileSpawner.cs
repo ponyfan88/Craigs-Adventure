@@ -6,7 +6,7 @@
  */
 
 using UnityEngine;
-
+[RequireComponent(typeof(ProjectileManager))]
 public class ProjectileSpawner : MonoBehaviour
 {
     #region Variables
