@@ -6,7 +6,6 @@ public class goblinStateManager : MonoBehaviour
     #region Variables
     
     ProjectileSpawner projectileSpawner;
-    GameObject player;
     Animator animator;
     byte timesSpit;
     float spitCooldown = 0f;
@@ -19,7 +18,6 @@ public class goblinStateManager : MonoBehaviour
     {
         projectileSpawner = GetComponent<ProjectileSpawner>();
         animator = GetComponent<Animator>();
-        player = GameObject.Find("player");
     }
 
     #endregion
@@ -27,9 +25,9 @@ public class goblinStateManager : MonoBehaviour
     #region Custom Methods
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: Decide if goblin is able to attack
+     * inputs: whether goblin can spit
+     * outputs: spit if can spit
      */
     public void TrySpit()
     {
