@@ -316,10 +316,13 @@ public static class JMath
     {
         return new Vector2(Math.Sign(a.x), Math.Sign(a.y));
     }
-
     public static Vector3 Sign(this Vector3 a)
     {
         return new Vector3(Math.Sign(a.x), Math.Sign(a.y), Math.Sign(a.z));
+    }
+    public static Vector4 Sign(this Vector4 a)
+    {
+        return new Vector4(Math.Sign(a.x), Math.Sign(a.y), Math.Sign(a.z), Math.Sign(a.w));
     }
 
     #endregion
