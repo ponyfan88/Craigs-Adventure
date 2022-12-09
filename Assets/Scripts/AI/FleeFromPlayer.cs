@@ -6,6 +6,7 @@ public class FleeFromPlayer : StateMachineBehaviour
 {
     GameObject player;
     NavMeshAgent ai;
+    AIManager aiManager;
     float distance;
     public float desiredDistance = 8;
 
@@ -13,15 +14,14 @@ public class FleeFromPlayer : StateMachineBehaviour
     {
         player = GameObject.Find("player");
         ai = animator.gameObject.GetComponent<NavMeshAgent>();
-
+        aiManager = animator.GetComponent<AIManager>();
+        aiManager.needDistance = true;
         animator.SetBool("reachedLocation", false);
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (player == null) player = GameObject.Find("player");
-        distance = JMath.Distance(animator.gameObject.transform.position, player.transform.position);
 
-        if (distance < desiredDistance)
+        if (aiManager.distance < desiredDistance)
         {
             Vector2 dir = animator.gameObject.transform.position - player.transform.position;
 
