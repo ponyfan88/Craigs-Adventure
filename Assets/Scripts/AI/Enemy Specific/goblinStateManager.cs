@@ -1,4 +1,11 @@
+/* Programmer: Xander Mooney
+ * Purpose: Control specifics of when the goblin should do its behaviours
+ * Inputs: the conditions of the AI
+ * Outputs: what the AI should do
+ */
+
 using UnityEngine;
+
 [DisallowMultipleComponent]
 [RequireComponent(typeof(ProjectileSpawner),typeof(Animator),typeof(AIManager))]
 public class goblinStateManager : MonoBehaviour
