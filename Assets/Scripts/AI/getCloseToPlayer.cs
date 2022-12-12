@@ -31,16 +31,28 @@ public class getCloseToPlayer : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // reguarding any errors here, its likely you placed an enemy inside the starting room or a room without a navmesh
 
         // if within range, set the navMesh to not move and start attacking
         if (aiManager.distance <= desiredDistance)
         {
+            // set our destination to literally ourself
             ai.destination = ai.transform.position;
+            // we've reached our location, of course.
             animator.SetBool("reachedLocation", true);
-            
         }
-        else // check if we can move, and if so move to the player, otherwise freeze in place
-            ai.destination = (aiManager.canMove == true ? player.transform.position : animator.gameObject.transform.position);
+        else if (aiManager.canMove) // check if we can move
+        {
+            // if so, move to the player
+            ai.destination = player.transform.position;
+        }
+        else
+        {
+            // otherwise, freeze in place
+            ai.destination = ai.transform.position;
+            // we've reached our location, of course.
+            animator.SetBool("reachedLocation", true);
+        }
     }
 
     #endregion
