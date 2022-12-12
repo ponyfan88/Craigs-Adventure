@@ -37,7 +37,6 @@ public class ThingManager : MonoBehaviour
         // if we are loading a save
         if (savesManager.loadingSave)
         {
-            Debug.Log("reconstructing objects");
             ReconstructGenericObjects();
         }
     }
@@ -120,8 +119,6 @@ public class ThingManager : MonoBehaviour
                             genericObjects.Add(genericObject);
 
                             destroyGameObjects.Add(child.gameObject);
-
-                            Debug.Log(genericObject);
                         }
 
                         if (destroy)
@@ -182,8 +179,6 @@ public class ThingManager : MonoBehaviour
             // if we are not just destroying objects
             if (save)
             {
-                Debug.Log(genericObjects);
-
                 // store our generic objects in our save
                 savesManager.currentSave.genericObjects = genericObjects;
             }
@@ -194,8 +189,6 @@ public class ThingManager : MonoBehaviour
             {
                 foreach (GameObject destroyMe in destroyGameObjects)
                 {
-                    Debug.Log(destroyMe);
-
                     Destroy(destroyMe);
                 }
 
@@ -208,6 +201,7 @@ public class ThingManager : MonoBehaviour
     {
         if (savesManager.currentSave.genericObjects == null)
         {
+            Debug.Log("prefab saves loaded, currentSave contained none");
             NukeRoomChildren(true, true);
         }
         
@@ -230,8 +224,6 @@ public class ThingManager : MonoBehaviour
         for (int i = 0; i < savesManager.currentSave.genericObjects.Count; ++i)
         {
             GenericObject genericObject = savesManager.currentSave.genericObjects[i];
-
-            Debug.Log(genericObject);
 
             GameObject prefab;
             
