@@ -1,4 +1,10 @@
-using System.Collections;
+/*
+ * Programmers: Jack Kennedy
+ * Purpose: to interact with items in enemies, deleting them and recreating them
+ * Inputs: calls to methods here
+ * Outputs: saves and recreates objects in scene
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 
