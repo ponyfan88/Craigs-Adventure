@@ -7,8 +7,8 @@ public class FleeFromPlayer : StateMachineBehaviour
     GameObject player;
     NavMeshAgent ai;
     AIManager aiManager;
-    float distance;
     public float desiredDistance = 8;
+    float timeSinceFlee;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -17,11 +17,13 @@ public class FleeFromPlayer : StateMachineBehaviour
         aiManager = animator.GetComponent<AIManager>();
         aiManager.needDistance = true;
         animator.SetBool("reachedLocation", false);
+
+        timeSinceFlee = Time.time;
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        if (aiManager.distance < desiredDistance)
+        if (aiManager.distance < desiredDistance && Time.time - timeSinceFlee <= 3)
         {
             Vector2 dir = animator.gameObject.transform.position - player.transform.position;
 
