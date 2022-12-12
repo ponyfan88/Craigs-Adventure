@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grass2dirt_0
+      name: dirt to sand_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 583b2ec354662f74d9604602f92adf41
-      internalID: -769550454
+      spriteID: 09eead7e384b7cb4bbbbcae5956e94b8
+      internalID: 1464326725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_1
+      name: dirt to sand_1
       rect:
         serializedVersion: 2
         x: 32
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1385be443fbf61f4a853825bd7c8fe9a
-      internalID: -1311647375
+      spriteID: c8782d4fc44ae3f40955301034c3b886
+      internalID: -1486145597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_2
+      name: dirt to sand_2
       rect:
         serializedVersion: 2
         x: 64
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50e3ffbc9d835654ea6dcd1a61bf8d97
-      internalID: -1611189368
+      spriteID: 4eaba2c4493727940a25a769664e04b5
+      internalID: -801888698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_3
+      name: dirt to sand_3
       rect:
         serializedVersion: 2
         x: 96
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98b8f2ec2296b6f4992843ee874b246b
-      internalID: 1679296178
+      spriteID: 0562afc5497e40d48b41a8abf724b729
+      internalID: -176996893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_4
+      name: dirt to sand_4
       rect:
         serializedVersion: 2
         x: 128
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b2ff98d48385ae4b85247c6ba7c4592
-      internalID: -215301371
+      spriteID: 10a09b329d1208b42b7a91ce98374a84
+      internalID: -1449316361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_5
+      name: dirt to sand_5
       rect:
         serializedVersion: 2
         x: 0
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b37deddf9457fd1489ae322b1ba77e81
-      internalID: -1605549985
+      spriteID: b01cacc08ffea9144a510ca2562444ce
+      internalID: -1963710970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_6
+      name: dirt to sand_6
       rect:
         serializedVersion: 2
         x: 64
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 033254e0670fd7341b3736407bd5295b
-      internalID: -2061889084
+      spriteID: cbe98c7e8067c34419ead71fe7ce137b
+      internalID: -585606625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_7
+      name: dirt to sand_7
       rect:
         serializedVersion: 2
         x: 96
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4311a25ce9ab0374a93f365a2d44c44c
-      internalID: -1207244646
+      spriteID: 2ba71a5694ff97346949bd3f01a9cca0
+      internalID: -30065363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_8
+      name: dirt to sand_8
       rect:
         serializedVersion: 2
         x: 128
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3de25373c18b974289d8338a7f25820
-      internalID: 1696988297
+      spriteID: f14c4126b304a2a4ab5e776a06ea59a6
+      internalID: -1578143382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_9
+      name: dirt to sand_9
       rect:
         serializedVersion: 2
         x: 0
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68f907c9a2e944a439151565002f535c
-      internalID: -1858886437
+      spriteID: b1eac6699ea17b3439e0822b1b9b4b12
+      internalID: 1809763960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_10
+      name: dirt to sand_10
       rect:
         serializedVersion: 2
         x: 32
@@ -331,14 +331,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3cf471a915e8c74fa64259b695c92f3
-      internalID: 216813142
+      spriteID: be3cff77baa435444890247a309e39e0
+      internalID: 1652846515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass2dirt_11
+      name: dirt to sand_11
       rect:
         serializedVersion: 2
         x: 64
@@ -352,8 +352,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64699047681edcf4c96b7d38b94a9863
-      internalID: 1131071487
+      spriteID: a1ad0c682274cd540b9299fdc5774fb2
+      internalID: 1514673244
       vertices: []
       indices: 
       edges: []
@@ -369,18 +369,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      grass2dirt_5: -1605549985
-      grass2dirt_3: 1679296178
-      grass2dirt_6: -2061889084
-      grass2dirt_11: 1131071487
-      grass2dirt_0: -769550454
-      grass2dirt_8: 1696988297
-      grass2dirt_10: 216813142
-      grass2dirt_9: -1858886437
-      grass2dirt_7: -1207244646
-      grass2dirt_4: -215301371
-      grass2dirt_1: -1311647375
-      grass2dirt_2: -1611189368
+      dirt to sand_0: 1464326725
+      dirt to sand_2: -801888698
+      dirt to sand_4: -1449316361
+      dirt to sand_7: -30065363
+      dirt to sand_9: 1809763960
+      dirt to sand_3: -176996893
+      dirt to sand_6: -585606625
+      dirt to sand_8: -1578143382
+      dirt to sand_11: 1514673244
+      dirt to sand_5: -1963710970
+      dirt to sand_10: 1652846515
+      dirt to sand_1: -1486145597
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
