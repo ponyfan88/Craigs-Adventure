@@ -37,7 +37,7 @@ public class ThingManager : MonoBehaviour
         // if we are loading a save
         if (savesManager.loadingSave)
         {
-            ReconstructGenericObjects();
+            Invoke("ReconstructGenericObjects", 1f);
         }
     }
 
