@@ -196,9 +196,6 @@ public class Room : MonoBehaviour
             {
                 //end tutorial
                 TutorialManager.TutorialActive = false;
-
-                //change to game scene (floor 1)
-                Debug.Log("Here's where we switch things up");
             }
         }
     }
