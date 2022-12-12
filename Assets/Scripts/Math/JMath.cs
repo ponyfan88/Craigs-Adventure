@@ -1,5 +1,5 @@
 /* 
- * Programmers: Jack Kennedy
+ * Programmers: Jack Kennedy, Xander Mooney
  * Purpose: global math functions
  * Inputs: various inputs, usually being called with a number
  * Outputs: math functions
