@@ -253,6 +253,11 @@ public static class JMath
     {
         // c^2 + z^2 = s^2, meaning we need to do a^2 + b^2 to find c^2, and then include the z axis to find the hypotenuse in 3D space
         float c = (float)(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
+        // if Z's are the same, skip Z calculation
+        if (a.z == b.z)
+        { 
+            return c;
+        }
         return (float)Math.Sqrt(c + Math.Pow(a.z - b.z, 2));
     }    
     public static float Distance(Transform a, Transform b)

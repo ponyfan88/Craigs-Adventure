@@ -12,6 +12,13 @@ GameObject:
   - component: {fileID: 7842657216624087587}
   - component: {fileID: 7842657216624087584}
   - component: {fileID: 6429952737748927646}
+  - component: {fileID: 1469467883905210058}
+  - component: {fileID: 917230997733889559}
+  - component: {fileID: -6433366824902870561}
+  - component: {fileID: 2403177063506879749}
+  - component: {fileID: -5913503488738743606}
+  - component: {fileID: -8755461166284656062}
+  - component: {fileID: -4031353512080635941}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -120,3 +127,122 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thingType: 1
   thingPrefab: 1
+--- !u!114 &1469467883905210058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842657216624087585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28164026d471ca40a38cf3409225aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 4
+  health: 4
+  invulnerabilityTime: 0
+  takePlayerDamage: 1
+  destroyEvent: 0
+  damagedEvent: 0
+--- !u!114 &917230997733889559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842657216624087585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec27edc48a7c9e84ab4fb48545dc4beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6433366824902870561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842657216624087585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68a6e51dcf05bb4494c5695bce2d82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPattern:
+  - {fileID: 11400000, guid: 4d6ece24153460544b0413d728a3625f, type: 2}
+  index: 0
+--- !u!114 &2403177063506879749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842657216624087585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6229553206c5aee40aff6e8c329fc986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &-5913503488738743606
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842657216624087585}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.39
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.38
+  m_BaseOffset: 0.71875
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-8755461166284656062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842657216624087585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717e18002c08c15449d34f032211ab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+  knockbackResistence: 0
+--- !u!61 &-4031353512080635941
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842657216624087585}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1.4375}
+    newSize: {x: 2, y: 2.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.69, y: 1.26}
+  m_EdgeRadius: 0

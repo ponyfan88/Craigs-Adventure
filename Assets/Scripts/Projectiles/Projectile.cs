@@ -5,20 +5,22 @@
  * Outputs: projectile with data
  */
 
+using System;
 using UnityEngine;
 using BulletEffects;
 
+[DisallowMultipleComponent]
 public class Projectile : MonoBehaviour
 {
     #region Variables
 
-    public Vector3 velocity; // our parents velocity
-    public float speed;// how fast the bullets 
-    public float rotation; // bullets rotations
-    public float lifetime; // how long the bullet will be active
-    public Bulletpaths bulletPath; // how the bullet will move
-    public endlifeEffect endlifeEffect; // when the projectiles lifespan ends it will perform this action
-    public float SpecialEffect; // the ammount that we move it back and forth
+    [NonSerialized]public Vector3 velocity; // our parents velocity
+    [NonSerialized]public float speed;// how fast the bullets 
+    [NonSerialized]public float rotation; // bullets rotations
+    [NonSerialized]public float lifetime; // how long the bullet will be active
+    [NonSerialized]public Bulletpaths bulletPath; // how the bullet will move
+    [NonSerialized]public endlifeEffect endlifeEffect; // when the projectiles lifespan ends it will perform this action
+    [NonSerialized]public float SpecialEffect; // the ammount that we move it back and forth
     float timer; // countdown till death
 
     #endregion

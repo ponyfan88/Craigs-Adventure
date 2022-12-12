@@ -7,6 +7,7 @@
 
 using UnityEngine;
 
+[RequireComponent(typeof(healthManager))]
 public class Thing : MonoBehaviour
 {
     public thingEnums.thingType thingType;
