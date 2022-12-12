@@ -15,7 +15,7 @@ MonoBehaviour:
   bulletResource: {fileID: 2477997867575011373, guid: 0b808838336366447bdd0d29fc1ffe44, type: 3}
   minRotation: 0
   maxRotation: 360
-  lifespan: 2
+  lifespan: 10
   endlifeEffect: 0
   BulletCount: 1
   cooldown: 0
@@ -23,8 +23,8 @@ MonoBehaviour:
   isRandom: 0
   bulletPath: 0
   SpecialEffect: 0
-  bulletspeed: 1
-  projectileVelocityIndependent: 1
-  Velocity: {x: 0.84, y: 0.56}
+  bulletspeed: 3
+  projectileVelocityIndependent: 0
+  Velocity: {x: 0, y: 0}
   positionOffset: {x: 0, y: 0}
   isNotParent: 1
