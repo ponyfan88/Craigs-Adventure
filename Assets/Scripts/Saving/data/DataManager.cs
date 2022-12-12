@@ -73,9 +73,6 @@ public class DataManager : MonoBehaviour
 
         FloorManager.floor = dataReader.GetByte(1); // our floor has the index 1
 
-        // JSON file savename
-        string jsonSaveName = dataReader.GetString(2); // our json file savename has index 2
-
         dbConnection.Close(); // just like logging we close
 
         // now, do the player info
@@ -102,7 +99,7 @@ public class DataManager : MonoBehaviour
         #region JSON
 
         // get the string from our file
-        string jsonString = File.ReadAllText(Application.streamingAssetsPath + "/Saves/" + jsonSaveName + ".json");
+        string jsonString = File.ReadAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json");
 
         List<GenericObjectJSON> jsonList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<GenericObjectJSON>>(jsonString);
 
@@ -170,7 +167,7 @@ public class DataManager : MonoBehaviour
         IDbConnection dbConnection = CreateAndOpenDatabase(saveName); 
         IDbCommand dbCommand = dbConnection.CreateCommand(); // just like above we create a command to do this
         
-        dbCommand.CommandText = "INSERT OR REPLACE INTO Save (seed, floor, json_name) VALUES (" + savesManager.currentSave.seed + ", " + FloorManager.floor + ", " + saveName + ")";
+        dbCommand.CommandText = "INSERT OR REPLACE INTO Save (seed, floor) VALUES (" + savesManager.currentSave.seed + ", " + FloorManager.floor + ")";
         dbCommand.ExecuteNonQuery(); // execute said command
 
         dbCommand = dbConnection.CreateCommand();
@@ -194,7 +191,7 @@ public class DataManager : MonoBehaviour
         IDbCommand dbCommand = dbConnection.CreateCommand();
         // create a table if it doesnt exist yet
         // it has an id for each save, as well as a seed
-        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Save (seed INTEGER, floor INTEGER, json_name TEXT )";
+        dbCommand.CommandText = "CREATE TABLE IF NOT EXISTS Save (seed INTEGER, floor INTEGER)";
         dbCommand.ExecuteReader();
 
         dbCommand = dbConnection.CreateCommand();

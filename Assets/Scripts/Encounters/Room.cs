@@ -64,10 +64,33 @@ public class Room : MonoBehaviour
             {
                 roomManager.EnterRoom(); // tell global room manager that we are in a room
 
-                roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
-
-                if (!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before
+                if (TutorialManager.TutorialActive) //checks if tutorial is active
                 {
+                    roomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
+
+                    // for every enemy that is a child of room child, spawn them in
+                    foreach (SpawnEnemy spawn in enemySpawns)
+                    {
+                        // a number between 0 and 9
+                        int a = (int)UnityEngine.Random.Range(0, FAILSPAWN_CHANCE);
+
+                        // if the number is 0 dont spawn the enemy (10% chance not to spawn)
+                        if (a != 0)
+                        {
+                            // spawn 90% of the time
+                            spawn.Spawn(transform.parent);
+                        }
+                        else
+                        {
+                            // log that we didnt spawn an enemy
+                            LogToFile.Log("enemy did not spawn due to random chance");
+                        }
+                    }
+                }
+                else if(!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before
+                {
+                    roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
+
                     map.discovered.Add(transform.parent.gameObject); // add it to our list of entered rooms
 
                     roomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
@@ -90,6 +113,10 @@ public class Room : MonoBehaviour
                             LogToFile.Log("enemy did not spawn due to random chance");
                         }
                     }
+                }
+                else
+                {
+                    roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
                 }
             }
 
@@ -163,6 +190,16 @@ public class Room : MonoBehaviour
             }
 
             roomManager.ExitEncounter();
+
+            //when the tutorial is active after enemies are defeated
+            if (TutorialManager.TutorialActive)
+            {
+                //end tutorial
+                TutorialManager.TutorialActive = false;
+
+                //change to game scene (floor 1)
+                Debug.Log("Here's where we switch things up");
+            }
         }
     }
 
