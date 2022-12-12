@@ -51,7 +51,7 @@ public class AIManager : MonoBehaviour
 
         if (needDistance)
         {
-            distance = JMath.Distance(transform.position, player.transform.position);
+            distance = JMath.Distance((Vector2)transform.position, (Vector2)player.transform.position);
         }
     }
 
