@@ -3,7 +3,7 @@
  * Inputs: ai and player position
  * Outputs: when to stop moving 
 */
-using System;
+
 using UnityEngine;
 using UnityEngine.AI;
 

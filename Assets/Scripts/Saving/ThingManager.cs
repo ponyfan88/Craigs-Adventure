@@ -44,7 +44,7 @@ public class ThingManager : MonoBehaviour
         if (savesManager.loadingSave)
         {
             Debug.Log("reconstructing objects");
-            ReconstructGenericObjects();
+            Invoke("ReconstructGenericObjects",1f);
         }
     }
 
@@ -126,8 +126,6 @@ public class ThingManager : MonoBehaviour
                             genericObjects.Add(genericObject);
 
                             destroyGameObjects.Add(child.gameObject);
-
-                            Debug.Log(genericObject);
                         }
 
                         if (destroy)
@@ -172,8 +170,6 @@ public class ThingManager : MonoBehaviour
                             genericObjects.Add(genericObject);
 
                             destroyGameObjects.Add(child.gameObject);
-
-                            Debug.Log(genericObject);
                         }
 
                         if (destroy)
@@ -188,8 +184,6 @@ public class ThingManager : MonoBehaviour
             // if we are not just destroying objects
             if (save)
             {
-                Debug.Log(genericObjects);
-
                 // store our generic objects in our save
                 savesManager.currentSave.genericObjects = genericObjects;
             }
@@ -200,12 +194,10 @@ public class ThingManager : MonoBehaviour
             {
                 foreach (GameObject destroyMe in destroyGameObjects)
                 {
-                    Debug.Log(destroyMe);
-
                     Destroy(destroyMe);
                 }
 
-                NukeRoomChildren(true, false);
+                NukeRoomChildren(save, false);
             }
         }
     }
@@ -214,7 +206,12 @@ public class ThingManager : MonoBehaviour
     {
         if (savesManager.currentSave.genericObjects == null)
         {
+            Debug.Log("loaded without good save; reconstructing");
             NukeRoomChildren(true, true);
+        }
+        else
+        {
+            NukeRoomChildren(false, true);
         }
         
         rooms = FindObjectsOfType<Room>();
@@ -231,13 +228,9 @@ public class ThingManager : MonoBehaviour
             roomGameObjects.Add(room.transform.parent.gameObject);
         }
 
-        Debug.Log("through the loop");
-
         for (int i = 0; i < savesManager.currentSave.genericObjects.Count; ++i)
         {
             GenericObject genericObject = savesManager.currentSave.genericObjects[i];
-
-            Debug.Log(genericObject);
 
             GameObject prefab;
             
@@ -284,20 +277,16 @@ public class ThingManager : MonoBehaviour
 
             if (prefab != null)
             {
-                // instantilize with proper position
-                prefab.transform.position = genericObject.position;
-
-                // instantilize with proper health
-                prefab.GetComponent<healthManager>().health = genericObject.health;
-
                 int uniqueID = genericObject.uniqueID;
 
                 if (uniqueID == -1)
                 {
                     // instantilize with no parent
-                    GameObject thing = Instantiate(prefab, null, true);
+                    GameObject thing = Instantiate(prefab, null, false);
 
                     thing.transform.position = genericObject.position;
+
+                    thing.GetComponent<healthManager>().health = genericObject.health;
                 }
                 else
                 {
@@ -307,6 +296,8 @@ public class ThingManager : MonoBehaviour
                         GameObject thing = Instantiate(prefab, roomGameObjects[uniqueID].transform, true);
 
                         thing.transform.position = genericObject.position;
+
+                        thing.GetComponent<healthManager>().health = genericObject.health;
                     }
                     catch
                     {
