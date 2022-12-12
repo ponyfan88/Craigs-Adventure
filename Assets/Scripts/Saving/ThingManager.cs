@@ -199,7 +199,7 @@ public class ThingManager : MonoBehaviour
                     Destroy(destroyMe);
                 }
 
-                NukeRoomChildren(true, false);
+                NukeRoomChildren(save, false);
             }
         }
     }
