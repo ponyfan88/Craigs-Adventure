@@ -152,7 +152,6 @@ public class EffectsManager : MonoBehaviour
     #endregion
 
     #region Custom Methods
-    public void addEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
 
     /*
      *###### PURPOSE:
@@ -166,6 +165,7 @@ public class EffectsManager : MonoBehaviour
      *###### OUTPUTS:
      * on screen effect
      */
+    public void AddEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
     {
         EffectsObject effectsObject = new EffectsObject();
         effectsObject.gameObject = gameObject;
