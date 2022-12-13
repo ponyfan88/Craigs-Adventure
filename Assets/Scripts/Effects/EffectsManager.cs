@@ -172,6 +172,7 @@ public class EffectsManager : MonoBehaviour
         effectsObject.effect = effect;
         effectsObject.time = time;
         effectsObject.color = color ?? new Color(1f, 0f, 1f); // if no color is supplied, do magenta
+        // magenta will help us easily find bad addEffect
         effectsObject.amount = amount;
         effectsObject.timeStarted = Time.time; // when we started the effect; used to calculate our progress
         effectsObject.repeat = repeat;
