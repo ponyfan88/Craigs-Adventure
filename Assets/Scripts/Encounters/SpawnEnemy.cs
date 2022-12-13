@@ -1,11 +1,10 @@
-/*Programmer: Christopher Kowalewski
+/*
+ * Programmer: Christopher Kowalewski
  * Purpose: Spawn enemies when a room is entered
  * Inputs: Room.cs Calls for enemies to spawn
  * Outputs: Instantiates from enemiesTemplate
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
@@ -21,11 +20,10 @@ public class SpawnEnemy : MonoBehaviour
 
     #region Custom Methods
 
-    //Spawning an enemy when called - no parameters
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: spawns an enemy at given index
+     * inputs: no parameters
+     * outputs: spawned enemy in scene
      */
     public void Spawn()
     {
@@ -36,12 +34,7 @@ public class SpawnEnemy : MonoBehaviour
         enemy = Instantiate<GameObject>(enemiesTemplate[index], transform.position, enemiesTemplate[index].transform.rotation);
     }
 
-    //overload - Parent transform provided
-    /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
-     */
+    // overload - Parent transform provided
     public void Spawn(Transform parent)
     {
         //possibly play spawning animation
