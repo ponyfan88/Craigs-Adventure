@@ -187,7 +187,11 @@ public class EffectsManager : MonoBehaviour
         effectsObjects.Add(effectsObject);
     }
 
-    // this function returns a color between color1 and color2 on a scale of 0-1 (0 being color1 and 1 being color2)
+    /*
+     * purpose: returns a color between color1 and color2 on a scale of 0-1 (0 being color1 and 1 being color2)
+     * inputs: color #1, color #2, ammount from 1 to 2
+     * outputs: new color (see purpose)
+     */
     private Color betweenColor(Color color1, Color color2, float amount = 0.5f)
     {
         return new Color(color1.r + (color2.r - color1.r) * amount, color1.g + (color2.g - color1.g) * amount, color1.b + (color2.b - color1.b) * amount);
