@@ -126,6 +126,12 @@ public class rGen : MonoBehaviour
     #endregion
 
     #region Custom Methods
+
+    /*
+     * purpose: TODO
+     * inputs: TODO
+     * outputs: TODO
+     */
     private void Spawn() //function for spawning a room
     {
         if (!spawned) //as long as spawned is false for various reasons
