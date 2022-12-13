@@ -6,7 +6,7 @@
  */
 
 using UnityEngine;
-using UnityEngine.AI;
+using System;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof (BoxCollider2D), typeof (controller), typeof (itemManager))]
@@ -27,7 +27,7 @@ public class Attack : MonoBehaviour
     public float attackDuration = 1f, attackCooldown = 2f;
     float attackCooldownTimer;
     public int attackDamage = 2;
-    public bool isAttacking = false;
+    [NonSerialized]public bool isAttacking = false;
     
     #endregion
     
