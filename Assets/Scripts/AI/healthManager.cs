@@ -135,7 +135,7 @@ public class healthManager : MonoBehaviour
     {
         health = setAmount;
 
-        LogToFile.Log("set health to " + health.ToString());
+        LogToFile.Log(gameObject.name + " set health to " + health.ToString());
 
         if (health <= 0)
         {

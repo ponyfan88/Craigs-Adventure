@@ -7,9 +7,15 @@ using UnityEngine;
 
 public class DamageColliders : MonoBehaviour
 {
+    #region Variables
+
     [Min(0)] public int DamageAmount = 1; // amount of damage it deals to non-player objects
     public bool DamagePlayer = true, DamageEnemies = true;
     Collider2D[] allOverlappingColliders;
+
+    #endregion
+
+    #region Default Methods
 
     public void Start()
     {
@@ -47,6 +53,10 @@ public class DamageColliders : MonoBehaviour
         ApplyDamage(collision);
     }
 
+    #endregion
+
+    #region Custom Methods
+
     /* Purpose: Apply damage to every collider that has health
      * Inputs: colliders overlapping area
      * Outputs: Damages colliders
@@ -67,4 +77,6 @@ public class DamageColliders : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

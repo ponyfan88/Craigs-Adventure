@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class Clouds : MonoBehaviour
 {
-    #region
+    #region Variables
 
     // the clouds we have in the scene
     List<cloud> clouds = new List<cloud>();

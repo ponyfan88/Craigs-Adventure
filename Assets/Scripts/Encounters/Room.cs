@@ -4,7 +4,6 @@
  * Inputs: collisions to the room
  * Outputs: various variables to other script files such as map.cs
  */
-using System;
 using UnityEngine;
 
 public class Room : MonoBehaviour
