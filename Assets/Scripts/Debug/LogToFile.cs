@@ -13,6 +13,7 @@ public static class LogToFile
 {
     #region Variables
 
+    // list representing our log file
     public static List<string> logFile = new List<string>();
 
     #endregion
