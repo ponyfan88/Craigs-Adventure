@@ -43,6 +43,13 @@ public class AIManager : MonoBehaviour
 
     private void Update()
     {
+        // This code is left here incase of rare occurences where the AI believes its not on a Navmesh, but it really is.
+        if (!ai.isOnNavMesh)
+        {
+            ai.enabled = false;
+            ai.enabled = true;
+        }
+
         // if knockbackTimer is > the current time, it is within frames where it is being knocked back
         if (knockbackTimer > Time.time)
         {
