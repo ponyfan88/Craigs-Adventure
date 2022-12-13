@@ -152,17 +152,20 @@ public class EffectsManager : MonoBehaviour
     #endregion
 
     #region Custom Methods
-    
-    // method addeffect
-    // INPUTS:
-    // we take the game object to act upon
-    // we get an effect to put on that object (struct is in globalFX.cs)
-    // we get the time that the effect runs for
-    // we get the color of our effect (by default we do magenta since its very easy to see when effects are missing)
-    // we get the number of times to repeat the effect
-    // OUTPUTS:
-    // on screen effect :)
     public void addEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
+
+    /*
+     *###### PURPOSE:
+     * adds effects on-screen to objects with spriterenderers
+     *###### INPUTS:
+     * we take the game object to act upon
+     * we get an effect to put on that object (struct is in globalFX.cs)
+     * we get the time that the effect runs for
+     * we get the color of our effect (by default we do magenta since its very easy to see when effects are missing)
+     * we get the number of times to repeat the effect
+     *###### OUTPUTS:
+     * on screen effect
+     */
     {
         EffectsObject effectsObject = new EffectsObject();
         effectsObject.gameObject = gameObject;
