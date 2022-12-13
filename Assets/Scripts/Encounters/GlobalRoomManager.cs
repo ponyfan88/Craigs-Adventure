@@ -11,7 +11,7 @@ public class GlobalRoomManager : MonoBehaviour
 {
     #region Variables
 
-    [NonSerialized] public bool inEncounter = false, inRoom = false;
+    [NonSerialized] public static bool inEncounter = false, inRoom = false;
 
     #endregion
 
