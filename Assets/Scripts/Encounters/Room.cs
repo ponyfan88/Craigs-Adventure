@@ -87,7 +87,7 @@ public class Room : MonoBehaviour
                         }
                     }
                 }
-                else if(!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before
+                else if(!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before // CAUSES A CRASH IN TUTORIAL
                 {
                     roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
 
