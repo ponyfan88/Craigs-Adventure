@@ -32,7 +32,7 @@ public class getCloseToPlayer : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // reguarding any errors here, its likely you placed an enemy inside the starting room or a room without a navmesh
+        // regarding any errors here, its likely you placed an enemy inside the starting room or a room without a navmesh
 
         // if within range, set the navMesh to not move and start attacking
         if (aiManager.distance <= desiredDistance)
