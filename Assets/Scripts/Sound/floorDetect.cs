@@ -1,12 +1,17 @@
-// TODO: WRITE INFO
+/*
+ * programmers: Christopher Kowalewski
+ * purpose: Detects the type of floor tile to change walk sound
+ * inputs: Tilemap data
+ * outputs: Surface int; what it does is describe what kind of tile you've stepped on (not currently used in other implementations)
+ */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class floorDetect : MonoBehaviour
 {
+    #region Variables
+
     public Tilemap tileMap;
     public int surface = 0;
 
@@ -19,6 +24,10 @@ public class floorDetect : MonoBehaviour
     private Vector3 playerPos; //player's position
     private Vector3Int tileCoord; //the whole number position the player is standing on
     private Sprite surfaceSprite;
+
+    #endregion
+
+    #region Default Methods
 
     // Start is called before the first frame update
     void Start()
@@ -59,4 +68,6 @@ public class floorDetect : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

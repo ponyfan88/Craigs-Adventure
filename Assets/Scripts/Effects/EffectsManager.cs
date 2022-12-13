@@ -5,6 +5,7 @@
  * Outputs: on screen effects
  */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class EffectsManager : MonoBehaviour
     #region Variables
 
     // these are the objects we'll run effects on
-    public List<effectItemProperties> effectsObjects = new List<effectItemProperties>();
+    public List<EffectsObject> effectsObjects = new List<EffectsObject>();
     // these are the objects we'll get rid of from effectsObjects every frame; it's cleared every frame
     public List<int> deletedObjects = new List<int>();
 
@@ -23,7 +24,7 @@ public class EffectsManager : MonoBehaviour
     #region Structs
 
     // every effectsObject gets its own data type, this is all referenced above
-    public struct effectItemProperties
+    public struct EffectsObject
     {
         public GameObject gameObject;
         public GlobalFX.effect effect;
@@ -151,30 +152,50 @@ public class EffectsManager : MonoBehaviour
     #endregion
 
     #region Custom Methods
-    // method to addeffect
-    // we take the game object to act upon
-    // we get an effect to put on that object (struct is in globalFX.cs)
-    // we get the time that the effect runs for
-    // the color of our effect (by default we do magenta since its very easy to see when effects are missing)
-    // we get our amount (this isnt even used yet) //TODO: USE THIS
-    // we get the number of times to repeat the effect
-    public void addEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
+
+    /*
+     *###### PURPOSE:
+     * adds effects on-screen to objects with spriterenderers
+     *###### INPUTS:
+     * we take the game object to act upon
+     * we get an effect to put on that object (struct is in globalFX.cs)
+     * we get the time that the effect runs for
+     * we get the color of our effect (by default we do magenta since its very easy to see when effects are missing)
+     * we get the number of times to repeat the effect
+     *###### OUTPUTS:
+     * on screen effect
+     */
+    public void AddEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
     {
-        effectItemProperties effectsObject = new effectItemProperties();
+        EffectsObject effectsObject = new EffectsObject();
         effectsObject.gameObject = gameObject;
         effectsObject.effect = effect;
         effectsObject.time = time;
         effectsObject.color = color ?? new Color(1f, 0f, 1f); // if no color is supplied, do magenta
+        // magenta will help us easily find bad addEffect
         effectsObject.amount = amount;
         effectsObject.timeStarted = Time.time; // when we started the effect; used to calculate our progress
         effectsObject.repeat = repeat;
-        effectsObject.startingColor = gameObject.GetComponent<SpriteRenderer>().color; // the color of the object we are acting upon
-        // as of right now we only support the SpriteRenderer, in the future we may make staritng color an input, its just really embarassing to have to do that
-
+         
+        if (gameObject.TryGetComponent(out SpriteRenderer spriteRenderer)) // as of now we only support spriterenderer, so we try to find one
+        {
+            effectsObject.startingColor = spriteRenderer.color; // the color of the object we are acting upon
+        }
+        else // we did NOT find an attached spriterenderer
+        {
+            // throw an ArgumentException
+            throw new ArgumentException("object " + gameObject.name + "missing component SpriteRenderer!");
+            // should stop the code in it's tracks here, we wont be doing anything to this potential effectsObject
+        }
+        
         effectsObjects.Add(effectsObject);
     }
 
-    // this function returns a color between color1 and color2 on a scale of 0-1 (0 being color1 and 1 being color2)
+    /*
+     * purpose: returns a color between color1 and color2 on a scale of 0-1 (0 being color1 and 1 being color2)
+     * inputs: color #1, color #2, ammount from 1 to 2
+     * outputs: new color (see purpose)
+     */
     private Color betweenColor(Color color1, Color color2, float amount = 0.5f)
     {
         return new Color(color1.r + (color2.r - color1.r) * amount, color1.g + (color2.g - color1.g) * amount, color1.b + (color2.b - color1.b) * amount);

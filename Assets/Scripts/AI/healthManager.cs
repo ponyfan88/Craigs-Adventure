@@ -71,7 +71,7 @@ public class healthManager : MonoBehaviour
                 LogToFile.Log("Player took damage " + damage);
 
                 //flash
-                effectsManager.addEffect(gameObject, GlobalFX.effect.flashTransparent, 1, new Color(1f, 1f, 1f, 1f), 1, 3);
+                effectsManager.AddEffect(gameObject, GlobalFX.effect.flashTransparent, 1, new Color(1f, 1f, 1f, 1f), 1, 3);
                 //GlobalFX.effect.flashTransparent
 
                 soundManager.Play("Hurt"); // play the hurt sound
@@ -79,7 +79,7 @@ public class healthManager : MonoBehaviour
             else if (!gameObject.TryGetComponent(out Item item)) // not the player or a throwable item
             {
                 //flash
-                effectsManager.addEffect(gameObject, GlobalFX.effect.flash, 1, new Color(1f, 0f, 0f, 1f), 1, 3);
+                effectsManager.AddEffect(gameObject, GlobalFX.effect.flash, 1, new Color(1f, 0f, 0f, 1f), 1, 3);
 
                 soundManager.Play("Hurt"); // play the hurt sound
             }

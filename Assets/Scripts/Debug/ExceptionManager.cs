@@ -88,8 +88,6 @@ public class ExceptionManager : MonoBehaviour
 
             Pause.PauseCrashed(); // pause the game with our crash specific pause
 
-            //Pause.emailUI.SetActive(true); //TODO:REMOVEME
-
             // the string we use for crashinfo
             string bug = "an exception has occured!\nlocation:\n" + mostRecentLog.stackTrace + "\nissue:\n" + mostRecentLog.logString;
 

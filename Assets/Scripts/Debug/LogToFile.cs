@@ -13,13 +13,19 @@ public static class LogToFile
 {
     #region Variables
 
+    // list representing our log file
     public static List<string> logFile = new List<string>();
 
     #endregion
 
     #region Custom Methods
 
-    public static void Log(string logString, bool timestamp = false)
+    /*
+     * purpose: adds a given log string to our log list
+     * inputs: a string to log
+     * outputs: string into logFile list
+     */
+    public static void Log(string logString)
     {
         logFile.Add(logString);
     }
