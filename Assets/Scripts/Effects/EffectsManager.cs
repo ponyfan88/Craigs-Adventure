@@ -15,7 +15,7 @@ public class EffectsManager : MonoBehaviour
     #region Variables
 
     // these are the objects we'll run effects on
-    public List<effectItemProperties> effectsObjects = new List<effectItemProperties>();
+    public List<EffectsObject> effectsObjects = new List<EffectsObject>();
     // these are the objects we'll get rid of from effectsObjects every frame; it's cleared every frame
     public List<int> deletedObjects = new List<int>();
 
@@ -24,7 +24,7 @@ public class EffectsManager : MonoBehaviour
     #region Structs
 
     // every effectsObject gets its own data type, this is all referenced above
-    public struct effectItemProperties
+    public struct EffectsObject
     {
         public GameObject gameObject;
         public GlobalFX.effect effect;
@@ -164,7 +164,7 @@ public class EffectsManager : MonoBehaviour
     // on screen effect :)
     public void addEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
     {
-        effectItemProperties effectsObject = new effectItemProperties();
+        EffectsObject effectsObject = new EffectsObject();
         effectsObject.gameObject = gameObject;
         effectsObject.effect = effect;
         effectsObject.time = time;
