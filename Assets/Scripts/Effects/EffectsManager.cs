@@ -172,9 +172,11 @@ public class EffectsManager : MonoBehaviour
         effectsObject.amount = amount;
         effectsObject.timeStarted = Time.time; // when we started the effect; used to calculate our progress
         effectsObject.repeat = repeat;
-        effectsObject.startingColor = gameObject.GetComponent<SpriteRenderer>().color; // the color of the object we are acting upon
-        // as of right now we only support the SpriteRenderer, in the future we may make staritng color an input, its just really embarassing to have to do that
-
+         
+        if (gameObject.TryGetComponent(out SpriteRenderer spriteRenderer)) // as of now we only support spriterenderer, so we try to find one
+        {
+            effectsObject.startingColor = spriteRenderer.color; // the color of the object we are acting upon
+        }
         effectsObjects.Add(effectsObject);
     }
 
