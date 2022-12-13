@@ -82,3 +82,5 @@ crashlytics-build.properties
 *.sqlite
 Assets/StreamingAssets/Saves/pizza​.json.meta
 Assets/StreamingAssets/Saves/pizza​.sqlite.meta
+Assets/StreamingAssets/Saves/my save.sqlite.meta
+Assets/StreamingAssets/Saves/my save.json.meta
