@@ -86,7 +86,7 @@ public class Room : MonoBehaviour
                         }
                     }
                 }
-                else if(!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before // CAUSES A CRASH IN TUTORIAL
+                else if(!map.discovered.Contains(transform.parent.gameObject)) // if we havent entered this room before // --CAUSES A CRASH IN TUTORIAL-- no, it only causes a crash if the tutorial mode is disabled without changing the scene, which we plan on changing anyway
                 {
                     roomHider.SetActive(true); // hides rooms (works on appropriate resolutions)
 
