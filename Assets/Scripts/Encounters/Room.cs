@@ -196,6 +196,8 @@ public class Room : MonoBehaviour
                 //end tutorial
                 TutorialManager.TutorialActive = false;
             }
+
+            enemiesSpawned = false;
         }
     }
 
