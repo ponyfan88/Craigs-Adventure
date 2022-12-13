@@ -25,6 +25,7 @@ public class getCloseToPlayer : StateMachineBehaviour
         ai = animator.gameObject.GetComponent<NavMeshAgent>();
         aiManager = animator.gameObject.GetComponent<AIManager>();
 
+        // updates AI's conditions
         aiManager.needDistance = true;
         animator.SetBool("reachedLocation", false);
     }

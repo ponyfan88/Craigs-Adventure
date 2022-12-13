@@ -24,7 +24,7 @@ public class dmgPlayerOnCollide : MonoBehaviour
     {
         aiManager = GetComponent<AIManager>();
         playerHealth = GameObject.Find("player").GetComponent<healthManager>();
-        playerController = GameObject.Find("player").GetComponent<controller>();
+        playerController = playerHealth.GetComponent<controller>();
     }
 
     private void OnCollisionStay2D(Collision2D collider)
@@ -38,7 +38,7 @@ public class dmgPlayerOnCollide : MonoBehaviour
                 // apply knockback and freeze the AI
                 playerController.ApplyKnockback(transform.position);
                 aiManager.canMove = false;
-                Invoke("ToggleAI", 0.3f);
+                Invoke("ToggleAI", 0.3f); // use invoke method to delay toggling the AI's state.
             }
         }
     }

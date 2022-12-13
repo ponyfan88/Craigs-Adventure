@@ -32,23 +32,29 @@ public class AIManager : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.Find("player");
+        
         // we get the navmesh controller (agent), and then make it so it doesn't rotate or change its axis.
         // this is important, as otherwise it would rotate in a way where its "invisible" to the player
         ai = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("player");
-
         ai.updateRotation = false;
         ai.updateUpAxis = false;
     }
 
     private void Update()
     {
+        // if knockbackTimer is > the current time, it is within frames where it is being knocked back
         if (knockbackTimer > Time.time)
         {
+            // We reset the AI's path, this prevents some bugs where the AI completely ignores taking knockback
+            // The NavMeshAgent is a really weird with how its velocity works, meaning there are some specific bugs where enemies refuse to take knockback
+            // I've done tons of research into fixing this issue however it is not completely preventable due to Unity's implemenation.
+            // This can be seen with the Goblin enemy not taking knockback vertically. - Xander
             ai.ResetPath();
             ai.velocity = new Vector2(knockbackDir.x * (6 - knockbackResistence), knockbackDir.y * (6 - knockbackResistence));
         }
 
+        // if the AI needs distance, it can specify it in its behaviour scripts. This allows us to reuse the same calculation many times.
         if (needDistance)
         {
             distance = JMath.Distance((Vector2)transform.position, (Vector2)player.transform.position);

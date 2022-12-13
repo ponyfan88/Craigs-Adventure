@@ -1,14 +1,25 @@
-using System;
+/*  
+ *  Programmer: Xander Mooney
+ *  Purpose: makes AI to flee from the player, giving the player a sort of break.
+ *  Inputs: distance from the player and AI
+ *  Outputs: direction to run
+ */
+
 using UnityEngine;
 using UnityEngine.AI;
 
 public class FleeFromPlayer : StateMachineBehaviour
 {
+    #region Variables
     GameObject player;
     NavMeshAgent ai;
     AIManager aiManager;
     public float desiredDistance = 8;
     float timeSinceFlee;
+
+    #endregion
+
+    #region Default Methods
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -36,4 +47,6 @@ public class FleeFromPlayer : StateMachineBehaviour
             animator.SetBool("reachedLocation", true);
         }
     }
+
+    #endregion
 }
