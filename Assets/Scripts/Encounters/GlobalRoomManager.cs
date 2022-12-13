@@ -14,6 +14,7 @@ public class GlobalRoomManager : MonoBehaviour
     [NonSerialized] public bool inEncounter = false, inRoom = false;
 
     #endregion
+
     #region Custom Methods
     /*
      * Purpose: Keep track of when an encounter is entered

@@ -6,6 +6,8 @@
 using UnityEngine;
 public class DestroyOnImpact : MonoBehaviour
 {
+    #region Variables
+
     [Min(0)]public int DamageAmount = 1; // amount of damage it deals to non-player objects
     public bool playerOwned = false, destroyOnHitWall = true;
 
@@ -13,6 +15,10 @@ public class DestroyOnImpact : MonoBehaviour
     public enum DestroyType { destroy, summonProjectile };
     public DestroyType destroyType = DestroyType.destroy;
     public int projectileIndex= 0;//the projectile to spawn when destroyed
+
+    #endregion
+
+    #region Default Methods
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -60,6 +66,16 @@ public class DestroyOnImpact : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    #region Custom Methods
+
+    /*
+     * Purpose: Run through enums to determine how to destroy the object
+     * Inputs: when destroyed
+     * Outputs: custom destruction implementations
+     */
     public void DestroyObject()
     {
         switch (destroyType)
@@ -77,4 +93,6 @@ public class DestroyOnImpact : MonoBehaviour
                 break;
         }
     }
+
+    #endregion
 }

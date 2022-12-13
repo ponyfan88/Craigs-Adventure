@@ -12,9 +12,5 @@ using UnityEngine;
 public class ProjectileAttackPatternData : ScriptableObject
 {
     public ProjectileSpawnData[] pattern; // patterns of bullets
- /* Purpose: interate through pattern when called
- * Inputs: none
- * Outputs: "ProjectileSpawner"
- */
 
 }

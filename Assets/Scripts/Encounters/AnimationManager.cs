@@ -23,9 +23,9 @@ public class AnimationManager : MonoBehaviour
 
     #region Custiom Methods
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: begin animation
+     * inputs: entering a room
+     * outputs: the object starting animation
      */
     public void beginAnimation()
     {
@@ -33,9 +33,9 @@ public class AnimationManager : MonoBehaviour
     }
     
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: end animation when player leaves a room
+     * inputs: player exiting the room
+     * outputs: the object stopping animation
      */
     public void endAnimation() 
     {

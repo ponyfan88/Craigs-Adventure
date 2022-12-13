@@ -5,7 +5,6 @@
  * Outputs: various variables to other script files such as map.cs
  */
 
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

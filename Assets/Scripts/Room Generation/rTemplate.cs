@@ -11,6 +11,8 @@ using UnityEngine;
 
 public class rTemplate : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private GameObject[] topRooms; //default state of trooms
     [SerializeField] private GameObject[] botRooms; //default state of brooms
     [SerializeField] private GameObject[] lefRooms; //default state of lrooms
@@ -24,11 +26,18 @@ public class rTemplate : MonoBehaviour
     public GameObject[] Walls; //storage/reference for extra walls (to block off doors that lead to unspawned rooms and such)
     public GameObject[] Boss; //end rooms (currently only staircase rooms)
 
-    //called on first frame
+    #endregion
+
+    #region Default Methods
+
     private void Awake()
     {
         resetTemplate(); //reset lists to default
     }
+
+    #endregion
+
+    #region Custom Methods
 
     /*Method Purpose: Resets the list of rooms to its default state, before generation affects the list of rooms
      * Method Inputs: none, called during first frame of the scene
@@ -60,4 +69,6 @@ public class rTemplate : MonoBehaviour
             rRooms.Add(rigRooms[i]);
         }
     }
+
+    #endregion
 }
