@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 using UnityEngine.U2D.Animation;
 using ItemEvents;
 
@@ -16,13 +17,13 @@ public class itemManager : MonoBehaviour
 {
     #region Variables
 
-    public GameObject selectedItem = null;
+    [NonSerialized]public GameObject selectedItem = null;
     controller controller;
     Attack attack;
     Item itemScript;
     float ItemDistance; // no initial value needed: b/c selectedItem is null the script will run as intended
-    public Vector2 itemPosOffset, currentPosOffset; 
-    public bool holdingItem = false;
+    [NonSerialized]public Vector2 itemPosOffset, currentPosOffset; 
+    [NonSerialized]public bool holdingItem = false;
     bool doingItemAction = false;
     int itemsInRange = 0;
     public float throwforce = 0.1f; //units to be thrown
@@ -30,7 +31,7 @@ public class itemManager : MonoBehaviour
     public List<thrownItemProperties> thrownItems = new List<thrownItemProperties>();
 
     public SpriteLibraryAsset notHolding, holding;
-    public SpriteLibrary spritelibrary;
+    [NonSerialized]public SpriteLibrary spritelibrary;
 
     public Material matUnSelected, matSelected;
 

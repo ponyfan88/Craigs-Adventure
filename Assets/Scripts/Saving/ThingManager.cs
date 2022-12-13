@@ -133,44 +133,42 @@ public class ThingManager : MonoBehaviour
 
             GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
 
+            Debug.Log(rootObjects.Length);
+
             foreach (GameObject rootObject in rootObjects)
             {
-                // for every child
-                foreach (Transform child in rootObject.transform) // things like items, spawns, and enemies
+                // our child's tag
+                string tag = rootObject.tag;
+
+                // if its an enemy or an item, thats what we're looking to save
+                if (tag == "Item" || tag == "Enemy")
                 {
-                    // our child's tag
-                    string tag = child.gameObject.tag;
-
-                    // if its an enemy or an item, thats what we're looking to save
-                    if (tag == "Item" || tag == "Enemy")
+                    // if we are not just destroying objects
+                    if (save)
                     {
-                        // if we are not just destroying objects
-                        if (save)
-                        {
-                            // we make a new GenericObject
-                            GenericObject genericObject = new GenericObject();
+                        // we make a new GenericObject
+                        GenericObject genericObject = new GenericObject();
 
-                            // the itemEnemyThing is the item/enemy we are looping throuhg
-                            genericObject.thingPrefab = child.gameObject.GetComponent<Thing>().thingPrefab;
+                        // the itemEnemyThing is the item/enemy we are looping throuhg
+                        genericObject.thingPrefab = rootObject.GetComponent<Thing>().thingPrefab;
 
-                            genericObject.uniqueID = -1;
+                        genericObject.uniqueID = -1;
 
-                            genericObject.position = child.gameObject.transform.position;
+                        genericObject.position = rootObject.transform.position;
 
-                            genericObject.health = child.gameObject.transform.GetComponent<healthManager>().health;
+                        genericObject.health = rootObject.transform.GetComponent<healthManager>().health;
 
-                            // add it to our list of game objects
-                            genericObjects.Add(genericObject);
+                        // add it to our list of game objects
+                        genericObjects.Add(genericObject);
 
-                            destroyGameObjects.Add(child.gameObject);
+                        destroyGameObjects.Add(rootObject);
 
-                            Debug.Log(genericObject);
-                        }
+                        Debug.Log(genericObject);
+                    }
 
-                        if (destroy)
-                        {
-                            Destroy(child.gameObject); // destroy the item/enemy gameobject (they'll be replaced later)
-                        }
+                    if (destroy)
+                    {
+                        Destroy(rootObject); // destroy the item/enemy gameobject (they'll be replaced later)
                     }
                 }
 
@@ -203,6 +201,11 @@ public class ThingManager : MonoBehaviour
         {
             Debug.Log("prefab saves loaded, currentSave contained none");
             NukeRoomChildren(true, true);
+        }
+        else
+        {
+            Debug.Log("prefabs found, loading currentSave");
+            NukeRoomChildren(false, true);
         }
         
         rooms = FindObjectsOfType<Room>();
@@ -280,6 +283,7 @@ public class ThingManager : MonoBehaviour
 
                 if (uniqueID == -1)
                 {
+                    Debug.Log("found object with no parent: " + prefab.name);
                     // instantilize with no parent
                     GameObject thing = Instantiate(prefab, null, true);
 
