@@ -20,6 +20,11 @@ public static class LogToFile
     #region Custom Methods
 
     public static void Log(string logString, bool timestamp = false)
+    /*
+     * purpose: adds a given log string to our log list
+     * inputs: a string to log
+     * outputs: string into logFile list
+     */
     {
         logFile.Add(logString);
     }
