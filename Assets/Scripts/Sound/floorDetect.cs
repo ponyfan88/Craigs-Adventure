@@ -1,8 +1,8 @@
 /*
- * programmers: TODO
- * purpose: TODO
- * inputs: TODO
- * outputs: TODO
+ * programmers: Christopher Kowalewski
+ * purpose: Detects the type of floor tile to change walk sound
+ * inputs: Tilemap data
+ * outputs: Surface int; what it does is describe what kind of tile you've stepped on (not currently used in other implementations)
  */
 
 using UnityEngine;
