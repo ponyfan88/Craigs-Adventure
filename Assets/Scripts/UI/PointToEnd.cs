@@ -40,18 +40,25 @@ public class PointToEnd : MonoBehaviour
     {
         if (endRoom != null) // if we've found the endroom
         {
-            // only get the starting distance on the first frame we find the end room
-            if (!gotdist)
+            if (!GlobalRoomManager.inEncounter)
             {
-                startingDistance = JMath.Distance(endRoom.transform, player.transform);
-                gotdist = true;
+                // only get the starting distance on the first frame we find the end room
+                if (!gotdist)
+                {
+                    startingDistance = JMath.Distance(endRoom.transform, player.transform);
+                    gotdist = true;
+                }
+
+                direction = Mathf.Atan2(endRoom.transform.position.y - player.transform.position.y, endRoom.transform.position.x - player.transform.position.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, direction);
+
+                // scale pointer alpha with our distance, the closer we are the less we should see the pointer
+                pointer.color = new Color(1f, 1f, 1f, JMath.Distance(endRoom.transform, player.transform) / startingDistance);
             }
-
-            direction = Mathf.Atan2(endRoom.transform.position.y - player.transform.position.y, endRoom.transform.position.x - player.transform.position.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, direction);
-
-            // scale pointer alpha with our distance, the closer we are the less we should see the pointer
-            pointer.color = new Color(1f, 1f, 1f, JMath.Distance(endRoom.transform, player.transform) / startingDistance);
+            else
+            {
+                pointer.color = new Color(0f, 0f, 0f, 0f);
+            }
         }
         else // we cannot find the endroom
         {

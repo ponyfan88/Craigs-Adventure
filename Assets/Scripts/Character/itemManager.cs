@@ -130,18 +130,26 @@ public class itemManager : MonoBehaviour
 
         for (int i = 0; i < thrownItems.Count; i++)
         {
-            // if we are either holding the item we are on or our item has fully moved
-            if ((holdingItem && selectedItem == thrownItems[i].item) || (Mathf.Approximately(thrownItems[i].item.transform.position.x, thrownItems[i].destination.x) && Mathf.Approximately(thrownItems[i].item.transform.position.y, thrownItems[i].destination.y)))
+            try
             {
-                // dont move it any more; remove it from our list
-                thrownItems.Remove(thrownItems[i]);
+                // if we are either holding the item we are on or our item has fully moved
+                if ((holdingItem && selectedItem == thrownItems[i].item) || (Mathf.Approximately(thrownItems[i].item.transform.position.x, thrownItems[i].destination.x) && Mathf.Approximately(thrownItems[i].item.transform.position.y, thrownItems[i].destination.y)))
+                {
+                    // dont move it any more; remove it from our list
+                    thrownItems.Remove(thrownItems[i]);
+                }
+                else // if thats not true, we are supposed to be moving the item
+                {
+                    // move the item
+                    float divisor = 2f;
+                    // how far along we are
+                    thrownItems[i].item.transform.position += (Vector3)((1f / divisor) / Mathf.Pow(divisor, throwtime * (Time.fixedTime - thrownItems[i].timeStarted)) * (thrownItems[i].destination - thrownItems[i].start));
+                }
             }
-            else // if thats not true, we are supposed to be moving the item
+            catch
             {
-                // move the item
-                float divisor = 2f;
-                // how far along we are
-                thrownItems[i].item.transform.position += (Vector3)((1f / divisor) / Mathf.Pow(divisor, throwtime * (Time.fixedTime - thrownItems[i].timeStarted)) * (thrownItems[i].destination - thrownItems[i].start));
+                holdingItem = false;
+                selectedItem = null;
             }
         }
     }

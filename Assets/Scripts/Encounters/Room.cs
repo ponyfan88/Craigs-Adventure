@@ -46,13 +46,12 @@ public class Room : MonoBehaviour
         doorManager = GetComponentsInChildren<DoorManager>();
         enemySpawns = GetComponentsInChildren<SpawnEnemy>();
         npcs = GetComponentsInChildren<GenericNPC>();
-        roomManager = GetComponentInParent<GlobalRoomManager>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         eventCancellatiion = false;
-        if (collision == playerHitbox && roomManager.inRoom == false) // the player has entered the room
+        if (collision == playerHitbox && GlobalRoomManager.inRoom == false) // the player has entered the room
         {
             foreach (DoorManager door in doorManager)
             {
@@ -61,11 +60,11 @@ public class Room : MonoBehaviour
             }
             if (!eventCancellatiion) 
             {
-                roomManager.EnterRoom(); // tell global room manager that we are in a room
+                GlobalRoomManager.EnterRoom(); // tell global room manager that we are in a room
 
                 if (TutorialManager.TutorialActive) //checks if tutorial is active
                 {
-                    roomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
+                    GlobalRoomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
 
                     // for every enemy that is a child of room child, spawn them in
                     foreach (SpawnEnemy spawn in enemySpawns)
@@ -92,7 +91,7 @@ public class Room : MonoBehaviour
 
                     map.discovered.Add(transform.parent.gameObject); // add it to our list of entered rooms
 
-                    roomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
+                    GlobalRoomManager.EnterEncounter(); // Tell global room manager that we are starting an encounter
 
                     // for every enemy that is a child of room child, spawn them in
                     foreach (SpawnEnemy spawn in enemySpawns)
@@ -146,7 +145,7 @@ public class Room : MonoBehaviour
         // if its the player that has left the room
         if (collision == playerHitbox)
         {
-            roomManager.ExitRoom(); // tell the global room manager we left the room
+            GlobalRoomManager.ExitRoom(); // tell the global room manager we left the room
 
             roomHider.SetActive(false); // hide our room hider
             
@@ -188,7 +187,7 @@ public class Room : MonoBehaviour
                 door.OpenDoors();
             }
 
-            roomManager.ExitEncounter();
+            GlobalRoomManager.ExitEncounter();
 
             //when the tutorial is active after enemies are defeated
             if (TutorialManager.TutorialActive)
