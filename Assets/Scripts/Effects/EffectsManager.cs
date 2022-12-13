@@ -177,6 +177,13 @@ public class EffectsManager : MonoBehaviour
         {
             effectsObject.startingColor = spriteRenderer.color; // the color of the object we are acting upon
         }
+        else // we did NOT find an attached spriterenderer
+        {
+            // throw an ArgumentException
+            throw new ArgumentException("object " + gameObject.name + "missing component SpriteRenderer!");
+            // should stop the code in it's tracks here, we wont be doing anything to this potential effectsObject
+        }
+        
         effectsObjects.Add(effectsObject);
     }
 
