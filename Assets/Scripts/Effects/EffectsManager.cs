@@ -5,6 +5,7 @@
  * Outputs: on screen effects
  */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
