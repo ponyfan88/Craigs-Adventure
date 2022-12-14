@@ -15,9 +15,9 @@ public class EffectsManager : MonoBehaviour
     #region Variables
 
     // these are the objects we'll run effects on
-    public List<EffectsObject> effectsObjects = new List<EffectsObject>();
+    public static List<EffectsObject> effectsObjects = new List<EffectsObject>();
     // these are the objects we'll get rid of from effectsObjects every frame; it's cleared every frame
-    public List<int> deletedObjects = new List<int>();
+    public static List<int> deletedObjects = new List<int>();
 
     #endregion
 
@@ -165,7 +165,7 @@ public class EffectsManager : MonoBehaviour
      *###### OUTPUTS:
      * on screen effect
      */
-    public void AddEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
+    public static void AddEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
     {
         EffectsObject effectsObject = new EffectsObject();
         effectsObject.gameObject = gameObject;

@@ -23,22 +23,24 @@ public class flipSprite : StateMachineBehaviour
     
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemy = animator.gameObject;
-        sprite = enemy.GetComponent<SpriteRenderer>();
-        ai = enemy.GetComponent<NavMeshAgent>();
+        sprite = animator.gameObject.GetComponent<SpriteRenderer>();
+        ai = sprite.GetComponent<NavMeshAgent>();
     }
     
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       // if facing left and is moving right
-        if (!facingRight && ai.desiredVelocity.x > 0)
+        if (ai.destination != ai.transform.position)
         {
-            Flip();
-        }
-       // if facing right and is moving left
-        if (facingRight && ai.desiredVelocity.x < 0)
-        {
-            Flip();
+            // if facing left and is moving right
+            if (!facingRight && ai.desiredVelocity.x > 0)
+            {
+                Flip();
+            }
+            // if facing right and is moving left
+            else if (facingRight && ai.desiredVelocity.x < 0)
+            {
+                Flip();
+            }
         }
     }
 

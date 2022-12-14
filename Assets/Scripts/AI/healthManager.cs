@@ -6,6 +6,7 @@
  */
 
 using UnityEngine;
+
 [DisallowMultipleComponent]
 public class healthManager : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class healthManager : MonoBehaviour
     float invulnerabilityTimer;
     public bool takePlayerDamage = true;
     SoundManager soundManager;
-    EffectsManager effectsManager;
     SavesManager savesManager;
 
     // enum to decide what should happen if an object were to die.
@@ -37,7 +37,6 @@ public class healthManager : MonoBehaviour
 
         Pause = GameObject.Find("UI").GetComponent<Pause>(); // find our pause script
         soundManager = FindObjectOfType<SoundManager>(); // gets the soundManager
-        effectsManager = FindObjectOfType<EffectsManager>(); // gets the effectsManager
         invulnerabilityTimer = Time.time; // Set invulnerabilityTimer to avoid null output
         savesManager = FindObjectOfType<SavesManager>();
 
@@ -71,7 +70,7 @@ public class healthManager : MonoBehaviour
                 LogToFile.Log("Player took damage " + damage);
 
                 //flash
-                effectsManager.AddEffect(gameObject, GlobalFX.effect.flashTransparent, 1, new Color(1f, 1f, 1f, 1f), 1, 3);
+                EffectsManager.AddEffect(gameObject, GlobalFX.effect.flashTransparent, 1, Color.white, 1, 3); 
                 //GlobalFX.effect.flashTransparent
 
                 soundManager.Play("Hurt"); // play the hurt sound
@@ -79,7 +78,7 @@ public class healthManager : MonoBehaviour
             else if (!gameObject.TryGetComponent(out Item item)) // not the player or a throwable item
             {
                 //flash
-                effectsManager.AddEffect(gameObject, GlobalFX.effect.flash, 1, new Color(1f, 0f, 0f, 1f), 1, 3);
+                EffectsManager.AddEffect(gameObject, GlobalFX.effect.flash, 1, Color.red, 1, 3);
 
                 soundManager.Play("Hurt"); // play the hurt sound
             }
