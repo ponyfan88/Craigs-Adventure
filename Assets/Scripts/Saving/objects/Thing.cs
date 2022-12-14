@@ -7,6 +7,7 @@
 
 using UnityEngine;
 
+[DisallowMultipleComponent]
 [RequireComponent(typeof(healthManager))]
 public class Thing : MonoBehaviour
 {
