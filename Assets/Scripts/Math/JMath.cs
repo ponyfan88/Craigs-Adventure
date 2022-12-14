@@ -83,7 +83,7 @@ public static class JMath
 
     public static bool IfOpposite(bool a, bool b)
     {
-        if (a && !b || !a && b)
+        if (a != b)
         {
             return true;
         }
