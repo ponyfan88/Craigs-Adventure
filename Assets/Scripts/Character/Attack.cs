@@ -21,7 +21,6 @@ public class Attack : MonoBehaviour
     Animator animator;
     SoundManager soundManager;
     playerWalkanim animationControl;
-    AIManager EnemyAImanager; // ignore the grey text this variable is used intellisense goes hard
     Vector2 attackDir = new Vector2(0, 0);
     public Vector2 hitboxSize = new Vector2(3,2);
     public float attackDuration = 1f, attackCooldown = 2f;
