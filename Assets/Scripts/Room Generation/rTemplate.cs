@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class rTemplate : MonoBehaviour
@@ -37,10 +38,7 @@ public class rTemplate : MonoBehaviour
 
     private void Awake()
     {
-        if (FloorManager.floor == 1) //temporary
-        {
-            resetTemplate1(); //reset lists to default (level 1)
-        }
+        resetTemplate1(); //reset lists to default
     }
 
     #endregion
@@ -60,7 +58,7 @@ public class rTemplate : MonoBehaviour
         rRooms.Clear();
 
         //this set of for loops goes through each item in the default room arrays and adds them back to the lists
-        for (int i=0; i<topRooms.Length; ++i)
+        /*for (int i=0; i<topRooms.Length; ++i)
         {
             tRooms.Add(topRooms[i]);
         }
@@ -75,6 +73,20 @@ public class rTemplate : MonoBehaviour
         for (int i = 0; i < rigRooms.Length; ++i)
         {
             rRooms.Add(rigRooms[i]);
+        }*/
+        if (FloorManager.floor > 1)
+        {
+            tRooms = topRooms.ToList();
+            bRooms = botRooms.ToList();
+            lRooms = lefRooms.ToList();
+            rRooms = rigRooms.ToList();
+        }
+        else
+        {
+            tRooms = lvl2TRooms.ToList();
+            bRooms = lvl2BRooms.ToList();
+            lRooms = lvl2LRooms.ToList();
+            rRooms = lvl2RRooms.ToList();
         }
     }
 
