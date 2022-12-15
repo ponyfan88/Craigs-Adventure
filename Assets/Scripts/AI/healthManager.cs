@@ -85,24 +85,10 @@ public class healthManager : MonoBehaviour
 
             if (health <= 0) // if object has ran out of health
             {
-                if (gameObject.name == "player") // if its the player
-                {
-                    LogToFile.Log("player has died");
-                    Pause.EndGame(); // display the death screen
-                }
-                // if the object is a projectile, we only disable the object so that the projectile scripts can reuse it without crashing
-                else if (TryGetComponent(out Projectile proj))
-                {
-                    gameObject.SetActive(false);
-                }
-                    else
-                    {
-                        // anything here is an enemy / not the player
-                        // For now we just kill the object.
-                        Destroy(gameObject);
-
-                        LogToFile.Log("killed " + gameObject);
-                    }
+                // trigger death handling mechanics
+                Death();
+                LogToFile.Log("killed " + gameObject);
+               
             }
             return true; // tell the function the object took damage
         }
@@ -146,5 +132,26 @@ public class healthManager : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        switch (destroyEvent)
+        {
+            default:
+                if (gameObject.name == "player") // if its the player
+                {
+                    LogToFile.Log("player has died");
+                    Pause.EndGame(); // display the death screen
+                }
+                else if (TryGetComponent(out Projectile proj))
+                {
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                Destroy(gameObject);
+                }
+                return;
+        }
+    }
     #endregion
 }
