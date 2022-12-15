@@ -24,6 +24,8 @@ public class ThingManager : MonoBehaviour
     public GameObject goblinPrefab;
     public GameObject skeletonPrefab;
     public GameObject slimePrefab;
+    public GameObject fireSlimePrefab;
+    public GameObject wizardPrefab;
 
     #endregion
 
@@ -263,6 +265,12 @@ public class ThingManager : MonoBehaviour
                     break;
                 case (thingEnums.thingPrefab.slime):
                     prefab = slimePrefab;
+                    break;
+                case (thingEnums.thingPrefab.wizard):
+                    prefab = wizardPrefab;
+                    break;
+                case (thingEnums.thingPrefab.redSlime):
+                    prefab = fireSlimePrefab;
                     break;
                 // DEFAULT
                 default:
