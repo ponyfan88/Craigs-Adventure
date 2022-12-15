@@ -178,7 +178,7 @@ public class Status : MonoBehaviour
         // default for rooms 1-3
         float heartDelta = 1.4f;
 
-        if (FloorManager.floor >= 4) // if we're on the boss level
+        if (FloorManager.floor >= 3) // if we're on the boss level
         {
             heartDelta *= 2; // multiply by 2
         }
