@@ -77,6 +77,13 @@ public class DamageColliders : MonoBehaviour
             }
         }
     }
-
+    /* Purpose: Allow us to destroy the object when needed
+     * Inputs: When to be destroyed
+     * Outputs: Destroys object
+     */
+    void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
     #endregion
 }

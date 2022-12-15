@@ -11,13 +11,18 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator), typeof(NavMeshAgent), typeof(AIManager))]
 public class WizardStateManager : MonoBehaviour
 {
+
     #region Variables
+
     NavMeshAgent ai;
     Animator animator;
     GameObject player;
+    public GameObject Hex; // this is manually added via the inspector
 
     float maxTPFromPlayer = 8;
-
+    float attackTime = 1f;
+    int attackAmount = 3, timesAttacked;
+    
     #endregion
 
     #region Default Methods
@@ -62,6 +67,26 @@ public class WizardStateManager : MonoBehaviour
             animator.SetBool("reachedLocation", true);
         }
     }
-
+    void InitializeAttack()
+    {
+        timesAttacked = 0;
+        Invoke("Attack", attackTime);
+        animator.SetBool("reachedLocation", false);
+    }
+   
+    void Attack()
+    {
+        if (timesAttacked < attackAmount)
+        {
+            Instantiate(Hex, player.transform.position - new Vector3(0, 0.5f), new Quaternion(0, 0, 0, 0));
+            ++timesAttacked;
+            Invoke("Attack", attackTime);
+        }
+        else
+        {
+            animator.SetBool("reachedLocation", true);
+        }
+    }
+    
     #endregion
 }
