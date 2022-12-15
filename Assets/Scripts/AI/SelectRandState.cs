@@ -1,3 +1,9 @@
+/*
+ * Programmer: Xander Mooney
+ * Purpose: Allow the animator to select a random state, so that it can do a random attack or pattern
+ * Inputs: # of states
+ * Outputs: random state #
+ */
 using UnityEngine;
 
 public class SelectRandState : StateMachineBehaviour
