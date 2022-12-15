@@ -6,6 +6,6 @@ public class SelectRandState : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         System.Random rand = new System.Random();
-        animator.SetFloat("State", rand.Next(0, States + 1));
+        animator.SetInteger("State", rand.Next(1, States + 1));
     }
 }
