@@ -13,10 +13,15 @@ public class rTemplate : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] private GameObject[] topRooms; //default state of trooms
-    [SerializeField] private GameObject[] botRooms; //default state of brooms
-    [SerializeField] private GameObject[] lefRooms; //default state of lrooms
-    [SerializeField] private GameObject[] rigRooms; //default state of rrooms
+    [SerializeField] private GameObject[] topRooms; //default state of trooms LEVEL 1
+    [SerializeField] private GameObject[] botRooms; //default state of brooms LEVEL 1
+    [SerializeField] private GameObject[] lefRooms; //default state of lrooms LEVEL 1
+    [SerializeField] private GameObject[] rigRooms; //default state of rrooms LEVEL 1
+
+    [SerializeField] private GameObject[] lvl2TRooms; //default state of trooms LEVEL 2
+    [SerializeField] private GameObject[] lvl2BRooms; //default state of brooms LEVEL 2
+    [SerializeField] private GameObject[] lvl2LRooms; //default state of lrooms LEVEL 2
+    [SerializeField] private GameObject[] lvl2RRooms; //default state of rrooms LEVEL 2
 
     [NonSerialized] public List<GameObject> tRooms = new List<GameObject>(); //storage/reference for rooms with a top/north-facing wall
     [NonSerialized] public List<GameObject> bRooms = new List<GameObject>(); //storage/reference for rooms with a bottom/south-facing wall
@@ -32,7 +37,10 @@ public class rTemplate : MonoBehaviour
 
     private void Awake()
     {
-        resetTemplate(); //reset lists to default
+        if (FloorManager.floor == 1) //temporary
+        {
+            resetTemplate1(); //reset lists to default (level 1)
+        }
     }
 
     #endregion
@@ -43,7 +51,7 @@ public class rTemplate : MonoBehaviour
      * Method Inputs: none, called during first frame of the scene
      * Method Outputs: Lists containing room prefab tenplates get reset to default
      */
-    public void resetTemplate()
+    public void resetTemplate1()
     {
         //clears any remaining rooms in the lists
         tRooms.Clear();
@@ -68,6 +76,11 @@ public class rTemplate : MonoBehaviour
         {
             rRooms.Add(rigRooms[i]);
         }
+    }
+
+    public void resetTemplate2()
+    {
+
     }
 
     #endregion
