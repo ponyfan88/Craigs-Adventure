@@ -27,7 +27,7 @@ public class FloorManager : MonoBehaviour
     {
         if (testBoss)
         {
-            floor = 4;
+            floor = 3;
         }
 
         loadSaveOverride = false;
