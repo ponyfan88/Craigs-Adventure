@@ -29,8 +29,14 @@ public class rTemplate : MonoBehaviour
     [NonSerialized] public List<GameObject> lRooms = new List<GameObject>(); //storage/reference for rooms with a left-facing wall
     [NonSerialized] public List<GameObject> rRooms = new List<GameObject>(); //storage/reference for rooms with a right-facing wall
 
-    public GameObject[] Walls; //storage/reference for extra walls (to block off doors that lead to unspawned rooms and such)
-    public GameObject[] Boss; //end rooms (currently only staircase rooms)
+    [SerializeField] private GameObject[] lvl1Walls; //storage/reference for extra walls (to block off doors that lead to unspawned rooms and such)
+    [SerializeField] private GameObject[] lvl1Boss; //end rooms (currently only staircase rooms)
+
+    [SerializeField] private GameObject[] lvl2Walls; //storage/reference for extra walls (to block off doors that lead to unspawned rooms and such)
+    [SerializeField] private GameObject[] lvl2Boss; //end rooms (currently only staircase rooms)
+
+    [NonSerialized] public GameObject[] Walls; //storage/reference for extra walls (to block off doors that lead to unspawned rooms and such)
+    [NonSerialized] public GameObject[] Boss; //end rooms (currently only staircase rooms)
 
     #endregion
 
@@ -80,6 +86,9 @@ public class rTemplate : MonoBehaviour
             bRooms = botRooms.ToList();
             lRooms = lefRooms.ToList();
             rRooms = rigRooms.ToList();
+
+            Walls = lvl1Walls;
+            Boss = lvl1Boss;
         }
         else
         {
@@ -87,6 +96,9 @@ public class rTemplate : MonoBehaviour
             bRooms = lvl2BRooms.ToList();
             lRooms = lvl2LRooms.ToList();
             rRooms = lvl2RRooms.ToList();
+
+            Walls = lvl2Walls;
+            Boss = lvl2Boss;
         }
     }
 
