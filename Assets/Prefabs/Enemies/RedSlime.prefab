@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4640555547685924267}
   - component: {fileID: 4640555547685924266}
+  - component: {fileID: 2478512383464638599}
   - component: {fileID: 4640555547685924265}
   - component: {fileID: 4640555547685924264}
   - component: {fileID: 4640555547685924271}
@@ -37,7 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4640555547685924266
 SpriteRenderer:
@@ -91,6 +92,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2478512383464638599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640555547685924275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5082789b610f258438b51f18e06aa5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingType: 1
+  thingPrefab: 3
 --- !u!95 &4640555547685924265
 Animator:
   serializedVersion: 4

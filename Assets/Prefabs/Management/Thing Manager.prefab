@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2045831388978590414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2045831388978590408}
+  - component: {fileID: 2045831388978590415}
+  m_Layer: 0
+  m_Name: Thing Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2045831388978590408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045831388978590414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2045831388978590415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045831388978590414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff4c640334406c48815876c5a87c127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 3757501959174599330, guid: 27c3d064b94df3e4a9b0ff5485463fa0, type: 3}
+  bonePrefab: {fileID: 5580315018719855596, guid: 706d4ae3021b53f409f419d5f889d50b, type: 3}
+  bookPrefab: {fileID: 69962445277924442, guid: 480bd3d2c5250cc4dacc736d06bdaef8, type: 3}
+  book2Prefab: {fileID: 69962445277924442, guid: 1d88584f50a1ebb4d873a2fca230bf19, type: 3}
+  boxPrefab: {fileID: 4911870632044226257, guid: d2c08bd3f827ea246a63fbc88a02e589, type: 3}
+  heartJarPrefab: {fileID: 8876102028033157360, guid: 9368931644f58f940bc0dd2a4ebeba2a, type: 3}
+  lanternPrefab: {fileID: 5361726776974772987, guid: cc35132bc41f9884696a089b5dfb4f37, type: 3}
+  goblinPrefab: {fileID: 579965022195231294, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
+  skeletonPrefab: {fileID: 7842657216624087585, guid: b52e28730e92f29479f7079ce74affb8, type: 3}
+  slimePrefab: {fileID: 1672663221352385785, guid: bfa62b5c26b0dcf44b974901ad9e1d4e, type: 3}
+  fireSlimePrefab: {fileID: 4640555547685924275, guid: 4b87e36ebb2d6034a973f1a96766c70d, type: 3}
+  wizardPrefab: {fileID: 3432006549281314871, guid: 8a3a8797503610b44b7bb9cfc6b5f051, type: 3}

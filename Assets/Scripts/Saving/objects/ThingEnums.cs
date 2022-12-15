@@ -19,6 +19,8 @@ namespace thingEnums
         goblin,
         skeleton,
         slime,
+        redSlime,
+        wizard,
         // item types
         bomb,
         bone,
