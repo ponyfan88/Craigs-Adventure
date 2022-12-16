@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70fe8a617233254cb031082ed5c33a5, type: 3}
   m_Name: RedSlimeDeath
   m_EditorClassIdentifier: 
-  bulletResource: {fileID: 0}
-  minRotation: -45
-  maxRotation: 45
+  bulletResource: {fileID: 8348239123438858866, guid: 1202088d0385f7f40bc0db54027b3b55, type: 3}
+  minRotation: 0
+  maxRotation: 360
   lifespan: 5
   endlifeEffect: 0
-  BulletCount: 8
+  BulletCount: 16
   cooldown: 2
-  aimAtPlayer: 1
-  isRandom: 1
+  aimAtPlayer: 0
+  isRandom: 0
   bulletPath: 0
   SpecialEffect: 0
-  bulletspeed: 2
+  bulletspeed: 4
   projectileVelocityIndependent: 0
   Velocity: {x: 0, y: 0}
   positionOffset: {x: 0, y: 0}
-  isNotParent: 0
+  isNotParent: 1

@@ -4,7 +4,7 @@
  * Inputs: health values, functions that take or give damage
  * Outputs: whether the object has died; the actual health
  */
-
+using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -23,10 +23,11 @@ public class healthManager : MonoBehaviour
     // enum to decide what should happen if an object were to die.
     public enum DestroyEvent { destroy, summonProjectile };
     public DestroyEvent destroyEvent = DestroyEvent.destroy;
+    [SerializeField] int destroyProjectileIndex;
     // enum to decide what should happen if an object were damaged.
     public enum DamagedEvent { nothing, displayParticle };
     public DamagedEvent damagedEvent = DamagedEvent.nothing;
-
+    
     #endregion
 
     #region Default Methods
@@ -131,11 +132,26 @@ public class healthManager : MonoBehaviour
             health = maxHealth;
         }
     }
-
+    /*
+    * purpose Kill GameObjects
+    * inputs: destroy event
+    * outputs: none
+    */
     public void Death()
     {
         switch (destroyEvent)
         {
+            case DestroyEvent.summonProjectile:
+                {
+                    if (TryGetComponent(out ProjectileSpawner spawner))
+                    {
+                        spawner.spawnerController(destroyProjectileIndex);
+                        GetComponent<AIManager>().canMove = false;
+                        Invoke("InvokeDestoryObject", 2.1f);//sorry this was the only way i could think of doing this -Anmol Acharya
+                    }
+                    else Destroy(gameObject);
+                    break;
+                }
             default:
                 if (gameObject.name == "player") // if its the player
                 {
@@ -152,6 +168,15 @@ public class healthManager : MonoBehaviour
                 }
                 return;
         }
+    }
+    /*
+ * purpose: use invoke to destroy game objects
+ * inputs: none
+ * outputs: none
+ */
+    void InvokeDestoryObject()
+    {
+        Destroy(gameObject);
     }
     #endregion
 }

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8e965f984865140a2d66fbc931bfd0, type: 3}
   m_Name: Redslime
   m_EditorClassIdentifier: 
-  pattern: []
+  pattern:
+  - {fileID: 11400000, guid: edbc5777d693a8449a59b0f88abf71d6, type: 2}
