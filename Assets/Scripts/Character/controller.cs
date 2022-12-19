@@ -1,5 +1,5 @@
 /* 
- * Programmers: Xander Mooney & Jack Kennedy
+ * Programmers: Xander Mooney
  * Purpose: Detect and use inputs from the controller to control the main character and his velocity for later use
  * Inputs: controller / keyboard inputs
  * Outputs: Velocity and moves object

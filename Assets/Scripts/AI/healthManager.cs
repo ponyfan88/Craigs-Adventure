@@ -4,8 +4,9 @@
  * Inputs: health values, functions that take or give damage
  * Outputs: whether the object has died; the actual health
  */
-using System;
+
 using UnityEngine;
+using UnityEditor;
 
 [DisallowMultipleComponent]
 public class healthManager : MonoBehaviour
@@ -21,9 +22,10 @@ public class healthManager : MonoBehaviour
     SavesManager savesManager;
 
     // enum to decide what should happen if an object were to die.
-    public enum DestroyEvent { destroy, summonProjectile };
+    public enum DestroyEvent { destroy, summonProjectile, dropItemChance };
     public DestroyEvent destroyEvent = DestroyEvent.destroy;
     [SerializeField] int destroyProjectileIndex;
+    [SerializeField] GameObject item;
     // enum to decide what should happen if an object were damaged.
     public enum DamagedEvent { nothing, displayParticle };
     public DamagedEvent damagedEvent = DamagedEvent.nothing;
@@ -48,6 +50,7 @@ public class healthManager : MonoBehaviour
         }
     }
 
+    
     #endregion
 
     #region Custom Methods
@@ -135,7 +138,7 @@ public class healthManager : MonoBehaviour
     /*
     * purpose Kill GameObjects
     * inputs: destroy event
-    * outputs: none
+    * outputs: destruction
     */
     public void Death()
     {
@@ -152,6 +155,18 @@ public class healthManager : MonoBehaviour
                     else Destroy(gameObject);
                     break;
                 }
+            case DestroyEvent.dropItemChance:
+                // declare random
+                System.Random rand = new System.Random();
+                // if random number is equal to 10 we summon item
+                if (rand.Next(0, 11) == 10)
+                {
+                    Instantiate(item, gameObject.transform.position, gameObject.transform.rotation);
+                }
+                
+                Destroy(gameObject);
+                break;
+             // Normal death event handling occurs here
             default:
                 if (gameObject.name == "player") // if its the player
                 {
@@ -160,6 +175,7 @@ public class healthManager : MonoBehaviour
                 }
                 else if (TryGetComponent(out Projectile proj))
                 {
+                    // Set the gameObject to inactive as its a projectile and we want to instead use object pooling
                     gameObject.SetActive(false);
                 }
                 else
@@ -177,6 +193,53 @@ public class healthManager : MonoBehaviour
     void InvokeDestoryObject()
     {
         Destroy(gameObject);
+    }
+    #endregion
+
+    #region Inspector Class
+    /* This is a custom class written within the health manager to handle the inspector
+     * This allows us to customize the inspector and make properties show when we want only.
+     */
+    [CustomEditor(typeof(healthManager))]
+    public class healthManagerEditor : Editor
+    {
+        // initialize all the variables
+        SerializedProperty takePlayerDamage, invulnerabilityTime, maxHealth, destroyEvent, destroyProjectileIndex, item;
+        private void OnEnable()
+        {
+            // Initialize all the properties
+            takePlayerDamage = serializedObject.FindProperty("takePlayerDamage");
+            invulnerabilityTime = serializedObject.FindProperty("invulnerabilityTime");
+            maxHealth = serializedObject.FindProperty("maxHealth");
+            destroyEvent = serializedObject.FindProperty("destroyEvent");
+            destroyProjectileIndex = serializedObject.FindProperty("destroyProjectileIndex");
+            item = serializedObject.FindProperty("item");
+        }
+        public override void OnInspectorGUI()
+        {
+            // Im not sure if initializing this here is inefficent, but it throws errors anywhere else
+            var healthManager = target as healthManager;
+            
+            // call an update to the inspector objects
+            serializedObject.Update();
+            // Tell main properties to update
+            EditorGUILayout.PropertyField(takePlayerDamage);
+            EditorGUILayout.PropertyField(invulnerabilityTime);
+            EditorGUILayout.PropertyField(maxHealth);
+            EditorGUILayout.PropertyField(destroyEvent);
+            // Apply any changes the user makes to the properties
+            serializedObject.ApplyModifiedProperties();
+
+            // Make Properties appear based on the state of the destroyEvent Enum
+            if (healthManager.destroyEvent == DestroyEvent.summonProjectile)
+            {
+                EditorGUILayout.PropertyField(destroyProjectileIndex);
+            }
+            else if (healthManager.destroyEvent == DestroyEvent.dropItemChance)
+            {
+                EditorGUILayout.PropertyField(item);
+            }
+        }
     }
     #endregion
 }
