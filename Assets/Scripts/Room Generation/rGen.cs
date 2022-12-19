@@ -128,9 +128,9 @@ public class rGen : MonoBehaviour
     #region Custom Methods
 
     /*
-     * purpose: TODO
-     * inputs: TODO
-     * outputs: TODO
+     * purpose: When called, spawn the next room from the parent spawn point
+     * inputs: none
+     * outputs: instantiates room, sets some data (including sFrom) for spawn points in new room.
      */
     private void Spawn() //function for spawning a room
     {
