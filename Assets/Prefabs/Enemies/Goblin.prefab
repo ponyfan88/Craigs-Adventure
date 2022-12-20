@@ -231,7 +231,9 @@ MonoBehaviour:
   health: 8
   invulnerabilityTime: 0
   takePlayerDamage: 1
-  destroyEvent: 0
+  destroyEvent: 2
+  destroyProjectileIndex: 0
+  item: {fileID: 8876102028033157360, guid: 9368931644f58f940bc0dd2a4ebeba2a, type: 3}
   damagedEvent: 0
 --- !u!114 &924077546041445865
 MonoBehaviour:
