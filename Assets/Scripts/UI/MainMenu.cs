@@ -58,6 +58,23 @@ public class MainMenu : MonoBehaviour
 
         SceneManager.LoadScene("Scenes/Game"); // load the game
     }
+    /*
+    * purpose: Go to the tutorial
+    * inputs: none
+    * outputs: loads the tutorial
+     */
+    public void StartTutorial()
+    {
+        LogToFile.Log("started tutorial at " + Time.time.ToString());
+
+        // the game has no longer ended
+        Pause.ended = false;
+
+        savesManager = FindObjectOfType<SavesManager>(); // assign the saves manager
+        savesManager.loadingSave = false; // we are no longer loading a save.
+
+        SceneManager.LoadScene("Scenes/Tutorial"); // load the game
+    }
 
     /*
      * purpose: closes craigs adventure
