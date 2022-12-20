@@ -5,6 +5,7 @@
  * Outputs: various variables to other script files such as map.cs
  */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Room : MonoBehaviour
 {
@@ -194,6 +195,15 @@ public class Room : MonoBehaviour
             {
                 //end tutorial
                 TutorialManager.TutorialActive = false;
+
+                //set some variables
+                Pause.ended = false;
+
+                SavesManager savesManager = FindObjectOfType<SavesManager>(); // assign the saves manager
+                savesManager.loadingSave = false; // we are no longer loading a save.
+
+                //change scene
+                SceneManager.LoadScene("Scenes/Game"); //load the main game.
             }
 
             enemiesSpawned = false;
