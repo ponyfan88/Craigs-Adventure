@@ -218,7 +218,7 @@ public class healthManager : MonoBehaviour
         public override void OnInspectorGUI()
         {
             // Im not sure if initializing this here is inefficent, but it throws errors anywhere else
-            var healthManager = target as healthManager;
+            var healthManager = (healthManager)target;
             
             // call an update to the inspector objects
             serializedObject.Update();
@@ -227,8 +227,6 @@ public class healthManager : MonoBehaviour
             EditorGUILayout.PropertyField(invulnerabilityTime);
             EditorGUILayout.PropertyField(maxHealth);
             EditorGUILayout.PropertyField(destroyEvent);
-            // Apply any changes the user makes to the properties
-            serializedObject.ApplyModifiedProperties();
 
             // Make Properties appear based on the state of the destroyEvent Enum
             if (healthManager.destroyEvent == DestroyEvent.summonProjectile)
@@ -239,6 +237,9 @@ public class healthManager : MonoBehaviour
             {
                 EditorGUILayout.PropertyField(item);
             }
+
+            // Apply any changes the user makes to the properties  THIS SHOULD ALWAYS BE AT THE END
+            serializedObject.ApplyModifiedProperties();
         }
     }
     #endregion
