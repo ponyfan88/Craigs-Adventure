@@ -50,7 +50,7 @@ public class BossHealth : MonoBehaviour
                     if (bossHealth.health != storedHealth)
                     {
                         // assuming the boss isnt dead
-                        if (bossHealth.health != 0)
+                        if (bossHealth.health > 0)
                         {
                             // scale the bar according to health over maxhealth, meaning at half health the bar will be at x scale 0.5f
                             bossBarFG.transform.localScale = new Vector3(((float)bossHealth.health / (float)bossHealth.maxHealth), 1f, 1f);
