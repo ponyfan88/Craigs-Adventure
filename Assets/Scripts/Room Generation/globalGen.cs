@@ -13,6 +13,10 @@ public class globalGen : MonoBehaviour
 {
     #region Variables
 
+    // spawnrooms
+    [SerializeField] private GameObject spawnRoom1;
+    [SerializeField] private GameObject spawnRoom2;
+
     Pause Pause; // import pausing
 
     public int spawnCount;
@@ -33,6 +37,15 @@ public class globalGen : MonoBehaviour
 
     public void Awake()
     {
+        if (FloorManager.floor == 1)
+        {
+            Instantiate(spawnRoom2, transform, true);
+        }
+        else
+        {
+            Instantiate(spawnRoom1, transform, true);
+        }
+        
         savesManager = FindObjectOfType<SavesManager>(); //assign the saves manager
 
         Pause = GameObject.Find("UI").GetComponent<Pause>(); // find our pause script

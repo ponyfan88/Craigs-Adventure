@@ -6721,6 +6721,10 @@ PrefabInstance:
       propertyPath: enemySpawns.Array.data[4]
       value: 
       objectReference: {fileID: 5826367409130520266}
+    - target: {fileID: 7390750396379380501, guid: a1af6bd4806509a4393563241dea719d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7685691705485177645, guid: a1af6bd4806509a4393563241dea719d, type: 3}
       propertyPath: m_Name
       value: Room Child
