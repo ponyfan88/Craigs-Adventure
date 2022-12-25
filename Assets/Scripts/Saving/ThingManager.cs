@@ -1,4 +1,10 @@
-using System.Collections;
+/* 
+ * Programmers: Jack Kennedy
+ * Purpose: manages items and enemies
+ * Inputs: the save we are loading / items & enemies in scene
+ * Outputs: sometimes spawns in inputs, other times destroys them
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +12,15 @@ public class ThingManager : MonoBehaviour
 {
     #region Variables
 
+    // privates we dont share (:<
+
     private SavesManager savesManager;
 
     private Room[] rooms;
 
     private List<GameObject> destroyGameObjects = new List<GameObject>();
 
+    // our prefabs
 
     public GameObject bombPrefab;
     public GameObject bonePrefab;
@@ -41,27 +50,28 @@ public class ThingManager : MonoBehaviour
         // if we are loading a save
         if (savesManager.loadingSave)
         {
+            // reconstruct after 1 second
             Invoke("ReconstructGenericObjects", 1f);
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            // invoking prevents an old bug where we'd get less rooms than if we waited till room gen is finished
+        }
     }
 
     #endregion
 
     #region Custom Methods
 
-    // nukes EVERY child in EVERY room
+    /* 
+     * Purpose: loops through in-scene items & enemies, can save or destroy them
+     * Inputs: save them? destroy them? should we loop through in scene or those from our save? 
+     * Outputs: sometimes saves objects to our currentSave, other times destroys them. sometimes both. 
+     */
     public void NukeRoomChildren(bool save = false, bool destroy = true, bool loadFromSave = false)
     {
         if (!loadFromSave)
         {
-            rooms = FindObjectsOfType<Room>();
             // EVERY OBJECT CALLED ROOM CHILD 
+            rooms = FindObjectsOfType<Room>();
             // but also the room script component
 
             // create a list of the rooms themselves
@@ -82,15 +92,15 @@ public class ThingManager : MonoBehaviour
             // we will be storing items and enemies as generic objects
             List<GenericObject> genericObjects = new List<GenericObject>();
             // we dont test for saving since Visual Studio will yell at you for not putting this here
-            
-            // counter to loop through rooms
-            int counter = 0;
 
             // if we are saving clear our list of gameobjects to destroy
             if (save)
             {
                 destroyGameObjects = new List<GameObject>();
             }
+
+            // counter to loop through rooms
+            int counter = 0;
 
             // for every room on grid
             foreach (GameObject room in roomGameObjects)
@@ -199,16 +209,21 @@ public class ThingManager : MonoBehaviour
         }
     }
 
+    /* 
+     * Purpose: reconstructs various objects items and enemies
+     * Inputs: the save we are loading / items & enemies in scene
+     * Outputs: sometimes spawns in inputs, other times destroys them
+     */
     public void ReconstructGenericObjects()
     {
-        if (savesManager.currentSave.genericObjects == null)
+        if (savesManager.currentSave.genericObjects == null) // this will only come up null if we arent loading a save properly (corruption?)
         {
-            Debug.Log("prefab saves loaded, currentSave contained none");
+            LogToFile.Log("prefab saves loaded, currentSave contained none");
             NukeRoomChildren(true, true);
         }
         else
         {
-            Debug.Log("prefabs found, loading currentSave");
+            LogToFile.Log("prefabs found, loading currentSave");
             NukeRoomChildren(false, true);
         }
         
@@ -226,14 +241,17 @@ public class ThingManager : MonoBehaviour
             roomGameObjects.Add(room.transform.parent.gameObject);
         }
 
-        Debug.Log("through the loop");
 
+        // for every saved object in savesManager
         for (int i = 0; i < savesManager.currentSave.genericObjects.Count; ++i)
         {
+            // our current generic object from our current save
             GenericObject genericObject = savesManager.currentSave.genericObjects[i];
 
+            // predab we instantiate later
             GameObject prefab;
             
+            // what type is our object?
             switch (genericObject.thingPrefab)
             {
                 // ITEMS
@@ -282,11 +300,11 @@ public class ThingManager : MonoBehaviour
                     break;
                 // DEFAULT
                 default:
-                    prefab = null;
+                    prefab = null; // spawn nothing if its an object we dont recognise
                     break;
             }
 
-
+            // if our prefab isnt a null value (aka we are actually supposed to spawn something)
             if (prefab != null)
             {
                 // instantilize with proper position
@@ -316,7 +334,7 @@ public class ThingManager : MonoBehaviour
                     }
                     catch
                     {
-                        Debug.Log("tried to get room " + uniqueID.ToString() + "/" + roomGameObjects.Count.ToString());
+                        LogToFile.Log("FIXME: tried to get room " + uniqueID.ToString() + "/" + roomGameObjects.Count.ToString());
                     }
                 }
             }
