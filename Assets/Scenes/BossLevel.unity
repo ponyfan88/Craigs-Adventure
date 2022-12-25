@@ -162,14 +162,14 @@ MonoBehaviour:
   m_Follow: {fileID: 578958928}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5.5
+    OrthographicSize: 11
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7786666, y: 1}
+    m_SensorSize: {x: 1.5490196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -107999,7 +107999,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 11
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -111642,6 +111642,7 @@ MonoBehaviour:
   takePlayerDamage: 1
   destroyEvent: 0
   destroyProjectileIndex: 0
+  item: {fileID: 0}
   damagedEvent: 0
 --- !u!61 &1939491028
 BoxCollider2D:
