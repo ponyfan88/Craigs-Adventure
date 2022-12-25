@@ -1,8 +1,8 @@
 /* 
  * Programmers: Jack Kennedy
- * Purpose: set our camera background color according to the floor #
- * Inputs: 2 colors, one for inside and one for outside
- * Outputs: the camera background color
+ * Purpose: set our room hider to the correct color at startup
+ * Inputs: 2 sprites - inside and outside walls
+ * Outputs: the room hider children sprites
  */
 
 using UnityEngine;
