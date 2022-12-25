@@ -20,6 +20,8 @@ public class ThingManager : MonoBehaviour
     public GameObject boxPrefab;
     public GameObject heartJarPrefab;
     public GameObject lanternPrefab;
+    public GameObject moyaiPrefab;
+    public GameObject logPrefab;
 
     public GameObject goblinPrefab;
     public GameObject skeletonPrefab;
@@ -255,6 +257,12 @@ public class ThingManager : MonoBehaviour
                     break;
                 case (thingEnums.thingPrefab.lantern):
                     prefab = lanternPrefab;
+                    break;
+                case (thingEnums.thingPrefab.moyai):
+                    prefab = moyaiPrefab;
+                    break;
+                case (thingEnums.thingPrefab.log):
+                    prefab = logPrefab;
                     break;
                 // ENEMIES
                 case (thingEnums.thingPrefab.goblin):

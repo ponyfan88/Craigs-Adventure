@@ -29,5 +29,7 @@ namespace thingEnums
         box,
         heartJar,
         lantern,
+        moyai,
+        log,
     }
 }
