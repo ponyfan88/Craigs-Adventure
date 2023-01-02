@@ -13,10 +13,10 @@ public class controller : MonoBehaviour
 {
     #region Variables
 
-    public float dashMoveCooldown, speed = 6f;
+    public float speed = 6f;
     [NonSerialized] public float xMov, yMov, LastXMov, LastYMov;
+    float dashCooldownTimer, dashDurationTimer, knockbackTime = 0, dashMoveCooldown;
     [SerializeField] float dashDuration, dashVelocity, dashCooldown;
-    float dashCooldownTimer, dashDurationTimer, knockbackTime = 0;
     [NonSerialized]public Vector2 moveDirection = new Vector2(1, 0);
     Vector2 knockbackVelocity;
     [NonSerialized] public bool canMove = true, isDashing = false, xHasPriority = true;
