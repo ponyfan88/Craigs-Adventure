@@ -31,12 +31,16 @@ public class globalGen : MonoBehaviour
 
     SavesManager savesManager; // our saves manager
 
+    private float timer;
+
     #endregion
 
     #region Default Methods
 
     public void Awake()
     {
+        timer = Time.time; //stores time at game start (in case infinite loading occurs, we need to stop it at some point)
+
         if (FloorManager.floor == 1)
         {
             Instantiate(spawnRoom2, transform, true);
@@ -66,6 +70,15 @@ public class globalGen : MonoBehaviour
             Random.InitState((int)savesManager.currentSave.seed);
 
             FloorManager.loadSaveOverride = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (timer == Time.time - 20f && !built)
+        {
+            Debug.Log("This is taking a while, retrying generation.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Game"); //reload scene
         }
     }
 
