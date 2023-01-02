@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: 1912636569608628420}
   - component: {fileID: 1912636569608628421}
   - component: {fileID: 1912636569608628422}
+  - component: {fileID: 7853681816965515278}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -1768,6 +1769,23 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!19719996 &7853681816965515278
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912636569608628440}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
+  m_UseDelaunayMesh: 0
 --- !u!1 &1912636570980179720
 GameObject:
   m_ObjectHideFlags: 0
