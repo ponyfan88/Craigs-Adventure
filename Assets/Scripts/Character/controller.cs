@@ -14,8 +14,7 @@ public class controller : MonoBehaviour
     #region Variables
 
     public float speed = 6f;
-    [NonSerialized] public float xMov, yMov, LastXMov, LastYMov;
-    float dashCooldownTimer, dashDurationTimer, knockbackTime = 0, dashMoveCooldown;
+    [NonSerialized] public float xMov, yMov, LastXMov, LastYMov, dashCooldownTimer, dashDurationTimer, knockbackTime = 0, dashMoveCooldown;
     [SerializeField] float dashDuration, dashVelocity, dashCooldown;
     [NonSerialized]public Vector2 moveDirection = new Vector2(1, 0);
     Vector2 knockbackVelocity;
