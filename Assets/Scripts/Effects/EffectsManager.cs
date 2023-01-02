@@ -167,6 +167,12 @@ public class EffectsManager : MonoBehaviour
      */
     public static void AddEffect(GameObject gameObject, GlobalFX.effect effect, float time = 5f, Color? color = null, float amount = 1f, float repeat = 1f)
     {
+        // if the gameObject is a projectile, return
+        if (gameObject.TryGetComponent<Projectile>(out _)) // "out _" just signifies i wont use it
+        {
+            return; // basically, dont run effects on bullets
+        }
+
         EffectsObject effectsObject = new EffectsObject();
         effectsObject.gameObject = gameObject;
         effectsObject.effect = effect;
