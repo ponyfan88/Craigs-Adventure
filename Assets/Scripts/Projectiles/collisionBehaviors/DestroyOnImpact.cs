@@ -4,6 +4,7 @@
  * Outputs: Destroys the object
 */
 using UnityEngine;
+using UnityEditor;
 public class DestroyOnImpact : MonoBehaviour
 {
     #region Variables
@@ -94,5 +95,47 @@ public class DestroyOnImpact : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Inspector Class
+    /* Custom class written within the script to handle the inspector
+     * Allows us to customize the inspector with code
+     */
+    [CustomEditor(typeof(DestroyOnImpact))]
+    public class DestroyOnImpactManager : Editor
+    {
+        SerializedProperty damageAmount, playerOwned, destroyOnHitWall, destroyType, projectileIndex;
+
+        private void OnEnable()
+        {
+            damageAmount = serializedObject.FindProperty("DamageAmount");
+            playerOwned = serializedObject.FindProperty("playerOwned");
+            destroyOnHitWall = serializedObject.FindProperty("destroyOnHitWall");
+            destroyType = serializedObject.FindProperty("destroyType");
+            projectileIndex = serializedObject.FindProperty("projectileIndex");
+        }
+
+        public override void OnInspectorGUI()
+        {
+            var DestroyOnImpact = (DestroyOnImpact)target;
+
+            // call an update to the inspector objects
+            serializedObject.Update();
+            // Tell main properties to update
+            EditorGUILayout.PropertyField(damageAmount);
+            EditorGUILayout.PropertyField(playerOwned);
+            EditorGUILayout.PropertyField(destroyOnHitWall);
+            EditorGUILayout.PropertyField(destroyType);
+
+            // Make projectileIndex only appear if destroyType needs it
+            if (DestroyOnImpact.destroyType == DestroyType.summonProjectile)
+            {
+                EditorGUILayout.PropertyField(projectileIndex);
+            }
+
+            // Apply any changes the user makes to the properties  THIS SHOULD ALWAYS BE AT THE END
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
     #endregion
 }
