@@ -51,6 +51,8 @@ MonoBehaviour:
   boxPrefab: {fileID: 4911870632044226257, guid: d2c08bd3f827ea246a63fbc88a02e589, type: 3}
   heartJarPrefab: {fileID: 8876102028033157360, guid: 9368931644f58f940bc0dd2a4ebeba2a, type: 3}
   lanternPrefab: {fileID: 5361726776974772987, guid: cc35132bc41f9884696a089b5dfb4f37, type: 3}
+  moyaiPrefab: {fileID: 1091029781061943187, guid: 4a65fc36e24227544aec115d60a29ed0, type: 3}
+  logPrefab: {fileID: 4833610849989134587, guid: b41141c023efbd24286d28e0f0d14abc, type: 3}
   goblinPrefab: {fileID: 579965022195231294, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
   skeletonPrefab: {fileID: 7842657216624087585, guid: b52e28730e92f29479f7079ce74affb8, type: 3}
   slimePrefab: {fileID: 1672663221352385785, guid: bfa62b5c26b0dcf44b974901ad9e1d4e, type: 3}
