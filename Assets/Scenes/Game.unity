@@ -3597,7 +3597,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5490196, y: 1}
+    m_SensorSize: {x: 1.7603912, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11890,15 +11890,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1029731934521946343, guid: 476e2313e804372458d9f5d8b30eedb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.68033385
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1029731934521946343, guid: 476e2313e804372458d9f5d8b30eedb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.92012036
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1029731934521946343, guid: 476e2313e804372458d9f5d8b30eedb6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.3013837
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1029731934521946343, guid: 476e2313e804372458d9f5d8b30eedb6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11987,14 +11987,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thing Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 2045831388978590415, guid: e4bbd990a9d740d4e8e65f06fa0c4524, type: 3}
-      propertyPath: logPrefab
-      value: 
-      objectReference: {fileID: 4833610849989134587, guid: b41141c023efbd24286d28e0f0d14abc, type: 3}
-    - target: {fileID: 2045831388978590415, guid: e4bbd990a9d740d4e8e65f06fa0c4524, type: 3}
-      propertyPath: moyaiPrefab
-      value: 
-      objectReference: {fileID: 1091029781061943187, guid: 4a65fc36e24227544aec115d60a29ed0, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e4bbd990a9d740d4e8e65f06fa0c4524, type: 3}
