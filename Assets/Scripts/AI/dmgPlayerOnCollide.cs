@@ -6,7 +6,6 @@
  */
 
 using UnityEngine;
-[RequireComponent(typeof(AIManager))]
 [DisallowMultipleComponent]
 public class dmgPlayerOnCollide : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class dmgPlayerOnCollide : MonoBehaviour
     healthManager playerHealth;
     controller playerController;
     AIManager aiManager;
+    bool hasAiManager;
     
     #endregion
     
@@ -22,7 +22,7 @@ public class dmgPlayerOnCollide : MonoBehaviour
 
     private void Awake()
     {
-        aiManager = GetComponent<AIManager>();
+        hasAiManager = TryGetComponent(out aiManager);
         playerHealth = GameObject.Find("player").GetComponent<healthManager>();
         playerController = playerHealth.GetComponent<controller>();
     }
@@ -37,8 +37,11 @@ public class dmgPlayerOnCollide : MonoBehaviour
             {
                 // apply knockback and freeze the AI
                 playerController.ApplyKnockback(transform.position);
+                if (hasAiManager) // check if the object has AI
+                {
                 aiManager.canMove = false;
                 Invoke("ToggleAI", 0.3f); // use invoke method to delay toggling the AI's state.
+                }
             }
         }
     }
