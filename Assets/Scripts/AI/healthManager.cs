@@ -29,7 +29,55 @@ public class healthManager : MonoBehaviour
     // enum to decide what should happen if an object were damaged.
     public enum DamagedEvent { nothing, displayParticle };
     public DamagedEvent damagedEvent = DamagedEvent.nothing;
-    
+
+    #endregion
+
+    #region Classes
+    /* This is a custom class written within the health manager to handle the inspector
+     * This allows us to customize the inspector and make properties show when we want only.
+     */
+    [CustomEditor(typeof(healthManager))]
+    public class healthManagerEditor : Editor
+    {
+        // initialize all the variables
+        SerializedProperty takePlayerDamage, invulnerabilityTime, maxHealth, destroyEvent, destroyProjectileIndex, item;
+        private void OnEnable()
+        {
+            // Initialize all the properties
+            takePlayerDamage = serializedObject.FindProperty("takePlayerDamage");
+            invulnerabilityTime = serializedObject.FindProperty("invulnerabilityTime");
+            maxHealth = serializedObject.FindProperty("maxHealth");
+            destroyEvent = serializedObject.FindProperty("destroyEvent");
+            destroyProjectileIndex = serializedObject.FindProperty("destroyProjectileIndex");
+            item = serializedObject.FindProperty("item");
+        }
+        public override void OnInspectorGUI()
+        {
+            // Im not sure if initializing this here is inefficent, but it throws errors anywhere else
+            var healthManager = (healthManager)target;
+
+            // call an update to the inspector objects
+            serializedObject.Update();
+            // Tell main properties to update
+            EditorGUILayout.PropertyField(takePlayerDamage);
+            EditorGUILayout.PropertyField(invulnerabilityTime);
+            EditorGUILayout.PropertyField(maxHealth);
+            EditorGUILayout.PropertyField(destroyEvent);
+
+            // Make Properties appear based on the state of the destroyEvent Enum
+            if (healthManager.destroyEvent == DestroyEvent.summonProjectile)
+            {
+                EditorGUILayout.PropertyField(destroyProjectileIndex);
+            }
+            else if (healthManager.destroyEvent == DestroyEvent.dropItemChance)
+            {
+                EditorGUILayout.PropertyField(item);
+            }
+
+            // Apply any changes the user makes to the properties  THIS SHOULD ALWAYS BE AT THE END
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
     #endregion
 
     #region Default Methods
@@ -193,54 +241,6 @@ public class healthManager : MonoBehaviour
     void InvokeDestoryObject()
     {
         Destroy(gameObject);
-    }
-    #endregion
-
-    #region Inspector Class
-    /* This is a custom class written within the health manager to handle the inspector
-     * This allows us to customize the inspector and make properties show when we want only.
-     */
-    [CustomEditor(typeof(healthManager))]
-    public class healthManagerEditor : Editor
-    {
-        // initialize all the variables
-        SerializedProperty takePlayerDamage, invulnerabilityTime, maxHealth, destroyEvent, destroyProjectileIndex, item;
-        private void OnEnable()
-        {
-            // Initialize all the properties
-            takePlayerDamage = serializedObject.FindProperty("takePlayerDamage");
-            invulnerabilityTime = serializedObject.FindProperty("invulnerabilityTime");
-            maxHealth = serializedObject.FindProperty("maxHealth");
-            destroyEvent = serializedObject.FindProperty("destroyEvent");
-            destroyProjectileIndex = serializedObject.FindProperty("destroyProjectileIndex");
-            item = serializedObject.FindProperty("item");
-        }
-        public override void OnInspectorGUI()
-        {
-            // Im not sure if initializing this here is inefficent, but it throws errors anywhere else
-            var healthManager = (healthManager)target;
-            
-            // call an update to the inspector objects
-            serializedObject.Update();
-            // Tell main properties to update
-            EditorGUILayout.PropertyField(takePlayerDamage);
-            EditorGUILayout.PropertyField(invulnerabilityTime);
-            EditorGUILayout.PropertyField(maxHealth);
-            EditorGUILayout.PropertyField(destroyEvent);
-
-            // Make Properties appear based on the state of the destroyEvent Enum
-            if (healthManager.destroyEvent == DestroyEvent.summonProjectile)
-            {
-                EditorGUILayout.PropertyField(destroyProjectileIndex);
-            }
-            else if (healthManager.destroyEvent == DestroyEvent.dropItemChance)
-            {
-                EditorGUILayout.PropertyField(item);
-            }
-
-            // Apply any changes the user makes to the properties  THIS SHOULD ALWAYS BE AT THE END
-            serializedObject.ApplyModifiedProperties();
-        }
     }
     #endregion
 }
