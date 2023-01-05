@@ -953,6 +953,8 @@ GameObject:
   - component: {fileID: 167496112}
   - component: {fileID: 167496109}
   - component: {fileID: 167496110}
+  - component: {fileID: 167496114}
+  - component: {fileID: 167496113}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Boss
@@ -1105,7 +1107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09b07e42566e7d48bcac5b208c78647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  followPlayerX: 1
 --- !u!114 &167496112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,6 +1118,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0512c330697dce44c811b16ddfe1db91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &167496113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167496105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68a6e51dcf05bb4494c5695bce2d82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPattern:
+  - {fileID: 11400000, guid: 0c16d5d10d66de3429ff2c068614486c, type: 2}
+  index: 0
+--- !u!114 &167496114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167496105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec27edc48a7c9e84ab4fb48545dc4beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &177139446
