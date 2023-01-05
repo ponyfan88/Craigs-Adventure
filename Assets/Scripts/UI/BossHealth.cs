@@ -14,6 +14,9 @@ public class BossHealth : MonoBehaviour
     // health we store to update
     private int storedHealth = -1;
 
+    // the boss
+    [SerializeField] private GameObject boss;
+
     // the bars themselves
     [SerializeField] private GameObject bossBarFG;
     [SerializeField] private GameObject bossBarBG;
@@ -31,7 +34,7 @@ public class BossHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bossHealth = GameObject.FindGameObjectWithTag("Boss").GetComponent<healthManager>();
+        bossHealth = boss.GetComponent<healthManager>();
     }
 
     // Update is called once per frame

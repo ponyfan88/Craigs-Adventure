@@ -47,6 +47,9 @@ public class Status : MonoBehaviour
 
     void Start()
     {
+        // Fixes bug on boss level
+        Pause.paused = false;
+
         // find the health manager by first finding the player and then getting the healthManager component
         healthManager = GameObject.Find("player").GetComponent<healthManager>();
 
