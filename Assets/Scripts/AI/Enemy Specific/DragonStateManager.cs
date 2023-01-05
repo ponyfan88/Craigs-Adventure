@@ -1,3 +1,8 @@
+/* Programmer: Xander Mooney
+ * Purpose: Control specifics of when the Dragon should move and do its behaviours
+ * Inputs: the conditions of the dragon
+ * Outputs: what the dragon should do
+ */
 using UnityEngine;
 
 [RequireComponent(typeof(ProjectileSpawner))]
@@ -7,8 +12,9 @@ public class DragonStateManager : MonoBehaviour
 
     Transform player;
     ProjectileSpawner projectileSpawner;
-    public bool followPlayerX = true;
-    const float speed = 2f;
+    public bool followPlayerX = true, attacking = false;
+    const float speed = 2f, attackCooldown = 1f;
+    private float nextAttackTime;
 
     #endregion
 
@@ -18,16 +24,20 @@ public class DragonStateManager : MonoBehaviour
     {
         player = GameObject.Find("player").transform;
         projectileSpawner = GetComponent<ProjectileSpawner>();
+
+        nextAttackTime = Time.time + attackCooldown * 2;
     }
 
     void Update()
     {
-        if (followPlayerX) // if the Ai currently asks for the dragon to follow the players X position
+        if (!attacking && Time.time > nextAttackTime)
         {
-            if (player.position.y > 7) // cancel movement if the player is beside the dragon; prevents clipping out of map or getting stuck
-            {
-                return;
-            }
+            followPlayerX = false;
+        }
+
+        // if the Ai currently asks for the dragon to follow the players X position, and the player isn't too high up
+        if (followPlayerX && player.position.y < 7)
+        {
             // calculate distance from player
             float dist = JMath.Distance(transform.position.x, player.position.x);
 
