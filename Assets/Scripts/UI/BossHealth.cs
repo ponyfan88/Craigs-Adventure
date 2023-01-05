@@ -47,7 +47,7 @@ public class BossHealth : MonoBehaviour
                 bossBarBG.SetActive(true);
 
                 // if we're on the boss floor and our boss isnt dead and we arent paused
-                if (FloorManager.floor == 4)
+                if (FloorManager.floor == 3)
                 {
                     // if the boss health has changed
                     if (bossHealth.health != storedHealth)
@@ -65,6 +65,8 @@ public class BossHealth : MonoBehaviour
                             // set our boss to be dead
                             bossDied = true;
                         }
+
+                        storedHealth = bossHealth.health;
                     }
                 }
             }
