@@ -20,7 +20,7 @@ MonoBehaviour:
   BulletCount: 5
   cooldown: 0
   aimAtPlayer: 1
-  isRandom: 0
+  isRandom: 1
   bulletPath: 0
   SpecialEffect: 0
   bulletspeed: 3

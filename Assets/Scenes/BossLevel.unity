@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followPlayerX: 1
+  attacking: 0
 --- !u!114 &167496112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8265,6 +8266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600e8182fdba7ff43b4c2d074b089943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 167496105}
   bossBarFG: {fileID: 902582906}
   bossBarBG: {fileID: 701746028}
 --- !u!1 &659558963
