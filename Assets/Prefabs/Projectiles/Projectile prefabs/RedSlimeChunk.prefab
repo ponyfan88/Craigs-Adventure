@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8036827918318139144
 SpriteRenderer:
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageAmount: 1
   playerOwned: 0
-  destroyOnHitWall: 1
+  destroyOnHitWall: 0
   destroyType: 0
   projectileIndex: 0
 --- !u!58 &6016771497256224302
@@ -151,4 +151,5 @@ MonoBehaviour:
   takePlayerDamage: 1
   destroyEvent: 0
   destroyProjectileIndex: 0
+  item: {fileID: 0}
   damagedEvent: 0

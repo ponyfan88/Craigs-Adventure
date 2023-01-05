@@ -160,12 +160,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28164026d471ca40a38cf3409225aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 6
   health: 1
   invulnerabilityTime: 0
   takePlayerDamage: 1
   destroyEvent: 1
-  deathEffectIndex: 0
+  destroyProjectileIndex: 0
+  item: {fileID: 0}
   damagedEvent: 0
 --- !u!114 &4640555547685924270
 MonoBehaviour:
@@ -208,7 +209,6 @@ MonoBehaviour:
   attackPattern:
   - {fileID: 11400000, guid: a5f0cf8f38587bf45a1e7438e5769afc, type: 2}
   index: 0
-  spawning: 0
 --- !u!58 &4640555547685924260
 CircleCollider2D:
   m_ObjectHideFlags: 0
