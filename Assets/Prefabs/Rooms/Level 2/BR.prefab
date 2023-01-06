@@ -6448,7 +6448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030856093450533076, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.067052
+      value: 5.34
       objectReference: {fileID: 0}
     - target: {fileID: 9030856093450533076, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6656,6 +6656,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 2091845114273346428}
     m_Modifications:
+    - target: {fileID: 3998450833665030745, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
+      propertyPath: enemiesTemplate.Array.data[1]
+      value: 
+      objectReference: {fileID: 7842657216624087585, guid: b52e28730e92f29479f7079ce74affb8, type: 3}
     - target: {fileID: 6490475623629445327, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
       propertyPath: m_Name
       value: EnemySpawn (4)
