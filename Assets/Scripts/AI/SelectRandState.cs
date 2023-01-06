@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class SelectRandState : StateMachineBehaviour
 {
+    [TextArea]
+    public string Note = "Requires a float attribute named 'State' within the animator to work";
     public int States = 2;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
