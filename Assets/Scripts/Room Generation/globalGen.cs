@@ -19,6 +19,8 @@ public class globalGen : MonoBehaviour
 
     Pause Pause; // import pausing
 
+    Map map; //find the map script
+
     public int spawnCount;
     public int roomAmt = 20;
     [SerializeField] private rTemplate template;
@@ -41,13 +43,17 @@ public class globalGen : MonoBehaviour
     {
         timer = Time.time; //stores time at game start (in case infinite loading occurs, we need to stop it at some point)
 
+        map = FindObjectOfType<Map>();
+
         if (FloorManager.floor == 1)
         {
-            Instantiate(spawnRoom2, transform, true);
+            GameObject spawnRoom = Instantiate(spawnRoom2, transform, true); //spawn in the spawn room
+            map.discovered.Add(spawnRoom); //add it to the map
         }
         else
         {
-            Instantiate(spawnRoom1, transform, true);
+            GameObject spawnRoom = Instantiate(spawnRoom1, transform, true); //spawn in the spawn room
+            map.discovered.Add(spawnRoom); //add it to the map
         }
         
         savesManager = FindObjectOfType<SavesManager>(); //assign the saves manager
