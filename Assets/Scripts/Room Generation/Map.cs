@@ -141,20 +141,19 @@ public class Map : MonoBehaviour
             // get every room
             Room[] rooms = FindObjectsOfType<Room>();
 
-            // for every uniqueID we've saved (a unique integer representing every room)
-            foreach (int uniqueID in savesManager.currentSave.discoveredRoomIDs)
+            foreach (Room room in rooms)
             {
-                // add that room to our discovered rooms (:
-                discovered.Add(rooms[uniqueID].transform.parent.gameObject);
+                // for every uniqueID we've saved (a unique integer representing every room)
+                foreach (int uniqueID in savesManager.currentSave.discoveredRoomIDs)
+                {
+                    if (room.uniqueID == uniqueID)
+                    {
+                        // add that room to our discovered rooms
+                        discovered.Add(room.transform.parent.gameObject);
 
-                GameObject roomTemplate = mapTemplate[rooms[uniqueID].roomType];
-
-                GameObject room = rooms[uniqueID].gameObject;
-
-                GameObject mapRoom = Instantiate(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
-
-                // add that room
-                //map.Add(mapRoom);
+                        break;
+                    }
+                }
             }
         }
 
