@@ -64,8 +64,6 @@ public class Map : MonoBehaviour
 
                 GameObject mapRoom = Instantiate(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
 
-                mapRoom.GetComponent<MapUIRoom>().uniqueID = room.GetComponentInChildren<Room>().uniqueID;
-
                 // add that room
                 map.Add(mapRoom);
 
