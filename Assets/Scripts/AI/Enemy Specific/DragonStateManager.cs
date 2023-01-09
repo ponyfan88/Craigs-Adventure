@@ -4,6 +4,7 @@
  * Inputs: the conditions of the dragon
  * Outputs: what the dragon should do
  */
+
 using UnityEngine;
 
 [RequireComponent(typeof(ProjectileSpawner))]
