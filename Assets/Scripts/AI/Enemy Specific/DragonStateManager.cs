@@ -1,4 +1,5 @@
-/* Programmer: Xander Mooney
+/*
+ * Programmers: Xander Mooney
  * Purpose: Control specifics of when the Dragon should move and do its behaviours
  * Inputs: the conditions of the dragon
  * Outputs: what the dragon should do
