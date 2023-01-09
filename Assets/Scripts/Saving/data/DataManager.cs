@@ -26,9 +26,15 @@ public class DataManager : MonoBehaviour
     private void Awake()
     {
         savesManager = FindObjectOfType<SavesManager>(); //assign the saves manager
-        player = GameObject.Find("player"); // grab out player
-        healthManager = player.GetComponent<healthManager>(); // get our health manager
-
+        try
+        {
+            player = GameObject.Find("player"); // grab out player
+            healthManager = player.GetComponent<healthManager>(); // get our health manager
+        }
+        catch
+        {
+            LogToFile.Log("likely on the main menu, ignore this");
+        }
         // deal with the saves directory existing or not
         if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
         {
