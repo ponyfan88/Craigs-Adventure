@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408805494536286636}
   - component: {fileID: 723034794050081353}
+  - component: {fileID: -2955718031030751298}
   m_Layer: 0
   m_Name: BTL
   m_TagString: Untagged
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2955718031030751298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914981660137995460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab2e532ae371684e8b5052ca9f8b6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 0
