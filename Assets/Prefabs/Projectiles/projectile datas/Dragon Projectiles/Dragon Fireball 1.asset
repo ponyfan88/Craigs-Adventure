@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Dragon Fireball 1
   m_EditorClassIdentifier: 
   bulletResource: {fileID: 201999129053860868, guid: 44f280780c3b2e043aad881255af55ba, type: 3}
-  minRotation: -72
-  maxRotation: 108
+  minRotation: 0
+  maxRotation: 360
   lifespan: 10
   endlifeEffect: 0
-  BulletCount: 8
+  BulletCount: 1
   cooldown: 0
   aimAtPlayer: 1
-  isRandom: 1
+  isRandom: 0
   bulletPath: 0
   SpecialEffect: 0
-  bulletspeed: 3
+  bulletspeed: 6
   projectileVelocityIndependent: 0
   Velocity: {x: 0, y: 0}
   positionOffset: {x: 0, y: -5}
