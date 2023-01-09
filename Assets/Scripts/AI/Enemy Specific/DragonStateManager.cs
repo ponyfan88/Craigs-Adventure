@@ -59,7 +59,8 @@ public class DragonStateManager : MonoBehaviour
 
     #region Custom Methods
 
-    /* Purpose: Allow the animator to call a function to spawn the dragons fireball attack
+    /*
+     * Purpose: Allow the animator to call a function to spawn the dragons fireball attack
      * Input: When to attack
      * Output: Attack
      */
