@@ -83,10 +83,11 @@ public class DragonStateManager : MonoBehaviour
             attackCount = 0;
         }
     }
-    /* Purpose: Allow the animator to call a function to determine if it should telegraph an attack
-    * Input: When to attack
-    * Output: Attack
-    */
+    /*
+     * Purpose: Allow the animator to call a function to determine if it should telegraph an attack
+     * Input: When to attack
+     * Output: Attack
+     */
     void Telegraph()
     {
         if (animator.GetBool("Attacking"))
