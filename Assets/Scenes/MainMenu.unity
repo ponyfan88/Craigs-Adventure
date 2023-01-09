@@ -556,7 +556,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6b91687c7857e4c8e2b6129529b3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Main Menu
+    clip: {fileID: 8300000, guid: f77ce27a16810e847a5b4a98bc7d3a78, type: 3}
+    volume: 0.14
+    randomizePitch: 0
+    randomizePitchRange: 0
+    playWhilePaused: 0
+    loop: 1
+    source: {fileID: 0}
 --- !u!4 &241907264
 Transform:
   m_ObjectHideFlags: 0
