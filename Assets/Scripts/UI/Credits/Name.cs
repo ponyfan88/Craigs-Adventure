@@ -1,3 +1,10 @@
+/*
+ * Programmers: Jack Kennedy
+ * Purpose: controls the credits, run for every name
+ * Inputs: none
+ * Outputs: moves each name
+ */
+
 using UnityEngine;
 
 public class Name : MonoBehaviour
