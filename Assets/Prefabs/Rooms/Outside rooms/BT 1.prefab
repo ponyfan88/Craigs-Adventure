@@ -2412,7 +2412,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 9
-      m_TileSpriteIndex: 9
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4312,7 +4312,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4512,7 +4512,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5569,16 +5569,16 @@ Tilemap:
     m_Data: {fileID: 714032083, guid: b16ff04c645b93346987abc797950ecf, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1559875525, guid: b16ff04c645b93346987abc797950ecf, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -1349133052, guid: b16ff04c645b93346987abc797950ecf, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1832715511, guid: b16ff04c645b93346987abc797950ecf, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -6259141551469331208, guid: ec159ed04c38cb746946d6faa59df92c, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -399749629, guid: b16ff04c645b93346987abc797950ecf, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -6259141551469331208, guid: ec159ed04c38cb746946d6faa59df92c, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 6891631753638271631, guid: ec159ed04c38cb746946d6faa59df92c, type: 3}
   - m_RefCount: 15
@@ -6324,6 +6324,14 @@ PrefabInstance:
       propertyPath: enemies.Array.data[0]
       value: 
       objectReference: {fileID: 579965022195231294, guid: be5664dad75bebc4fa33e7cc2ed87104, type: 3}
+    - target: {fileID: 3998450833665030745, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
+      propertyPath: enemiesTemplate.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998450833665030745, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
+      propertyPath: enemiesTemplate.Array.data[2]
+      value: 
+      objectReference: {fileID: 7842657216624087585, guid: b52e28730e92f29479f7079ce74affb8, type: 3}
     - target: {fileID: 6490475623629445327, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
       propertyPath: m_Name
       value: EnemySpawn (5)
@@ -6342,7 +6350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030856093450533076, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.84
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 9030856093450533076, guid: 5493314d061cc5a44bfe9cbada0542b9, type: 3}
       propertyPath: m_LocalPosition.y
