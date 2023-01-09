@@ -13,7 +13,7 @@ public class SpawnEnemy : MonoBehaviour
 
     public GameObject enemy;
 
-    [SerializeField] private GameObject[] enemiesTemplate;
+    public GameObject[] enemiesTemplate;
     private int index;
 
     #endregion
