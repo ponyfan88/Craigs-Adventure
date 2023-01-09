@@ -147,7 +147,7 @@ public class ThingManager : MonoBehaviour
 
             GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
 
-            Debug.Log(rootObjects.Length);
+            //Debug.Log(rootObjects.Length);
 
             foreach (GameObject rootObject in rootObjects)
             {

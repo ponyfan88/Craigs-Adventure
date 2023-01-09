@@ -64,6 +64,8 @@ public class Map : MonoBehaviour
 
                 GameObject mapRoom = Instantiate(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
 
+                mapRoom.GetComponent<MapUIRoom>().uniqueID = room.GetComponentInChildren<Room>().uniqueID;
+
                 // add that room
                 map.Add(mapRoom);
 
@@ -131,6 +133,8 @@ public class Map : MonoBehaviour
         // if we are currently loading a save
         if (savesManager.loadingSave)
         {
+            discovered = new List<GameObject>();
+            
             Debug.Log("loading saved rooms?");
             // here, we loop through every uniqueID for rooms and use that to get our discovered/not discovered rooms
 
@@ -141,7 +145,7 @@ public class Map : MonoBehaviour
             foreach (int uniqueID in savesManager.currentSave.discoveredRoomIDs)
             {
                 // add that room to our discovered rooms (:
-                discovered.Add(rooms[uniqueID].gameObject);
+                discovered.Add(rooms[uniqueID].transform.parent.gameObject);
 
                 GameObject roomTemplate = mapTemplate[rooms[uniqueID].roomType];
 
@@ -150,7 +154,7 @@ public class Map : MonoBehaviour
                 GameObject mapRoom = Instantiate(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
 
                 // add that room
-                map.Add(mapRoom);
+                //map.Add(mapRoom);
             }
         }
 
