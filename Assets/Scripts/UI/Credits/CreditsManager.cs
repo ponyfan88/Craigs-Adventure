@@ -22,6 +22,8 @@ public class CreditsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // grab all the names of each developer
+
         anmolName = anmol.GetComponent<Name>();
         xanderName = xander.GetComponent<Name>();
         chrisName = chris.GetComponent<Name>();
@@ -31,11 +33,16 @@ public class CreditsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // test for each name and if its destroyed
         if (!anmolDestroyed)
         {
+            // if its offscreen
             if (anmolName.killme)
             {
+                // destroy the name
                 Destroy(anmol);
+
+                // set the destroyed variable to true
                 anmolDestroyed = true;
             }
         }
@@ -66,15 +73,29 @@ public class CreditsManager : MonoBehaviour
                 jackDestroyed = true;
             }
         }
+    }
 
+    private void FixedUpdate()
+    {
+        // if everyone is destroyed
         if (anmolDestroyed && xanderDestroyed && chrisDestroyed && jackDestroyed)
         {
-            endTimer += Time.deltaTime;
+            // increment the timer
+            endTimer += Time.fixedDeltaTime;
         }
 
+        // once the timer is at 1 second
         if (endTimer >= 1)
         {
+            // display the end text
             end.SetActive(true);
+        }
+
+        // once the timer is at 5 seconds
+        if (endTimer >= 5)
+        {
+            // load the main menu
+            SceneManager.LoadScene("Scenes/MainMenu");
         }
     }
 }
