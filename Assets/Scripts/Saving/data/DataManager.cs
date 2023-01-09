@@ -21,11 +21,34 @@ public class DataManager : MonoBehaviour
 
     #endregion
 
+    #region Structs
+
+    private struct GenericObjectJSON
+    {
+        // both equal null by default
+        public thingEnums.thingPrefab thingPrefab;
+        public int uniqueID;
+        public int health;
+
+        public float x;
+        public float y;
+        public float z;
+    }
+
+    private struct JSONSave
+    {
+        public List<GenericObjectJSON> genericObjectsJSON;
+        public List<int> discoveredRoomIDs;
+    }
+
+    #endregion
+
     #region Default Methods
 
     private void Awake()
     {
         savesManager = FindObjectOfType<SavesManager>(); //assign the saves manager
+        
         try
         {
             player = GameObject.Find("player"); // grab out player
@@ -40,22 +63,6 @@ public class DataManager : MonoBehaviour
         {
             Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
         }
-    }
-
-    #endregion
-
-    #region Structs
-
-    private class GenericObjectJSON
-    {
-        // both equal null by default
-        public thingEnums.thingPrefab thingPrefab;
-        public int uniqueID = 0;
-        public int health;
-
-        public float x;
-        public float y;
-        public float z;
     }
 
     #endregion
@@ -107,11 +114,14 @@ public class DataManager : MonoBehaviour
         // get the string from our file
         string jsonString = File.ReadAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json");
 
-        List<GenericObjectJSON> jsonList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<GenericObjectJSON>>(jsonString);
+        JSONSave jsonSave = Newtonsoft.Json.JsonConvert.DeserializeObject<JSONSave>(jsonString);
+
+        savesManager.currentSave.discoveredRoomIDs = jsonSave.discoveredRoomIDs;
+
+        List<GenericObjectJSON> jsonList = jsonSave.genericObjectsJSON;
 
         List<GenericObject> jsonListSwap = new List<GenericObject>();
 
-        //savesManager.currentSave.genericObjects
         foreach (GenericObjectJSON genericObjectJSON in jsonList)
         {
             GenericObject genericObject = new GenericObject();
@@ -159,8 +169,12 @@ public class DataManager : MonoBehaviour
             jsonList.Add(genericObjectJSON);
         }
 
+        JSONSave jsonSave = new JSONSave();
+        jsonSave.discoveredRoomIDs = savesManager.currentSave.discoveredRoomIDs;
+        jsonSave.genericObjectsJSON = jsonList;
+
         // convert it all to json
-        string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(jsonList);
+        string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(jsonSave);
 
         // write the text to our json file
         File.WriteAllText(Application.streamingAssetsPath + "/Saves/" + saveName + ".json", jsonString);

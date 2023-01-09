@@ -30,6 +30,8 @@ public class Map : MonoBehaviour
 
     [NonSerialized] private SavesManager savesManager; // saves manager
 
+    [NonSerialized] private bool loadedSavedRooms = false;
+
     #endregion
 
     #region Default Methods
@@ -42,9 +44,14 @@ public class Map : MonoBehaviour
         savesManager = FindObjectOfType<SavesManager>();
     }
 
+    private void Start()
+    {
+        Invoke("loadSavedRooms", 1f);
+    }
+
     private void FixedUpdate()
     {
-        if (discovered.Count > map.Count) // if we've discovered a new room
+        if (discovered.Count > map.Count && loadedSavedRooms) // if we've discovered a new room
         {
             // clear our map since we've discovered another room
             ClearMap(); // clear our current minimap so that when we generate a new map it doesnt layer over / create unnecessary objects
@@ -117,6 +124,37 @@ public class Map : MonoBehaviour
         }
         // clear the list
         map.Clear();
+    }
+
+    private void loadSavedRooms()
+    {
+        // if we are currently loading a save
+        if (savesManager.loadingSave)
+        {
+            Debug.Log("loading saved rooms?");
+            // here, we loop through every uniqueID for rooms and use that to get our discovered/not discovered rooms
+
+            // get every room
+            Room[] rooms = FindObjectsOfType<Room>();
+
+            // for every uniqueID we've saved (a unique integer representing every room)
+            foreach (int uniqueID in savesManager.currentSave.discoveredRoomIDs)
+            {
+                // add that room to our discovered rooms (:
+                discovered.Add(rooms[uniqueID].gameObject);
+
+                GameObject roomTemplate = mapTemplate[rooms[uniqueID].roomType];
+
+                GameObject room = rooms[uniqueID].gameObject;
+
+                GameObject mapRoom = Instantiate(roomTemplate, new Vector3(room.transform.position.x / 100, room.transform.position.y / 100, 10), roomTemplate.transform.rotation, gameObject.transform);
+
+                // add that room
+                map.Add(mapRoom);
+            }
+        }
+
+        loadedSavedRooms = true;
     }
 
     #endregion

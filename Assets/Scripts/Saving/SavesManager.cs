@@ -21,6 +21,8 @@ public class SavesManager : MonoBehaviour
     DataManager dataManager;
     ThingManager thingManager;
 
+    Map map; //find the map script
+
     #endregion
 
     #region Default Methods
@@ -32,7 +34,8 @@ public class SavesManager : MonoBehaviour
      */
     private void Start()
     {
-        thingManager = GameObject.FindObjectOfType<ThingManager>();
+        // get the thing manager so that we will be able to save items and enemies
+        thingManager = FindObjectOfType<ThingManager>();
 
         // get every saving object
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Saving");
@@ -112,6 +115,13 @@ public class SavesManager : MonoBehaviour
 
         // save our active items and enemies
         thingManager.NukeRoomChildren(true, false);
+
+        map = FindObjectOfType<Map>();
+
+        foreach (GameObject discoveredRoom in map.discovered)
+        {
+            currentSave.discoveredRoomIDs.Add(discoveredRoom.GetComponentInChildren<Room>().uniqueID);
+        }
 
         dataManager.Write(saveName);
     }

@@ -16,4 +16,6 @@ public class Save
     public float playery;
 
     public List<GenericObject> genericObjects;
+
+    public List<int> discoveredRoomIDs = new List<int>();
 }
