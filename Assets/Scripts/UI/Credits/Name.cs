@@ -13,12 +13,6 @@ public class Name : MonoBehaviour
 
     float a = 0;
     public bool killme = false;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     #endregion
 
