@@ -253,10 +253,28 @@ public class Pause : MonoBehaviour
     public void PauseCrashed() // called when we pause the game on an exception
     {
         paused = true; // we are paused
+
+        LogToFile.Log("attempting to show emailUI");
+
+        try
+        {
+
+            emailUI.SetActive(true); // show our email menu
+        } 
+        catch
+        {
+            try
+            {
+                emailUI = FindObjectOfType<EmailUI>().gameObject;
+
+                emailUI.SetActive(true); // show our email menu
+            }
+            catch
+            {
+                LogToFile.Log("failed to show emailUI");
+            }
+        }
         
-        Debug.Log("attempting to show emailUI"); 
-        
-        emailUI.SetActive(true); // show our email menu
 
         Time.timeScale = 0f; // slow down our game to 0% speed
     }

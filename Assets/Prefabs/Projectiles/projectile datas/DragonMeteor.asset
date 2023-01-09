@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d8e965f984865140a2d66fbc931bfd0, type: 3}
-  m_Name: DragonAttackData
+  m_Name: DragonMeteor
   m_EditorClassIdentifier: 
   pattern:
-  - {fileID: 11400000, guid: 897d407b9b9edbe4b8ebdadc967140ad, type: 2}
-  - {fileID: 11400000, guid: 897d407b9b9edbe4b8ebdadc967140ad, type: 2}
+  - {fileID: 11400000, guid: 8b759c7e6b8fc6f41819187a6526e913, type: 2}

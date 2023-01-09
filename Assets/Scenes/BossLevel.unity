@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7796209, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -953,6 +953,8 @@ GameObject:
   - component: {fileID: 167496112}
   - component: {fileID: 167496109}
   - component: {fileID: 167496110}
+  - component: {fileID: 167496116}
+  - component: {fileID: 167496115}
   - component: {fileID: 167496114}
   - component: {fileID: 167496113}
   m_Layer: 0
@@ -1093,7 +1095,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.54, y: 8.6}
+  m_Size: {x: 3.54, y: 7.68}
   m_EdgeRadius: 0
 --- !u!114 &167496111
 MonoBehaviour:
@@ -1107,6 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09b07e42566e7d48bcac5b208c78647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DragonTelegraph: {fileID: 6921078249307837167, guid: 64ab1039169e2934ca295dd11338227f, type: 3}
   followPlayerX: 1
   attacking: 0
 --- !u!114 &167496112
@@ -1148,6 +1151,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec27edc48a7c9e84ab4fb48545dc4beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &167496115
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167496105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 5.33, y: 1.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20, y: 16}
+    newSize: {x: 20, y: 16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.52, y: 3.6}
+  m_EdgeRadius: 0
+--- !u!61 &167496116
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167496105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.75, y: 1.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20, y: 16}
+    newSize: {x: 20, y: 16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.52, y: 3.6}
+  m_EdgeRadius: 0
 --- !u!1 &177139446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1555,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you died lol YOU SUX
+  m_text: 'You Died
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96b74df89c76f504aa863f129afaa0c9, type: 2}
   m_sharedMaterial: {fileID: 8182461121231267032, guid: 96b74df89c76f504aa863f129afaa0c9, type: 2}
@@ -105966,7 +106023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -210.00002}
+  m_AnchoredPosition: {x: 0, y: -210}
   m_SizeDelta: {x: 1600, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1235594119
@@ -106480,6 +106537,7 @@ GameObject:
   - component: {fileID: 1438789676}
   - component: {fileID: 1438789675}
   - component: {fileID: 1438789674}
+  - component: {fileID: 1438789677}
   m_Layer: 5
   m_Name: Email Menu
   m_TagString: Untagged
@@ -106570,6 +106628,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 32767
   m_TargetDisplay: 0
+--- !u!114 &1438789677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438789672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f353f2f6f9692df40b3182f39c62b92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1442817134
 GameObject:
   m_ObjectHideFlags: 0

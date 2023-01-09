@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b70fe8a617233254cb031082ed5c33a5, type: 3}
-  m_Name: Dragon Fireball
+  m_Name: Dragon Fireball 1
   m_EditorClassIdentifier: 
   bulletResource: {fileID: 201999129053860868, guid: 44f280780c3b2e043aad881255af55ba, type: 3}
   minRotation: -72

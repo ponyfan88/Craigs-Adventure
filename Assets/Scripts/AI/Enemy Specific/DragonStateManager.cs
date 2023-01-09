@@ -14,9 +14,12 @@ public class DragonStateManager : MonoBehaviour
 
     Transform player;
     ProjectileSpawner projectileSpawner;
+    Animator animator;
+    public GameObject DragonTelegraph; // manually added in the inspector
     public bool followPlayerX = true, attacking = false;
-    const float speed = 2f, attackCooldown = 1f;
+    const float speed = 2f, attackCooldown = 3f;
     private float nextAttackTime;
+    byte attackCount = 0;
 
     #endregion
 
@@ -26,8 +29,9 @@ public class DragonStateManager : MonoBehaviour
     {
         player = GameObject.Find("player").transform;
         projectileSpawner = GetComponent<ProjectileSpawner>();
+        animator = GetComponent<Animator>();
 
-        nextAttackTime = Time.time + attackCooldown * 2;
+        nextAttackTime = Time.time + attackCooldown;
     }
 
     void Update()
@@ -35,6 +39,7 @@ public class DragonStateManager : MonoBehaviour
         if (!attacking && Time.time > nextAttackTime)
         {
             followPlayerX = false;
+            animator.SetBool("Attacking", true);
         }
 
         // if the Ai currently asks for the dragon to follow the players X position, and the player isn't too high up
@@ -66,8 +71,48 @@ public class DragonStateManager : MonoBehaviour
      */
     void Fireball()
     {
-        projectileSpawner.spawnerController(0);
+        if (attackCount <= 3)
+        {
+            projectileSpawner.spawnerController(0);
+            ++attackCount;
+        }
+        else
+        {
+            ResetAttack();
+        }
+    }
+    /*
+     * Purpose: Allow the animator to call a function to determine if it should telegraph an attack
+     * Input: When to attack
+     * Output: Attack
+     */
+    void Telegraph()
+    {
+        if (animator.GetBool("Attacking"))
+        {
+            if (attackCount <= 5)
+            {
+                Instantiate(DragonTelegraph, player.position - new Vector3(0, 0.5f), new Quaternion(0, 0, 0, 0));
+                ++attackCount;
+            }
+            else
+            {
+                ResetAttack();
+            }
+        }
     }
 
+    /*
+     * Purpose: reset Dragons attack cooldown and make him idel
+     * Input: when to reset attacks
+     * Output: reset attacks
+     */
+    void ResetAttack()
+    {
+        animator.SetBool("Attacking", false);
+        followPlayerX = true;
+        attackCount = 0;
+        nextAttackTime = Time.time + attackCooldown;
+    }
     #endregion
 }

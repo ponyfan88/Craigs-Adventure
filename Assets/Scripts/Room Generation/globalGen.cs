@@ -13,6 +13,8 @@ public class globalGen : MonoBehaviour
 {
     #region Variables
 
+    ThingManager thingManager;
+
     // spawnrooms
     [SerializeField] private GameObject spawnRoom1;
     [SerializeField] private GameObject spawnRoom2;
@@ -33,6 +35,9 @@ public class globalGen : MonoBehaviour
 
     SavesManager savesManager; // our saves manager
 
+    SpawnEnemy[] enemySpawns; //storage for all enemy spawnpoints in every room
+    GameObject[][] floorEnemies; //a template
+
     private float timer;
 
     #endregion
@@ -41,6 +46,13 @@ public class globalGen : MonoBehaviour
 
     public void Awake()
     {
+        thingManager = FindObjectOfType<ThingManager>();
+
+        //fill out a jagged array of enemies for each floor. Order: [floor number][enemy prefab]
+        floorEnemies = new GameObject[2][];
+        floorEnemies[0] = new GameObject[] { thingManager.slimePrefab, thingManager.goblinPrefab };
+        floorEnemies[1] = new GameObject[] { thingManager.slimePrefab, thingManager.goblinPrefab, thingManager.skeletonPrefab, thingManager.wizardPrefab };
+
         timer = Time.time; //stores time at game start (in case infinite loading occurs, we need to stop it at some point)
 
         map = FindObjectOfType<Map>();
@@ -100,6 +112,7 @@ public class globalGen : MonoBehaviour
 
             Invoke("genEnd", 0.05f); //final room (staircase)
             Invoke("genWalls", 0.15f); //extra walls
+            Invoke("setEnemies", 0.2f); //set the enemy types spawning on this floor
             Invoke("genNav", 0.25f); //ai pathing (bakes navmesh)
             Invoke("endLoading", 1f); //unpauses the game
         }
@@ -120,6 +133,7 @@ public class globalGen : MonoBehaviour
         GameObject endRoom = Instantiate(template.Boss[spawnList[rand].openingDirection - 1], spawnList[rand].transform.position, template.Boss[spawnList[rand].openingDirection - 1].transform.rotation, gameObject.transform);
         endRoom.tag = "End Room";
     }
+
     private void genWalls() //adds walls to places walls should be
     {
         //gen walls for rGen conflict queue or didn't spawn because of limit
@@ -131,6 +145,17 @@ public class globalGen : MonoBehaviour
             }
         }
     }
+
+    private void setEnemies() //sets the enemies to spawn on each floor within rooms with enemy spawnpoints
+    {
+        enemySpawns = gameObject.GetComponentsInChildren<SpawnEnemy>(); //get all enemy spawnpoints
+
+        for (int i = 0; i < enemySpawns.Length; ++i)
+        {
+            enemySpawns[i].enemiesTemplate = floorEnemies[FloorManager.floor - 1];
+        }
+    }
+
     private void genNav() //bakes a navmesh for ai pathfinding
     {
         navMesh.BuildNavMesh();

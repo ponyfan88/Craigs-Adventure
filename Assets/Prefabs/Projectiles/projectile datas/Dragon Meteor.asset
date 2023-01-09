@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b70fe8a617233254cb031082ed5c33a5, type: 3}
-  m_Name: Dragon Fireball
+  m_Name: Dragon Meteor
   m_EditorClassIdentifier: 
-  bulletResource: {fileID: 201999129053860868, guid: 44f280780c3b2e043aad881255af55ba, type: 3}
-  minRotation: -72
-  maxRotation: 108
+  bulletResource: {fileID: 5374928090862499091, guid: 55b7fbb1ce020df48bfe4ce09aad3e32, type: 3}
+  minRotation: 0
+  maxRotation: 360
   lifespan: 10
   endlifeEffect: 0
-  BulletCount: 8
+  BulletCount: 1
   cooldown: 0
-  aimAtPlayer: 1
-  isRandom: 1
+  aimAtPlayer: 0
+  isRandom: 0
   bulletPath: 0
   SpecialEffect: 0
-  bulletspeed: 3
-  projectileVelocityIndependent: 0
-  Velocity: {x: 0, y: 0}
-  positionOffset: {x: 0, y: -5}
+  bulletspeed: 10
+  projectileVelocityIndependent: 1
+  Velocity: {x: -15, y: -15}
+  positionOffset: {x: 5, y: 15}
   isNotParent: 1
