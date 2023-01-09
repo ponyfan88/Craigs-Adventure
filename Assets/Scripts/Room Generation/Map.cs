@@ -5,6 +5,7 @@
  * Outputs: updates objects seen by a camera sent to a rendertexture used by the map UI
  */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,8 @@ public class Map : MonoBehaviour
 
     [SerializeField] private GameObject[] wallTemplate; // wall templates to spawn
 
+    [NonSerialized] private SavesManager savesManager; // saves manager
+
     #endregion
 
     #region Default Methods
@@ -35,6 +38,8 @@ public class Map : MonoBehaviour
     {
         player = GameObject.Find("player"); // grab our player
         UITransform = mapUI.GetComponent<RectTransform>();
+
+        savesManager = FindObjectOfType<SavesManager>();
     }
 
     private void FixedUpdate()
