@@ -30,7 +30,6 @@ public class Name : MonoBehaviour
     // once we are offscreen
     private void OnBecameInvisible()
     {
-        Debug.Log("i cannot be seen");
         // set killme to true
         killme = true;
     }
