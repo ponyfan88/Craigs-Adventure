@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class Name : MonoBehaviour
 {
+    #region Variables
+
     float a = 0;
     public bool killme = false;
     
@@ -19,6 +21,10 @@ public class Name : MonoBehaviour
     }
 
     // Update is called once per frame
+    #endregion
+
+    #region Default Methods
+
     void FixedUpdate()
     {
         a += Time.deltaTime / 10;
@@ -31,4 +37,6 @@ public class Name : MonoBehaviour
         Debug.Log("i cannot be seen");
         killme = true;
     }
+
+    #endregion
 }
