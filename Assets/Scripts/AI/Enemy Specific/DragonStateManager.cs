@@ -1,8 +1,10 @@
-/* Programmer: Xander Mooney
+/*
+ * Programmers: Xander Mooney
  * Purpose: Control specifics of when the Dragon should move and do its behaviours
  * Inputs: the conditions of the dragon
  * Outputs: what the dragon should do
  */
+
 using UnityEngine;
 
 [RequireComponent(typeof(ProjectileSpawner))]
@@ -57,7 +59,8 @@ public class DragonStateManager : MonoBehaviour
 
     #region Custom Methods
 
-    /* Purpose: Allow the animator to call a function to spawn the dragons fireball attack
+    /*
+     * Purpose: Allow the animator to call a function to spawn the dragons fireball attack
      * Input: When to attack
      * Output: Attack
      */
