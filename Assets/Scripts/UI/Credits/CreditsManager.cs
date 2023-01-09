@@ -1,3 +1,10 @@
+/*
+ * Programmers: Jack Kennedy
+ * Purpose: controls the credits, making the end text appear
+ * Inputs: the positions of the credits
+ * Outputs: shows the "end" message
+ */
+
 using UnityEngine;
 using System;
 
