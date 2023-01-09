@@ -254,9 +254,27 @@ public class Pause : MonoBehaviour
     {
         paused = true; // we are paused
         
-        Debug.Log("attempting to show emailUI"); 
+        Debug.Log("attempting to show emailUI");
+
+        try
+        {
+
+            emailUI.SetActive(true); // show our email menu
+        } 
+        catch
+        {
+            try
+            {
+                emailUI = FindObjectOfType<EmailUI>().gameObject;
+
+                emailUI.SetActive(true); // show our email menu
+            }
+            catch
+            {
+                Debug.Log("failed to show emailUI");
+            }
+        }
         
-        emailUI.SetActive(true); // show our email menu
 
         Time.timeScale = 0f; // slow down our game to 0% speed
     }
