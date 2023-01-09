@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590f190945adc06478328147086d09c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageAmount: 4
+  DamageAmount: 20
   playerOwned: 1
   destroyOnHitWall: 0
   destroyType: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thingType: 0
-  thingPrefab: 0
+  thingPrefab: 12
 --- !u!61 &7345174528337972615
 BoxCollider2D:
   m_ObjectHideFlags: 0
