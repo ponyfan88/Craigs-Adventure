@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-[RequireComponent(typeof(ProjectileSpawner))]
+[RequireComponent(typeof(ProjectileSpawner),typeof(Animator),typeof(healthManager))]
 public class DragonStateManager : MonoBehaviour
 {
     #region Variables
@@ -15,9 +15,10 @@ public class DragonStateManager : MonoBehaviour
     Transform player;
     ProjectileSpawner projectileSpawner;
     Animator animator;
+    healthManager dragonHealth;
     public GameObject DragonTelegraph; // manually added in the inspector
     public bool followPlayerX = true, attacking = false;
-    const float speed = 2f, attackCooldown = 1f;
+    const float speed = 2f, attackCooldown = 3f;
     private float nextAttackTime;
     byte attackCount = 0;
 
@@ -30,8 +31,9 @@ public class DragonStateManager : MonoBehaviour
         player = GameObject.Find("player").transform;
         projectileSpawner = GetComponent<ProjectileSpawner>();
         animator = GetComponent<Animator>();
+        dragonHealth = GetComponent<healthManager>();
 
-        nextAttackTime = Time.time + attackCooldown * 2;
+        nextAttackTime = Time.time + attackCooldown;
     }
 
     void Update()
@@ -78,9 +80,7 @@ public class DragonStateManager : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Attacking", false);
-            followPlayerX = true;
-            attackCount = 0;
+            ResetAttack();
         }
     }
     /*
@@ -95,16 +95,33 @@ public class DragonStateManager : MonoBehaviour
             if (attackCount <= 5)
             {
                 Instantiate(DragonTelegraph, player.position - new Vector3(0, 0.5f), new Quaternion(0, 0, 0, 0));
+
+                if (dragonHealth.health <= dragonHealth.maxHealth / 2)
+                {
+                    System.Random rand = new System.Random();
+                    Instantiate(DragonTelegraph, player.position - new Vector3(rand.Next(-5,6), rand.Next(-5,6)), new Quaternion(0,0,0,0));
+                    Instantiate(DragonTelegraph, player.position - new Vector3(rand.Next(-5, 6), rand.Next(-5, 6)), new Quaternion(0, 0, 0, 0));
+                }
                 ++attackCount;
             }
             else
             {
-                animator.SetBool("Attacking", false);
-                followPlayerX = true;
-                attackCount = 0;
+                ResetAttack();
             }
         }
     }
 
+    /*
+     * Purpose: reset Dragons attack cooldown and make him idel
+     * Input: when to reset attacks
+     * Output: reset attacks
+     */
+    void ResetAttack()
+    {
+        animator.SetBool("Attacking", false);
+        followPlayerX = true;
+        attackCount = 0;
+        nextAttackTime = Time.time + attackCooldown;
+    }
     #endregion
 }

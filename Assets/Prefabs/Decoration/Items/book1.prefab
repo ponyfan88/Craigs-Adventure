@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590f190945adc06478328147086d09c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageAmount: 1
+  DamageAmount: 4
   playerOwned: 1
   destroyOnHitWall: 0
   destroyType: 0
@@ -200,4 +200,6 @@ MonoBehaviour:
   invulnerabilityTime: 0
   takePlayerDamage: 0
   destroyEvent: 0
+  destroyProjectileIndex: 0
+  item: {fileID: 0}
   damagedEvent: 0

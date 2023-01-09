@@ -17,7 +17,7 @@ MonoBehaviour:
   maxRotation: 108
   lifespan: 10
   endlifeEffect: 0
-  BulletCount: 5
+  BulletCount: 8
   cooldown: 0
   aimAtPlayer: 1
   isRandom: 1
