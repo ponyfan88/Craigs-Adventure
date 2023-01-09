@@ -51,7 +51,7 @@ public class globalGen : MonoBehaviour
         //fill out a jagged array of enemies for each floor. Order: [floor number][enemy prefab]
         floorEnemies = new GameObject[2][];
         floorEnemies[0] = new GameObject[] { thingManager.slimePrefab, thingManager.goblinPrefab };
-        floorEnemies[1] = new GameObject[] { thingManager.slimePrefab, thingManager.goblinPrefab, thingManager.skeletonPrefab };
+        floorEnemies[1] = new GameObject[] { thingManager.slimePrefab, thingManager.goblinPrefab, thingManager.skeletonPrefab, thingManager.wizardPrefab };
 
         timer = Time.time; //stores time at game start (in case infinite loading occurs, we need to stop it at some point)
 
