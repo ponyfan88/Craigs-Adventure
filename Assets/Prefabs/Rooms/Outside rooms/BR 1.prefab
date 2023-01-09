@@ -6653,6 +6653,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 2339979258050621050}
     m_Modifications:
+    - target: {fileID: 5361726776974772962, guid: cc35132bc41f9884696a089b5dfb4f37, type: 3}
+      propertyPath: throwVelocity
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5361726776974772966, guid: cc35132bc41f9884696a089b5dfb4f37, type: 3}
       propertyPath: m_RootOrder
       value: -1
