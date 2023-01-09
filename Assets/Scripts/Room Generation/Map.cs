@@ -13,18 +13,18 @@ public class Map : MonoBehaviour
 {
     #region Variables
 
-    public List<GameObject> discovered = new List<GameObject>(); // list of rooms craig entered (from Room.cs calls)
+    [SerializeField] public List<GameObject> discovered = new List<GameObject>(); // list of rooms craig entered (from Room.cs calls)
 
     [SerializeField] private GameObject mapUI; // our map ui
     [SerializeField] private RenderTexture mapTexture; //render texture that takes the camera and helps display the map
     [SerializeField] private GameObject[] mapTemplate; // a template of map object prefabs (instantiated to show on camera aka map)
 
-    private List<GameObject> map = new List<GameObject>(); // stores a list of actively mapped rooms
+    [NonSerialized] private List<GameObject> map = new List<GameObject>(); // stores a list of actively mapped rooms
 
-    private GameObject player; // stores reference to player object
+    [NonSerialized] private GameObject player; // stores reference to player object
 
-    private bool maximized = false; // boolean for if our map is maximized or not
-    private RectTransform UITransform; //rectTransform of the mapUI object
+    [NonSerialized] private bool maximized = false; // boolean for if our map is maximized or not
+    [NonSerialized] private RectTransform UITransform; //rectTransform of the mapUI object
 
     [SerializeField] private GameObject[] wallTemplate; // wall templates to spawn
 
