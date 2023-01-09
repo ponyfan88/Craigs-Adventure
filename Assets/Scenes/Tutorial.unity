@@ -13839,7 +13839,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7785978, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -24526,6 +24526,7 @@ GameObject:
   - component: {fileID: 1522005639}
   - component: {fileID: 1522005638}
   - component: {fileID: 1522005637}
+  - component: {fileID: 1522005640}
   m_Layer: 5
   m_Name: Email Menu
   m_TagString: Untagged
@@ -24616,6 +24617,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 32767
   m_TargetDisplay: 0
+--- !u!114 &1522005640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522005635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f353f2f6f9692df40b3182f39c62b92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1546804932
 PrefabInstance:
   m_ObjectHideFlags: 0
