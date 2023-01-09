@@ -17,7 +17,7 @@ public class DragonStateManager : MonoBehaviour
     Animator animator;
     public GameObject DragonTelegraph; // manually added in the inspector
     public bool followPlayerX = true, attacking = false;
-    const float speed = 2f, attackCooldown = 1f;
+    const float speed = 2f, attackCooldown = 3f;
     private float nextAttackTime;
     byte attackCount = 0;
 
@@ -31,7 +31,7 @@ public class DragonStateManager : MonoBehaviour
         projectileSpawner = GetComponent<ProjectileSpawner>();
         animator = GetComponent<Animator>();
 
-        nextAttackTime = Time.time + attackCooldown * 2;
+        nextAttackTime = Time.time + attackCooldown;
     }
 
     void Update()
@@ -78,9 +78,7 @@ public class DragonStateManager : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Attacking", false);
-            followPlayerX = true;
-            attackCount = 0;
+            ResetAttack();
         }
     }
     /*
@@ -99,12 +97,22 @@ public class DragonStateManager : MonoBehaviour
             }
             else
             {
-                animator.SetBool("Attacking", false);
-                followPlayerX = true;
-                attackCount = 0;
+                ResetAttack();
             }
         }
     }
 
+    /*
+     * Purpose: reset Dragons attack cooldown and make him idel
+     * Input: when to reset attacks
+     * Output: reset attacks
+     */
+    void ResetAttack()
+    {
+        animator.SetBool("Attacking", false);
+        followPlayerX = true;
+        attackCount = 0;
+        nextAttackTime = Time.time + attackCooldown;
+    }
     #endregion
 }

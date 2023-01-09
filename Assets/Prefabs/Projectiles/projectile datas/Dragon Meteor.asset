@@ -19,12 +19,12 @@ MonoBehaviour:
   endlifeEffect: 0
   BulletCount: 1
   cooldown: 0
-  aimAtPlayer: 1
+  aimAtPlayer: 0
   isRandom: 0
   bulletPath: 0
   SpecialEffect: 0
-  bulletspeed: 5
-  projectileVelocityIndependent: 0
-  Velocity: {x: 0, y: 0}
-  positionOffset: {x: 0, y: 5}
+  bulletspeed: 10
+  projectileVelocityIndependent: 1
+  Velocity: {x: -15, y: -15}
+  positionOffset: {x: 5, y: 15}
   isNotParent: 1

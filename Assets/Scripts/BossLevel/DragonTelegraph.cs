@@ -19,11 +19,28 @@ public class DragonTelegraph : MonoBehaviour
         // get projectile spawner component
         projSpawner = GetComponent<ProjectileSpawner>();
     }
+
+    /*
+     * Purpose: summon meteor when animator calls
+     * Input: Timed event
+     * Output: summom meteor
+     */
     void SummonMeteor()
     {
         // spawns projectile
         projSpawner.spawnerController(0);
 
+
+        Invoke("KillObject", 1f);
+    }
+
+    /*
+     * Purpose: kill the telegraph after an amount of time to make sure the projectile spawned properly
+     * Input: Invoke
+     * Output: kill object
+     */
+    void KillObject()
+    {
         Destroy(gameObject);
     }
 
