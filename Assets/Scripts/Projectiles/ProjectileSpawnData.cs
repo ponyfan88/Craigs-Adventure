@@ -16,7 +16,6 @@ public class ProjectileSpawnData : ScriptableObject
     public GameObject bulletResource; //this desides what projectile your gonna use
     public float minRotation, maxRotation; //set the area where projectile spawn 
     public float lifespan;// how long the bullet will stay on screen be being deactivated
-    public endlifeEffect endlifeEffect; // when the projectiles lifespan ends it will perform this action
     public int BulletCount; // amount of projectiles that will be spawned
     public float cooldown;// length between shots
     public bool aimAtPlayer;// if true aims at player
