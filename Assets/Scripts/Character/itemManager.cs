@@ -90,7 +90,7 @@ public class itemManager : MonoBehaviour
                         // parent item to the player and set its specified position
                         selectedItem.transform.SetParent(transform);
                         currentPosOffset = itemPosOffset + itemScript.holdingOffset;
-                        selectedItem.transform.position = new Vector2(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y);
+                        selectedItem.transform.position = new Vector3(transform.position.x + currentPosOffset.x, transform.position.y + currentPosOffset.y, 0);
                         
                         holdingItem = true; // we are now holding an item
                         spritelibrary.spriteLibraryAsset = holding; // make the player display as holding the item
