@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590f190945adc06478328147086d09c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageAmount: 8
+  DamageAmount: 3
   playerOwned: 1
   destroyOnHitWall: 1
   destroyType: 0
