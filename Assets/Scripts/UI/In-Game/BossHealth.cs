@@ -5,15 +5,17 @@
  * Outputs: a large health bar on screen
  */
 
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
     #region Variables
 
     // health we store to update
-    private int storedHealth = -1;
+    [NonSerialized] private int storedHealth = -1;
 
     // the boss
     [SerializeField] private GameObject boss;
@@ -23,10 +25,22 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private GameObject bossBarBG;
 
     // our boss health
-    private healthManager bossHealth;
+    [NonSerialized] private healthManager bossHealth;
 
     // bool for if our boss has died
-    private bool bossDied = false;
+    [NonSerialized] private bool bossDied = false;
+
+    // bool for if we've begun fading to black
+    [NonSerialized] private bool startedFade = false;
+
+    // var representing time that has passed, used in various things
+    [NonSerialized] private float timer = 0f;
+
+    // the time it takes to fade to black after the boss dies
+    [NonSerialized] private const byte FADE_TIME = 3;
+
+    // the boss
+    [SerializeField] private GameObject blackPanel;
 
     #endregion
 
@@ -74,13 +88,35 @@ public class BossHealth : MonoBehaviour
             else
             {
                 bossBarBG.SetActive(false);
-
-                SceneManager.LoadScene("credits");
             }
         }
         else
         {
             bossBarBG.SetActive(false);
+        }
+    }
+
+    // after 4 seconds of the boss being dead, load the credits
+    private void FixedUpdate()
+    {
+        if (bossDied && !startedFade)
+        {
+            Destroy(boss);
+
+            startedFade = true;
+        }
+        else if (startedFade)
+        {
+            if (timer >= FADE_TIME)
+            {
+                SceneManager.LoadScene("credits");
+            }
+            else
+            {
+                timer += Time.fixedDeltaTime;
+
+                blackPanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, timer / FADE_TIME);
+            }
         }
     }
 
