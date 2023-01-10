@@ -95,6 +95,8 @@ public class itemManager : MonoBehaviour
                         holdingItem = true; // we are now holding an item
                         spritelibrary.spriteLibraryAsset = holding; // make the player display as holding the item
                         selectedItem.GetComponent<SpriteRenderer>().material = matUnSelected; // remove the highlight from the item
+                        if (itemScript.hasCollision)
+                            itemScript.collisionScript.enabled = false;
                         break;
                     case PickupEvent.heal:
                         GetComponent<healthManager>().Heal(1);
