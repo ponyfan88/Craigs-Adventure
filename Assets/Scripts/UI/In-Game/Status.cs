@@ -183,7 +183,7 @@ public class Status : MonoBehaviour
 
         if (FloorManager.floor >= 3) // if we're on the boss level
         {
-            heartDelta *= 2; // multiply by 2
+            heartDelta *= 8f/5f; // multiply by 2
         }
 
         // add new hearts
