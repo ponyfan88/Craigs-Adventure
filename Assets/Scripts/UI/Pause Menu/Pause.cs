@@ -8,6 +8,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
@@ -149,6 +150,8 @@ public class Pause : MonoBehaviour
     public void PauseGame() // called when we press pause
     {
         pauseUI.SetActive(true); // show our pause menu
+
+        GameObject.Find("Resume").GetComponent<Button>().Select();
         
         paused = true; // we are now paused, this boolean will show other scripts that
         
