@@ -16,6 +16,7 @@ TagManager:
   - Item
   - Room Child
   - End Room
+  - Boss
   - Floor Management
   layers:
   - Default
