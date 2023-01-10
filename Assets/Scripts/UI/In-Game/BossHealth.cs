@@ -8,6 +8,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
@@ -29,7 +30,17 @@ public class BossHealth : MonoBehaviour
     // bool for if our boss has died
     [NonSerialized] private bool bossDied = false;
 
-    [NonSerialized] private float timer = 0;
+    // bool for if we've begun fading to black
+    [NonSerialized] private bool startedFade = false;
+
+    // var representing time that has passed, used in various things
+    [NonSerialized] private float timer = 0f;
+
+    // the time it takes to fade to black after the boss dies
+    [NonSerialized] private const byte FADE_TIME = 3;
+
+    // the boss
+    [SerializeField] private GameObject blackPanel;
 
     #endregion
 
@@ -88,15 +99,23 @@ public class BossHealth : MonoBehaviour
     // after 4 seconds of the boss being dead, load the credits
     private void FixedUpdate()
     {
-        if (bossDied)
+        if (bossDied && !startedFade)
         {
-            if (timer >= 4)
+            Destroy(boss);
+
+            startedFade = true;
+        }
+        else if (startedFade)
+        {
+            if (timer >= FADE_TIME)
             {
                 SceneManager.LoadScene("credits");
             }
             else
             {
                 timer += Time.fixedDeltaTime;
+
+                blackPanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, timer / FADE_TIME);
             }
         }
     }
