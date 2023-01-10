@@ -11,6 +11,12 @@ TagManager:
   - testSpawn
   - Saving
   - Room Hider
+  - Room
+  - Enemy
+  - Item
+  - Room Child
+  - End Room
+  - Floor Management
   layers:
   - Default
   - TransparentFX
@@ -21,7 +27,7 @@ TagManager:
   - Walls
   - Pixelate
   - IgnoreCollision
-  - 
+  - Map
   - 
   - 
   - 
