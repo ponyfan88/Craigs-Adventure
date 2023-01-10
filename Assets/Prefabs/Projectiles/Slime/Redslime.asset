@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Redslime
   m_EditorClassIdentifier: 
   pattern:
-  - {fileID: 11400000, guid: edbc5777d693a8449a59b0f88abf71d6, type: 2}
+  - {fileID: 11400000, guid: 35a6bf7e1508eaa449e88ede789e63f0, type: 2}
