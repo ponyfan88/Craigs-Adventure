@@ -7,7 +7,7 @@
 
 namespace BulletEffects
 {
-   public enum Bulletpaths {linear,sineWave, SpeedChange }
+   public enum Bulletpaths {linear,sineWave};
 }
 
 namespace ItemEvents

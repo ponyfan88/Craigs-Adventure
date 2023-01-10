@@ -62,9 +62,6 @@ public class Projectile : MonoBehaviour
                     Vector3 pointToRotate = new Vector3(Mathf.Cos(SpecialEffect * Time.realtimeSinceStartup), 1);
                     transform.Translate(new Vector3(pointToRotate.x * Mathf.Cos((rotation - 90) * Mathf.Deg2Rad) - pointToRotate.y * Mathf.Sin((rotation - 90) * Mathf.Deg2Rad), pointToRotate.y * Mathf.Cos((rotation - 90) * Mathf.Deg2Rad) + pointToRotate.x * Mathf.Sin((rotation - 90) * Mathf.Deg2Rad)) * Time.deltaTime * speed + velocity * Time.deltaTime);
                     break;
-                case Bulletpaths.SpeedChange:
-                    transform.Translate(new Vector3(Mathf.Cos(rotation * Mathf.Deg2Rad), Mathf.Sin(rotation * Mathf.Deg2Rad)) * Time.deltaTime * speed + velocity * Time.deltaTime);
-                    break;
                 default: // incase of no set path, set to linear
                     transform.Translate(new Vector3(Mathf.Cos(rotation * Mathf.Deg2Rad), Mathf.Sin(rotation * Mathf.Deg2Rad)) * Time.deltaTime * speed + velocity * Time.deltaTime);
                     break;
