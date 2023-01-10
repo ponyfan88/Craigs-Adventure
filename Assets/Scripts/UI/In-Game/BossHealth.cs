@@ -5,6 +5,7 @@
  * Outputs: a large health bar on screen
  */
 
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +14,7 @@ public class BossHealth : MonoBehaviour
     #region Variables
 
     // health we store to update
-    private int storedHealth = -1;
+    [NonSerialized] private int storedHealth = -1;
 
     // the boss
     [SerializeField] private GameObject boss;
@@ -23,10 +24,12 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private GameObject bossBarBG;
 
     // our boss health
-    private healthManager bossHealth;
+    [NonSerialized] private healthManager bossHealth;
 
     // bool for if our boss has died
-    private bool bossDied = false;
+    [NonSerialized] private bool bossDied = false;
+
+    [NonSerialized] private float timer = 0;
 
     #endregion
 
@@ -74,13 +77,27 @@ public class BossHealth : MonoBehaviour
             else
             {
                 bossBarBG.SetActive(false);
-
-                SceneManager.LoadScene("credits");
             }
         }
         else
         {
             bossBarBG.SetActive(false);
+        }
+    }
+
+    // after 4 seconds of the boss being dead, load the credits
+    private void FixedUpdate()
+    {
+        if (bossDied)
+        {
+            if (timer >= 4)
+            {
+                SceneManager.LoadScene("credits");
+            }
+            else
+            {
+                timer += Time.fixedDeltaTime;
+            }
         }
     }
 
