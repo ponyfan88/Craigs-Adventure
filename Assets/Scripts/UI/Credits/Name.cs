@@ -5,14 +5,16 @@
  * Outputs: moves each name
  */
 
+using System;
 using UnityEngine;
 
 public class Name : MonoBehaviour
 {
     #region Variables
 
-    float a = 0;
-    public bool killme = false;
+    [NonSerialized] private float a = 0;
+    [NonSerialized] private float timer = 0;
+    [NonSerialized] public bool killme = false;
 
     #endregion
 
@@ -20,11 +22,16 @@ public class Name : MonoBehaviour
 
     void FixedUpdate()
     {
-        // move randomly every frame :)
+        if (timer >= 3)
+        {
+            a += Time.deltaTime / 5;
 
-        a += Time.deltaTime / 10;
-
-        transform.position = new Vector3(transform.position.x + Random.Range(-a, a), transform.position.y + Random.Range(-a, a), transform.position.z + Random.Range(-a, a));
+            transform.position = new Vector3(transform.position.x + UnityEngine.Random.Range(-a, a), transform.position.y + UnityEngine.Random.Range(-a, a), transform.position.z + UnityEngine.Random.Range(-a, a));
+        }
+        else
+        {
+            timer += Time.fixedDeltaTime;
+        }
     }
 
     // once we are offscreen
