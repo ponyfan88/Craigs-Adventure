@@ -33,6 +33,7 @@ public class healthManager : MonoBehaviour
     #endregion
 
     #region Classes
+#if (UNITY_EDITOR)
     /* This is a custom class written within the health manager to handle the inspector
      * This allows us to customize the inspector and make properties show when we want only.
      */
@@ -78,6 +79,7 @@ public class healthManager : MonoBehaviour
             serializedObject.ApplyModifiedProperties();
         }
     }
+#endif
     #endregion
 
     #region Default Methods
@@ -234,10 +236,10 @@ public class healthManager : MonoBehaviour
         }
     }
     /*
- * purpose: use invoke to destroy game objects
- * inputs: none
- * outputs: none
- */
+     * purpose: use invoke to destroy game objects
+     * inputs: none
+     * outputs: none
+     */
     void InvokeDestoryObject()
     {
         Destroy(gameObject);
