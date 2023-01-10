@@ -7,9 +7,7 @@
 
 namespace BulletEffects
 {
-   public enum Bulletpaths {linear,sineWave,SpeedChange, }
-   public enum endlifeEffect{none,shatter,}
-   // potental effects when the bullet reaches the end of it's life
+   public enum Bulletpaths {linear,sineWave};
 }
 
 namespace ItemEvents
