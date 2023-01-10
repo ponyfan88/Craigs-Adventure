@@ -6,6 +6,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
@@ -73,6 +74,8 @@ public class BossHealth : MonoBehaviour
             else
             {
                 bossBarBG.SetActive(false);
+
+                SceneManager.LoadScene("credits");
             }
         }
         else
