@@ -47,6 +47,7 @@ public class AIManager : MonoBehaviour
         if (!ai.isOnNavMesh)
         {
             ai.enabled = false;
+            ai.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             ai.enabled = true;
         }
 
