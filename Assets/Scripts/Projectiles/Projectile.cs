@@ -19,7 +19,6 @@ public class Projectile : MonoBehaviour
     [NonSerialized]public float rotation; // bullets rotations
     [NonSerialized]public float lifetime; // how long the bullet will be active
     [NonSerialized]public Bulletpaths bulletPath; // how the bullet will move
-    [NonSerialized]public endlifeEffect endlifeEffect; // when the projectiles lifespan ends it will perform this action
     [NonSerialized]public float SpecialEffect; // the ammount that we move it back and forth
     float timer; // countdown till death
 
@@ -75,15 +74,7 @@ public class Projectile : MonoBehaviour
         // once our timer expires
         if (timer <= 0)
         {
-            switch (endlifeEffect)
-            {
-                case endlifeEffect.none:
-                    gameObject.SetActive(false); // deactivate the projectile
-                    break;
-                default:
-                    gameObject.SetActive(false); // deactivate the projectile
-                    break;
-            }
+            gameObject.SetActive(false); // deactivate the projectile
         }
     }
 
