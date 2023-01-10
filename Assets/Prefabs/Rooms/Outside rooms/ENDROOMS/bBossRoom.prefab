@@ -5456,6 +5456,7 @@ GameObject:
   - component: {fileID: 7117855640265219100}
   - component: {fileID: 8327586194084576012}
   - component: {fileID: 936549427750121583}
+  - component: {fileID: 6562371164614986381}
   - component: {fileID: 9062805017750258009}
   m_Layer: 0
   m_Name: stair
@@ -5684,7 +5685,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: 6eb505f39cf6dd442b3c8802a662ed8b, type: 3}
       - {fileID: 21300000, guid: d2750d490d3334844ac546425640cb4c, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -5904,6 +5905,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20316505, y: 6.040208}
   m_EdgeRadius: 0
+--- !u!70 &6562371164614986381
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452513276706679504}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 7.47, y: 10.51}
+  m_Size: {x: 2.9932833, y: 3.0573304}
+  m_Direction: 0
 --- !u!114 &9062805017750258009
 MonoBehaviour:
   m_ObjectHideFlags: 0
