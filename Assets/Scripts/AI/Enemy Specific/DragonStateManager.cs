@@ -18,7 +18,7 @@ public class DragonStateManager : MonoBehaviour
     healthManager dragonHealth;
     public GameObject DragonTelegraph; // manually added in the inspector
     public bool followPlayerX = true, attacking = false;
-    const float speed = 2f, attackCooldown = 6f;
+    const float speed = 2f, attackCooldown = 4f;
     private float nextAttackTime;
     byte attackCount = 0;
 
