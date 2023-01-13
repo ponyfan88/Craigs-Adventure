@@ -123,7 +123,27 @@ public class SavesManager : MonoBehaviour
         // save our active items and enemies
 
         LogToFile.Log("calling thingmanager");
-        thingManager.NukeRoomChildren(true, false);
+        try
+        {
+            LogToFile.Log("trying to call thing manager");
+            thingManager.NukeRoomChildren(true, false);
+        }
+        catch
+        {
+            LogToFile.Log("couldn't find thingmanager; using findobjectoftype on it");
+            // get the thing manager so that we will be able to save items and enemies
+            thingManager = FindObjectOfType<ThingManager>();
+
+            try
+            {
+                LogToFile.Log("trying to call thing manager");
+                thingManager.NukeRoomChildren(true, false);
+            }
+            catch
+            {
+                LogToFile.Log("failed to call thing manager ):");
+            }
+        }
 
         LogToFile.Log("finding map");
         map = FindObjectOfType<Map>();
