@@ -122,6 +122,8 @@ public class SavesManager : MonoBehaviour
 
         // save our active items and enemies
 
+        // this fixes some build errors, if you want to know why we do all this, datamanager.cs:203 explains.
+
         LogToFile.Log("calling thingmanager");
         try
         {
