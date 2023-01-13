@@ -78,6 +78,8 @@ public class SavesManager : MonoBehaviour
      */
     public void saveScene(string saveName = null) // called by pause
     {
+        LogToFile.Log("validating save name");
+        
         // here we check to make sure that our input string is totally ok to be a save name
         // "\u200b" is the default (empty) input - but we check for other ones just in case.
         // this isnt called every frame, so im not worried about any extra checks just in case
@@ -90,10 +92,15 @@ public class SavesManager : MonoBehaviour
 
         if (!Directory.Exists(Application.streamingAssetsPath + "/Saves/"))
         {
+            LogToFile.Log("saves directory didnt exist; gonna make dat");
             Directory.CreateDirectory(Application.streamingAssetsPath + "/Saves/");
+            LogToFile.Log("created saves directory!");
         }
 
+        LogToFile.Log("getting directory info");
         DirectoryInfo savesFolder = new DirectoryInfo(Application.streamingAssetsPath + "/Saves/"); // get the saves folder and scan it for .jsave files
+
+        LogToFile.Log("finding save files of matching names");
         FileInfo[] saves = savesFolder.GetFiles(saveName + ".sqlite");
 
         if (saves.Length > 0) // this means that we found a file with the same name
@@ -114,15 +121,23 @@ public class SavesManager : MonoBehaviour
         }
 
         // save our active items and enemies
+
+        LogToFile.Log("calling thingmanager");
         thingManager.NukeRoomChildren(true, false);
 
+        LogToFile.Log("finding map");
         map = FindObjectOfType<Map>();
 
+        LogToFile.Log("saving discovered rooms");
         foreach (GameObject discoveredRoom in map.discovered)
         {
-            currentSave.discoveredRoomIDs.Add(discoveredRoom.GetComponentInChildren<Room>().uniqueID);
+            int uniqueID = discoveredRoom.GetComponentInChildren<Room>().uniqueID;
+
+            currentSave.discoveredRoomIDs.Add(uniqueID);
+            LogToFile.Log("saved room " + uniqueID);
         }
 
+        LogToFile.Log("writing save.");
         dataManager.Write(saveName);
     }
 
