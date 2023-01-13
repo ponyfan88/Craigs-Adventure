@@ -16,12 +16,11 @@ MonoBehaviour:
   minRotation: 0
   maxRotation: 360
   lifespan: 5
-  endlifeEffect: 0
   BulletCount: 12
   cooldown: 0
   aimAtPlayer: 0
   isRandom: 0
-  bulletPath: 0
+  bulletPath: 1
   SpecialEffect: 0
   bulletspeed: 2.58
   projectileVelocityIndependent: 0

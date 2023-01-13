@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageAmount: 1
   playerOwned: 0
-  destroyOnHitWall: 0
+  destroyOnHitWall: 1
   destroyType: 0
   projectileIndex: 0
 --- !u!58 &6016771497256224302
@@ -127,7 +127,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.009572446}
@@ -148,7 +148,7 @@ MonoBehaviour:
   maxHealth: 1
   health: 1
   invulnerabilityTime: 0
-  takePlayerDamage: 1
+  takePlayerDamage: 0
   destroyEvent: 0
   destroyProjectileIndex: 0
   item: {fileID: 0}
