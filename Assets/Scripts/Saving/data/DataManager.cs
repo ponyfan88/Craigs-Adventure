@@ -190,13 +190,42 @@ public class DataManager : MonoBehaviour
         dbCommand.CommandText = "INSERT OR REPLACE INTO Save (seed, floor) VALUES (" + savesManager.currentSave.seed + ", " + FloorManager.floor + ")";
         dbCommand.ExecuteNonQuery(); // execute said command
 
-        dbCommand = dbConnection.CreateCommand();
+        dbConnection.Close(); // just like logging we close
+
+        // if we dont have a table yet, insert a save id and seed
+        dbConnection = CreateAndOpenDatabase(saveName);
+        dbCommand = dbConnection.CreateCommand(); // just like above we create a command to do this
 
         player = GameObject.Find("player");
 
-        dbCommand.CommandText = "INSERT OR REPLACE INTO Player (health, max_health, player_x, player_y) VALUES ("  + healthManager.health + ", " + healthManager.maxHealth + ", " + player.transform.position.x + ", " + player.transform.position.y + ")"; // 10
-        dbCommand.ExecuteNonQuery(); // execute said command
 
+        LogToFile.Log("saving player");
+        try
+        {
+            dbCommand.CommandText = "INSERT OR REPLACE INTO Player (health, max_health, player_x, player_y) VALUES (" + healthManager.health + ", " + healthManager.maxHealth + ", " + player.transform.position.x + ", " + player.transform.position.y + ")"; // 10
+            dbCommand.ExecuteNonQuery(); // execute said command
+        }
+        catch
+        {
+            LogToFile.Log("===> KNOWN ERROR <=== error saving player; finding and saving again!");
+            try
+            {
+                player = GameObject.Find("player"); // grab out player
+                healthManager = player.GetComponent<healthManager>(); // get our health manager
+
+                LogToFile.Log("health = " + healthManager.health);
+                LogToFile.Log("maxhealth = " + healthManager.maxHealth);
+                LogToFile.Log("playerx = " + player.transform.position.x);
+                LogToFile.Log("playery = " + player.transform.position.y);
+
+                dbCommand.CommandText = "INSERT OR REPLACE INTO Player (health, max_health, player_x, player_y) VALUES (" + healthManager.health + ", " + healthManager.maxHealth + ", " + player.transform.position.x + ", " + player.transform.position.y + ")"; // 10
+                dbCommand.ExecuteNonQuery();
+            }
+            catch
+            {
+                LogToFile.Log("issues grabbing player ):");
+            }
+        }
         dbConnection.Close(); // just like logging we close
 
         #endregion
