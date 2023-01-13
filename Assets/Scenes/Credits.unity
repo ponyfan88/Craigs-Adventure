@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Everythign Else - Jack Kennedy
+  m_text: Everything Else - Jack Kennedy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d59d9481cff4a743b97992bcb9d9358, type: 2}
   m_sharedMaterial: {fileID: 5410025063586470865, guid: 6d59d9481cff4a743b97992bcb9d9358, type: 2}
