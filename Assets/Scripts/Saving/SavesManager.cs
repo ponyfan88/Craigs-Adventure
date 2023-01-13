@@ -174,6 +174,18 @@ public class SavesManager : MonoBehaviour
         {
             saveName = "my save";
         }
+        
+        // check if that saves exist
+
+        DirectoryInfo savesFolder = new DirectoryInfo(Application.streamingAssetsPath + "/Saves/"); // get the saves folder and scan it for .sqlite files
+        FileInfo[] saves = savesFolder.GetFiles(saveName + ".sqlite");
+        savesCount = saves.Length;
+
+        if (savesCount == 0)
+        {
+            // return if no saves exist
+            return;
+        }
 
         // run the read function inside sqlite manager
         dataManager.Read(saveName);
