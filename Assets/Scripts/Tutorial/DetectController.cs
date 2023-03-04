@@ -13,15 +13,18 @@ public class DetectController : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.anyKey.wasPressedThisFrame)
+        if (Gamepad.current != null)
         {
-            gameObject.transform.Find("KeyboardPrompts").gameObject.SetActive(true);
-            gameObject.transform.Find("ControllerPrompts").gameObject.SetActive(false);
-        }
-        else if (Gamepad.current.buttonNorth.wasPressedThisFrame || Gamepad.current.buttonEast.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame || Gamepad.current.buttonWest.wasPressedThisFrame)
-        {
-            gameObject.transform.Find("ControllerPrompts").gameObject.SetActive(true);
-            gameObject.transform.Find("KeyboardPrompts").gameObject.SetActive(false);
+            if (Keyboard.current.anyKey.wasPressedThisFrame)
+            {
+                gameObject.transform.Find("KeyboardPrompts").gameObject.SetActive(true);
+                gameObject.transform.Find("ControllerPrompts").gameObject.SetActive(false);
+            }
+            else if (Gamepad.current.buttonNorth.wasPressedThisFrame || Gamepad.current.buttonEast.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame || Gamepad.current.buttonWest.wasPressedThisFrame)
+            {
+                gameObject.transform.Find("ControllerPrompts").gameObject.SetActive(true);
+                gameObject.transform.Find("KeyboardPrompts").gameObject.SetActive(false);
+            }
         }
     }
 

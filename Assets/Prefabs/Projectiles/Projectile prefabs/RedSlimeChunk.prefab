@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageAmount: 1
   playerOwned: 0
-  destroyOnHitWall: 0
+  destroyOnHitWall: 1
   destroyType: 0
   projectileIndex: 0
 --- !u!58 &6016771497256224302
@@ -148,7 +148,7 @@ MonoBehaviour:
   maxHealth: 1
   health: 1
   invulnerabilityTime: 0
-  takePlayerDamage: 1
+  takePlayerDamage: 0
   destroyEvent: 0
   destroyProjectileIndex: 0
   item: {fileID: 0}
