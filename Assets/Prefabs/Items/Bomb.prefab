@@ -33,12 +33,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3757501959174599330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4798608, y: -0.43342876, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3757501959174599328
 SpriteRenderer:
@@ -109,6 +109,8 @@ MonoBehaviour:
   invulnerabilityTime: 0
   takePlayerDamage: 0
   destroyEvent: 0
+  destroyProjectileIndex: 0
+  item: {fileID: 0}
   damagedEvent: 0
 --- !u!58 &3757501959174599358
 CircleCollider2D:
