@@ -31,7 +31,7 @@ public class SpawnEnemy : MonoBehaviour
 
         //instantiate enemy at this position
         index = Random.Range(0, enemiesTemplate.Length);
-        enemy = Instantiate<GameObject>(enemiesTemplate[index], transform.position, enemiesTemplate[index].transform.rotation);
+        enemy = Instantiate<GameObject>(enemiesTemplate[index], (Vector2)transform.position, enemiesTemplate[index].transform.rotation);
     }
 
     // overload - Parent transform provided
@@ -41,7 +41,7 @@ public class SpawnEnemy : MonoBehaviour
 
         //instantiate enemy at this position
         index = Random.Range(0, enemiesTemplate.Length);
-        enemy = Instantiate<GameObject>(enemiesTemplate[index], transform.position, enemiesTemplate[index].transform.rotation, parent);
+        enemy = Instantiate<GameObject>(enemiesTemplate[index], (Vector2)transform.position, enemiesTemplate[index].transform.rotation, parent);
     }
 
     #endregion
