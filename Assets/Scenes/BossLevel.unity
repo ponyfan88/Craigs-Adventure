@@ -1050,6 +1050,7 @@ MonoBehaviour:
   destroyEvent: 0
   destroyProjectileIndex: 0
   item: {fileID: 0}
+  timeTillDeathEvent: 0
   damagedEvent: 0
 --- !u!95 &167496109
 Animator:
