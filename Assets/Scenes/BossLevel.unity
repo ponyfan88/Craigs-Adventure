@@ -1050,6 +1050,7 @@ MonoBehaviour:
   destroyEvent: 0
   destroyProjectileIndex: 0
   item: {fileID: 0}
+  timeTillDeathEvent: 0
   damagedEvent: 0
 --- !u!95 &167496109
 Animator:
@@ -8122,10 +8123,10 @@ RectTransform:
   - {fileID: 1235594118}
   - {fileID: 2138969452}
   - {fileID: 1309914729}
-  - {fileID: 1102288209}
-  - {fileID: 314538793}
   - {fileID: 1087049981}
   - {fileID: 1851651739}
+  - {fileID: 314538793}
+  - {fileID: 1102288209}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
