@@ -45,7 +45,7 @@ public class DragonStateManager : MonoBehaviour
         }
 
         // if the Ai currently asks for the dragon to follow the players X position, and the player isn't too high up
-        if (followPlayerX && player.position.y < 7)
+        if (followPlayerX)
         {
             // calculate distance from player
             float dist = JMath.Distance(transform.position.x, player.position.x);
