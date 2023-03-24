@@ -26,6 +26,7 @@ public class healthManager : MonoBehaviour
     public DestroyEvent destroyEvent = DestroyEvent.destroy;
     [SerializeField] int destroyProjectileIndex;
     [SerializeField] GameObject item;
+    [SerializeField] float timeTillDeathEvent;
     // enum to decide what should happen if an object were damaged.
     public enum DamagedEvent { nothing, displayParticle };
     public DamagedEvent damagedEvent = DamagedEvent.nothing;
@@ -41,7 +42,7 @@ public class healthManager : MonoBehaviour
     public class healthManagerEditor : Editor
     {
         // initialize all the variables
-        SerializedProperty takePlayerDamage, invulnerabilityTime, maxHealth, destroyEvent, destroyProjectileIndex, item;
+        SerializedProperty takePlayerDamage, invulnerabilityTime, maxHealth, destroyEvent, destroyProjectileIndex, item, timeTillDeathEvent;
         private void OnEnable()
         {
             // Initialize all the properties
@@ -51,6 +52,7 @@ public class healthManager : MonoBehaviour
             destroyEvent = serializedObject.FindProperty("destroyEvent");
             destroyProjectileIndex = serializedObject.FindProperty("destroyProjectileIndex");
             item = serializedObject.FindProperty("item");
+            timeTillDeathEvent = serializedObject.FindProperty("timeTillDeathEvent");
         }
         public override void OnInspectorGUI()
         {
@@ -69,6 +71,7 @@ public class healthManager : MonoBehaviour
             if (healthManager.destroyEvent == DestroyEvent.summonProjectile)
             {
                 EditorGUILayout.PropertyField(destroyProjectileIndex);
+                EditorGUILayout.PropertyField(timeTillDeathEvent);
             }
             else if (healthManager.destroyEvent == DestroyEvent.dropItemChance)
             {
@@ -196,13 +199,9 @@ public class healthManager : MonoBehaviour
         {
             case DestroyEvent.summonProjectile:
                 {
-                    if (TryGetComponent(out ProjectileSpawner spawner))
-                    {
-                        spawner.spawnerController(destroyProjectileIndex);
-                        GetComponent<AIManager>().canMove = false;
-                        Invoke("InvokeDestoryObject", 2.1f);//sorry this was the only way i could think of doing this -Anmol Acharya
-                    }
-                    else Destroy(gameObject);
+                    GetComponent<AIManager>().canMove = false;
+                    Invoke("InvokeDestoryObject", timeTillDeathEvent); //sorry this was the only way i could think of doing this -Anmol Acharya
+                    GetComponent<Animator>().SetBool("isDead", true);
                     break;
                 }
             case DestroyEvent.dropItemChance:
@@ -243,6 +242,11 @@ public class healthManager : MonoBehaviour
     void InvokeDestoryObject()
     {
         Destroy(gameObject);
+
+        if (destroyEvent == DestroyEvent.summonProjectile && TryGetComponent(out ProjectileSpawner spawner))
+        {
+            spawner.spawnerController(destroyProjectileIndex);
+        }
     }
     #endregion
 }
