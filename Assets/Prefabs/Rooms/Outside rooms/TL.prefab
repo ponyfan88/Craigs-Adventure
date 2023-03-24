@@ -788,7 +788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OverrideArea: 1
   m_Area: 1
-  m_IgnoreFromBuild: 1
+  m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!19719996 &7931486048043548594
 TilemapCollider2D:
