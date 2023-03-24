@@ -200,8 +200,14 @@ public class healthManager : MonoBehaviour
             case DestroyEvent.summonProjectile:
                 {
                     GetComponent<AIManager>().canMove = false;
+                    Invoke("InvokeProjectile", timeTillDeathEvent - 0.1f);
                     Invoke("InvokeDestoryObject", timeTillDeathEvent); //sorry this was the only way i could think of doing this -Anmol Acharya
                     GetComponent<Animator>().SetBool("isDead", true);
+
+                    if (TryGetComponent(out Collider2D collider))
+                    {
+                        collider.enabled = false;
+                    }
                     break;
                 }
             case DestroyEvent.dropItemChance:
@@ -242,8 +248,11 @@ public class healthManager : MonoBehaviour
     void InvokeDestoryObject()
     {
         Destroy(gameObject);
+    }
 
-        if (destroyEvent == DestroyEvent.summonProjectile && TryGetComponent(out ProjectileSpawner spawner))
+    void InvokeProjectile()
+    {
+        if (TryGetComponent(out ProjectileSpawner spawner))
         {
             spawner.spawnerController(destroyProjectileIndex);
         }

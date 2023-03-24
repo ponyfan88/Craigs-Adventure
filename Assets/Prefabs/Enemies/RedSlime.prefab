@@ -168,6 +168,7 @@ MonoBehaviour:
   destroyEvent: 1
   destroyProjectileIndex: 0
   item: {fileID: 0}
+  timeTillDeathEvent: 1.8
   damagedEvent: 0
 --- !u!114 &4640555547685924270
 MonoBehaviour:
