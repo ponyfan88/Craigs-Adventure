@@ -124,6 +124,7 @@ MonoBehaviour:
   destroyEvent: 0
   destroyProjectileIndex: 0
   item: {fileID: 0}
+  timeTillDeathEvent: 0
   damagedEvent: 0
 --- !u!114 &1944048569004994786
 MonoBehaviour:
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thingType: 0
-  thingPrefab: 0
+  thingPrefab: 13
 --- !u!114 &7722559934657240454
 MonoBehaviour:
   m_ObjectHideFlags: 0

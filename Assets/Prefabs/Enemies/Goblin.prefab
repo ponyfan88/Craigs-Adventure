@@ -35,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579965022195231294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.889999, y: 5.0800037, z: 5.0000067}
+  m_LocalPosition: {x: 36.888283, y: 0.25082377, z: -0.6889251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -234,6 +234,7 @@ MonoBehaviour:
   destroyEvent: 2
   destroyProjectileIndex: 0
   item: {fileID: 8876102028033157360, guid: 9368931644f58f940bc0dd2a4ebeba2a, type: 3}
+  timeTillDeathEvent: 0
   damagedEvent: 0
 --- !u!114 &924077546041445865
 MonoBehaviour:
