@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3432006549281314871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6, y: -0.06, z: 0}
+  m_LocalPosition: {x: 33.64844, y: -6.5342584, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -226,10 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 6
-  health: 6
+  health: 1
   invulnerabilityTime: 0
   takePlayerDamage: 1
   destroyEvent: 2
   destroyProjectileIndex: 0
   item: {fileID: 8876102028033157360, guid: 9368931644f58f940bc0dd2a4ebeba2a, type: 3}
+  timeTillDeathEvent: 0
   damagedEvent: 0
