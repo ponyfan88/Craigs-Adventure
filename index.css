@@ -8,14 +8,16 @@
 
 body {
     background-color: var(--red);
-    color: #fff
+    color: #fff;
+    margin-top: 8vh;
 }
 nav {
     background-color: var(--nav);
     color: #fff;
     height: 8vh;
-    position: sticky;
-
+    width: 100vw;
+    position: fixed;
+    margin-top: -8vh;
     display: grid;
     grid-auto-flow: column;
     justify-items: center;
@@ -45,6 +47,12 @@ img {
     height: 90%;
     object-fit: cover;
     image-rendering:pixelated;
+}
+#craig {
+    object-fit: contain;
+}
+#alsoCraig {
+    object-fit: contain;
 }
 .grid-90-2 {
     width: 90%;
