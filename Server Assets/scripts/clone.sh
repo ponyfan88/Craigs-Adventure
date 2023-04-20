@@ -5,7 +5,7 @@ git clone https://github.com/ponyfan88/Craigs-Adventure.git
 cd Craigs-Adventure
 
 git checkout CraigGL
-git switch CraiGL
+git switch CraigGL
 
 cd ..
 mv Craigs-Adventure/* ../*
