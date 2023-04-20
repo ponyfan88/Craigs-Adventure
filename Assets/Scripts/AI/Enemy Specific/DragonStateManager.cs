@@ -44,7 +44,6 @@ public class DragonStateManager : MonoBehaviour
             animator.SetBool("Attacking", true);
         }
 
-        // if the Ai currently asks for the dragon to follow the players X position, and the player isn't too high up
         if (followPlayerX)
         {
             // calculate distance from player
