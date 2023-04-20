@@ -1,4 +1,4 @@
-# Craigs-Adventure
+# Craigs-Adventure WebGL branch
  Craigs Adventure WebGL version
 
 play it on our website at [craigsadventure.com](https://www.craigsadventure.com/) or check out [the github pages version](https://ponyfan88.github.io/Craigs-Adventure/)
