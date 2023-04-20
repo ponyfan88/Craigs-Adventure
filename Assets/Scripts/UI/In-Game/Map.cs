@@ -32,6 +32,8 @@ public class Map : MonoBehaviour
 
     [NonSerialized] private bool loadedSavedRooms = false;
 
+    [NonSerialized] private RectTransform icon;
+
     #endregion
 
     #region Default Methods
@@ -40,6 +42,7 @@ public class Map : MonoBehaviour
     {
         player = GameObject.Find("player"); // grab our player
         UITransform = mapUI.GetComponent<RectTransform>();
+        icon = GameObject.Find("Craig Icon").GetComponent<RectTransform>();
 
         savesManager = FindObjectOfType<SavesManager>();
     }
@@ -90,6 +93,7 @@ public class Map : MonoBehaviour
             UITransform.anchoredPosition = new Vector2(-400, 0); //center it
 
             mapTexture = new RenderTexture(800, 800, 24);
+            icon.sizeDelta = new Vector2(100, 100); //update icon size
         }
         else // assuming the button isnt being held down
         {
@@ -97,6 +101,7 @@ public class Map : MonoBehaviour
             UITransform.anchoredPosition = Vector2.zero; //position at corner
 
             mapTexture = new RenderTexture(200, 200, 24);
+            icon.sizeDelta = new Vector2(25, 25); //update icon size
         }
     }
 

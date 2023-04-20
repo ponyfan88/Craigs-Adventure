@@ -126,6 +126,7 @@ MonoBehaviour:
   destroyEvent: 0
   destroyProjectileIndex: 0
   item: {fileID: 0}
+  timeTillDeathEvent: 0
   damagedEvent: 0
 --- !u!61 &5361726776974772965
 BoxCollider2D:
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thingType: 0
-  thingPrefab: 8
+  thingPrefab: 11
 --- !u!1 &5361726777761842100
 GameObject:
   m_ObjectHideFlags: 0
