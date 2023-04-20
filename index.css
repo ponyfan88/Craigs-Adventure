@@ -26,6 +26,10 @@ a {
     color: #fff;
     text-decoration: none;
 }
+p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 * {
     font-family: 'Roboto', sans-serif;
     padding: 0;
@@ -40,20 +44,41 @@ img {
 .img-90 {
     height: 90%;
     object-fit: cover;
+    image-rendering:pixelated;
 }
 .grid-90-2 {
     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-left: auto;
+    margin-right: auto
+}
+.grid-90-2-vertical {
+    height: 90%;
+    display: grid;
+    grid-template-rows: auto auto;
+    margin-left: auto;
+    margin-right: auto
+}
+.centered {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 @media (max-aspect-ratio: 1/1) {
     img {
         width: 90%;
     }
-    .grid-90-2 {
+     .grid-90-2 {
         width:unset;
         height: 90%;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     }
+    /*.img-90 {
+        object-fit: contain;
+        position: relative;
+        width: 90%;
+        aspect-ratio: 16/9;
+    } */
 }
