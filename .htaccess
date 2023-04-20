@@ -1,3 +1,5 @@
+# make sure that your site has `AllowOverride` set to `All` in `/etc/apache2/apache2.conf` or wherever your `apache2.conf` is, otherwise this wont work and you'll have no clue why
+
 # Required to work
 RewriteEngine on
 
